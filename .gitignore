@@ -1,0 +1,9 @@
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+*.Rmd
+*.tex
+_bookdown_files/*
+purl/*
+*.R
