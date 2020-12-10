@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapitre 1 Manipulation de graphes avec igraph | Graph Mining</title>
+  <meta name="description" content="Chapitre 1 Manipulation de graphes avec igraph | Graph Mining" />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapitre 1 Manipulation de graphes avec igraph | Graph Mining" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapitre 1 Manipulation de graphes avec igraph | Graph Mining" />
+  
+  
+  
+
+<meta name="author" content="Laurent Rouvière" />
+
+
+<meta name="date" content="2020-12-10" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="index.html"/>
+<link rel="next" href="model-const-graphes.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+<link href="libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0/anchor-sections.js"></script>
+<script src="libs/htmlwidgets-1.5.2/htmlwidgets.js"></script>
+<link href="libs/vis-4.20.1/vis.css" rel="stylesheet" />
+<script src="libs/vis-4.20.1/vis.min.js"></script>
+<script src="libs/visNetwork-binding-2.0.9/visNetwork.js"></script>
+
+
+<style type="text/css">
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Graph Mining<br> <br> L. Rouvière</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Présentation</a></li>
+<li class="chapter" data-level="1" data-path="manip-graphes.html"><a href="manip-graphes.html"><i class="fa fa-check"></i><b>1</b> Manipulation de graphes avec <code>igraph</code></a><ul>
+<li class="chapter" data-level="1.1" data-path="manip-graphes.html"><a href="manip-graphes.html#construction-de-graphes-avec-igraph"><i class="fa fa-check"></i><b>1.1</b> Construction de graphes avec igraph</a><ul>
+<li class="chapter" data-level="1.1.1" data-path="manip-graphes.html"><a href="manip-graphes.html#quelques-fonctions-r-pour-construire-des-graphes"><i class="fa fa-check"></i><b>1.1.1</b> Quelques fonctions R pour construire des graphes</a></li>
+<li class="chapter" data-level="1.1.2" data-path="manip-graphes.html"><a href="manip-graphes.html#construction-à-partir-dun-fichier-externe"><i class="fa fa-check"></i><b>1.1.2</b> Construction à partir d’un fichier externe</a></li>
+<li class="chapter" data-level="1.1.3" data-path="manip-graphes.html"><a href="manip-graphes.html#matrice-dadjacence"><i class="fa fa-check"></i><b>1.1.3</b> Matrice d’adjacence</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="manip-graphes.html"><a href="manip-graphes.html#visualisation-dun-graphe"><i class="fa fa-check"></i><b>1.2</b> Visualisation d’un graphe</a><ul>
+<li class="chapter" data-level="1.2.1" data-path="manip-graphes.html"><a href="manip-graphes.html#network-layouts-algorithmes-usuels-de-visualisation"><i class="fa fa-check"></i><b>1.2.1</b> Network layouts : algorithmes usuels de visualisation</a></li>
+<li class="chapter" data-level="1.2.2" data-path="manip-graphes.html"><a href="manip-graphes.html#personnalisation-du-graphe"><i class="fa fa-check"></i><b>1.2.2</b> Personnalisation du graphe</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="manip-graphes.html"><a href="manip-graphes.html#statistiques-descriptives-sur-les-graphes"><i class="fa fa-check"></i><b>1.3</b> Statistiques descriptives sur les graphes</a></li>
+<li class="chapter" data-level="1.4" data-path="manip-graphes.html"><a href="manip-graphes.html#autres-packages-pour-visualiser-les-graphes"><i class="fa fa-check"></i><b>1.4</b> Autres packages pour visualiser les graphes</a><ul>
+<li class="chapter" data-level="1.4.1" data-path="manip-graphes.html"><a href="manip-graphes.html#graphes-dynamiques-avec-visnetwork"><i class="fa fa-check"></i><b>1.4.1</b> Graphes dynamiques avec visNetwork</a></li>
+<li class="chapter" data-level="1.4.2" data-path="manip-graphes.html"><a href="manip-graphes.html#graphes-ggplot-avec-ggnet"><i class="fa fa-check"></i><b>1.4.2</b> Graphes <strong>ggplot</strong> avec <strong>ggnet</strong></a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="model-const-graphes.html"><a href="model-const-graphes.html"><i class="fa fa-check"></i><b>2</b> Modèles et construction de graphes</a><ul>
+<li class="chapter" data-level="2.1" data-path="model-const-graphes.html"><a href="model-const-graphes.html#modèles-de-graphe"><i class="fa fa-check"></i><b>2.1</b> Modèles de graphe</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="model-const-graphes.html"><a href="model-const-graphes.html#graphe-derdos-renyi"><i class="fa fa-check"></i><b>2.1.1</b> Graphe d’Erdos-Renyi</a></li>
+<li class="chapter" data-level="2.1.2" data-path="model-const-graphes.html"><a href="model-const-graphes.html#modèles-à-blocs-stochastiques"><i class="fa fa-check"></i><b>2.1.2</b> Modèles à blocs stochastiques</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="model-const-graphes.html"><a href="model-const-graphes.html#construire-un-graphe-à-partir-de-données-classiques"><i class="fa fa-check"></i><b>2.2</b> Construire un graphe à partir de données “classiques”</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="commu-modul.html"><a href="commu-modul.html"><i class="fa fa-check"></i><b>3</b> Détection de communautés : approche modularité</a></li>
+<li class="chapter" data-level="4" data-path="clust-spec.html"><a href="clust-spec.html"><i class="fa fa-check"></i><b>4</b> Clustering spectral</a><ul>
+<li class="chapter" data-level="4.1" data-path="clust-spec.html"><a href="clust-spec.html#clustering-spectral-sur-1-graphe-à-3-composantes-connexes"><i class="fa fa-check"></i><b>4.1</b> Clustering spectral sur 1 graphe à 3 composantes connexes</a></li>
+<li class="chapter" data-level="4.2" data-path="clust-spec.html"><a href="clust-spec.html#programmer-le-clustering-spectral-pour-un-graphe"><i class="fa fa-check"></i><b>4.2</b> Programmer le clustering spectral pour un graphe</a></li>
+<li class="chapter" data-level="4.3" data-path="clust-spec.html"><a href="clust-spec.html#exemple-sur-des-graphes-réels"><i class="fa fa-check"></i><b>4.3</b> Exemple sur des graphes “réels”</a></li>
+<li class="chapter" data-level="4.4" data-path="clust-spec.html"><a href="clust-spec.html#clustering-spectral-cas-général"><i class="fa fa-check"></i><b>4.4</b> Clustering spectral : cas général</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Graph Mining</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="manip-graphes" class="section level1">
+<h1><span class="header-section-number">Chapitre 1</span> Manipulation de graphes avec <code>igraph</code></h1>
+<p>Le but de ce tutoriel est de se familiariser avec les principales fonctions du package <strong>igraph</strong>. On trouvera un descriptif de ce package à l’adresse <a href="http://igraph.org/r/">http://igraph.org/r/</a>. On pourra également consulter le tutoriel (très complet) suivant : <a href="http://kateto.net/networks-r-igraph">http://kateto.net/networks-r-igraph</a>.</p>
+<p>Nous commençons par charger le package</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="manip-graphes.html#cb1-1"></a><span class="kw">library</span>(igraph)</span></code></pre></div>
+<div id="construction-de-graphes-avec-igraph" class="section level2">
+<h2><span class="header-section-number">1.1</span> Construction de graphes avec igraph</h2>
+<p>Comme pour des données classiques, il est possible de construire des graphes directement dans <strong>R</strong> ou de les importer à partir de fichiers externes.</p>
+<div id="quelques-fonctions-r-pour-construire-des-graphes" class="section level3">
+<h3><span class="header-section-number">1.1.1</span> Quelques fonctions R pour construire des graphes</h3>
+<p>L’approcher la plus naturelle est de définir un graphe à partir d’une liste d’arêtes :</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="manip-graphes.html#cb2-1"></a>g1 &lt;-<span class="st"> </span><span class="kw">graph</span>(<span class="dt">edges=</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">5</span>,<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">4</span>,<span class="dv">6</span>,<span class="dv">4</span>,<span class="dv">7</span>,<span class="dv">6</span>,<span class="dv">7</span>),<span class="dt">n=</span><span class="dv">7</span>,<span class="dt">directed=</span>F)</span>
+<span id="cb2-2"><a href="manip-graphes.html#cb2-2"></a><span class="kw">plot</span>(g1)</span></code></pre></div>
+<p><img src="TUTU_GRAPHES_files/figure-html/unnamed-chunk-7-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>Si la liste d’arêtes est donnée sous forme de noms, il n’est pas nécessaire d’indiquer le nombre de nœuds.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="manip-graphes.html#cb3-1"></a>g2 &lt;-<span class="st"> </span><span class="kw">graph</span>(<span class="dt">edges=</span><span class="kw">c</span>(<span class="st">&quot;Eric&quot;</span>,<span class="st">&quot;Laurent&quot;</span>,<span class="st">&quot;Laurent&quot;</span>,<span class="st">&quot;Vincent&quot;</span>))</span>
+<span id="cb3-2"><a href="manip-graphes.html#cb3-2"></a><span class="kw">plot</span>(g2)</span></code></pre></div>
+<p><img src="TUTU_GRAPHES_files/figure-html/unnamed-chunk-8-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>Différentes options sont proposées dans la fonction <strong>graph</strong> :</p>
+<ul>
+<li><code>n</code> : le nombre maximal de nœuds</li>
+<li><code>isolates</code> : ajout de nœuds isolés</li>
+<li><code>directed</code> : graphes dirigés ou non</li>
+<li>…</li>
+</ul>
+<p>Par exemple</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="manip-graphes.html#cb4-1"></a>g3 &lt;-<span class="st"> </span><span class="kw">graph</span>(<span class="dt">edges=</span><span class="kw">c</span>(<span class="st">&quot;Eric&quot;</span>,<span class="st">&quot;Laurent&quot;</span>,<span class="st">&quot;Laurent&quot;</span>,<span class="st">&quot;Vincent&quot;</span>),<span class="dt">isolates=</span><span class="st">&quot;Paul&quot;</span>)</span>
+<span id="cb4-2"><a href="manip-graphes.html#cb4-2"></a><span class="kw">plot</span>(g3)</span></code></pre></div>
+<p><img src="TUTU_GRAPHES_files/figure-html/unnamed-chunk-9-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>Il existe également des fonctions spécifiques qui peuvent aider à la construction de graphes, par exemple <strong>make_full_graph</strong> :</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="manip-graphes.html#cb5-1"></a><span class="kw">plot</span>(<span class="kw">make_full_graph</span>(<span class="dv">4</span>))</span></code></pre></div>
+<p><img src="TUTU_GRAPHES_files/figure-html/unnamed-chunk-10-1.png" width="672" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="manip-graphes.html#cb6-1"></a><span class="kw">plot</span>(<span class="kw">make_empty_graph</span>(<span class="dv">4</span>))</span></code></pre></div>
+<p><img src="TUTU_GRAPHES_files/figure-html/unnamed-chunk-10-2.png" width="672" style="display: block; margin: auto;" /></p>
+<p>Il est également possible “d’additionner” des graphes</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="manip-graphes.html#cb7-1"></a><span class="kw">plot</span>(<span class="kw">make_full_graph</span>(<span class="dv">4</span>)<span class="op">+</span><span class="kw">make_full_graph</span>(<span class="dv">3</span>))</span></code></pre></div>
+<p><img src="TUTU_GRAPHES_files/figure-html/unnamed-chunk-11-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>L’opérateur <strong>pipe</strong> permet une lecture du code plus lisible</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="manip-graphes.html#cb8-1"></a>(<span class="kw">make_full_graph</span>(<span class="dv">4</span>)<span class="op">+</span><span class="kw">make_full_graph</span>(<span class="dv">3</span>)) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">plot</span>()</span></code></pre></div>
+<p><img src="TUTU_GRAPHES_files/figure-html/unnamed-chunk-12-1.png" width="672" style="display: block; margin: auto;" />
+Il est également facile d’ajouter des arêtes avec <strong>add_edges</strong> :</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="manip-graphes.html#cb9-1"></a>(<span class="kw">make_full_graph</span>(<span class="dv">4</span>)<span class="op">+</span><span class="kw">make_full_graph</span>(<span class="dv">3</span>)) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">add_edges</span>(<span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">5</span>)) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">plot</span>()</span></code></pre></div>
+<p><img src="TUTU_GRAPHES_files/figure-html/unnamed-chunk-13-1.png" width="672" style="display: block; margin: auto;" /></p>
+
+<div class="exercise">
+<span id="exr:exo-cons-grap-R" class="exercise"><strong>Exercice 1.1  (Quelques graphes spécifiques)  </strong></span>
+</div>
+
+<p>Tester et expliquer les fonctions <strong>make_empty_graph, make_ring</strong> et <strong>make_star</strong>.</p>
+</div>
+<div id="construction-à-partir-dun-fichier-externe" class="section level3">
+<h3><span class="header-section-number">1.1.2</span> Construction à partir d’un fichier externe</h3>
+<p>Le plus souvent, on aura à récupérer des données récoltées dans des fichiers <code>txt</code> ou <code>csv</code> pour construire le graphe.</p>
+
+<div class="exercise">
+<span id="exr:exo-import-graph" class="exercise"><strong>Exercice 1.2  (Importation)  </strong></span>
+</div>
+
+<p>On considère le jeu de données <strong>Friendship-network_data_2013.csv</strong> qui se trouve sur le site <a href="http://www.sociopatterns.org/datasets/high-school-contact-and-friendship-networks/">http://www.sociopatterns.org/datasets/high-school-contact-and-friendship-networks/</a>. Ces données concernent des relations entre étudiants.</p>
+<ol style="list-style-type: decimal">
+<li><p>Importer les données à l’aide de <strong>read.table</strong>.</p></li>
+<li><p>Ce fichier contient 2 colonnes et chaque colonne contient une arête. Visualiser le graphe. On pourra utiliser <strong>graph_from_data_frame</strong>.</p></li>
+<li><p>On considère un graphe permettant de visualiser des connexions entre médias :</p>
+<ul>
+<li>les nœuds sont définis dans le fichier <code>Dataset1-Media-Example-NODES.csv</code></li>
+<li>les arêtes dans le fichier <code>Dataset1-Media-Example-EDGES.csv</code>.</li>
+</ul>
+<p>Importer ces fichiers.</p></li>
+<li><p>Construire le graphe <code>igraph</code> associé à ces deux fichiers à l’aide de <strong>graph_from_data_frame</strong>.</p></li>
+<li><p>La fonction <strong>read_graph</strong> peut s’adapter à de nombreux formats de graphe :</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="manip-graphes.html#cb10-1"></a><span class="kw">read_graph</span>(file, <span class="dt">format =</span> <span class="kw">c</span>(<span class="st">&quot;edgelist&quot;</span>, <span class="st">&quot;pajek&quot;</span>, <span class="st">&quot;ncol&quot;</span>, <span class="st">&quot;lgl&quot;</span>, <span class="st">&quot;graphml&quot;</span>, <span class="st">&quot;dimacs&quot;</span>, <span class="st">&quot;graphdb&quot;</span>, <span class="st">&quot;gml&quot;</span>, <span class="st">&quot;dl&quot;</span>), …)</span></code></pre></div>
+<p>On considère par exemple le fichier <strong>lesmis.gml</strong> disponible <a href="http://www-personal.umich.edu/~mejn/netdata/">ici</a>. Les nœuds correspondent aux personnages du roman et une arête est présente si deux personnages apparaissent dans le même chapitre. Le poids de l’arête est déterminé par le nombre de chapitres où les deux personnages sont présents. Importer le graphe à l’aide de <strong>read_graph</strong> et visualiser le.</p></li>
+</ol>
+</div>
+<div id="matrice-dadjacence" class="section level3">
+<h3><span class="header-section-number">1.1.3</span> Matrice d’adjacence</h3>
+<p>Enfin un graphe peut également s’identifier avec une <strong>matrice d’adjacence</strong> :</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="manip-graphes.html#cb11-1"></a>A &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>), <span class="dv">4</span>, <span class="dv">4</span>)</span>
+<span id="cb11-2"><a href="manip-graphes.html#cb11-2"></a>A</span>
+<span id="cb11-3"><a href="manip-graphes.html#cb11-3"></a>     [,<span class="dv">1</span>] [,<span class="dv">2</span>] [,<span class="dv">3</span>] [,<span class="dv">4</span>]</span>
+<span id="cb11-4"><a href="manip-graphes.html#cb11-4"></a>[<span class="dv">1</span>,]    <span class="dv">0</span>    <span class="dv">0</span>    <span class="dv">0</span>    <span class="dv">0</span></span>
+<span id="cb11-5"><a href="manip-graphes.html#cb11-5"></a>[<span class="dv">2</span>,]    <span class="dv">0</span>    <span class="dv">0</span>    <span class="dv">1</span>    <span class="dv">1</span></span>
+<span id="cb11-6"><a href="manip-graphes.html#cb11-6"></a>[<span class="dv">3</span>,]    <span class="dv">0</span>    <span class="dv">1</span>    <span class="dv">0</span>    <span class="dv">1</span></span>
+<span id="cb11-7"><a href="manip-graphes.html#cb11-7"></a>[<span class="dv">4</span>,]    <span class="dv">0</span>    <span class="dv">1</span>    <span class="dv">1</span>    <span class="dv">0</span></span></code></pre></div>
+<p>On pourra utiliser dans ce cas la fonction <strong>graph_from_adjacency_matrix</strong> pour convertir la matrice en un objet <code>igraph</code> :</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="manip-graphes.html#cb12-1"></a>G &lt;-<span class="st"> </span><span class="kw">graph_from_adjacency_matrix</span>(A, <span class="dt">mode=</span><span class="st">&#39;undirected&#39;</span>)</span>
+<span id="cb12-2"><a href="manip-graphes.html#cb12-2"></a><span class="kw">plot</span>(G)</span></code></pre></div>
+<p><img src="TUTU_GRAPHES_files/figure-html/unnamed-chunk-24-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>On peut bien entendu faire l’opération inverse et calculer la <strong>matrice d’ajacence</strong> d’un graphe :</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="manip-graphes.html#cb13-1"></a><span class="kw">as_adj</span>(G)</span>
+<span id="cb13-2"><a href="manip-graphes.html#cb13-2"></a><span class="dv">4</span> x <span class="dv">4</span> sparse Matrix of class <span class="st">&quot;dgCMatrix&quot;</span></span>
+<span id="cb13-3"><a href="manip-graphes.html#cb13-3"></a>            </span>
+<span id="cb13-4"><a href="manip-graphes.html#cb13-4"></a>[<span class="dv">1</span>,] . . . .</span>
+<span id="cb13-5"><a href="manip-graphes.html#cb13-5"></a>[<span class="dv">2</span>,] . . <span class="dv">1</span> <span class="dv">1</span></span>
+<span id="cb13-6"><a href="manip-graphes.html#cb13-6"></a>[<span class="dv">3</span>,] . <span class="dv">1</span> . <span class="dv">1</span></span>
+<span id="cb13-7"><a href="manip-graphes.html#cb13-7"></a>[<span class="dv">4</span>,] . <span class="dv">1</span> <span class="dv">1</span> .</span></code></pre></div>
+</div>
+</div>
+<div id="visualisation-dun-graphe" class="section level2">
+<h2><span class="header-section-number">1.2</span> Visualisation d’un graphe</h2>
+<p>Un des intérêts principaux du graph mining et de visualiser les connexions entre les nœuds à l’aide d’un graphe. Se pose bien entendu la question (difficile) de la position des nœuds dans le plan pour obtenir la visualisation la plus pertinente du graphe. On peut ensuite s’interroger sur des outils classiques qui vont permettre de colorier les nœuds, d’utiliser différents symboles pour les arêtes, etc…</p>
+<div id="network-layouts-algorithmes-usuels-de-visualisation" class="section level3">
+<h3><span class="header-section-number">1.2.1</span> Network layouts : algorithmes usuels de visualisation</h3>
+<p>Un graphe peut être visualisé à l’aide de plusieurs algorithmes. On pourra trouver un descriptif <a href="http://igraph.org/c/doc/igraph-Layout.html">ici</a>. On se contentera de donner différents layouts pour l’exemple suivant :</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="manip-graphes.html#cb14-1"></a>G &lt;-<span class="st"> </span><span class="kw">make_full_graph</span>(<span class="dv">5</span>)<span class="op">+</span><span class="kw">make_full_graph</span>(<span class="dv">8</span>)<span class="op">+</span><span class="kw">make_ring</span>(<span class="dv">6</span>)</span>
+<span id="cb14-2"><a href="manip-graphes.html#cb14-2"></a><span class="kw">plot</span>(G)</span></code></pre></div>
+<p><img src="TUTU_GRAPHES_files/figure-html/unnamed-chunk-26-1.png" width="672" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="manip-graphes.html#cb15-1"></a><span class="kw">plot</span>(G,<span class="dt">layout=</span><span class="kw">layout_as_star</span>(G)) </span></code></pre></div>
+<p><img src="TUTU_GRAPHES_files/figure-html/unnamed-chunk-26-2.png" width="672" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="manip-graphes.html#cb16-1"></a><span class="kw">plot</span>(G,<span class="dt">layout=</span><span class="kw">layout.circle</span>(G)) </span></code></pre></div>
+<p><img src="TUTU_GRAPHES_files/figure-html/unnamed-chunk-26-3.png" width="672" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="manip-graphes.html#cb17-1"></a><span class="kw">plot</span>(G,<span class="dt">layout=</span><span class="kw">layout_randomly</span>(G))</span></code></pre></div>
+<p><img src="TUTU_GRAPHES_files/figure-html/unnamed-chunk-26-4.png" width="672" style="display: block; margin: auto;" /></p>
+<p>Deux algorithmes sont connus pour avoir des visualisations jugées “esthétiques”. L’idée, très rapidement, est d’essayer d’obtenir la position des nœuds et des arêtes de façon uniforme dans le plan. Pour plus d’informations sur ce sujet difficile on pourra consulter cet <a href="https://halshs.archives-ouvertes.fr/halshs-00839905/document">article</a>.</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="manip-graphes.html#cb18-1"></a><span class="kw">plot</span>(G,<span class="dt">layout=</span><span class="kw">layout_with_fr</span>(G))</span></code></pre></div>
+<p><img src="TUTU_GRAPHES_files/figure-html/unnamed-chunk-27-1.png" width="672" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="manip-graphes.html#cb19-1"></a><span class="kw">plot</span>(G,<span class="dt">layout=</span><span class="kw">layout_with_kk</span>(G))</span></code></pre></div>
+<p><img src="TUTU_GRAPHES_files/figure-html/unnamed-chunk-27-2.png" width="672" style="display: block; margin: auto;" /></p>
+<p>Enfin la fonction <strong>tktplot</strong></p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="manip-graphes.html#cb20-1"></a><span class="kw">tkplot</span>(G)</span></code></pre></div>
+</div>
+<div id="personnalisation-du-graphe" class="section level3">
+<h3><span class="header-section-number">1.2.2</span> Personnalisation du graphe</h3>
+<p>Il est bien entendu possible de modifier les couleurs, tailles… des nœuds et arêtes. Deux stratégies sont possibles avec <strong>igraph</strong> :</p>
+<ul>
+<li>utiliser les options de <strong>plot.igraph</strong> : vertex.color, vertex.shape, vertex.size, vertex.label… et edge.color, edge.label, edge.width…</li>
+<li>travailler sur les nœuds et arêtes séparément à l’aide des fonctions <strong>V()</strong> et <strong>E()</strong>.</li>
+</ul>
+<p>La fonction <strong>plot.igraph</strong> :</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="manip-graphes.html#cb21-1"></a><span class="kw">plot</span>(G,</span>
+<span id="cb21-2"><a href="manip-graphes.html#cb21-2"></a>     <span class="dt">vertex.color=</span><span class="st">&quot;yellow&quot;</span>,<span class="dt">vertex.size=</span><span class="dv">15</span>,<span class="dt">vertex.label.color=</span><span class="st">&quot;blue&quot;</span>,</span>
+<span id="cb21-3"><a href="manip-graphes.html#cb21-3"></a>     <span class="dt">edge.color=</span><span class="st">&quot;red&quot;</span>,<span class="dt">edge.width=</span><span class="dv">5</span>)</span></code></pre></div>
+<p><img src="TUTU_GRAPHES_files/figure-html/unnamed-chunk-29-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>On peut également modifier les paramètre des nœuds</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="manip-graphes.html#cb22-1"></a>G1 &lt;-<span class="st"> </span>G</span>
+<span id="cb22-2"><a href="manip-graphes.html#cb22-2"></a><span class="kw">V</span>(G1)<span class="op">$</span>color &lt;-<span class="st"> &quot;red&quot;</span></span>
+<span id="cb22-3"><a href="manip-graphes.html#cb22-3"></a><span class="kw">V</span>(G1)<span class="op">$</span>size &lt;-<span class="st"> </span><span class="dv">15</span></span></code></pre></div>
+<p>et des arêtes</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="manip-graphes.html#cb23-1"></a><span class="kw">E</span>(G1)<span class="op">$</span>color &lt;-<span class="st"> &quot;blue&quot;</span></span>
+<span id="cb23-2"><a href="manip-graphes.html#cb23-2"></a><span class="kw">E</span>(G1)<span class="op">$</span>size &lt;-<span class="st"> </span><span class="dv">3</span></span></code></pre></div>
+<p>On a ainsi</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="manip-graphes.html#cb24-1"></a><span class="kw">vertex_attr</span>(G1)</span>
+<span id="cb24-2"><a href="manip-graphes.html#cb24-2"></a><span class="op">$</span>color</span>
+<span id="cb24-3"><a href="manip-graphes.html#cb24-3"></a> [<span class="dv">1</span>] <span class="st">&quot;red&quot;</span> <span class="st">&quot;red&quot;</span> <span class="st">&quot;red&quot;</span> <span class="st">&quot;red&quot;</span> <span class="st">&quot;red&quot;</span> <span class="st">&quot;red&quot;</span> <span class="st">&quot;red&quot;</span> <span class="st">&quot;red&quot;</span> <span class="st">&quot;red&quot;</span></span>
+<span id="cb24-4"><a href="manip-graphes.html#cb24-4"></a>[<span class="dv">10</span>] <span class="st">&quot;red&quot;</span> <span class="st">&quot;red&quot;</span> <span class="st">&quot;red&quot;</span> <span class="st">&quot;red&quot;</span> <span class="st">&quot;red&quot;</span> <span class="st">&quot;red&quot;</span> <span class="st">&quot;red&quot;</span> <span class="st">&quot;red&quot;</span> <span class="st">&quot;red&quot;</span></span>
+<span id="cb24-5"><a href="manip-graphes.html#cb24-5"></a>[<span class="dv">19</span>] <span class="st">&quot;red&quot;</span></span>
+<span id="cb24-6"><a href="manip-graphes.html#cb24-6"></a></span>
+<span id="cb24-7"><a href="manip-graphes.html#cb24-7"></a><span class="op">$</span>size</span>
+<span id="cb24-8"><a href="manip-graphes.html#cb24-8"></a> [<span class="dv">1</span>] <span class="dv">15</span> <span class="dv">15</span> <span class="dv">15</span> <span class="dv">15</span> <span class="dv">15</span> <span class="dv">15</span> <span class="dv">15</span> <span class="dv">15</span> <span class="dv">15</span> <span class="dv">15</span> <span class="dv">15</span> <span class="dv">15</span> <span class="dv">15</span> <span class="dv">15</span> <span class="dv">15</span> <span class="dv">15</span> <span class="dv">15</span> <span class="dv">15</span></span>
+<span id="cb24-9"><a href="manip-graphes.html#cb24-9"></a>[<span class="dv">19</span>] <span class="dv">15</span></span>
+<span id="cb24-10"><a href="manip-graphes.html#cb24-10"></a><span class="kw">edge_attr</span>(G1)</span>
+<span id="cb24-11"><a href="manip-graphes.html#cb24-11"></a><span class="op">$</span>color</span>
+<span id="cb24-12"><a href="manip-graphes.html#cb24-12"></a> [<span class="dv">1</span>] <span class="st">&quot;blue&quot;</span> <span class="st">&quot;blue&quot;</span> <span class="st">&quot;blue&quot;</span> <span class="st">&quot;blue&quot;</span> <span class="st">&quot;blue&quot;</span> <span class="st">&quot;blue&quot;</span> <span class="st">&quot;blue&quot;</span> <span class="st">&quot;blue&quot;</span></span>
+<span id="cb24-13"><a href="manip-graphes.html#cb24-13"></a> [<span class="dv">9</span>] <span class="st">&quot;blue&quot;</span> <span class="st">&quot;blue&quot;</span> <span class="st">&quot;blue&quot;</span> <span class="st">&quot;blue&quot;</span> <span class="st">&quot;blue&quot;</span> <span class="st">&quot;blue&quot;</span> <span class="st">&quot;blue&quot;</span> <span class="st">&quot;blue&quot;</span></span>
+<span id="cb24-14"><a href="manip-graphes.html#cb24-14"></a>[<span class="dv">17</span>] <span class="st">&quot;blue&quot;</span> <span class="st">&quot;blue&quot;</span> <span class="st">&quot;blue&quot;</span> <span class="st">&quot;blue&quot;</span> <span class="st">&quot;blue&quot;</span> <span class="st">&quot;blue&quot;</span> <span class="st">&quot;blue&quot;</span> <span class="st">&quot;blue&quot;</span></span>
+<span id="cb24-15"><a href="manip-graphes.html#cb24-15"></a>[<span class="dv">25</span>] <span class="st">&quot;blue&quot;</span> <span class="st">&quot;blue&quot;</span> <span class="st">&quot;blue&quot;</span> <span class="st">&quot;blue&quot;</span> <span class="st">&quot;blue&quot;</span> <span class="st">&quot;blue&quot;</span> <span class="st">&quot;blue&quot;</span> <span class="st">&quot;blue&quot;</span></span>
+<span id="cb24-16"><a href="manip-graphes.html#cb24-16"></a>[<span class="dv">33</span>] <span class="st">&quot;blue&quot;</span> <span class="st">&quot;blue&quot;</span> <span class="st">&quot;blue&quot;</span> <span class="st">&quot;blue&quot;</span> <span class="st">&quot;blue&quot;</span> <span class="st">&quot;blue&quot;</span> <span class="st">&quot;blue&quot;</span> <span class="st">&quot;blue&quot;</span></span>
+<span id="cb24-17"><a href="manip-graphes.html#cb24-17"></a>[<span class="dv">41</span>] <span class="st">&quot;blue&quot;</span> <span class="st">&quot;blue&quot;</span> <span class="st">&quot;blue&quot;</span> <span class="st">&quot;blue&quot;</span></span>
+<span id="cb24-18"><a href="manip-graphes.html#cb24-18"></a></span>
+<span id="cb24-19"><a href="manip-graphes.html#cb24-19"></a><span class="op">$</span>size</span>
+<span id="cb24-20"><a href="manip-graphes.html#cb24-20"></a> [<span class="dv">1</span>] <span class="dv">3</span> <span class="dv">3</span> <span class="dv">3</span> <span class="dv">3</span> <span class="dv">3</span> <span class="dv">3</span> <span class="dv">3</span> <span class="dv">3</span> <span class="dv">3</span> <span class="dv">3</span> <span class="dv">3</span> <span class="dv">3</span> <span class="dv">3</span> <span class="dv">3</span> <span class="dv">3</span> <span class="dv">3</span> <span class="dv">3</span> <span class="dv">3</span> <span class="dv">3</span> <span class="dv">3</span> <span class="dv">3</span> <span class="dv">3</span> <span class="dv">3</span> <span class="dv">3</span> <span class="dv">3</span> <span class="dv">3</span> <span class="dv">3</span> <span class="dv">3</span></span>
+<span id="cb24-21"><a href="manip-graphes.html#cb24-21"></a>[<span class="dv">29</span>] <span class="dv">3</span> <span class="dv">3</span> <span class="dv">3</span> <span class="dv">3</span> <span class="dv">3</span> <span class="dv">3</span> <span class="dv">3</span> <span class="dv">3</span> <span class="dv">3</span> <span class="dv">3</span> <span class="dv">3</span> <span class="dv">3</span> <span class="dv">3</span> <span class="dv">3</span> <span class="dv">3</span> <span class="dv">3</span></span></code></pre></div>
+<p>et on peut visualiser le graphe (sans option dans <strong>plot.igraph</strong>) :</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="manip-graphes.html#cb25-1"></a><span class="kw">plot</span>(G1)</span></code></pre></div>
+<p><img src="TUTU_GRAPHES_files/figure-html/unnamed-chunk-33-1.png" width="672" style="display: block; margin: auto;" /></p>
+
+<div class="exercise">
+<span id="exr:exo-options-igraph" class="exercise"><strong>Exercice 1.3  (Gérer les couleurs avec igraph)  </strong></span>
+</div>
+
+<ol style="list-style-type: decimal">
+<li><p>Construire un graphe avec 3 composantes composantes connexes de taille 10, 14 et 8.</p></li>
+<li><p>Colorier les nœuds de chaque composantes d’une couleur différente.</p></li>
+<li><p>Relier les composantes en ajoutant 2 arêtes (et pas plus).</p></li>
+<li><p>Utiliser une couleur et une taille différente pour les deux arêtes crées.</p></li>
+</ol>
+
+<div class="exercise">
+<span id="exr:exo-graphmedia-custom-igraph" class="exercise"><strong>Exercice 1.4  (Customiser un graphe)  </strong></span>
+</div>
+
+<p>On considère le graphe <strong>net</strong> sur les médias défini dans l’exercice <a href="manip-graphes.html#exr:exo-import-graph">1.2</a>. Représenter le graphe en ajoutant :</p>
+<ul>
+<li>le nom des nœuds (<strong>media</strong>)</li>
+<li>une couleur différente en fonction du type de média</li>
+<li>une taille de nœud différente en fonction de l’audience</li>
+<li>une taille d’arête différente en fonction du poids (<code>weight</code>)</li>
+<li>une couleur d’arête différente en fonction du type (<code>type</code>).</li>
+</ul>
+</div>
+</div>
+<div id="statistiques-descriptives-sur-les-graphes" class="section level2">
+<h2><span class="header-section-number">1.3</span> Statistiques descriptives sur les graphes</h2>
+<p>Comme pour tout les types de données, il est souvent crucial de calculer des indicateurs descriptifs sur les graphes. Nous présentons les indictaurs stnadard tels que le diamètre, la densité, les degrés de centralité et d’intermédiarité…</p>
+
+<div class="exercise">
+<span id="exr:exo-stat-desc-graphe" class="exercise"><strong>Exercice 1.5  (Quelques descripteurs)  </strong></span>
+</div>
+
+<p>On considère toujours le graphe des exercices précédents sur le média (<code>net</code>).</p>
+<ol style="list-style-type: decimal">
+<li><p>Calculer les nombre de nœuds, d’arêtes, le diamètre et la densité du graphe.</p></li>
+<li><p>Combien y a t-il de triangles dans le graphes ? On pourra calculer ce nombre de plusieurs façons.</p></li>
+<li><p>Calculer la transitivité.</p></li>
+<li><p>Quels sont les nœuds connectés avec le nœud 3 ? On pourra utiliser <strong>neighbors</strong>.</p></li>
+<li><p>Étudier les composantes connexes du graphe.</p></li>
+<li><p>Calculer les degrés des nœuds et représenter les avec un barplot. On pourra utiliser <strong>degree</strong> puis <strong>degree_distribution</strong>.</p></li>
+<li><p>Calculer les degrés de <strong>proximité</strong> et d’<strong>intermédiarité</strong> et ordonner les observations en fonction de ces degrés.</p></li>
+</ol>
+
+<div class="exercise">
+<span id="exr:exo-centr-interm-graphe" class="exercise"><strong>Exercice 1.6  (Centralité et intermédiarité)  </strong></span>
+</div>
+
+<p>On considère le graphe suivant.</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="manip-graphes.html#cb26-1"></a>G &lt;-<span class="st"> </span><span class="kw">make_star</span>(<span class="dv">5</span>,<span class="dt">mode=</span><span class="st">&quot;undirected&quot;</span>)</span>
+<span id="cb26-2"><a href="manip-graphes.html#cb26-2"></a><span class="kw">plot</span>(G)</span></code></pre></div>
+<p><img src="TUTU_GRAPHES_files/figure-html/unnamed-chunk-63-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>Calculer en utilisant la définition les degrés de centralité et d’intermédiarité des nœuds de <span class="math inline">\(G\)</span>. Retrouver ces valeurs à l’aide de fonctions <strong>R</strong>.</p>
+
+<div class="exercise">
+<span id="exr:exo-comp-noeuds-karate" class="exercise"><strong>Exercice 1.7  (Comparaison de nœuds)  </strong></span>
+</div>
+
+<p>On considère le graphe <strong>karate</strong> que l’on peut récupérer dans le package <strong>igraphdata</strong> :</p>
+<p>En étudiant les différents critères d’importance des nœuds, identifier les nœuds importants et interpréter.</p>
+</div>
+<div id="autres-packages-pour-visualiser-les-graphes" class="section level2">
+<h2><span class="header-section-number">1.4</span> Autres packages pour visualiser les graphes</h2>
+<div id="graphes-dynamiques-avec-visnetwork" class="section level3">
+<h3><span class="header-section-number">1.4.1</span> Graphes dynamiques avec visNetwork</h3>
+<p>Nous avons vu que le package <a href="http://kateto.net/networks-r-igraph">igraph</a> propose une visualisation statique d’un réseau. Pour donner un caractère dynamique à ce type de représentation, on pourra utiliser le package <a href="https://datastorm-open.github.io/visNetwork/interaction.html">visNetwork</a>. Une représentation standard <strong>visNetwork</strong> s’effectue en spécifiant les nœuds et connexions d’un graphe. Voici quelques exemples d’utilisation.</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="manip-graphes.html#cb27-1"></a><span class="kw">set.seed</span>(<span class="dv">1234</span>)</span>
+<span id="cb27-2"><a href="manip-graphes.html#cb27-2"></a>nodes &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">id =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">15</span>, <span class="dt">label =</span> <span class="kw">paste</span>(<span class="st">&quot;Id&quot;</span>, <span class="dv">1</span><span class="op">:</span><span class="dv">15</span>),</span>
+<span id="cb27-3"><a href="manip-graphes.html#cb27-3"></a>                    <span class="dt">group=</span><span class="kw">sample</span>(LETTERS[<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>], <span class="dv">15</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>))</span>
+<span id="cb27-4"><a href="manip-graphes.html#cb27-4"></a>edges &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">from =</span> <span class="kw">trunc</span>(<span class="kw">runif</span>(<span class="dv">15</span>)<span class="op">*</span>(<span class="dv">15-1</span>))<span class="op">+</span><span class="dv">1</span>,<span class="dt">to =</span> <span class="kw">trunc</span>(<span class="kw">runif</span>(<span class="dv">15</span>)<span class="op">*</span>(<span class="dv">15-1</span>))<span class="op">+</span><span class="dv">1</span>)</span>
+<span id="cb27-5"><a href="manip-graphes.html#cb27-5"></a><span class="kw">library</span>(visNetwork)</span>
+<span id="cb27-6"><a href="manip-graphes.html#cb27-6"></a><span class="kw">visNetwork</span>(nodes,edges)</span></code></pre></div>
+<div id="htmlwidget-479f292a01744eb53065" style="width:672px;height:480px;" class="visNetwork html-widget"></div>
+<script type="application/json" data-for="htmlwidget-479f292a01744eb53065">{"x":{"nodes":{"id":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15],"label":["Id 1","Id 2","Id 3","Id 4","Id 5","Id 6","Id 7","Id 8","Id 9","Id 10","Id 11","Id 12","Id 13","Id 14","Id 15"],"group":["B","B","A","C","A","A","B","B","C","B","B","B","C","B","B"]},"edges":{"from":[5,3,1,4,12,8,13,12,1,7,4,5,8,3,11],"to":[3,4,14,12,8,10,5,9,5,8,10,7,4,11,2]},"nodesToDataframe":true,"edgesToDataframe":true,"options":{"width":"100%","height":"100%","nodes":{"shape":"dot"},"manipulation":{"enabled":false}},"groups":["B","A","C"],"width":null,"height":null,"idselection":{"enabled":false},"byselection":{"enabled":false},"main":null,"submain":null,"footer":null,"background":"rgba(0, 0, 0, 0)"},"evals":[],"jsHooks":[]}</script>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="manip-graphes.html#cb28-1"></a><span class="kw">visNetwork</span>(nodes, edges) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">visOptions</span>(<span class="dt">highlightNearest =</span> <span class="ot">TRUE</span>)</span></code></pre></div>
+<div id="htmlwidget-b7328530dcdf30388719" style="width:672px;height:480px;" class="visNetwork html-widget"></div>
+<script type="application/json" data-for="htmlwidget-b7328530dcdf30388719">{"x":{"nodes":{"id":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15],"label":["Id 1","Id 2","Id 3","Id 4","Id 5","Id 6","Id 7","Id 8","Id 9","Id 10","Id 11","Id 12","Id 13","Id 14","Id 15"],"group":["B","B","A","C","A","A","B","B","C","B","B","B","C","B","B"]},"edges":{"from":[5,3,1,4,12,8,13,12,1,7,4,5,8,3,11],"to":[3,4,14,12,8,10,5,9,5,8,10,7,4,11,2]},"nodesToDataframe":true,"edgesToDataframe":true,"options":{"width":"100%","height":"100%","nodes":{"shape":"dot"},"manipulation":{"enabled":false}},"groups":["B","A","C"],"width":null,"height":null,"idselection":{"enabled":false,"style":"width: 150px; height: 26px","useLabels":true,"main":"Select by id"},"byselection":{"enabled":false,"style":"width: 150px; height: 26px","multiple":false,"hideColor":"rgba(200,200,200,0.5)","highlight":false},"main":null,"submain":null,"footer":null,"background":"rgba(0, 0, 0, 0)","highlight":{"enabled":true,"hoverNearest":false,"degree":1,"algorithm":"all","hideColor":"rgba(200,200,200,0.5)","labelOnly":true},"collapse":{"enabled":false,"fit":false,"resetHighlight":true,"clusterOptions":null,"keepCoord":true,"labelSuffix":"(cluster)"}},"evals":[],"jsHooks":[]}</script>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="manip-graphes.html#cb29-1"></a><span class="kw">visNetwork</span>(nodes, edges) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">visOptions</span>(<span class="dt">highlightNearest =</span> <span class="ot">TRUE</span>, <span class="dt">nodesIdSelection =</span> <span class="ot">TRUE</span>)</span></code></pre></div>
+<div id="htmlwidget-90be7a07e95fee152228" style="width:672px;height:480px;" class="visNetwork html-widget"></div>
+<script type="application/json" data-for="htmlwidget-90be7a07e95fee152228">{"x":{"nodes":{"id":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15],"label":["Id 1","Id 2","Id 3","Id 4","Id 5","Id 6","Id 7","Id 8","Id 9","Id 10","Id 11","Id 12","Id 13","Id 14","Id 15"],"group":["B","B","A","C","A","A","B","B","C","B","B","B","C","B","B"]},"edges":{"from":[5,3,1,4,12,8,13,12,1,7,4,5,8,3,11],"to":[3,4,14,12,8,10,5,9,5,8,10,7,4,11,2]},"nodesToDataframe":true,"edgesToDataframe":true,"options":{"width":"100%","height":"100%","nodes":{"shape":"dot"},"manipulation":{"enabled":false}},"groups":["B","A","C"],"width":null,"height":null,"idselection":{"enabled":true,"style":"width: 150px; height: 26px","useLabels":true,"main":"Select by id"},"byselection":{"enabled":false,"style":"width: 150px; height: 26px","multiple":false,"hideColor":"rgba(200,200,200,0.5)","highlight":false},"main":null,"submain":null,"footer":null,"background":"rgba(0, 0, 0, 0)","highlight":{"enabled":true,"hoverNearest":false,"degree":1,"algorithm":"all","hideColor":"rgba(200,200,200,0.5)","labelOnly":true},"collapse":{"enabled":false,"fit":false,"resetHighlight":true,"clusterOptions":null,"keepCoord":true,"labelSuffix":"(cluster)"}},"evals":[],"jsHooks":[]}</script>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="manip-graphes.html#cb30-1"></a><span class="kw">visNetwork</span>(nodes, edges) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">visOptions</span>(<span class="dt">selectedBy =</span> <span class="st">&quot;group&quot;</span>)</span></code></pre></div>
+<div id="htmlwidget-cf82553809b695f76c98" style="width:672px;height:480px;" class="visNetwork html-widget"></div>
+<script type="application/json" data-for="htmlwidget-cf82553809b695f76c98">{"x":{"nodes":{"id":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15],"label":["Id 1","Id 2","Id 3","Id 4","Id 5","Id 6","Id 7","Id 8","Id 9","Id 10","Id 11","Id 12","Id 13","Id 14","Id 15"],"group":["B","B","A","C","A","A","B","B","C","B","B","B","C","B","B"]},"edges":{"from":[5,3,1,4,12,8,13,12,1,7,4,5,8,3,11],"to":[3,4,14,12,8,10,5,9,5,8,10,7,4,11,2]},"nodesToDataframe":true,"edgesToDataframe":true,"options":{"width":"100%","height":"100%","nodes":{"shape":"dot"},"manipulation":{"enabled":false}},"groups":["B","A","C"],"width":null,"height":null,"idselection":{"enabled":false,"style":"width: 150px; height: 26px","useLabels":true,"main":"Select by id"},"byselection":{"enabled":true,"style":"width: 150px; height: 26px","multiple":false,"hideColor":"rgba(200,200,200,0.5)","highlight":false,"variable":"group","main":"Select by group","values":["A","B","C"]},"main":null,"submain":null,"footer":null,"background":"rgba(0, 0, 0, 0)","highlight":{"enabled":false,"hoverNearest":false,"degree":1,"algorithm":"all","hideColor":"rgba(200,200,200,0.5)","labelOnly":true},"collapse":{"enabled":false,"fit":false,"resetHighlight":true,"clusterOptions":null,"keepCoord":true,"labelSuffix":"(cluster)"}},"evals":[],"jsHooks":[]}</script>
+
+<div class="exercise">
+<span id="exr:graphe" class="exercise"><strong>Exercice 1.8  (Interactions entre media)  </strong></span>
+</div>
+
+<p>On considère à nouveau le graphe sur les médias</p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="manip-graphes.html#cb31-1"></a>nodes &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;data/Dataset1-Media-Example-NODES.csv&quot;</span>, <span class="dt">header=</span>T, <span class="dt">as.is=</span>T)</span>
+<span id="cb31-2"><a href="manip-graphes.html#cb31-2"></a>links &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;data/Dataset1-Media-Example-EDGES.csv&quot;</span>, <span class="dt">header=</span>T, <span class="dt">as.is=</span>T)</span>
+<span id="cb31-3"><a href="manip-graphes.html#cb31-3"></a><span class="kw">head</span>(nodes)</span>
+<span id="cb31-4"><a href="manip-graphes.html#cb31-4"></a>   id               media media.type type.label</span>
+<span id="cb31-5"><a href="manip-graphes.html#cb31-5"></a><span class="dv">1</span> s01            NY Times          <span class="dv">1</span>  Newspaper</span>
+<span id="cb31-6"><a href="manip-graphes.html#cb31-6"></a><span class="dv">2</span> s02     Washington Post          <span class="dv">1</span>  Newspaper</span>
+<span id="cb31-7"><a href="manip-graphes.html#cb31-7"></a><span class="dv">3</span> s03 Wall Street Journal          <span class="dv">1</span>  Newspaper</span>
+<span id="cb31-8"><a href="manip-graphes.html#cb31-8"></a><span class="dv">4</span> s04           USA Today          <span class="dv">1</span>  Newspaper</span>
+<span id="cb31-9"><a href="manip-graphes.html#cb31-9"></a><span class="dv">5</span> s05            LA Times          <span class="dv">1</span>  Newspaper</span>
+<span id="cb31-10"><a href="manip-graphes.html#cb31-10"></a><span class="dv">6</span> s06       New York Post          <span class="dv">1</span>  Newspaper</span>
+<span id="cb31-11"><a href="manip-graphes.html#cb31-11"></a>  audience.size</span>
+<span id="cb31-12"><a href="manip-graphes.html#cb31-12"></a><span class="dv">1</span>            <span class="dv">20</span></span>
+<span id="cb31-13"><a href="manip-graphes.html#cb31-13"></a><span class="dv">2</span>            <span class="dv">25</span></span>
+<span id="cb31-14"><a href="manip-graphes.html#cb31-14"></a><span class="dv">3</span>            <span class="dv">30</span></span>
+<span id="cb31-15"><a href="manip-graphes.html#cb31-15"></a><span class="dv">4</span>            <span class="dv">32</span></span>
+<span id="cb31-16"><a href="manip-graphes.html#cb31-16"></a><span class="dv">5</span>            <span class="dv">20</span></span>
+<span id="cb31-17"><a href="manip-graphes.html#cb31-17"></a><span class="dv">6</span>            <span class="dv">50</span></span>
+<span id="cb31-18"><a href="manip-graphes.html#cb31-18"></a><span class="kw">head</span>(links)</span>
+<span id="cb31-19"><a href="manip-graphes.html#cb31-19"></a>  from  to weight      type</span>
+<span id="cb31-20"><a href="manip-graphes.html#cb31-20"></a><span class="dv">1</span>  s01 s02     <span class="dv">10</span> hyperlink</span>
+<span id="cb31-21"><a href="manip-graphes.html#cb31-21"></a><span class="dv">2</span>  s01 s02     <span class="dv">12</span> hyperlink</span>
+<span id="cb31-22"><a href="manip-graphes.html#cb31-22"></a><span class="dv">3</span>  s01 s03     <span class="dv">22</span> hyperlink</span>
+<span id="cb31-23"><a href="manip-graphes.html#cb31-23"></a><span class="dv">4</span>  s01 s04     <span class="dv">21</span> hyperlink</span>
+<span id="cb31-24"><a href="manip-graphes.html#cb31-24"></a><span class="dv">5</span>  s04 s11     <span class="dv">22</span>   mention</span>
+<span id="cb31-25"><a href="manip-graphes.html#cb31-25"></a><span class="dv">6</span>  s05 s15     <span class="dv">21</span>   mention</span></code></pre></div>
+<p>L’objet <code>nodes</code> représente les nœuds du graphe et l’objet <code>links</code> les arêtes. On définit l’objet <code>graphe</code> avec</p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="manip-graphes.html#cb32-1"></a>media &lt;-<span class="st"> </span><span class="kw">graph_from_data_frame</span>(<span class="dt">d=</span>links, <span class="dt">vertices=</span>nodes, <span class="dt">directed=</span>T) </span>
+<span id="cb32-2"><a href="manip-graphes.html#cb32-2"></a><span class="kw">V</span>(media)<span class="op">$</span>name &lt;-<span class="st"> </span>nodes<span class="op">$</span>media</span></code></pre></div>
+<p>et on peut le visualiser en faisant un <code>plot</code> de cet objet</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="manip-graphes.html#cb33-1"></a><span class="kw">plot</span>(media)</span></code></pre></div>
+<p><img src="TUTU_GRAPHES_files/figure-html/unnamed-chunk-77-1.png" width="672" style="display: block; margin: auto;" /></p>
+<ol style="list-style-type: decimal">
+<li><p>Visualiser ce graphe avec <strong>VisNetwork</strong>. On pourra utiliser la fonction <strong>toVisNetworkData</strong></p></li>
+<li><p>Ajouter une option qui permette de sélectionner le type de media (Newspaper, TV ou Online).</p></li>
+<li><p>Utiliser une couleur différente pour chaque type de media.</p></li>
+<li><p>Faire des flèches d’épaisseur différente en fonction du poids (weight). On pourra également ajouter l’option <strong>visOptions(highlightNearest = TRUE)</strong>.</p></li>
+</ol>
+</div>
+<div id="graphes-ggplot-avec-ggnet" class="section level3">
+<h3><span class="header-section-number">1.4.2</span> Graphes <strong>ggplot</strong> avec <strong>ggnet</strong></h3>
+<p>Les fonctions <strong>ggnet</strong> et <strong>ggnet2</strong> du package <code>GGally</code> permettent de tracer des <strong>graphes ggplot</strong>. On pourra trouver un descriptif clair à l’url suivante <a href="https://briatte.github.io/ggnet/">https://briatte.github.io/ggnet/</a>.</p>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="manip-graphes.html#cb34-1"></a><span class="kw">library</span>(GGally)</span></code></pre></div>
+<p>On construit un premier graphe que l’on visualise avec <strong>igraph</strong>.</p>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="manip-graphes.html#cb35-1"></a><span class="kw">set.seed</span>(<span class="dv">1</span>)</span>
+<span id="cb35-2"><a href="manip-graphes.html#cb35-2"></a>G &lt;-<span class="st"> </span><span class="kw">sample_gnp</span>(<span class="dv">10</span>,<span class="fl">0.2</span>)</span>
+<span id="cb35-3"><a href="manip-graphes.html#cb35-3"></a><span class="kw">plot</span>(G)</span></code></pre></div>
+<p><img src="TUTU_GRAPHES_files/figure-html/unnamed-chunk-85-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>Pour visualiser ce graphe en <strong>ggplot</strong> il faut le transformer en objet <strong>network</strong> :</p>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="manip-graphes.html#cb36-1"></a>net &lt;-<span class="st"> </span>igraph<span class="op">::</span><span class="kw">as_data_frame</span>(G) <span class="op">%&gt;%</span><span class="st"> </span>network<span class="op">::</span><span class="kw">as.network</span>()</span></code></pre></div>
+<p>On peut maintenant utiliser les fonctions <strong>ggnet</strong> et <strong>ggnet2</strong>.</p>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="manip-graphes.html#cb37-1"></a><span class="kw">ggnet</span>(net)</span></code></pre></div>
+<p><img src="TUTU_GRAPHES_files/figure-html/unnamed-chunk-87-1.png" width="672" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="manip-graphes.html#cb38-1"></a><span class="kw">ggnet2</span>(net)</span></code></pre></div>
+<p><img src="TUTU_GRAPHES_files/figure-html/unnamed-chunk-87-2.png" width="672" style="display: block; margin: auto;" /></p>
+<p>On retrouver bien entendu la plupart des options standards pour visualiser les noeuds et arêtes, par exemple</p>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="manip-graphes.html#cb39-1"></a><span class="kw">ggnet2</span>(net, <span class="dt">node.size =</span> <span class="dv">6</span>, <span class="dt">node.color =</span> <span class="st">&quot;black&quot;</span>, <span class="dt">edge.size =</span> <span class="dv">1</span>, <span class="dt">edge.color =</span> <span class="st">&quot;grey&quot;</span>)</span></code></pre></div>
+<p><img src="TUTU_GRAPHES_files/figure-html/unnamed-chunk-88-1.png" width="672" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="manip-graphes.html#cb40-1"></a><span class="kw">ggnet2</span>(net, <span class="dt">size =</span> <span class="dv">6</span>, <span class="dt">color =</span> <span class="kw">rep</span>(<span class="kw">c</span>(<span class="st">&quot;tomato&quot;</span>, <span class="st">&quot;steelblue&quot;</span>), <span class="dv">5</span>))</span></code></pre></div>
+<p><img src="TUTU_GRAPHES_files/figure-html/unnamed-chunk-89-1.png" width="672" style="display: block; margin: auto;" /></p>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="model-const-graphes.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["TUTU_GRAPHES.pdf"],
+"toc": {
+"collapse": "subsection",
+"sharing": {
+"facebook": true,
+"github": true,
+"twitter": true
+}
+},
+"highlight": "tango"
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
