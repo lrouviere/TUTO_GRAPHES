@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.10.19)  10 DEC 2020 18:11
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.10.19)  8 JAN 2021 14:30
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -823,23 +823,23 @@ pdf)
 Package pdftex.def Info: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-7-1.pdf 
  used on input line 256.
 (pdftex.def)             Requested size: 179.6845pt x 179.6845pt.
-<TUTU_GRAPHES_files/figure-latex/unnamed-chunk-8-1.pdf, id=56, 194.7275pt x 179
-.67125pt>
+<TUTU_GRAPHES_files/figure-latex/unnamed-chunk-8-1.pdf, id=56, 189.70876pt x 17
+9.67125pt>
 File: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-8-1.pdf Graphic file (type 
 pdf)
 <use TUTU_GRAPHES_files/figure-latex/unnamed-chunk-8-1.pdf>
 Package pdftex.def Info: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-8-1.pdf 
  used on input line 267.
-(pdftex.def)             Requested size: 194.73294pt x 179.67627pt.
+(pdftex.def)             Requested size: 189.71117pt x 179.67352pt.
 [2 <./TUTU_GRAPHES_files/figure-latex/unnamed-chunk-7-1.pdf>]
-<TUTU_GRAPHES_files/figure-latex/unnamed-chunk-9-1.pdf, id=72, 186.6975pt x 179
-.67125pt>
+<TUTU_GRAPHES_files/figure-latex/unnamed-chunk-9-1.pdf, id=72, 203.76125pt x 17
+9.67125pt>
 File: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-9-1.pdf Graphic file (type 
 pdf)
 <use TUTU_GRAPHES_files/figure-latex/unnamed-chunk-9-1.pdf>
 Package pdftex.def Info: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-9-1.pdf 
  used on input line 292.
-(pdftex.def)             Requested size: 186.70558pt x 179.67902pt.
+(pdftex.def)             Requested size: 203.77007pt x 179.67902pt.
 <TUTU_GRAPHES_files/figure-latex/unnamed-chunk-10-1.pdf, id=73, 179.67125pt x 1
 79.67125pt>
 File: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-10-1.pdf Graphic file (type
@@ -1164,11 +1164,11 @@ Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1419.
 Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 1419.
  ) 
 Here is how much of TeX's memory you used:
- 16125 strings out of 492639
- 242510 string characters out of 6129301
+ 16123 strings out of 492639
+ 242490 string characters out of 6129301
  368906 words of memory out of 5000000
  19518 multiletter control sequences out of 15000+600000
- 64663 words of font info for 95 fonts, out of 8000000 for 9000
+ 64580 words of font info for 94 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  35i,6n,38p,811b,609s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/lm/lm-ts1.enc}{/usr/local
@@ -1189,7 +1189,7 @@ ve/2018/texmf-dist/fonts/type1/public/lm/lmsy10.pfb></usr/local/texlive/2018/te
 xmf-dist/fonts/type1/public/lm/lmtk10.pfb></usr/local/texlive/2018/texmf-dist/f
 onts/type1/public/lm/lmtt10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1
 /public/lm/lmtti10.pfb>
-Output written on TUTU_GRAPHES.pdf (28 pages, 727229 bytes).
+Output written on TUTU_GRAPHES.pdf (28 pages, 742535 bytes).
 PDF statistics:
  770 PDF objects out of 1000 (max. 8388607)
  600 compressed objects within 6 object streams

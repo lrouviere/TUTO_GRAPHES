@@ -24,7 +24,7 @@
 <meta name="author" content="Laurent Rouvière" />
 
 
-<meta name="date" content="2020-12-10" />
+<meta name="date" content="2021-01-08" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -206,7 +206,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb2-2"><a href="manip-graphes.html#cb2-2"></a><span class="kw">plot</span>(g1)</span></code></pre></div>
 <p><img src="TUTU_GRAPHES_files/figure-html/unnamed-chunk-7-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>Si la liste d’arêtes est donnée sous forme de noms, il n’est pas nécessaire d’indiquer le nombre de nœuds.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="manip-graphes.html#cb3-1"></a>g2 &lt;-<span class="st"> </span><span class="kw">graph</span>(<span class="dt">edges=</span><span class="kw">c</span>(<span class="st">&quot;Eric&quot;</span>,<span class="st">&quot;Laurent&quot;</span>,<span class="st">&quot;Laurent&quot;</span>,<span class="st">&quot;Vincent&quot;</span>))</span>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="manip-graphes.html#cb3-1"></a>g2 &lt;-<span class="st"> </span><span class="kw">graph</span>(<span class="dt">edges=</span><span class="kw">c</span>(<span class="st">&quot;Eric&quot;</span>,<span class="st">&quot;Laurent&quot;</span>,<span class="st">&quot;Laurent&quot;</span>,<span class="st">&quot;Mory&quot;</span>))</span>
 <span id="cb3-2"><a href="manip-graphes.html#cb3-2"></a><span class="kw">plot</span>(g2)</span></code></pre></div>
 <p><img src="TUTU_GRAPHES_files/figure-html/unnamed-chunk-8-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>Différentes options sont proposées dans la fonction <strong>graph</strong> :</p>
@@ -217,7 +217,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>…</li>
 </ul>
 <p>Par exemple</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="manip-graphes.html#cb4-1"></a>g3 &lt;-<span class="st"> </span><span class="kw">graph</span>(<span class="dt">edges=</span><span class="kw">c</span>(<span class="st">&quot;Eric&quot;</span>,<span class="st">&quot;Laurent&quot;</span>,<span class="st">&quot;Laurent&quot;</span>,<span class="st">&quot;Vincent&quot;</span>),<span class="dt">isolates=</span><span class="st">&quot;Paul&quot;</span>)</span>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="manip-graphes.html#cb4-1"></a>g3 &lt;-<span class="st"> </span><span class="kw">graph</span>(<span class="dt">edges=</span><span class="kw">c</span>(<span class="st">&quot;Eric&quot;</span>,<span class="st">&quot;Mory&quot;</span>,<span class="st">&quot;Mory&quot;</span>,<span class="st">&quot;Vincent&quot;</span>),<span class="dt">isolates=</span><span class="st">&quot;Laurent&quot;</span>)</span>
 <span id="cb4-2"><a href="manip-graphes.html#cb4-2"></a><span class="kw">plot</span>(g3)</span></code></pre></div>
 <p><img src="TUTU_GRAPHES_files/figure-html/unnamed-chunk-9-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>Il existe également des fonctions spécifiques qui peuvent aider à la construction de graphes, par exemple <strong>make_full_graph</strong> :</p>
@@ -384,13 +384,13 @@ Il est également facile d’ajouter des arêtes avec <strong>add_edges</strong>
 </div>
 <div id="statistiques-descriptives-sur-les-graphes" class="section level2">
 <h2><span class="header-section-number">1.3</span> Statistiques descriptives sur les graphes</h2>
-<p>Comme pour tout les types de données, il est souvent crucial de calculer des indicateurs descriptifs sur les graphes. Nous présentons les indictaurs stnadard tels que le diamètre, la densité, les degrés de centralité et d’intermédiarité…</p>
+<p>Comme pour tout les types de données, il est souvent crucial de calculer des indicateurs descriptifs sur les graphes. Nous présentons les indicateurs standards tels que le diamètre, la densité, les degrés de centralité et d’intermédiarité…</p>
 
 <div class="exercise">
 <span id="exr:exo-stat-desc-graphe" class="exercise"><strong>Exercice 1.5  (Quelques descripteurs)  </strong></span>
 </div>
 
-<p>On considère toujours le graphe des exercices précédents sur le média (<code>net</code>).</p>
+<p>On considère toujours le graphe des exercices précédents sur les média (<code>net</code>).</p>
 <ol style="list-style-type: decimal">
 <li><p>Calculer les nombre de nœuds, d’arêtes, le diamètre et la densité du graphe.</p></li>
 <li><p>Combien y a t-il de triangles dans le graphes ? On pourra calculer ce nombre de plusieurs façons.</p></li>
