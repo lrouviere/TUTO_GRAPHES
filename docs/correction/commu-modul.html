@@ -24,7 +24,7 @@
 <meta name="author" content="Laurent Rouvière" />
 
 
-<meta name="date" content="2021-01-18" />
+<meta name="date" content="2021-02-07" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -51,9 +51,7 @@
 
 
 <script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
-<link href="libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0/anchor-sections.js"></script>
-<script src="libs/htmlwidgets-1.5.2/htmlwidgets.js"></script>
+<script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
 <link href="libs/vis-4.20.1/vis.css" rel="stylesheet" />
 <script src="libs/vis-4.20.1/vis.min.js"></script>
 <script src="libs/visNetwork-binding-2.0.9/visNetwork.js"></script>
@@ -200,16 +198,81 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 
 <p>On considère le graphe suivant</p>
-<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb113-1"><a href="commu-modul.html#cb113-1"></a>G &lt;-<span class="st"> </span><span class="kw">make_graph</span>(<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">1</span>,<span class="dv">4</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">4</span>,<span class="dv">6</span>),<span class="dt">directed =</span> <span class="ot">FALSE</span>)</span>
-<span id="cb113-2"><a href="commu-modul.html#cb113-2"></a><span class="kw">plot</span>(G)</span></code></pre></div>
-<p><img src="TUTU_GRAPHES_files/figure-html/unnamed-chunk-141-1.png" width="672" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="commu-modul.html#cb109-1"></a>G &lt;-<span class="st"> </span><span class="kw">make_graph</span>(<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">1</span>,<span class="dv">4</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">4</span>,<span class="dv">6</span>),<span class="dt">directed =</span> <span class="ot">FALSE</span>)</span>
+<span id="cb109-2"><a href="commu-modul.html#cb109-2"></a><span class="kw">plot</span>(G)</span></code></pre></div>
+<p><img src="TUTU_GRAPHES_files/figure-html/unnamed-chunk-140-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>et les deux partitions des nœuds suivantes.</p>
-<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb114-1"><a href="commu-modul.html#cb114-1"></a>cl1 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">2</span>)</span>
-<span id="cb114-2"><a href="commu-modul.html#cb114-2"></a>cl2 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb110-1"><a href="commu-modul.html#cb110-1"></a>cl1 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">2</span>)</span>
+<span id="cb110-2"><a href="commu-modul.html#cb110-2"></a>cl2 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">1</span>)</span></code></pre></div>
 <ol style="list-style-type: decimal">
-<li><p>Calculer la <strong>modularité</strong> pour ces deux partitions en utilisant la définition (la formule).</p></li>
-<li><p>Retrouver ces deux valeurs avec la fonction <strong>modularity</strong>.</p></li>
-<li><p>Construire un graphe et proposer une partition avec une modularité élevée et une autre avec une modularité faible.</p></li>
+<li><p>Calculer la <strong>modularité</strong> pour ces deux partitions en utilisant la définition (la formule).</p>
+<div class="corR">
+<p>
+On peut procéder de deux façons, tout d’abord avec une <strong>approche matricielle</strong> :
+</p>
+</div>
+<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb111-1"><a href="commu-modul.html#cb111-1"></a>m &lt;-<span class="st"> </span><span class="kw">ecount</span>(G)</span>
+<span id="cb111-2"><a href="commu-modul.html#cb111-2"></a>D &lt;-<span class="st"> </span><span class="kw">degree</span>(G)</span>
+<span id="cb111-3"><a href="commu-modul.html#cb111-3"></a>A &lt;-<span class="st"> </span><span class="kw">as_adj</span>(G)</span>
+<span id="cb111-4"><a href="commu-modul.html#cb111-4"></a>D1 &lt;-<span class="st"> </span><span class="kw">as.vector</span>(D)</span>
+<span id="cb111-5"><a href="commu-modul.html#cb111-5"></a>dd &lt;-<span class="st"> </span>D1<span class="op">%*%</span><span class="kw">t</span>(D1)<span class="op">/</span>(<span class="dv">2</span><span class="op">*</span>m)</span>
+<span id="cb111-6"><a href="commu-modul.html#cb111-6"></a>del1 &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">rep</span>(cl1,<span class="dv">6</span>),<span class="dt">ncol=</span><span class="dv">6</span>)</span>
+<span id="cb111-7"><a href="commu-modul.html#cb111-7"></a>del2 &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">rep</span>(cl1,<span class="dv">6</span>),<span class="dt">ncol=</span><span class="dv">6</span>,<span class="dt">byrow=</span>T)</span>
+<span id="cb111-8"><a href="commu-modul.html#cb111-8"></a>delta &lt;-<span class="st"> </span>del1<span class="op">==</span>del2</span>
+<span id="cb111-9"><a href="commu-modul.html#cb111-9"></a><span class="kw">sum</span>((A<span class="op">-</span>dd)<span class="op">*</span>delta)<span class="op">/</span>(<span class="dv">2</span><span class="op">*</span>m)</span>
+<span id="cb111-10"><a href="commu-modul.html#cb111-10"></a>[<span class="dv">1</span>] <span class="fl">0.3</span></span></code></pre></div>
+<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb112-1"><a href="commu-modul.html#cb112-1"></a>del1 &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">rep</span>(cl2,<span class="dv">6</span>),<span class="dt">ncol=</span><span class="dv">6</span>)</span>
+<span id="cb112-2"><a href="commu-modul.html#cb112-2"></a>del2 &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">rep</span>(cl2,<span class="dv">6</span>),<span class="dt">ncol=</span><span class="dv">6</span>,<span class="dt">byrow=</span>T)</span>
+<span id="cb112-3"><a href="commu-modul.html#cb112-3"></a>delta &lt;-<span class="st"> </span>del1<span class="op">==</span>del2</span>
+<span id="cb112-4"><a href="commu-modul.html#cb112-4"></a><span class="kw">sum</span>((A<span class="op">-</span>dd)<span class="op">*</span>delta)<span class="op">/</span>(<span class="dv">2</span><span class="op">*</span>m)</span>
+<span id="cb112-5"><a href="commu-modul.html#cb112-5"></a>[<span class="dv">1</span>] <span class="fl">-0.32</span></span></code></pre></div>
+<div class="corR">
+<p>
+On peut également utiliser des <strong>boucles</strong> (moins efficace) :
+</p>
+</div>
+<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb113-1"><a href="commu-modul.html#cb113-1"></a>ma_mod &lt;-<span class="st"> </span><span class="cf">function</span>(G,cl){</span>
+<span id="cb113-2"><a href="commu-modul.html#cb113-2"></a>  m &lt;-<span class="st"> </span><span class="kw">ecount</span>(G)</span>
+<span id="cb113-3"><a href="commu-modul.html#cb113-3"></a>  n &lt;-<span class="st"> </span><span class="kw">vcount</span>(G)</span>
+<span id="cb113-4"><a href="commu-modul.html#cb113-4"></a>  dd &lt;-<span class="st"> </span><span class="kw">degree</span>(G)</span>
+<span id="cb113-5"><a href="commu-modul.html#cb113-5"></a>  res &lt;-<span class="st"> </span><span class="dv">0</span></span>
+<span id="cb113-6"><a href="commu-modul.html#cb113-6"></a>  A &lt;-<span class="st"> </span><span class="kw">as_adj</span>(G)</span>
+<span id="cb113-7"><a href="commu-modul.html#cb113-7"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>n){</span>
+<span id="cb113-8"><a href="commu-modul.html#cb113-8"></a>    <span class="cf">for</span> (j <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>n){</span>
+<span id="cb113-9"><a href="commu-modul.html#cb113-9"></a>      <span class="cf">if</span> (cl[i]<span class="op">==</span>cl[j]){</span>
+<span id="cb113-10"><a href="commu-modul.html#cb113-10"></a>        res &lt;-<span class="st"> </span>res<span class="op">+</span>(A[i,j]<span class="op">-</span>dd[i]<span class="op">*</span>dd[j]<span class="op">/</span>(<span class="dv">2</span><span class="op">*</span>m))</span>
+<span id="cb113-11"><a href="commu-modul.html#cb113-11"></a>      }</span>
+<span id="cb113-12"><a href="commu-modul.html#cb113-12"></a>    }</span>
+<span id="cb113-13"><a href="commu-modul.html#cb113-13"></a>  }</span>
+<span id="cb113-14"><a href="commu-modul.html#cb113-14"></a>  <span class="kw">return</span>(res<span class="op">/</span>(<span class="dv">2</span><span class="op">*</span>m))</span>
+<span id="cb113-15"><a href="commu-modul.html#cb113-15"></a>}</span>
+<span id="cb113-16"><a href="commu-modul.html#cb113-16"></a><span class="kw">ma_mod</span>(G,cl1)</span>
+<span id="cb113-17"><a href="commu-modul.html#cb113-17"></a>[<span class="dv">1</span>] <span class="fl">0.3</span></span>
+<span id="cb113-18"><a href="commu-modul.html#cb113-18"></a><span class="kw">ma_mod</span>(G,cl2)</span>
+<span id="cb113-19"><a href="commu-modul.html#cb113-19"></a>[<span class="dv">1</span>] <span class="fl">-0.32</span></span></code></pre></div></li>
+<li><p>Retrouver ces deux valeurs avec la fonction <strong>modularity</strong>.</p>
+<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb114-1"><a href="commu-modul.html#cb114-1"></a><span class="kw">modularity</span>(G,cl1)</span>
+<span id="cb114-2"><a href="commu-modul.html#cb114-2"></a>[<span class="dv">1</span>] <span class="fl">0.3</span></span>
+<span id="cb114-3"><a href="commu-modul.html#cb114-3"></a><span class="kw">modularity</span>(G,cl2)</span>
+<span id="cb114-4"><a href="commu-modul.html#cb114-4"></a>[<span class="dv">1</span>] <span class="fl">-0.32</span></span></code></pre></div></li>
+<li><p>Construire un graphe et proposer une partition avec une modularité élevée et une autre avec une modularité faible.</p>
+<div class="corR">
+<p>
+On propose un graphe à 8 composantes connexe avec une partition “parfaite” et une autre (très) mauvaise :
+</p>
+</div>
+<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb115-1"><a href="commu-modul.html#cb115-1"></a>G1 &lt;-<span class="st"> </span><span class="kw">make_full_graph</span>(<span class="dv">5</span>)<span class="op">+</span><span class="kw">make_full_graph</span>(<span class="dv">5</span>)<span class="op">+</span><span class="kw">make_full_graph</span>(<span class="dv">5</span>)<span class="op">+</span><span class="kw">make_full_graph</span>(<span class="dv">5</span>)<span class="op">+</span></span>
+<span id="cb115-2"><a href="commu-modul.html#cb115-2"></a><span class="st">  </span><span class="kw">make_full_graph</span>(<span class="dv">5</span>)<span class="op">+</span><span class="kw">make_full_graph</span>(<span class="dv">5</span>)<span class="op">+</span><span class="kw">make_full_graph</span>(<span class="dv">5</span>)<span class="op">+</span><span class="kw">make_full_graph</span>(<span class="dv">5</span>)</span>
+<span id="cb115-3"><a href="commu-modul.html#cb115-3"></a>cl1 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">rep</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">8</span>,<span class="dt">each=</span><span class="dv">5</span>))</span>
+<span id="cb115-4"><a href="commu-modul.html#cb115-4"></a>cl2 &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">8</span>,<span class="dv">5</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb116-1"><a href="commu-modul.html#cb116-1"></a><span class="kw">plot</span>(G1,<span class="dt">vertex.color=</span>cl1)</span></code></pre></div>
+<p><img src="TUTU_GRAPHES_files/figure-html/unnamed-chunk-150-1.png" width="672" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb117-1"><a href="commu-modul.html#cb117-1"></a><span class="kw">plot</span>(G1,<span class="dt">vertex.color=</span>cl2)</span></code></pre></div>
+<p><img src="TUTU_GRAPHES_files/figure-html/unnamed-chunk-150-2.png" width="672" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb118-1"><a href="commu-modul.html#cb118-1"></a><span class="kw">modularity</span>(G1,cl1)</span>
+<span id="cb118-2"><a href="commu-modul.html#cb118-2"></a>[<span class="dv">1</span>] <span class="fl">0.875</span></span>
+<span id="cb118-3"><a href="commu-modul.html#cb118-3"></a><span class="kw">modularity</span>(G1,cl2)</span>
+<span id="cb118-4"><a href="commu-modul.html#cb118-4"></a>[<span class="dv">1</span>] <span class="fl">-0.125</span></span></code></pre></div></li>
 </ol>
 
 <div class="exercise">
@@ -217,26 +280,65 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 
 <p>On considère le graphe suivant :</p>
-<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb115-1"><a href="commu-modul.html#cb115-1"></a>G1 &lt;-<span class="st"> </span><span class="kw">make_full_graph</span>(<span class="dv">3</span>)</span>
-<span id="cb115-2"><a href="commu-modul.html#cb115-2"></a>G2 &lt;-<span class="st"> </span><span class="kw">make_full_graph</span>(<span class="dv">3</span>)</span>
-<span id="cb115-3"><a href="commu-modul.html#cb115-3"></a>G3 &lt;-<span class="st"> </span><span class="kw">make_full_graph</span>(<span class="dv">2</span>)</span>
-<span id="cb115-4"><a href="commu-modul.html#cb115-4"></a>G4 &lt;-<span class="st"> </span><span class="kw">make_full_graph</span>(<span class="dv">3</span>)</span>
-<span id="cb115-5"><a href="commu-modul.html#cb115-5"></a>G5 &lt;-<span class="st"> </span><span class="kw">make_full_graph</span>(<span class="dv">3</span>)</span>
-<span id="cb115-6"><a href="commu-modul.html#cb115-6"></a>G &lt;-<span class="st"> </span>G1<span class="op">+</span>G2<span class="op">+</span>G3<span class="op">+</span>G4<span class="op">+</span>G5</span>
-<span id="cb115-7"><a href="commu-modul.html#cb115-7"></a>G &lt;-<span class="st"> </span><span class="kw">add.edges</span>(G, <span class="kw">c</span>(<span class="dv">6</span>,<span class="dv">7</span>))</span>
-<span id="cb115-8"><a href="commu-modul.html#cb115-8"></a>G &lt;-<span class="st"> </span><span class="kw">add.edges</span>(G, <span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">7</span>))</span>
-<span id="cb115-9"><a href="commu-modul.html#cb115-9"></a>G &lt;-<span class="st"> </span><span class="kw">add.edges</span>(G, <span class="kw">c</span>(<span class="dv">8</span>,<span class="dv">9</span>))</span>
-<span id="cb115-10"><a href="commu-modul.html#cb115-10"></a>G &lt;-<span class="st"> </span><span class="kw">add.edges</span>(G, <span class="kw">c</span>(<span class="dv">8</span>,<span class="dv">12</span>))</span>
-<span id="cb115-11"><a href="commu-modul.html#cb115-11"></a><span class="kw">plot</span>(G)</span></code></pre></div>
-<p><img src="TUTU_GRAPHES_files/figure-html/unnamed-chunk-153-1.png" width="672" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb119-1"><a href="commu-modul.html#cb119-1"></a>G1 &lt;-<span class="st"> </span><span class="kw">make_full_graph</span>(<span class="dv">3</span>)</span>
+<span id="cb119-2"><a href="commu-modul.html#cb119-2"></a>G2 &lt;-<span class="st"> </span><span class="kw">make_full_graph</span>(<span class="dv">3</span>)</span>
+<span id="cb119-3"><a href="commu-modul.html#cb119-3"></a>G3 &lt;-<span class="st"> </span><span class="kw">make_full_graph</span>(<span class="dv">2</span>)</span>
+<span id="cb119-4"><a href="commu-modul.html#cb119-4"></a>G4 &lt;-<span class="st"> </span><span class="kw">make_full_graph</span>(<span class="dv">3</span>)</span>
+<span id="cb119-5"><a href="commu-modul.html#cb119-5"></a>G5 &lt;-<span class="st"> </span><span class="kw">make_full_graph</span>(<span class="dv">3</span>)</span>
+<span id="cb119-6"><a href="commu-modul.html#cb119-6"></a>G &lt;-<span class="st"> </span>G1<span class="op">+</span>G2<span class="op">+</span>G3<span class="op">+</span>G4<span class="op">+</span>G5</span>
+<span id="cb119-7"><a href="commu-modul.html#cb119-7"></a>G &lt;-<span class="st"> </span><span class="kw">add.edges</span>(G, <span class="kw">c</span>(<span class="dv">6</span>,<span class="dv">7</span>))</span>
+<span id="cb119-8"><a href="commu-modul.html#cb119-8"></a>G &lt;-<span class="st"> </span><span class="kw">add.edges</span>(G, <span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">7</span>))</span>
+<span id="cb119-9"><a href="commu-modul.html#cb119-9"></a>G &lt;-<span class="st"> </span><span class="kw">add.edges</span>(G, <span class="kw">c</span>(<span class="dv">8</span>,<span class="dv">9</span>))</span>
+<span id="cb119-10"><a href="commu-modul.html#cb119-10"></a>G &lt;-<span class="st"> </span><span class="kw">add.edges</span>(G, <span class="kw">c</span>(<span class="dv">8</span>,<span class="dv">12</span>))</span>
+<span id="cb119-11"><a href="commu-modul.html#cb119-11"></a><span class="kw">plot</span>(G)</span></code></pre></div>
+<p><img src="TUTU_GRAPHES_files/figure-html/unnamed-chunk-152-1.png" width="672" style="display: block; margin: auto;" /></p>
 <ol style="list-style-type: decimal">
-<li><p>Calculer l’<strong>edge betweeness</strong> de chaque arête et identifier l’arête qui possède la plus forte valeur.</p></li>
-<li><p>Effectuer le clustering par edge betweeness et visualiser le <strong>dendrogramme</strong>. Identifier la première arête retirée.</p></li>
-<li><p>Représenter les classes sur le graphe.</p></li>
-<li><p>Couper le dendrogramme pour obtenir 3 classes. On pourra utiliser <strong>cutat</strong>.</p></li>
-<li><p>Comparer le résultat avec la méthode de Louvain.</p></li>
-<li><p>Comparer les modularités obtenues.</p></li>
-<li><p>Comparer avec <strong>cluster_optimal</strong>.</p></li>
+<li><p>Calculer l’<strong>edge betweeness</strong> de chaque arête et identifier l’arête qui possède la plus forte valeur.</p>
+<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb120-1"><a href="commu-modul.html#cb120-1"></a><span class="kw">edge_betweenness</span>(G)</span>
+<span id="cb120-2"><a href="commu-modul.html#cb120-2"></a> [<span class="dv">1</span>]  <span class="dv">1</span> <span class="dv">12</span> <span class="dv">12</span>  <span class="dv">1</span> <span class="dv">12</span> <span class="dv">12</span> <span class="dv">49</span> <span class="dv">12</span> <span class="dv">12</span>  <span class="dv">1</span> <span class="dv">12</span> <span class="dv">12</span>  <span class="dv">1</span> <span class="dv">33</span> <span class="dv">33</span> <span class="dv">33</span> <span class="dv">33</span></span></code></pre></div>
+<div class="corR">
+<p>
+C’est la 7ème arête qui possède la plus forte valeur.
+</p>
+</div></li>
+<li><p>Effectuer le clustering par edge betweeness et visualiser le <strong>dendrogramme</strong>. Identifier la première arête retirée.</p>
+<div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb121-1"><a href="commu-modul.html#cb121-1"></a>res &lt;-<span class="st"> </span><span class="kw">cluster_edge_betweenness</span>(G)</span>
+<span id="cb121-2"><a href="commu-modul.html#cb121-2"></a><span class="kw">dendPlot</span>(res)</span></code></pre></div>
+<p><img src="TUTU_GRAPHES_files/figure-html/unnamed-chunk-155-1.png" width="672" style="display: block; margin: auto;" /></p>
+<div class="corR">
+<p>
+C’est bien la 7ème arête qui a été retirée en premier.
+</p>
+</div></li>
+<li><p>Représenter les classes sur le graphe.</p>
+<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb122-1"><a href="commu-modul.html#cb122-1"></a><span class="kw">plot</span>(G,<span class="dt">vertex.color=</span>res<span class="op">$</span>membership)</span></code></pre></div>
+<p><img src="TUTU_GRAPHES_files/figure-html/unnamed-chunk-157-1.png" width="672" style="display: block; margin: auto;" /></p></li>
+<li><p>Couper le dendrogramme pour obtenir 3 classes. On pourra utiliser <strong>cutat</strong>.</p>
+<div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb123-1"><a href="commu-modul.html#cb123-1"></a>gr3=<span class="kw">cutat</span>(res, <span class="dt">no=</span><span class="dv">3</span>)</span>
+<span id="cb123-2"><a href="commu-modul.html#cb123-2"></a><span class="kw">plot</span>(G, <span class="dt">vertex.color=</span>gr3)</span></code></pre></div>
+<p><img src="TUTU_GRAPHES_files/figure-html/unnamed-chunk-158-1.png" width="672" style="display: block; margin: auto;" /></p></li>
+<li><p>Comparer le résultat avec la méthode de Louvain.</p>
+<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb124-1"><a href="commu-modul.html#cb124-1"></a><span class="kw">set.seed</span>(<span class="dv">1234</span>)</span>
+<span id="cb124-2"><a href="commu-modul.html#cb124-2"></a>res1 &lt;-<span class="st"> </span><span class="kw">cluster_louvain</span>(G)</span>
+<span id="cb124-3"><a href="commu-modul.html#cb124-3"></a><span class="kw">plot</span>(G, <span class="dt">vertex.color=</span>res1<span class="op">$</span>membership)</span></code></pre></div>
+<p><img src="TUTU_GRAPHES_files/figure-html/unnamed-chunk-159-1.png" width="672" style="display: block; margin: auto;" /></p></li>
+<li><p>Comparer les modularités obtenues.</p>
+<div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb125-1"><a href="commu-modul.html#cb125-1"></a><span class="kw">modularity</span>(G,res<span class="op">$</span>membership)</span>
+<span id="cb125-2"><a href="commu-modul.html#cb125-2"></a>[<span class="dv">1</span>] <span class="fl">0.5657439</span></span>
+<span id="cb125-3"><a href="commu-modul.html#cb125-3"></a><span class="kw">modularity</span>(G,gr3)</span>
+<span id="cb125-4"><a href="commu-modul.html#cb125-4"></a>[<span class="dv">1</span>] <span class="fl">0.5034602</span></span>
+<span id="cb125-5"><a href="commu-modul.html#cb125-5"></a><span class="kw">modularity</span>(G,res1<span class="op">$</span>membership)</span>
+<span id="cb125-6"><a href="commu-modul.html#cb125-6"></a>[<span class="dv">1</span>] <span class="fl">0.5640138</span></span></code></pre></div></li>
+<li><p>Comparer avec <strong>cluster_optimal</strong>.</p>
+<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb126-1"><a href="commu-modul.html#cb126-1"></a><span class="co">#res2 &lt;- cluster_optimal(G)</span></span>
+<span id="cb126-2"><a href="commu-modul.html#cb126-2"></a>res2 &lt;-<span class="st"> </span><span class="kw">cluster_fast_greedy</span>(G)</span>
+<span id="cb126-3"><a href="commu-modul.html#cb126-3"></a><span class="kw">modularity</span>(G,res2<span class="op">$</span>membership)</span>
+<span id="cb126-4"><a href="commu-modul.html#cb126-4"></a>[<span class="dv">1</span>] <span class="fl">0.5640138</span></span></code></pre></div>
+<div class="corR">
+<p>
+On retrouve le même résultat que l’edge betweeness qui, sur cet exemple, maximise la modularité.
+</p>
+</div></li>
 </ol>
 
 <div class="exercise">
@@ -244,8 +346,81 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 
 <p>Utiliser les techniques basées sur la modularité pour faire de classes sur les données <strong>karate</strong> et <strong>friends</strong>.</p>
-<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb116-1"><a href="commu-modul.html#cb116-1"></a><span class="kw">library</span>(igraphdata)</span>
-<span id="cb116-2"><a href="commu-modul.html#cb116-2"></a><span class="kw">data</span>(karate)</span></code></pre></div>
+<div class="corR">
+<p>
+On commence par le karaté :
+</p>
+</div>
+<div class="sourceCode" id="cb127"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb127-1"><a href="commu-modul.html#cb127-1"></a><span class="kw">library</span>(igraphdata)</span>
+<span id="cb127-2"><a href="commu-modul.html#cb127-2"></a><span class="kw">data</span>(karate)</span></code></pre></div>
+<div class="corR">
+<p>
+On a pour l’<strong>edge betweeness</strong>
+</p>
+</div>
+<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb128-1"><a href="commu-modul.html#cb128-1"></a>clust1.eb &lt;-<span class="st"> </span><span class="kw">cluster_edge_betweenness</span>(karate)</span>
+<span id="cb128-2"><a href="commu-modul.html#cb128-2"></a><span class="kw">dendPlot</span>(clust1.eb)</span></code></pre></div>
+<p><img src="TUTU_GRAPHES_files/figure-html/unnamed-chunk-166-1.png" width="672" style="display: block; margin: auto;" /></p>
+<div class="corR">
+<p>
+On obtient une partition en 6 classes. On maximise maintenant la modularité. Le graphe étant petit, il est possible d’être exhaustif.
+</p>
+</div>
+<div class="sourceCode" id="cb129"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb129-1"><a href="commu-modul.html#cb129-1"></a><span class="co">#clust.opt &lt;- cluster_optimal(karate)</span></span>
+<span id="cb129-2"><a href="commu-modul.html#cb129-2"></a>clust.opt &lt;-<span class="st"> </span><span class="kw">cluster_fast_greedy</span>(karate)</span></code></pre></div>
+<div class="corR">
+<p>
+On remarquera qu’il n’est pas possible d’afficher d’afficher le dendrogramme puisque la méthode n’est pas hiérarchique ! On peut néanmoins comparer les deux partitions :
+</p>
+</div>
+<div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb130-1"><a href="commu-modul.html#cb130-1"></a><span class="kw">par</span>(<span class="dt">mfrow=</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>
+<span id="cb130-2"><a href="commu-modul.html#cb130-2"></a><span class="kw">plot</span>(karate,<span class="dt">vertex.color=</span>clust1.eb<span class="op">$</span>membership)</span>
+<span id="cb130-3"><a href="commu-modul.html#cb130-3"></a><span class="kw">plot</span>(karate,<span class="dt">vertex.color=</span>clust.opt<span class="op">$</span>membership)</span></code></pre></div>
+<p><img src="TUTU_GRAPHES_files/figure-html/unnamed-chunk-170-1.png" width="672" style="display: block; margin: auto;" /></p>
+<div class="corR">
+<p>
+et calculer la modularité
+</p>
+</div>
+<div class="sourceCode" id="cb131"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb131-1"><a href="commu-modul.html#cb131-1"></a><span class="kw">modularity</span>(karate,clust1.eb<span class="op">$</span>membership)</span>
+<span id="cb131-2"><a href="commu-modul.html#cb131-2"></a>[<span class="dv">1</span>] <span class="fl">0.3618508</span></span>
+<span id="cb131-3"><a href="commu-modul.html#cb131-3"></a><span class="kw">modularity</span>(karate,clust.opt<span class="op">$</span>membership)</span>
+<span id="cb131-4"><a href="commu-modul.html#cb131-4"></a>[<span class="dv">1</span>] <span class="fl">0.3990796</span></span></code></pre></div>
+<div class="corR">
+<p>
+On fait le même travail pour l’autre graphe :
+</p>
+</div>
+<div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb132-1"><a href="commu-modul.html#cb132-1"></a>friends &lt;-<span class="st"> </span><span class="kw">read.table</span>(<span class="dt">file=</span><span class="st">&#39;data/Friendship-network_data_2013.csv&#39;</span>)</span>
+<span id="cb132-2"><a href="commu-modul.html#cb132-2"></a>amis &lt;-<span class="st"> </span><span class="kw">graph_from_data_frame</span>(friends,<span class="dt">directed=</span>F)</span></code></pre></div>
+<div class="sourceCode" id="cb133"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb133-1"><a href="commu-modul.html#cb133-1"></a>clust1.eb &lt;-<span class="st"> </span><span class="kw">cluster_edge_betweenness</span>(amis)</span>
+<span id="cb133-2"><a href="commu-modul.html#cb133-2"></a><span class="kw">dendPlot</span>(clust1.eb)</span></code></pre></div>
+<p><img src="TUTU_GRAPHES_files/figure-html/unnamed-chunk-175-1.png" width="672" style="display: block; margin: auto;" /></p>
+<div class="corR">
+<p>
+Le nombre de nœuds étant assez important, le clustering optimal prend trop de temps :
+</p>
+</div>
+<div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb134-1"><a href="commu-modul.html#cb134-1"></a>clust.opt &lt;-<span class="st"> </span><span class="kw">cluster_optimal</span>(amis)</span></code></pre></div>
+<div class="corR">
+<p>
+On va donc plutôt utiliser la méthode de Louvain
+</p>
+</div>
+<div class="sourceCode" id="cb135"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb135-1"><a href="commu-modul.html#cb135-1"></a>clust.louv &lt;-<span class="st"> </span><span class="kw">cluster_louvain</span>(amis)</span></code></pre></div>
+<div class="corR">
+<p>
+On compare les deux partitions :
+</p>
+</div>
+<div class="sourceCode" id="cb136"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb136-1"><a href="commu-modul.html#cb136-1"></a><span class="kw">par</span>(<span class="dt">mfrow=</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>
+<span id="cb136-2"><a href="commu-modul.html#cb136-2"></a><span class="kw">plot</span>(amis,<span class="dt">vertex.color=</span>clust1.eb<span class="op">$</span>membership)</span>
+<span id="cb136-3"><a href="commu-modul.html#cb136-3"></a><span class="kw">plot</span>(amis,<span class="dt">vertex.color=</span>clust.louv<span class="op">$</span>membership)</span></code></pre></div>
+<p><img src="TUTU_GRAPHES_files/figure-html/unnamed-chunk-181-1.png" width="672" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb137"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb137-1"><a href="commu-modul.html#cb137-1"></a><span class="kw">modularity</span>(amis,clust1.eb<span class="op">$</span>membership)</span>
+<span id="cb137-2"><a href="commu-modul.html#cb137-2"></a>[<span class="dv">1</span>] <span class="fl">0.7409451</span></span>
+<span id="cb137-3"><a href="commu-modul.html#cb137-3"></a><span class="kw">modularity</span>(amis,clust.louv<span class="op">$</span>membership)</span>
+<span id="cb137-4"><a href="commu-modul.html#cb137-4"></a>[<span class="dv">1</span>] <span class="fl">0.7468334</span></span></code></pre></div>
 
 </div>
             </section>

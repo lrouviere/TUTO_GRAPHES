@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.10.19)  18 JAN 2021 12:08
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.10.19)  7 FEB 2021 11:53
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -593,11 +593,34 @@ Package hyperref Info: Option `colorlinks' set `true' on input line 122.
 (/usr/local/texlive/2018/texmf-dist/tex/latex/sectsty/sectsty.sty
 Package: sectsty 2002/02/25 v2.0.2 Commands to change all sectional heading sty
 les
-) (/usr/local/texlive/2018/texmf-dist/tex/latex/enumitem/enumitem.sty
+) (/usr/local/texlive/2018/texmf-dist/tex/latex/index/index.sty
+Package: index 2004/01/20 v4.2beta Improved index support (dmj)
+\@indexbox=\insert199
+\indexproofstyle=\toks27
+
+LaTeX Warning: Command \markboth  has changed.
+               Check if current package is valid.
+
+
+LaTeX Warning: Command \markright  has changed.
+               Check if current package is valid.
+
+)
+\idxtitle@code=\toks28
+\tf@code=\write4
+\openout4 = `TUTU_GRAPHES.adx'.
+
+Package index Info: Writing index file TUTU_GRAPHES.adx on input line 141.
+\idxtitle@default=\toks29
+\tf@default=\write5
+\openout5 = `TUTU_GRAPHES.idx'.
+
+Package index Info: Writing index file TUTU_GRAPHES.idx on input line 151.
+(/usr/local/texlive/2018/texmf-dist/tex/latex/enumitem/enumitem.sty
 Package: enumitem 2011/09/28 v3.5.2 Customized lists
 \labelindent=\skip53
 \enit@outerparindent=\dimen155
-\enit@toks=\toks27
+\enit@toks=\toks30
 \enit@inbox=\box34
 \enitdp@description=\count139
 ) (/usr/local/texlive/2018/texmf-dist/tex/latex/natbib/natbib.sty
@@ -608,15 +631,15 @@ LaTeX Info: Redefining \cite on input line 694.
 \c@NAT@ctr=\count140
 ) (/usr/local/texlive/2018/texmf-dist/tex/latex/amscls/amsthm.sty
 Package: amsthm 2017/10/31 v2.20.4
-\thm@style=\toks28
-\thm@bodyfont=\toks29
-\thm@headfont=\toks30
-\thm@notefont=\toks31
-\thm@headpunct=\toks32
+\thm@style=\toks31
+\thm@bodyfont=\toks32
+\thm@headfont=\toks33
+\thm@notefont=\toks34
+\thm@headpunct=\toks35
 \thm@preskip=\skip56
 \thm@postskip=\skip57
 \thm@headsep=\skip58
-\dth@everypar=\toks33
+\dth@everypar=\toks36
 )
 \c@theorem=\count141
 \c@lemma=\count142
@@ -629,34 +652,34 @@ Package: amsthm 2017/10/31 v2.20.4
 (./TUTU_GRAPHES.aux)
 \openout1 = `TUTU_GRAPHES.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 187.
-LaTeX Font Info:    ... okay on input line 187.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 187.
-LaTeX Font Info:    ... okay on input line 187.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 187.
-LaTeX Font Info:    ... okay on input line 187.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 187.
-LaTeX Font Info:    ... okay on input line 187.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 187.
-LaTeX Font Info:    ... okay on input line 187.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 187.
-LaTeX Font Info:    ... okay on input line 187.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 187.
-LaTeX Font Info:    Try loading font information for TS1+cmr on input line 187.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 239.
+LaTeX Font Info:    ... okay on input line 239.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 239.
+LaTeX Font Info:    ... okay on input line 239.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 239.
+LaTeX Font Info:    ... okay on input line 239.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 239.
+LaTeX Font Info:    ... okay on input line 239.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 239.
+LaTeX Font Info:    ... okay on input line 239.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 239.
+LaTeX Font Info:    ... okay on input line 239.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 239.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 239.
 
 (/usr/local/texlive/2018/texmf-dist/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 187.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 187.
-LaTeX Font Info:    ... okay on input line 187.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 187.
-LaTeX Font Info:    ... okay on input line 187.
-LaTeX Font Info:    Try loading font information for T1+lmr on input line 187.
+LaTeX Font Info:    ... okay on input line 239.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 239.
+LaTeX Font Info:    ... okay on input line 239.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 239.
+LaTeX Font Info:    ... okay on input line 239.
+LaTeX Font Info:    Try loading font information for T1+lmr on input line 239.
 (/usr/local/texlive/2018/texmf-dist/tex/latex/lm/t1lmr.fd
 File: t1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Info: Redefining \microtypecontext on input line 187.
+LaTeX Info: Redefining \microtypecontext on input line 239.
 Package microtype Info: Generating PDF output.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using protrusion set `basicmath'.
@@ -676,12 +699,12 @@ File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman
 \scratchbox=\box35
 \nofMPsegments=\count150
 \nofMParguments=\count151
-\everyMPshowfont=\toks34
+\everyMPshowfont=\toks37
 \MPscratchCnt=\count152
 \MPscratchDim=\dimen157
 \MPnumerator=\count153
 \makeMPintoPDFobject=\count154
-\everyMPtoPDFconversion=\toks35
+\everyMPtoPDFconversion=\toks38
 ) (/usr/local/texlive/2018/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
 (/usr/local/texlive/2018/texmf-dist/tex/latex/oberdiek/grfext.sty
@@ -698,7 +721,7 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
 \AtBeginShipoutBox=\box36
-Package hyperref Info: Link coloring ON on input line 187.
+Package hyperref Info: Link coloring ON on input line 239.
 (/usr/local/texlive/2018/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
 (/usr/local/texlive/2018/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
@@ -706,9 +729,9 @@ Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
 \c@section@level=\count155
 )
-LaTeX Info: Redefining \ref on input line 187.
-LaTeX Info: Redefining \pageref on input line 187.
-LaTeX Info: Redefining \nameref on input line 187.
+LaTeX Info: Redefining \ref on input line 239.
+LaTeX Info: Redefining \pageref on input line 239.
+LaTeX Info: Redefining \nameref on input line 239.
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
 *geometry* verbose mode - [ preamble ] result:
@@ -743,52 +766,52 @@ LaTeX Info: Redefining \nameref on input line 187.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-LaTeX Info: Redefining \degres on input line 187.
-LaTeX Info: Redefining \dots on input line 187.
+LaTeX Info: Redefining \degres on input line 239.
+LaTeX Info: Redefining \dots on input line 239.
 
 Package french.ldf Warning: Please load the "natbib" package
-(french.ldf)                BEFORE babel/french; reported on input line 187.
+(french.ldf)                BEFORE babel/french; reported on input line 239.
 
 Package french.ldf Info: Setting StandardItemizeEnv=true for
 (french.ldf)             compatibility with enumitem package,
-(french.ldf)             reported on input line 187.
+(french.ldf)             reported on input line 239.
 Package french.ldf Info: Setting StandardEnumerateEnv=true for
 (french.ldf)             compatibility with enumitem package,
-(french.ldf)             reported on input line 187.
-LaTeX Info: Redefining \up on input line 187.
-LaTeX Font Info:    Try loading font information for OT1+lmr on input line 189.
+(french.ldf)             reported on input line 239.
+LaTeX Info: Redefining \up on input line 239.
+LaTeX Font Info:    Try loading font information for OT1+lmr on input line 241.
 
 (/usr/local/texlive/2018/texmf-dist/tex/latex/lm/ot1lmr.fd
 File: ot1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OML+lmm on input line 189.
+LaTeX Font Info:    Try loading font information for OML+lmm on input line 241.
 
 (/usr/local/texlive/2018/texmf-dist/tex/latex/lm/omllmm.fd
 File: omllmm.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OMS+lmsy on input line 189
+LaTeX Font Info:    Try loading font information for OMS+lmsy on input line 241
 .
 (/usr/local/texlive/2018/texmf-dist/tex/latex/lm/omslmsy.fd
 File: omslmsy.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OMX+lmex on input line 189
+LaTeX Font Info:    Try loading font information for OMX+lmex on input line 241
 .
 (/usr/local/texlive/2018/texmf-dist/tex/latex/lm/omxlmex.fd
 File: omxlmex.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <12> on input line 189.
+(Font)              <12> on input line 241.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 189.
+(Font)              <8> on input line 241.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 189.
-LaTeX Font Info:    Try loading font information for U+msa on input line 189.
+(Font)              <6> on input line 241.
+LaTeX Font Info:    Try loading font information for U+msa on input line 241.
 (/usr/local/texlive/2018/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 ) (/usr/local/texlive/2018/texmf-dist/tex/latex/microtype/mt-msa.cfg
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 189.
+LaTeX Font Info:    Try loading font information for U+msb on input line 241.
 (/usr/local/texlive/2018/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) (/usr/local/texlive/2018/texmf-dist/tex/latex/microtype/mt-msb.cfg
@@ -807,11 +830,11 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <5> on input line 4.
 )
-\tf@toc=\write4
-\openout4 = `TUTU_GRAPHES.toc'.
+\tf@toc=\write6
+\openout6 = `TUTU_GRAPHES.toc'.
 
 LaTeX Font Info:    Font shape `T1/lmtt/bx/n' in size <14.4> not available
-(Font)              Font shape `T1/lmtt/b/n' tried instead on input line 227.
+(Font)              Font shape `T1/lmtt/b/n' tried instead on input line 279.
 [1
 
 {/usr/local/texlive/2018/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
@@ -821,32 +844,32 @@ File: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-7-1.pdf Graphic file (type
 pdf)
 <use TUTU_GRAPHES_files/figure-latex/unnamed-chunk-7-1.pdf>
 Package pdftex.def Info: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-7-1.pdf 
- used on input line 256.
+ used on input line 308.
 (pdftex.def)             Requested size: 179.6845pt x 179.6845pt.
-<TUTU_GRAPHES_files/figure-latex/unnamed-chunk-8-1.pdf, id=56, 194.7275pt x 179
-.67125pt>
+<TUTU_GRAPHES_files/figure-latex/unnamed-chunk-8-1.pdf, id=56, 189.70876pt x 17
+9.67125pt>
 File: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-8-1.pdf Graphic file (type 
 pdf)
 <use TUTU_GRAPHES_files/figure-latex/unnamed-chunk-8-1.pdf>
 Package pdftex.def Info: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-8-1.pdf 
- used on input line 267.
-(pdftex.def)             Requested size: 194.73294pt x 179.67627pt.
+ used on input line 319.
+(pdftex.def)             Requested size: 189.71117pt x 179.67352pt.
 [2 <./TUTU_GRAPHES_files/figure-latex/unnamed-chunk-7-1.pdf>]
-<TUTU_GRAPHES_files/figure-latex/unnamed-chunk-9-1.pdf, id=72, 203.76125pt x 17
-9.67125pt>
+<TUTU_GRAPHES_files/figure-latex/unnamed-chunk-9-1.pdf, id=72, 194.7275pt x 179
+.67125pt>
 File: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-9-1.pdf Graphic file (type 
 pdf)
 <use TUTU_GRAPHES_files/figure-latex/unnamed-chunk-9-1.pdf>
 Package pdftex.def Info: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-9-1.pdf 
- used on input line 292.
-(pdftex.def)             Requested size: 203.77007pt x 179.67902pt.
+ used on input line 344.
+(pdftex.def)             Requested size: 194.73294pt x 179.67627pt.
 <TUTU_GRAPHES_files/figure-latex/unnamed-chunk-10-1.pdf, id=73, 179.67125pt x 1
 79.67125pt>
 File: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-10-1.pdf Graphic file (type
  pdf)
 <use TUTU_GRAPHES_files/figure-latex/unnamed-chunk-10-1.pdf>
 Package pdftex.def Info: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-10-1.pdf
-  used on input line 302.
+  used on input line 354.
 (pdftex.def)             Requested size: 179.6845pt x 179.6845pt.
 [3 <./TUTU_GRAPHES_files/figure-latex/unnamed-chunk-8-1.pdf> <./TUTU_GRAPHES_fi
 les/figure-latex/unnamed-chunk-9-1.pdf>]
@@ -856,7 +879,7 @@ File: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-10-2.pdf Graphic file (type
  pdf)
 <use TUTU_GRAPHES_files/figure-latex/unnamed-chunk-10-2.pdf>
 Package pdftex.def Info: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-10-2.pdf
-  used on input line 310.
+  used on input line 362.
 (pdftex.def)             Requested size: 179.6845pt x 179.6845pt.
 <TUTU_GRAPHES_files/figure-latex/unnamed-chunk-11-1.pdf, id=93, 179.67125pt x 1
 79.67125pt>
@@ -864,7 +887,7 @@ File: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-11-1.pdf Graphic file (type
  pdf)
 <use TUTU_GRAPHES_files/figure-latex/unnamed-chunk-11-1.pdf>
 Package pdftex.def Info: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-11-1.pdf
-  used on input line 320.
+  used on input line 372.
 (pdftex.def)             Requested size: 179.6845pt x 179.6845pt.
 [4 <./TUTU_GRAPHES_files/figure-latex/unnamed-chunk-10-1.pdf> <./TUTU_GRAPHES_f
 iles/figure-latex/unnamed-chunk-10-2.pdf> <./TUTU_GRAPHES_files/figure-latex/un
@@ -875,7 +898,7 @@ File: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-12-1.pdf Graphic file (type
  pdf)
 <use TUTU_GRAPHES_files/figure-latex/unnamed-chunk-12-1.pdf>
 Package pdftex.def Info: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-12-1.pdf
-  used on input line 330.
+  used on input line 382.
 (pdftex.def)             Requested size: 179.6845pt x 179.6845pt.
 <TUTU_GRAPHES_files/figure-latex/unnamed-chunk-13-1.pdf, id=120, 179.67125pt x 
 179.67125pt>
@@ -883,7 +906,7 @@ File: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-13-1.pdf Graphic file (type
  pdf)
 <use TUTU_GRAPHES_files/figure-latex/unnamed-chunk-13-1.pdf>
 Package pdftex.def Info: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-13-1.pdf
-  used on input line 340.
+  used on input line 392.
 (pdftex.def)             Requested size: 179.6845pt x 179.6845pt.
 <TUTU_GRAPHES_files/figure-latex/unnamed-chunk-14-1.pdf, id=121, 179.67125pt x 
 179.67125pt>
@@ -891,7 +914,7 @@ File: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-14-1.pdf Graphic file (type
  pdf)
 <use TUTU_GRAPHES_files/figure-latex/unnamed-chunk-14-1.pdf>
 Package pdftex.def Info: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-14-1.pdf
-  used on input line 354.
+  used on input line 406.
 (pdftex.def)             Requested size: 179.6845pt x 179.6845pt.
 [5 <./TUTU_GRAPHES_files/figure-latex/unnamed-chunk-12-1.pdf> <./TUTU_GRAPHES_f
 iles/figure-latex/unnamed-chunk-13-1.pdf>]
@@ -901,7 +924,7 @@ File: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-14-2.pdf Graphic file (type
  pdf)
 <use TUTU_GRAPHES_files/figure-latex/unnamed-chunk-14-2.pdf>
 Package pdftex.def Info: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-14-2.pdf
-  used on input line 362.
+  used on input line 414.
 (pdftex.def)             Requested size: 179.6845pt x 179.6845pt.
 <TUTU_GRAPHES_files/figure-latex/unnamed-chunk-14-3.pdf, id=143, 179.67125pt x 
 179.67125pt>
@@ -909,42 +932,42 @@ File: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-14-3.pdf Graphic file (type
  pdf)
 <use TUTU_GRAPHES_files/figure-latex/unnamed-chunk-14-3.pdf>
 Package pdftex.def Info: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-14-3.pdf
-  used on input line 370.
+  used on input line 422.
 (pdftex.def)             Requested size: 179.6845pt x 179.6845pt.
 [6 <./TUTU_GRAPHES_files/figure-latex/unnamed-chunk-14-1.pdf> <./TUTU_GRAPHES_f
 iles/figure-latex/unnamed-chunk-14-2.pdf> <./TUTU_GRAPHES_files/figure-latex/un
 named-chunk-14-3.pdf>]
-LaTeX Font Info:    Try loading font information for TS1+lmtt on input line 405
+LaTeX Font Info:    Try loading font information for TS1+lmtt on input line 457
 .
 (/usr/local/texlive/2018/texmf-dist/tex/latex/lm/ts1lmtt.fd
 File: ts1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-<TUTU_GRAPHES_files/figure-latex/unnamed-chunk-17-1.pdf, id=173, 182.6825pt x 1
-82.6825pt>
+<TUTU_GRAPHES_files/figure-latex/unnamed-chunk-17-1.pdf, id=172, 183.68625pt x 
+183.68625pt>
 File: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-17-1.pdf Graphic file (type
  pdf)
 <use TUTU_GRAPHES_files/figure-latex/unnamed-chunk-17-1.pdf>
 Package pdftex.def Info: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-17-1.pdf
-  used on input line 439.
-(pdftex.def)             Requested size: 182.6904pt x 182.6904pt.
+  used on input line 491.
+(pdftex.def)             Requested size: 183.69698pt x 183.69698pt.
 [7]
-<TUTU_GRAPHES_files/figure-latex/unnamed-chunk-20-1.pdf, id=187, 181.67876pt x 
-180.675pt>
+<TUTU_GRAPHES_files/figure-latex/unnamed-chunk-20-1.pdf, id=187, 196.735pt x 17
+9.67125pt>
 File: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-20-1.pdf Graphic file (type
  pdf)
 <use TUTU_GRAPHES_files/figure-latex/unnamed-chunk-20-1.pdf>
 Package pdftex.def Info: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-20-1.pdf
-  used on input line 492.
-(pdftex.def)             Requested size: 181.6783pt x 180.67455pt.
+  used on input line 544.
+(pdftex.def)             Requested size: 196.7345pt x 179.67079pt.
 [8 <./TUTU_GRAPHES_files/figure-latex/unnamed-chunk-17-1.pdf>]
-<TUTU_GRAPHES_files/figure-latex/unnamed-chunk-22-1.pdf, id=202, 223.83624pt x 
-179.67125pt>
+<TUTU_GRAPHES_files/figure-latex/unnamed-chunk-22-1.pdf, id=202, 214.8025pt x 1
+79.67125pt>
 File: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-22-1.pdf Graphic file (type
  pdf)
 <use TUTU_GRAPHES_files/figure-latex/unnamed-chunk-22-1.pdf>
 Package pdftex.def Info: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-22-1.pdf
-  used on input line 511.
-(pdftex.def)             Requested size: 223.84251pt x 179.67627pt.
+  used on input line 563.
+(pdftex.def)             Requested size: 214.80524pt x 179.67352pt.
 [9 <./TUTU_GRAPHES_files/figure-latex/unnamed-chunk-20-1.pdf> <./TUTU_GRAPHES_f
 iles/figure-latex/unnamed-chunk-22-1.pdf>]
 <TUTU_GRAPHES_files/figure-latex/unnamed-chunk-24-1.pdf, id=224, 179.67125pt x 
@@ -953,7 +976,7 @@ File: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-24-1.pdf Graphic file (type
  pdf)
 <use TUTU_GRAPHES_files/figure-latex/unnamed-chunk-24-1.pdf>
 Package pdftex.def Info: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-24-1.pdf
-  used on input line 540.
+  used on input line 592.
 (pdftex.def)             Requested size: 179.6845pt x 179.6845pt.
 <TUTU_GRAPHES_files/figure-latex/unnamed-chunk-26-1.pdf, id=226, 179.67125pt x 
 179.67125pt>
@@ -961,7 +984,7 @@ File: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-26-1.pdf Graphic file (type
  pdf)
 <use TUTU_GRAPHES_files/figure-latex/unnamed-chunk-26-1.pdf>
 Package pdftex.def Info: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-26-1.pdf
-  used on input line 573.
+  used on input line 625.
 (pdftex.def)             Requested size: 179.6845pt x 179.6845pt.
 [10 <./TUTU_GRAPHES_files/figure-latex/unnamed-chunk-24-1.pdf>]
 <TUTU_GRAPHES_files/figure-latex/unnamed-chunk-26-2.pdf, id=241, 179.67125pt x 
@@ -970,7 +993,7 @@ File: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-26-2.pdf Graphic file (type
  pdf)
 <use TUTU_GRAPHES_files/figure-latex/unnamed-chunk-26-2.pdf>
 Package pdftex.def Info: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-26-2.pdf
-  used on input line 581.
+  used on input line 633.
 (pdftex.def)             Requested size: 179.6845pt x 179.6845pt.
 <TUTU_GRAPHES_files/figure-latex/unnamed-chunk-26-3.pdf, id=242, 179.67125pt x 
 179.67125pt>
@@ -978,26 +1001,26 @@ File: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-26-3.pdf Graphic file (type
  pdf)
 <use TUTU_GRAPHES_files/figure-latex/unnamed-chunk-26-3.pdf>
 Package pdftex.def Info: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-26-3.pdf
-  used on input line 589.
+  used on input line 641.
 (pdftex.def)             Requested size: 179.6845pt x 179.6845pt.
-<TUTU_GRAPHES_files/figure-latex/unnamed-chunk-26-4.pdf, id=243, 179.67125pt x 
+[11 <./TUTU_GRAPHES_files/figure-latex/unnamed-chunk-26-1.pdf> <./TUTU_GRAPHES_
+files/figure-latex/unnamed-chunk-26-2.pdf> <./TUTU_GRAPHES_files/figure-latex/u
+nnamed-chunk-26-3.pdf>]
+<TUTU_GRAPHES_files/figure-latex/unnamed-chunk-26-4.pdf, id=268, 179.67125pt x 
 179.67125pt>
 File: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-26-4.pdf Graphic file (type
  pdf)
 <use TUTU_GRAPHES_files/figure-latex/unnamed-chunk-26-4.pdf>
 Package pdftex.def Info: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-26-4.pdf
-  used on input line 597.
+  used on input line 649.
 (pdftex.def)             Requested size: 179.6845pt x 179.6845pt.
-[11 <./TUTU_GRAPHES_files/figure-latex/unnamed-chunk-26-1.pdf> <./TUTU_GRAPHES_
-files/figure-latex/unnamed-chunk-26-2.pdf> <./TUTU_GRAPHES_files/figure-latex/u
-nnamed-chunk-26-3.pdf>]
 <TUTU_GRAPHES_files/figure-latex/unnamed-chunk-27-1.pdf, id=270, 179.67125pt x 
 179.67125pt>
 File: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-27-1.pdf Graphic file (type
  pdf)
 <use TUTU_GRAPHES_files/figure-latex/unnamed-chunk-27-1.pdf>
 Package pdftex.def Info: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-27-1.pdf
-  used on input line 607.
+  used on input line 659.
 (pdftex.def)             Requested size: 179.6845pt x 179.6845pt.
 <TUTU_GRAPHES_files/figure-latex/unnamed-chunk-27-2.pdf, id=271, 179.67125pt x 
 179.67125pt>
@@ -1005,100 +1028,99 @@ File: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-27-2.pdf Graphic file (type
  pdf)
 <use TUTU_GRAPHES_files/figure-latex/unnamed-chunk-27-2.pdf>
 Package pdftex.def Info: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-27-2.pdf
-  used on input line 615.
+  used on input line 667.
 (pdftex.def)             Requested size: 179.6845pt x 179.6845pt.
 [12 <./TUTU_GRAPHES_files/figure-latex/unnamed-chunk-26-4.pdf> <./TUTU_GRAPHES_
-files/figure-latex/unnamed-chunk-27-1.pdf> <./TUTU_GRAPHES_files/figure-latex/u
-nnamed-chunk-27-2.pdf>]
-<TUTU_GRAPHES_files/figure-latex/unnamed-chunk-29-1.pdf, id=297, 179.67125pt x 
+files/figure-latex/unnamed-chunk-27-1.pdf>]
+<TUTU_GRAPHES_files/figure-latex/unnamed-chunk-29-1.pdf, id=290, 179.67125pt x 
 179.67125pt>
 File: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-29-1.pdf Graphic file (type
  pdf)
 <use TUTU_GRAPHES_files/figure-latex/unnamed-chunk-29-1.pdf>
 Package pdftex.def Info: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-29-1.pdf
-  used on input line 648.
+  used on input line 700.
 (pdftex.def)             Requested size: 179.6845pt x 179.6845pt.
-[13 <./TUTU_GRAPHES_files/figure-latex/unnamed-chunk-29-1.pdf>]
+[13 <./TUTU_GRAPHES_files/figure-latex/unnamed-chunk-27-2.pdf> <./TUTU_GRAPHES_
+files/figure-latex/unnamed-chunk-29-1.pdf>]
 <TUTU_GRAPHES_files/figure-latex/unnamed-chunk-33-1.pdf, id=313, 179.67125pt x 
 179.67125pt>
 File: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-33-1.pdf Graphic file (type
  pdf)
 <use TUTU_GRAPHES_files/figure-latex/unnamed-chunk-33-1.pdf>
 Package pdftex.def Info: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-33-1.pdf
-  used on input line 705.
+  used on input line 757.
 (pdftex.def)             Requested size: 179.6845pt x 179.6845pt.
-<TUTU_GRAPHES_files/figure-latex/unnamed-chunk-34-1.pdf, id=314, 179.67125pt x 
+[14 <./TUTU_GRAPHES_files/figure-latex/unnamed-chunk-33-1.pdf>]
+<TUTU_GRAPHES_files/figure-latex/unnamed-chunk-34-1.pdf, id=327, 179.67125pt x 
 179.67125pt>
 File: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-34-1.pdf Graphic file (type
  pdf)
 <use TUTU_GRAPHES_files/figure-latex/unnamed-chunk-34-1.pdf>
 Package pdftex.def Info: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-34-1.pdf
-  used on input line 723.
+  used on input line 775.
 (pdftex.def)             Requested size: 179.6845pt x 179.6845pt.
-[14 <./TUTU_GRAPHES_files/figure-latex/unnamed-chunk-33-1.pdf> <./TUTU_GRAPHES_
-files/figure-latex/unnamed-chunk-34-1.pdf>]
-<TUTU_GRAPHES_files/figure-latex/unnamed-chunk-35-1.pdf, id=337, 179.67125pt x 
+<TUTU_GRAPHES_files/figure-latex/unnamed-chunk-35-1.pdf, id=328, 179.67125pt x 
 179.67125pt>
 File: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-35-1.pdf Graphic file (type
  pdf)
 <use TUTU_GRAPHES_files/figure-latex/unnamed-chunk-35-1.pdf>
 Package pdftex.def Info: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-35-1.pdf
-  used on input line 734.
+  used on input line 786.
 (pdftex.def)             Requested size: 179.6845pt x 179.6845pt.
-<TUTU_GRAPHES_files/figure-latex/unnamed-chunk-36-1.pdf, id=338, 179.67125pt x 
+<TUTU_GRAPHES_files/figure-latex/unnamed-chunk-36-1.pdf, id=329, 179.67125pt x 
 179.67125pt>
 File: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-36-1.pdf Graphic file (type
  pdf)
 <use TUTU_GRAPHES_files/figure-latex/unnamed-chunk-36-1.pdf>
 Package pdftex.def Info: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-36-1.pdf
-  used on input line 745.
+  used on input line 797.
 (pdftex.def)             Requested size: 179.6845pt x 179.6845pt.
-<TUTU_GRAPHES_files/figure-latex/unnamed-chunk-37-1.pdf, id=339, 179.67125pt x 
+[15 <./TUTU_GRAPHES_files/figure-latex/unnamed-chunk-34-1.pdf> <./TUTU_GRAPHES_
+files/figure-latex/unnamed-chunk-35-1.pdf>]
+<TUTU_GRAPHES_files/figure-latex/unnamed-chunk-37-1.pdf, id=351, 179.67125pt x 
 179.67125pt>
 File: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-37-1.pdf Graphic file (type
  pdf)
 <use TUTU_GRAPHES_files/figure-latex/unnamed-chunk-37-1.pdf>
 Package pdftex.def Info: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-37-1.pdf
-  used on input line 758.
+  used on input line 810.
 (pdftex.def)             Requested size: 179.6845pt x 179.6845pt.
-[15 <./TUTU_GRAPHES_files/figure-latex/unnamed-chunk-35-1.pdf> <./TUTU_GRAPHES_
-files/figure-latex/unnamed-chunk-36-1.pdf>] [16 <./TUTU_GRAPHES_files/figure-la
-tex/unnamed-chunk-37-1.pdf>]
-<TUTU_GRAPHES_files/figure-latex/unnamed-chunk-41-1.pdf, id=374, 417.56pt x 353
-.32pt>
+[16 <./TUTU_GRAPHES_files/figure-latex/unnamed-chunk-36-1.pdf> <./TUTU_GRAPHES_
+files/figure-latex/unnamed-chunk-37-1.pdf>]
+<TUTU_GRAPHES_files/figure-latex/unnamed-chunk-41-1.pdf, id=374, 413.545pt x 38
+4.43625pt>
 File: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-41-1.pdf Graphic file (type
  pdf)
 <use TUTU_GRAPHES_files/figure-latex/unnamed-chunk-41-1.pdf>
 Package pdftex.def Info: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-41-1.pdf
-  used on input line 849.
-(pdftex.def)             Requested size: 417.56532pt x 353.32452pt.
+  used on input line 901.
+(pdftex.def)             Requested size: 413.5566pt x 384.44702pt.
 [17]
-<TUTU_GRAPHES_files/figure-latex/unnamed-chunk-43-1.pdf, id=379, 369.38pt x 394
-.47375pt>
+<TUTU_GRAPHES_files/figure-latex/unnamed-chunk-43-1.pdf, id=379, 395.4775pt x 3
+66.36874pt>
 File: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-43-1.pdf Graphic file (type
  pdf)
 <use TUTU_GRAPHES_files/figure-latex/unnamed-chunk-43-1.pdf>
 Package pdftex.def Info: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-43-1.pdf
-  used on input line 866.
-(pdftex.def)             Requested size: 369.37909pt x 394.47278pt.
+  used on input line 918.
+(pdftex.def)             Requested size: 395.48256pt x 366.37343pt.
 [18 <./TUTU_GRAPHES_files/figure-latex/unnamed-chunk-41-1.pdf>] [19 <./TUTU_GRA
-PHES_files/figure-latex/unnamed-chunk-43-1.pdf>]
-<TUTU_GRAPHES_files/figure-latex/unnamed-chunk-58-1.pdf, id=408, 459.7175pt x 3
+PHES_files/figure-latex/unnamed-chunk-43-1.pdf>] [20]
+<TUTU_GRAPHES_files/figure-latex/unnamed-chunk-58-1.pdf, id=416, 459.7175pt x 3
 15.1775pt>
 File: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-58-1.pdf Graphic file (type
  pdf)
 <use TUTU_GRAPHES_files/figure-latex/unnamed-chunk-58-1.pdf>
 Package pdftex.def Info: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-58-1.pdf
-  used on input line 1008.
+  used on input line 1060.
 (pdftex.def)             Requested size: 444.78203pt x 304.9379pt.
-[20]
 <TUTU_GRAPHES_files/figure-latex/unnamed-chunk-60-1.pdf, id=417, 459.7175pt x 3
 15.1775pt>
 File: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-60-1.pdf Graphic file (type
  pdf)
 <use TUTU_GRAPHES_files/figure-latex/unnamed-chunk-60-1.pdf>
 Package pdftex.def Info: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-60-1.pdf
-  used on input line 1022.
+  used on input line 1074.
 (pdftex.def)             Requested size: 444.78203pt x 304.9379pt.
 [21 <./TUTU_GRAPHES_files/figure-latex/unnamed-chunk-58-1.pdf>] [22 <./TUTU_GRA
 PHES_files/figure-latex/unnamed-chunk-60-1.pdf>]
@@ -1108,7 +1130,7 @@ File: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-63-1.pdf Graphic file (type
  pdf)
 <use TUTU_GRAPHES_files/figure-latex/unnamed-chunk-63-1.pdf>
 Package pdftex.def Info: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-63-1.pdf
-  used on input line 1075.
+  used on input line 1127.
 (pdftex.def)             Requested size: 179.6845pt x 179.6845pt.
 <TUTU_GRAPHES_files/figure-latex/unnamed-chunk-66-1.pdf, id=442, 179.67125pt x 
 179.67125pt>
@@ -1116,7 +1138,7 @@ File: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-66-1.pdf Graphic file (type
  pdf)
 <use TUTU_GRAPHES_files/figure-latex/unnamed-chunk-66-1.pdf>
 Package pdftex.def Info: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-66-1.pdf
-  used on input line 1132.
+  used on input line 1184.
 (pdftex.def)             Requested size: 179.6845pt x 179.6845pt.
 [23 <./TUTU_GRAPHES_files/figure-latex/unnamed-chunk-63-1.pdf>] [24 <./TUTU_GRA
 PHES_files/figure-latex/unnamed-chunk-66-1.pdf>]
@@ -1126,7 +1148,7 @@ File: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-74-1.pdf Graphic file (type
  pdf)
 <use TUTU_GRAPHES_files/figure-latex/unnamed-chunk-74-1.pdf>
 Package pdftex.def Info: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-74-1.pdf
-  used on input line 1224.
+  used on input line 1276.
 (pdftex.def)             Requested size: 469.74828pt x 232.43262pt.
 <TUTU_GRAPHES_files/figure-latex/unnamed-chunk-74-2.pdf, id=475, 965.6075pt x 4
 77.785pt>
@@ -1134,7 +1156,7 @@ File: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-74-2.pdf Graphic file (type
  pdf)
 <use TUTU_GRAPHES_files/figure-latex/unnamed-chunk-74-2.pdf>
 Package pdftex.def Info: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-74-2.pdf
-  used on input line 1232.
+  used on input line 1284.
 (pdftex.def)             Requested size: 469.74828pt x 232.43262pt.
 [25 <./TUTU_GRAPHES_files/figure-latex/unnamed-chunk-74-1.pdf>]
 <TUTU_GRAPHES_files/figure-latex/unnamed-chunk-74-3.pdf, id=493, 965.6075pt x 5
@@ -1143,7 +1165,7 @@ File: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-74-3.pdf Graphic file (type
  pdf)
 <use TUTU_GRAPHES_files/figure-latex/unnamed-chunk-74-3.pdf>
 Package pdftex.def Info: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-74-3.pdf
-  used on input line 1240.
+  used on input line 1292.
 (pdftex.def)             Requested size: 469.74828pt x 248.05833pt.
 <TUTU_GRAPHES_files/figure-latex/unnamed-chunk-74-4.pdf, id=494, 965.6075pt x 5
 00.87125pt>
@@ -1151,7 +1173,7 @@ File: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-74-4.pdf Graphic file (type
  pdf)
 <use TUTU_GRAPHES_files/figure-latex/unnamed-chunk-74-4.pdf>
 Package pdftex.def Info: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-74-4.pdf
-  used on input line 1248.
+  used on input line 1300.
 (pdftex.def)             Requested size: 469.74828pt x 243.66359pt.
 [26 <./TUTU_GRAPHES_files/figure-latex/unnamed-chunk-74-2.pdf> <./TUTU_GRAPHES_
 files/figure-latex/unnamed-chunk-74-3.pdf>] [27 <./TUTU_GRAPHES_files/figure-la
@@ -1162,7 +1184,7 @@ File: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-77-1.pdf Graphic file (type
  pdf)
 <use TUTU_GRAPHES_files/figure-latex/unnamed-chunk-77-1.pdf>
 Package pdftex.def Info: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-77-1.pdf
-  used on input line 1303.
+  used on input line 1355.
 (pdftex.def)             Requested size: 226.84694pt x 180.67455pt.
 <TUTU_GRAPHES_files/figure-latex/unnamed-chunk-78-1.pdf, id=553, 965.6075pt x 4
 77.785pt>
@@ -1170,7 +1192,7 @@ File: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-78-1.pdf Graphic file (type
  pdf)
 <use TUTU_GRAPHES_files/figure-latex/unnamed-chunk-78-1.pdf>
 Package pdftex.def Info: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-78-1.pdf
-  used on input line 1317.
+  used on input line 1369.
 (pdftex.def)             Requested size: 444.75948pt x 220.06808pt.
 <TUTU_GRAPHES_files/figure-latex/unnamed-chunk-79-1.pdf, id=554, 965.6075pt x 5
 00.87125pt>
@@ -1178,7 +1200,7 @@ File: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-79-1.pdf Graphic file (type
  pdf)
 <use TUTU_GRAPHES_files/figure-latex/unnamed-chunk-79-1.pdf>
 Package pdftex.def Info: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-79-1.pdf
-  used on input line 1328.
+  used on input line 1380.
 (pdftex.def)             Requested size: 444.75948pt x 230.70163pt.
 [28 <./TUTU_GRAPHES_files/figure-latex/unnamed-chunk-77-1.pdf> <./TUTU_GRAPHES_
 files/figure-latex/unnamed-chunk-78-1.pdf>]
@@ -1188,7 +1210,7 @@ File: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-81-1.pdf Graphic file (type
  pdf)
 <use TUTU_GRAPHES_files/figure-latex/unnamed-chunk-81-1.pdf>
 Package pdftex.def Info: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-81-1.pdf
-  used on input line 1346.
+  used on input line 1398.
 (pdftex.def)             Requested size: 444.75948pt x 230.70163pt.
 [29 <./TUTU_GRAPHES_files/figure-latex/unnamed-chunk-79-1.pdf> <./TUTU_GRAPHES_
 files/figure-latex/unnamed-chunk-81-1.pdf>]
@@ -1198,7 +1220,7 @@ File: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-83-1.pdf Graphic file (type
  pdf)
 <use TUTU_GRAPHES_files/figure-latex/unnamed-chunk-83-1.pdf>
 Package pdftex.def Info: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-83-1.pdf
-  used on input line 1362.
+  used on input line 1414.
 (pdftex.def)             Requested size: 444.75948pt x 230.70163pt.
 <TUTU_GRAPHES_files/figure-latex/unnamed-chunk-85-1.pdf, id=625, 179.67125pt x 
 179.67125pt>
@@ -1206,34 +1228,34 @@ File: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-85-1.pdf Graphic file (type
  pdf)
 <use TUTU_GRAPHES_files/figure-latex/unnamed-chunk-85-1.pdf>
 Package pdftex.def Info: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-85-1.pdf
-  used on input line 1386.
+  used on input line 1438.
 (pdftex.def)             Requested size: 179.6845pt x 179.6845pt.
-[30 <./TUTU_GRAPHES_files/figure-latex/unnamed-chunk-83-1.pdf> <./TUTU_GRAPHES_
-files/figure-latex/unnamed-chunk-85-1.pdf>]
-<TUTU_GRAPHES_files/figure-latex/unnamed-chunk-87-1.pdf, id=658, 460.72125pt x 
+[30 <./TUTU_GRAPHES_files/figure-latex/unnamed-chunk-83-1.pdf>]
+<TUTU_GRAPHES_files/figure-latex/unnamed-chunk-87-1.pdf, id=651, 460.72125pt x 
 316.18124pt>
 File: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-87-1.pdf Graphic file (type
  pdf)
 <use TUTU_GRAPHES_files/figure-latex/unnamed-chunk-87-1.pdf>
 Package pdftex.def Info: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-87-1.pdf
-  used on input line 1404.
+  used on input line 1456.
 (pdftex.def)             Requested size: 460.72012pt x 316.18047pt.
-<TUTU_GRAPHES_files/figure-latex/unnamed-chunk-87-2.pdf, id=659, 460.72125pt x 
+<TUTU_GRAPHES_files/figure-latex/unnamed-chunk-87-2.pdf, id=652, 460.72125pt x 
 316.18124pt>
 File: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-87-2.pdf Graphic file (type
  pdf)
 <use TUTU_GRAPHES_files/figure-latex/unnamed-chunk-87-2.pdf>
 Package pdftex.def Info: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-87-2.pdf
-  used on input line 1412.
+  used on input line 1464.
 (pdftex.def)             Requested size: 460.72012pt x 316.18047pt.
-[31 <./TUTU_GRAPHES_files/figure-latex/unnamed-chunk-87-1.pdf>]
+[31 <./TUTU_GRAPHES_files/figure-latex/unnamed-chunk-85-1.pdf> <./TUTU_GRAPHES_
+files/figure-latex/unnamed-chunk-87-1.pdf>]
 <TUTU_GRAPHES_files/figure-latex/unnamed-chunk-88-1.pdf, id=670, 460.72125pt x 
 316.18124pt>
 File: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-88-1.pdf Graphic file (type
  pdf)
 <use TUTU_GRAPHES_files/figure-latex/unnamed-chunk-88-1.pdf>
 Package pdftex.def Info: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-88-1.pdf
-  used on input line 1422.
+  used on input line 1474.
 (pdftex.def)             Requested size: 460.72012pt x 316.18047pt.
 [32 <./TUTU_GRAPHES_files/figure-latex/unnamed-chunk-87-2.pdf>]
 <TUTU_GRAPHES_files/figure-latex/unnamed-chunk-89-1.pdf, id=680, 460.72125pt x 
@@ -1242,7 +1264,7 @@ File: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-89-1.pdf Graphic file (type
  pdf)
 <use TUTU_GRAPHES_files/figure-latex/unnamed-chunk-89-1.pdf>
 Package pdftex.def Info: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-89-1.pdf
-  used on input line 1430.
+  used on input line 1482.
 (pdftex.def)             Requested size: 460.72012pt x 316.18047pt.
 [33 <./TUTU_GRAPHES_files/figure-latex/unnamed-chunk-88-1.pdf>]
 <TUTU_GRAPHES_files/figure-latex/unnamed-chunk-90-1.pdf, id=690, 372.39125pt x 
@@ -1251,7 +1273,7 @@ File: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-90-1.pdf Graphic file (type
  pdf)
 <use TUTU_GRAPHES_files/figure-latex/unnamed-chunk-90-1.pdf>
 Package pdftex.def Info: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-90-1.pdf
-  used on input line 1469.
+  used on input line 1521.
 (pdftex.def)             Requested size: 372.40169pt x 136.51382pt.
 [34 <./TUTU_GRAPHES_files/figure-latex/unnamed-chunk-89-1.pdf>]
 <TUTU_GRAPHES_files/figure-latex/unnamed-chunk-91-1.pdf, id=704, 453.695pt x 31
@@ -1260,7 +1282,7 @@ File: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-91-1.pdf Graphic file (type
  pdf)
 <use TUTU_GRAPHES_files/figure-latex/unnamed-chunk-91-1.pdf>
 Package pdftex.def Info: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-91-1.pdf
-  used on input line 1497.
+  used on input line 1549.
 (pdftex.def)             Requested size: 453.6939pt x 315.17673pt.
 [35 <./TUTU_GRAPHES_files/figure-latex/unnamed-chunk-90-1.pdf>]
 <TUTU_GRAPHES_files/figure-latex/unnamed-chunk-93-1.pdf, id=720, 459.7175pt x 3
@@ -1269,7 +1291,7 @@ File: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-93-1.pdf Graphic file (type
  pdf)
 <use TUTU_GRAPHES_files/figure-latex/unnamed-chunk-93-1.pdf>
 Package pdftex.def Info: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-93-1.pdf
-  used on input line 1523.
+  used on input line 1575.
 (pdftex.def)             Requested size: 444.78203pt x 304.9379pt.
 [36 <./TUTU_GRAPHES_files/figure-latex/unnamed-chunk-91-1.pdf>]
 <TUTU_GRAPHES_files/figure-latex/unnamed-chunk-96-1.pdf, id=735, 453.695pt x 31
@@ -1278,7 +1300,7 @@ File: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-96-1.pdf Graphic file (type
  pdf)
 <use TUTU_GRAPHES_files/figure-latex/unnamed-chunk-96-1.pdf>
 Package pdftex.def Info: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-96-1.pdf
-  used on input line 1553.
+  used on input line 1605.
 (pdftex.def)             Requested size: 444.75653pt x 308.96802pt.
 [37 <./TUTU_GRAPHES_files/figure-latex/unnamed-chunk-93-1.pdf>]
 <TUTU_GRAPHES_files/figure-latex/unnamed-chunk-98-1.pdf, id=752, 179.67125pt x 
@@ -1287,7 +1309,7 @@ File: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-98-1.pdf Graphic file (type
  pdf)
 <use TUTU_GRAPHES_files/figure-latex/unnamed-chunk-98-1.pdf>
 Package pdftex.def Info: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-98-1.pdf
-  used on input line 1582.
+  used on input line 1634.
 (pdftex.def)             Requested size: 179.6845pt x 179.6845pt.
 [38 <./TUTU_GRAPHES_files/figure-latex/unnamed-chunk-96-1.pdf>]
 <TUTU_GRAPHES_files/figure-latex/unnamed-chunk-100-1.pdf, id=767, 436.63126pt x
@@ -1296,7 +1318,7 @@ File: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-100-1.pdf Graphic file (typ
 e pdf)
 <use TUTU_GRAPHES_files/figure-latex/unnamed-chunk-100-1.pdf>
 Package pdftex.def Info: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-100-1.pd
-f  used on input line 1613.
+f  used on input line 1665.
 (pdftex.def)             Requested size: 436.63019pt x 256.95937pt.
 <TUTU_GRAPHES_files/figure-latex/unnamed-chunk-100-2.pdf, id=768, 436.63126pt x
  251.94125pt>
@@ -1304,7 +1326,7 @@ File: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-100-2.pdf Graphic file (typ
 e pdf)
 <use TUTU_GRAPHES_files/figure-latex/unnamed-chunk-100-2.pdf>
 Package pdftex.def Info: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-100-2.pd
-f  used on input line 1615.
+f  used on input line 1667.
 (pdftex.def)             Requested size: 436.63019pt x 251.94063pt.
 [39 <./TUTU_GRAPHES_files/figure-latex/unnamed-chunk-98-1.pdf> <./TUTU_GRAPHES_
 files/figure-latex/unnamed-chunk-100-1.pdf>]
@@ -1314,7 +1336,7 @@ File: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-100-3.pdf Graphic file (typ
 e pdf)
 <use TUTU_GRAPHES_files/figure-latex/unnamed-chunk-100-3.pdf>
 Package pdftex.def Info: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-100-3.pd
-f  used on input line 1617.
+f  used on input line 1669.
 (pdftex.def)             Requested size: 436.63019pt x 248.92938pt.
 <TUTU_GRAPHES_files/figure-latex/unnamed-chunk-100-4.pdf, id=792, 436.63126pt x
  248.93pt>
@@ -1322,7 +1344,7 @@ File: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-100-4.pdf Graphic file (typ
 e pdf)
 <use TUTU_GRAPHES_files/figure-latex/unnamed-chunk-100-4.pdf>
 Package pdftex.def Info: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-100-4.pd
-f  used on input line 1619.
+f  used on input line 1671.
 (pdftex.def)             Requested size: 436.63019pt x 248.92938pt.
 [40 <./TUTU_GRAPHES_files/figure-latex/unnamed-chunk-100-2.pdf> <./TUTU_GRAPHES
 _files/figure-latex/unnamed-chunk-100-3.pdf>]
@@ -1332,7 +1354,7 @@ File: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-100-5.pdf Graphic file (typ
 e pdf)
 <use TUTU_GRAPHES_files/figure-latex/unnamed-chunk-100-5.pdf>
 Package pdftex.def Info: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-100-5.pd
-f  used on input line 1621.
+f  used on input line 1673.
 (pdftex.def)             Requested size: 436.63019pt x 248.92938pt.
 <TUTU_GRAPHES_files/figure-latex/unnamed-chunk-100-6.pdf, id=812, 436.63126pt x
  248.93pt>
@@ -1340,7 +1362,7 @@ File: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-100-6.pdf Graphic file (typ
 e pdf)
 <use TUTU_GRAPHES_files/figure-latex/unnamed-chunk-100-6.pdf>
 Package pdftex.def Info: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-100-6.pd
-f  used on input line 1623.
+f  used on input line 1675.
 (pdftex.def)             Requested size: 436.63019pt x 248.92938pt.
 [41 <./TUTU_GRAPHES_files/figure-latex/unnamed-chunk-100-4.pdf> <./TUTU_GRAPHES
 _files/figure-latex/unnamed-chunk-100-5.pdf>]
@@ -1350,7 +1372,7 @@ File: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-100-7.pdf Graphic file (typ
 e pdf)
 <use TUTU_GRAPHES_files/figure-latex/unnamed-chunk-100-7.pdf>
 Package pdftex.def Info: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-100-7.pd
-f  used on input line 1625.
+f  used on input line 1677.
 (pdftex.def)             Requested size: 436.63019pt x 248.92938pt.
 <TUTU_GRAPHES_files/figure-latex/unnamed-chunk-100-8.pdf, id=832, 436.63126pt x
  248.93pt>
@@ -1358,26 +1380,26 @@ File: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-100-8.pdf Graphic file (typ
 e pdf)
 <use TUTU_GRAPHES_files/figure-latex/unnamed-chunk-100-8.pdf>
 Package pdftex.def Info: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-100-8.pd
-f  used on input line 1627.
+f  used on input line 1679.
 (pdftex.def)             Requested size: 436.63019pt x 248.92938pt.
 [42 <./TUTU_GRAPHES_files/figure-latex/unnamed-chunk-100-6.pdf> <./TUTU_GRAPHES
-_files/figure-latex/unnamed-chunk-100-7.pdf>]
-<TUTU_GRAPHES_files/figure-latex/unnamed-chunk-106-1.pdf, id=851, 179.67125pt x
+_files/figure-latex/unnamed-chunk-100-7.pdf>] [43 <./TUTU_GRAPHES_files/figure-
+latex/unnamed-chunk-100-8.pdf>]
+<TUTU_GRAPHES_files/figure-latex/unnamed-chunk-106-1.pdf, id=866, 179.67125pt x
  179.67125pt>
 File: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-106-1.pdf Graphic file (typ
 e pdf)
 <use TUTU_GRAPHES_files/figure-latex/unnamed-chunk-106-1.pdf>
 Package pdftex.def Info: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-106-1.pd
-f  used on input line 1681.
+f  used on input line 1733.
 (pdftex.def)             Requested size: 179.6845pt x 179.6845pt.
-[43 <./TUTU_GRAPHES_files/figure-latex/unnamed-chunk-100-8.pdf>]
 <TUTU_GRAPHES_files/figure-latex/unnamed-chunk-108-1.pdf, id=867, 436.63126pt x
  248.93pt>
 File: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-108-1.pdf Graphic file (typ
 e pdf)
 <use TUTU_GRAPHES_files/figure-latex/unnamed-chunk-108-1.pdf>
 Package pdftex.def Info: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-108-1.pd
-f  used on input line 1705.
+f  used on input line 1757.
 (pdftex.def)             Requested size: 436.63019pt x 248.92938pt.
 <TUTU_GRAPHES_files/figure-latex/unnamed-chunk-108-2.pdf, id=868, 436.63126pt x
  260.975pt>
@@ -1385,7 +1407,7 @@ File: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-108-2.pdf Graphic file (typ
 e pdf)
 <use TUTU_GRAPHES_files/figure-latex/unnamed-chunk-108-2.pdf>
 Package pdftex.def Info: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-108-2.pd
-f  used on input line 1707.
+f  used on input line 1759.
 (pdftex.def)             Requested size: 436.63019pt x 260.97437pt.
 [44 <./TUTU_GRAPHES_files/figure-latex/unnamed-chunk-106-1.pdf> <./TUTU_GRAPHES
 _files/figure-latex/unnamed-chunk-108-1.pdf>]
@@ -1395,7 +1417,7 @@ File: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-108-3.pdf Graphic file (typ
 e pdf)
 <use TUTU_GRAPHES_files/figure-latex/unnamed-chunk-108-3.pdf>
 Package pdftex.def Info: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-108-3.pd
-f  used on input line 1709.
+f  used on input line 1761.
 (pdftex.def)             Requested size: 436.63019pt x 260.97437pt.
 <TUTU_GRAPHES_files/figure-latex/unnamed-chunk-108-4.pdf, id=890, 436.63126pt x
  260.975pt>
@@ -1403,7 +1425,7 @@ File: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-108-4.pdf Graphic file (typ
 e pdf)
 <use TUTU_GRAPHES_files/figure-latex/unnamed-chunk-108-4.pdf>
 Package pdftex.def Info: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-108-4.pd
-f  used on input line 1711.
+f  used on input line 1763.
 (pdftex.def)             Requested size: 436.63019pt x 260.97437pt.
 [45 <./TUTU_GRAPHES_files/figure-latex/unnamed-chunk-108-2.pdf> <./TUTU_GRAPHES
 _files/figure-latex/unnamed-chunk-108-3.pdf>]
@@ -1413,7 +1435,7 @@ File: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-108-5.pdf Graphic file (typ
 e pdf)
 <use TUTU_GRAPHES_files/figure-latex/unnamed-chunk-108-5.pdf>
 Package pdftex.def Info: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-108-5.pd
-f  used on input line 1713.
+f  used on input line 1765.
 (pdftex.def)             Requested size: 436.63019pt x 260.97437pt.
 <TUTU_GRAPHES_files/figure-latex/unnamed-chunk-108-6.pdf, id=911, 436.63126pt x
  248.93pt>
@@ -1421,7 +1443,7 @@ File: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-108-6.pdf Graphic file (typ
 e pdf)
 <use TUTU_GRAPHES_files/figure-latex/unnamed-chunk-108-6.pdf>
 Package pdftex.def Info: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-108-6.pd
-f  used on input line 1715.
+f  used on input line 1767.
 (pdftex.def)             Requested size: 436.63019pt x 248.92938pt.
 [46 <./TUTU_GRAPHES_files/figure-latex/unnamed-chunk-108-4.pdf> <./TUTU_GRAPHES
 _files/figure-latex/unnamed-chunk-108-5.pdf>]
@@ -1431,7 +1453,7 @@ File: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-108-7.pdf Graphic file (typ
 e pdf)
 <use TUTU_GRAPHES_files/figure-latex/unnamed-chunk-108-7.pdf>
 Package pdftex.def Info: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-108-7.pd
-f  used on input line 1717.
+f  used on input line 1769.
 (pdftex.def)             Requested size: 436.63019pt x 248.92938pt.
 <TUTU_GRAPHES_files/figure-latex/unnamed-chunk-108-8.pdf, id=931, 436.63126pt x
  248.93pt>
@@ -1439,7 +1461,7 @@ File: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-108-8.pdf Graphic file (typ
 e pdf)
 <use TUTU_GRAPHES_files/figure-latex/unnamed-chunk-108-8.pdf>
 Package pdftex.def Info: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-108-8.pd
-f  used on input line 1719.
+f  used on input line 1771.
 (pdftex.def)             Requested size: 436.63019pt x 248.92938pt.
 [47 <./TUTU_GRAPHES_files/figure-latex/unnamed-chunk-108-6.pdf> <./TUTU_GRAPHES
 _files/figure-latex/unnamed-chunk-108-7.pdf>]
@@ -1449,7 +1471,7 @@ File: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-108-9.pdf Graphic file (typ
 e pdf)
 <use TUTU_GRAPHES_files/figure-latex/unnamed-chunk-108-9.pdf>
 Package pdftex.def Info: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-108-9.pd
-f  used on input line 1721.
+f  used on input line 1773.
 (pdftex.def)             Requested size: 436.63019pt x 248.92938pt.
 <TUTU_GRAPHES_files/figure-latex/unnamed-chunk-108-10.pdf, id=951, 436.63126pt 
 x 248.93pt>
@@ -1457,7 +1479,7 @@ File: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-108-10.pdf Graphic file (ty
 pe pdf)
 <use TUTU_GRAPHES_files/figure-latex/unnamed-chunk-108-10.pdf>
 Package pdftex.def Info: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-108-10.p
-df  used on input line 1723.
+df  used on input line 1775.
 (pdftex.def)             Requested size: 436.63019pt x 248.92938pt.
 [48 <./TUTU_GRAPHES_files/figure-latex/unnamed-chunk-108-8.pdf> <./TUTU_GRAPHES
 _files/figure-latex/unnamed-chunk-108-9.pdf>]
@@ -1467,7 +1489,7 @@ File: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-108-11.pdf Graphic file (ty
 pe pdf)
 <use TUTU_GRAPHES_files/figure-latex/unnamed-chunk-108-11.pdf>
 Package pdftex.def Info: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-108-11.p
-df  used on input line 1725.
+df  used on input line 1777.
 (pdftex.def)             Requested size: 436.63019pt x 248.92938pt.
 <TUTU_GRAPHES_files/figure-latex/unnamed-chunk-108-12.pdf, id=971, 436.63126pt 
 x 248.93pt>
@@ -1475,7 +1497,7 @@ File: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-108-12.pdf Graphic file (ty
 pe pdf)
 <use TUTU_GRAPHES_files/figure-latex/unnamed-chunk-108-12.pdf>
 Package pdftex.def Info: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-108-12.p
-df  used on input line 1727.
+df  used on input line 1779.
 (pdftex.def)             Requested size: 436.63019pt x 248.92938pt.
 [49 <./TUTU_GRAPHES_files/figure-latex/unnamed-chunk-108-10.pdf> <./TUTU_GRAPHE
 S_files/figure-latex/unnamed-chunk-108-11.pdf>]
@@ -1485,7 +1507,7 @@ File: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-108-13.pdf Graphic file (ty
 pe pdf)
 <use TUTU_GRAPHES_files/figure-latex/unnamed-chunk-108-13.pdf>
 Package pdftex.def Info: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-108-13.p
-df  used on input line 1729.
+df  used on input line 1781.
 (pdftex.def)             Requested size: 436.63019pt x 248.92938pt.
 <TUTU_GRAPHES_files/figure-latex/unnamed-chunk-108-14.pdf, id=992, 436.63126pt 
 x 248.93pt>
@@ -1493,7 +1515,7 @@ File: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-108-14.pdf Graphic file (ty
 pe pdf)
 <use TUTU_GRAPHES_files/figure-latex/unnamed-chunk-108-14.pdf>
 Package pdftex.def Info: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-108-14.p
-df  used on input line 1731.
+df  used on input line 1783.
 (pdftex.def)             Requested size: 436.63019pt x 248.92938pt.
 [50 <./TUTU_GRAPHES_files/figure-latex/unnamed-chunk-108-12.pdf> <./TUTU_GRAPHE
 S_files/figure-latex/unnamed-chunk-108-13.pdf>]
@@ -1503,7 +1525,7 @@ File: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-108-15.pdf Graphic file (ty
 pe pdf)
 <use TUTU_GRAPHES_files/figure-latex/unnamed-chunk-108-15.pdf>
 Package pdftex.def Info: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-108-15.p
-df  used on input line 1733.
+df  used on input line 1785.
 (pdftex.def)             Requested size: 436.63019pt x 248.92938pt.
 <TUTU_GRAPHES_files/figure-latex/unnamed-chunk-108-16.pdf, id=1012, 436.63126pt
  x 248.93pt>
@@ -1511,7 +1533,7 @@ File: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-108-16.pdf Graphic file (ty
 pe pdf)
 <use TUTU_GRAPHES_files/figure-latex/unnamed-chunk-108-16.pdf>
 Package pdftex.def Info: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-108-16.p
-df  used on input line 1735.
+df  used on input line 1787.
 (pdftex.def)             Requested size: 436.63019pt x 248.92938pt.
 [51 <./TUTU_GRAPHES_files/figure-latex/unnamed-chunk-108-14.pdf> <./TUTU_GRAPHE
 S_files/figure-latex/unnamed-chunk-108-15.pdf>]
@@ -1521,7 +1543,7 @@ File: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-108-17.pdf Graphic file (ty
 pe pdf)
 <use TUTU_GRAPHES_files/figure-latex/unnamed-chunk-108-17.pdf>
 Package pdftex.def Info: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-108-17.p
-df  used on input line 1737.
+df  used on input line 1789.
 (pdftex.def)             Requested size: 436.63019pt x 248.92938pt.
 [52 <./TUTU_GRAPHES_files/figure-latex/unnamed-chunk-108-16.pdf> <./TUTU_GRAPHE
 S_files/figure-latex/unnamed-chunk-108-17.pdf>]
@@ -1531,125 +1553,350 @@ File: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-116-1.pdf Graphic file (typ
 e pdf)
 <use TUTU_GRAPHES_files/figure-latex/unnamed-chunk-116-1.pdf>
 Package pdftex.def Info: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-116-1.pd
-f  used on input line 1791.
+f  used on input line 1843.
 (pdftex.def)             Requested size: 179.6845pt x 179.6845pt.
-<TUTU_GRAPHES_files/figure-latex/unnamed-chunk-120-1.pdf, id=1051, 179.67125pt 
+[53 <./TUTU_GRAPHES_files/figure-latex/unnamed-chunk-116-1.pdf>]
+<TUTU_GRAPHES_files/figure-latex/unnamed-chunk-120-1.pdf, id=1063, 179.67125pt 
 x 179.67125pt>
 File: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-120-1.pdf Graphic file (typ
 e pdf)
 <use TUTU_GRAPHES_files/figure-latex/unnamed-chunk-120-1.pdf>
 Package pdftex.def Info: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-120-1.pd
-f  used on input line 1828.
+f  used on input line 1880.
 (pdftex.def)             Requested size: 179.6845pt x 179.6845pt.
-[53 <./TUTU_GRAPHES_files/figure-latex/unnamed-chunk-116-1.pdf>]
-<TUTU_GRAPHES_files/figure-latex/unnamed-chunk-123-1.pdf, id=1064, 284.06125pt 
+[54 <./TUTU_GRAPHES_files/figure-latex/unnamed-chunk-120-1.pdf>]
+<TUTU_GRAPHES_files/figure-latex/unnamed-chunk-123-1.pdf, id=1078, 284.06125pt 
 x 284.06125pt>
 File: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-123-1.pdf Graphic file (typ
 e pdf)
 <use TUTU_GRAPHES_files/figure-latex/unnamed-chunk-123-1.pdf>
 Package pdftex.def Info: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-123-1.pd
-f  used on input line 1888.
+f  used on input line 1940.
 (pdftex.def)             Requested size: 284.08653pt x 284.08653pt.
-[54 <./TUTU_GRAPHES_files/figure-latex/unnamed-chunk-120-1.pdf>] [55 <./TUTU_GR
-APHES_files/figure-latex/unnamed-chunk-123-1.pdf>]
-<TUTU_GRAPHES_files/figure-latex/unnamed-chunk-137-1.pdf, id=1095, 179.67125pt 
+[55 <./TUTU_GRAPHES_files/figure-latex/unnamed-chunk-123-1.pdf>]
+<TUTU_GRAPHES_files/figure-latex/unnamed-chunk-137-1.pdf, id=1094, 179.67125pt 
 x 179.67125pt>
 File: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-137-1.pdf Graphic file (typ
 e pdf)
 <use TUTU_GRAPHES_files/figure-latex/unnamed-chunk-137-1.pdf>
 Package pdftex.def Info: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-137-1.pd
-f  used on input line 2024.
+f  used on input line 2076.
 (pdftex.def)             Requested size: 179.6845pt x 179.6845pt.
-<TUTU_GRAPHES_files/figure-latex/unnamed-chunk-139-1.pdf, id=1096, 179.67125pt 
+[56]
+<TUTU_GRAPHES_files/figure-latex/unnamed-chunk-139-1.pdf, id=1100, 179.67125pt 
 x 179.67125pt>
 File: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-139-1.pdf Graphic file (typ
 e pdf)
 <use TUTU_GRAPHES_files/figure-latex/unnamed-chunk-139-1.pdf>
 Package pdftex.def Info: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-139-1.pd
-f  used on input line 2039.
+f  used on input line 2091.
 (pdftex.def)             Requested size: 179.6845pt x 179.6845pt.
-[56 <./TUTU_GRAPHES_files/figure-latex/unnamed-chunk-137-1.pdf>]
-<TUTU_GRAPHES_files/figure-latex/unnamed-chunk-141-1.pdf, id=1108, 179.67125pt 
+<TUTU_GRAPHES_files/figure-latex/unnamed-chunk-140-1.pdf, id=1101, 179.67125pt 
 x 179.67125pt>
-File: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-141-1.pdf Graphic file (typ
+File: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-140-1.pdf Graphic file (typ
 e pdf)
-<use TUTU_GRAPHES_files/figure-latex/unnamed-chunk-141-1.pdf>
-Package pdftex.def Info: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-141-1.pd
-f  used on input line 2066.
+<use TUTU_GRAPHES_files/figure-latex/unnamed-chunk-140-1.pdf>
+Package pdftex.def Info: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-140-1.pd
+f  used on input line 2112.
 (pdftex.def)             Requested size: 179.6845pt x 179.6845pt.
-[57 <./TUTU_GRAPHES_files/figure-latex/unnamed-chunk-139-1.pdf> <./TUTU_GRAPHES
-_files/figure-latex/unnamed-chunk-141-1.pdf>]
-<TUTU_GRAPHES_files/figure-latex/unnamed-chunk-153-1.pdf, id=1132, 179.67125pt 
+[57 <./TUTU_GRAPHES_files/figure-latex/unnamed-chunk-137-1.pdf> <./TUTU_GRAPHES
+_files/figure-latex/unnamed-chunk-139-1.pdf>] [58 <./TUTU_GRAPHES_files/figure-
+latex/unnamed-chunk-140-1.pdf>]
+<TUTU_GRAPHES_files/figure-latex/unnamed-chunk-150-1.pdf, id=1135, 179.67125pt 
 x 179.67125pt>
-File: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-153-1.pdf Graphic file (typ
+File: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-150-1.pdf Graphic file (typ
 e pdf)
-<use TUTU_GRAPHES_files/figure-latex/unnamed-chunk-153-1.pdf>
-Package pdftex.def Info: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-153-1.pd
-f  used on input line 2109.
+<use TUTU_GRAPHES_files/figure-latex/unnamed-chunk-150-1.pdf>
+Package pdftex.def Info: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-150-1.pd
+f  used on input line 2219.
 (pdftex.def)             Requested size: 179.6845pt x 179.6845pt.
-[58 <./TUTU_GRAPHES_files/figure-latex/unnamed-chunk-153-1.pdf>]
+<TUTU_GRAPHES_files/figure-latex/unnamed-chunk-150-2.pdf, id=1136, 179.67125pt 
+x 179.67125pt>
+File: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-150-2.pdf Graphic file (typ
+e pdf)
+<use TUTU_GRAPHES_files/figure-latex/unnamed-chunk-150-2.pdf>
+Package pdftex.def Info: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-150-2.pd
+f  used on input line 2227.
+(pdftex.def)             Requested size: 179.6845pt x 179.6845pt.
+[59 <./TUTU_GRAPHES_files/figure-latex/unnamed-chunk-150-1.pdf>]
+<TUTU_GRAPHES_files/figure-latex/unnamed-chunk-152-1.pdf, id=1150, 179.67125pt 
+x 179.67125pt>
+File: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-152-1.pdf Graphic file (typ
+e pdf)
+<use TUTU_GRAPHES_files/figure-latex/unnamed-chunk-152-1.pdf>
+Package pdftex.def Info: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-152-1.pd
+f  used on input line 2261.
+(pdftex.def)             Requested size: 179.6845pt x 179.6845pt.
+[60 <./TUTU_GRAPHES_files/figure-latex/unnamed-chunk-150-2.pdf> <./TUTU_GRAPHES
+_files/figure-latex/unnamed-chunk-152-1.pdf>]
+<TUTU_GRAPHES_files/figure-latex/unnamed-chunk-155-1.pdf, id=1172, 402.50375pt 
+x 193.72375pt>
+File: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-155-1.pdf Graphic file (typ
+e pdf)
+<use TUTU_GRAPHES_files/figure-latex/unnamed-chunk-155-1.pdf>
+Package pdftex.def Info: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-155-1.pd
+f  used on input line 2288.
+(pdftex.def)             Requested size: 402.50276pt x 193.72327pt.
+<TUTU_GRAPHES_files/figure-latex/unnamed-chunk-157-1.pdf, id=1173, 179.67125pt 
+x 179.67125pt>
+File: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-157-1.pdf Graphic file (typ
+e pdf)
+<use TUTU_GRAPHES_files/figure-latex/unnamed-chunk-157-1.pdf>
+Package pdftex.def Info: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-157-1.pd
+f  used on input line 2302.
+(pdftex.def)             Requested size: 179.6845pt x 179.6845pt.
+<TUTU_GRAPHES_files/figure-latex/unnamed-chunk-158-1.pdf, id=1174, 179.67125pt 
+x 179.67125pt>
+File: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-158-1.pdf Graphic file (typ
+e pdf)
+<use TUTU_GRAPHES_files/figure-latex/unnamed-chunk-158-1.pdf>
+Package pdftex.def Info: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-158-1.pd
+f  used on input line 2313.
+(pdftex.def)             Requested size: 179.6845pt x 179.6845pt.
+[61 <./TUTU_GRAPHES_files/figure-latex/unnamed-chunk-155-1.pdf> <./TUTU_GRAPHES
+_files/figure-latex/unnamed-chunk-157-1.pdf>]
+<TUTU_GRAPHES_files/figure-latex/unnamed-chunk-159-1.pdf, id=1197, 179.67125pt 
+x 179.67125pt>
+File: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-159-1.pdf Graphic file (typ
+e pdf)
+<use TUTU_GRAPHES_files/figure-latex/unnamed-chunk-159-1.pdf>
+Package pdftex.def Info: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-159-1.pd
+f  used on input line 2325.
+(pdftex.def)             Requested size: 179.6845pt x 179.6845pt.
+[62 <./TUTU_GRAPHES_files/figure-latex/unnamed-chunk-158-1.pdf> <./TUTU_GRAPHES
+_files/figure-latex/unnamed-chunk-159-1.pdf>]
+<TUTU_GRAPHES_files/figure-latex/unnamed-chunk-166-1.pdf, id=1222, 396.48125pt 
+x 193.72375pt>
+File: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-166-1.pdf Graphic file (typ
+e pdf)
+<use TUTU_GRAPHES_files/figure-latex/unnamed-chunk-166-1.pdf>
+Package pdftex.def Info: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-166-1.pd
+f  used on input line 2385.
+(pdftex.def)             Requested size: 396.48631pt x 193.72621pt.
+<TUTU_GRAPHES_files/figure-latex/unnamed-chunk-170-1.pdf, id=1223, 372.39125pt 
+x 136.51pt>
+File: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-170-1.pdf Graphic file (typ
+e pdf)
+<use TUTU_GRAPHES_files/figure-latex/unnamed-chunk-170-1.pdf>
+Package pdftex.def Info: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-170-1.pd
+f  used on input line 2413.
+(pdftex.def)             Requested size: 372.40169pt x 136.51382pt.
+[63 <./TUTU_GRAPHES_files/figure-latex/unnamed-chunk-166-1.pdf> <./TUTU_GRAPHES
+_files/figure-latex/unnamed-chunk-170-1.pdf>]
+<TUTU_GRAPHES_files/figure-latex/unnamed-chunk-175-1.pdf, id=1242, 395.4775pt x
+ 193.72375pt>
+File: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-175-1.pdf Graphic file (typ
+e pdf)
+<use TUTU_GRAPHES_files/figure-latex/unnamed-chunk-175-1.pdf>
+Package pdftex.def Info: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-175-1.pd
+f  used on input line 2446.
+(pdftex.def)             Requested size: 395.48256pt x 193.72621pt.
+<TUTU_GRAPHES_files/figure-latex/unnamed-chunk-181-1.pdf, id=1243, 376.40625pt 
+x 136.51pt>
+File: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-181-1.pdf Graphic file (typ
+e pdf)
+<use TUTU_GRAPHES_files/figure-latex/unnamed-chunk-181-1.pdf>
+Package pdftex.def Info: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-181-1.pd
+f  used on input line 2481.
+(pdftex.def)             Requested size: 376.42828pt x 136.51799pt.
+[64 <./TUTU_GRAPHES_files/figure-latex/unnamed-chunk-175-1.pdf>]
 
-LaTeX Warning: Command \` invalid in math mode on input line 2172.
+LaTeX Warning: Command \` invalid in math mode on input line 2522.
 
-<TUTU_GRAPHES_files/figure-latex/unnamed-chunk-185-1.pdf, id=1157, 179.67125pt 
+[65 <./TUTU_GRAPHES_files/figure-latex/unnamed-chunk-181-1.pdf>]
+<TUTU_GRAPHES_files/figure-latex/unnamed-chunk-184-1.pdf, id=1275, 179.67125pt 
 x 179.67125pt>
-File: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-185-1.pdf Graphic file (typ
+File: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-184-1.pdf Graphic file (typ
 e pdf)
-<use TUTU_GRAPHES_files/figure-latex/unnamed-chunk-185-1.pdf>
-Package pdftex.def Info: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-185-1.pd
-f  used on input line 2205.
+<use TUTU_GRAPHES_files/figure-latex/unnamed-chunk-184-1.pdf>
+Package pdftex.def Info: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-184-1.pd
+f  used on input line 2555.
 (pdftex.def)             Requested size: 179.6845pt x 179.6845pt.
-[59 <./TUTU_GRAPHES_files/figure-latex/unnamed-chunk-185-1.pdf>]
-Overfull \hbox (8.029pt too wide) in paragraph at lines 2269--2270
+<TUTU_GRAPHES_files/figure-latex/unnamed-chunk-188-1.pdf, id=1276, 459.7175pt x
+ 315.1775pt>
+File: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-188-1.pdf Graphic file (typ
+e pdf)
+<use TUTU_GRAPHES_files/figure-latex/unnamed-chunk-188-1.pdf>
+Package pdftex.def Info: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-188-1.pd
+f  used on input line 2605.
+(pdftex.def)             Requested size: 444.78203pt x 304.9379pt.
+[66 <./TUTU_GRAPHES_files/figure-latex/unnamed-chunk-184-1.pdf>] [67 <./TUTU_GR
+APHES_files/figure-latex/unnamed-chunk-188-1.pdf>]
+<TUTU_GRAPHES_files/figure-latex/unnamed-chunk-194-1.pdf, id=1309, 179.67125pt 
+x 179.67125pt>
+File: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-194-1.pdf Graphic file (typ
+e pdf)
+<use TUTU_GRAPHES_files/figure-latex/unnamed-chunk-194-1.pdf>
+Package pdftex.def Info: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-194-1.pd
+f  used on input line 2661.
+(pdftex.def)             Requested size: 179.6845pt x 179.6845pt.
+<TUTU_GRAPHES_files/figure-latex/unnamed-chunk-203-1.pdf, id=1310, 459.7175pt x
+ 315.1775pt>
+File: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-203-1.pdf Graphic file (typ
+e pdf)
+<use TUTU_GRAPHES_files/figure-latex/unnamed-chunk-203-1.pdf>
+Package pdftex.def Info: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-203-1.pd
+f  used on input line 2725.
+(pdftex.def)             Requested size: 459.74442pt x 315.19595pt.
+[68 <./TUTU_GRAPHES_files/figure-latex/unnamed-chunk-194-1.pdf>] [69 <./TUTU_GR
+APHES_files/figure-latex/unnamed-chunk-203-1.pdf>]
+<TUTU_GRAPHES_files/figure-latex/unnamed-chunk-210-1.pdf, id=1335, 179.67125pt 
+x 179.67125pt>
+File: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-210-1.pdf Graphic file (typ
+e pdf)
+<use TUTU_GRAPHES_files/figure-latex/unnamed-chunk-210-1.pdf>
+Package pdftex.def Info: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-210-1.pd
+f  used on input line 2789.
+(pdftex.def)             Requested size: 179.6845pt x 179.6845pt.
+[70 <./TUTU_GRAPHES_files/figure-latex/unnamed-chunk-210-1.pdf>]
+<TUTU_GRAPHES_files/figure-latex/unnamed-chunk-214-1.pdf, id=1351, 459.7175pt x
+ 315.1775pt>
+File: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-214-1.pdf Graphic file (typ
+e pdf)
+<use TUTU_GRAPHES_files/figure-latex/unnamed-chunk-214-1.pdf>
+Package pdftex.def Info: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-214-1.pd
+f  used on input line 2842.
+(pdftex.def)             Requested size: 459.74442pt x 315.19595pt.
+
+Overfull \hbox (8.029pt too wide) in paragraph at lines 2852--2853
 []\T1/lmr/m/n/10 (-20) Igraph pos-sède une fonc-tion per-met-tant de faire di-r
 ec-te-ment le spec-tral clus-te-ring : \T1/lmr/bx/n/10 em-bed_laplacian_matrix\
 T1/lmr/m/n/10 (-20) .
  []
 
-[60]
-<TUTU_GRAPHES_files/figure-latex/unnamed-chunk-218-1.pdf, id=1198, 179.67125pt 
+[71 <./TUTU_GRAPHES_files/figure-latex/unnamed-chunk-214-1.pdf>]
+<TUTU_GRAPHES_files/figure-latex/unnamed-chunk-217-1.pdf, id=1363, 179.67125pt 
 x 179.67125pt>
-File: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-218-1.pdf Graphic file (typ
+File: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-217-1.pdf Graphic file (typ
 e pdf)
-<use TUTU_GRAPHES_files/figure-latex/unnamed-chunk-218-1.pdf>
-Package pdftex.def Info: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-218-1.pd
-f  used on input line 2312.
+<use TUTU_GRAPHES_files/figure-latex/unnamed-chunk-217-1.pdf>
+Package pdftex.def Info: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-217-1.pd
+f  used on input line 2895.
 (pdftex.def)             Requested size: 179.6845pt x 179.6845pt.
-<TUTU_GRAPHES_files/figure-latex/unnamed-chunk-226-1.pdf, id=1200, 186.6975pt x
+<TUTU_GRAPHES_files/figure-latex/unnamed-chunk-219-1.pdf, id=1364, 459.7175pt x
+ 315.1775pt>
+File: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-219-1.pdf Graphic file (typ
+e pdf)
+<use TUTU_GRAPHES_files/figure-latex/unnamed-chunk-219-1.pdf>
+Package pdftex.def Info: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-219-1.pd
+f  used on input line 2911.
+(pdftex.def)             Requested size: 459.74442pt x 315.19595pt.
+[72 <./TUTU_GRAPHES_files/figure-latex/unnamed-chunk-217-1.pdf>]
+<TUTU_GRAPHES_files/figure-latex/unnamed-chunk-223-1.pdf, id=1378, 179.67125pt 
+x 179.67125pt>
+File: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-223-1.pdf Graphic file (typ
+e pdf)
+<use TUTU_GRAPHES_files/figure-latex/unnamed-chunk-223-1.pdf>
+Package pdftex.def Info: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-223-1.pd
+f  used on input line 2937.
+(pdftex.def)             Requested size: 179.6845pt x 179.6845pt.
+[73 <./TUTU_GRAPHES_files/figure-latex/unnamed-chunk-219-1.pdf> <./TUTU_GRAPHES
+_files/figure-latex/unnamed-chunk-223-1.pdf>]
+<TUTU_GRAPHES_files/figure-latex/unnamed-chunk-225-1.pdf, id=1399, 182.6825pt x
  179.67125pt>
-File: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-226-1.pdf Graphic file (typ
+File: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-225-1.pdf Graphic file (typ
 e pdf)
-<use TUTU_GRAPHES_files/figure-latex/unnamed-chunk-226-1.pdf>
-Package pdftex.def Info: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-226-1.pd
-f  used on input line 2336.
-(pdftex.def)             Requested size: 186.70558pt x 179.67902pt.
-[61 <./TUTU_GRAPHES_files/figure-latex/unnamed-chunk-218-1.pdf> <./TUTU_GRAPHES
-_files/figure-latex/unnamed-chunk-226-1.pdf>]
-<TUTU_GRAPHES_files/figure-latex/unnamed-chunk-242-1.pdf, id=1226, 459.7175pt x
+<use TUTU_GRAPHES_files/figure-latex/unnamed-chunk-225-1.pdf>
+Package pdftex.def Info: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-225-1.pd
+f  used on input line 2963.
+(pdftex.def)             Requested size: 182.6904pt x 179.67902pt.
+<TUTU_GRAPHES_files/figure-latex/unnamed-chunk-227-1.pdf, id=1400, 459.7175pt x
+ 315.1775pt>
+File: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-227-1.pdf Graphic file (typ
+e pdf)
+<use TUTU_GRAPHES_files/figure-latex/unnamed-chunk-227-1.pdf>
+Package pdftex.def Info: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-227-1.pd
+f  used on input line 2978.
+(pdftex.def)             Requested size: 444.78203pt x 304.9379pt.
+[74 <./TUTU_GRAPHES_files/figure-latex/unnamed-chunk-225-1.pdf>]
+<TUTU_GRAPHES_files/figure-latex/unnamed-chunk-228-1.pdf, id=1416, 182.6825pt x
+ 179.67125pt>
+File: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-228-1.pdf Graphic file (typ
+e pdf)
+<use TUTU_GRAPHES_files/figure-latex/unnamed-chunk-228-1.pdf>
+Package pdftex.def Info: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-228-1.pd
+f  used on input line 2987.
+(pdftex.def)             Requested size: 182.6904pt x 179.67902pt.
+<TUTU_GRAPHES_files/figure-latex/unnamed-chunk-230-1.pdf, id=1417, 181.67876pt 
+x 179.67125pt>
+File: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-230-1.pdf Graphic file (typ
+e pdf)
+<use TUTU_GRAPHES_files/figure-latex/unnamed-chunk-230-1.pdf>
+Package pdftex.def Info: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-230-1.pd
+f  used on input line 3002.
+(pdftex.def)             Requested size: 181.68384pt x 179.67627pt.
+[75 <./TUTU_GRAPHES_files/figure-latex/unnamed-chunk-227-1.pdf> <./TUTU_GRAPHES
+_files/figure-latex/unnamed-chunk-228-1.pdf>]
+<TUTU_GRAPHES_files/figure-latex/unnamed-chunk-236-1.pdf, id=1437, 459.7175pt x
+ 315.1775pt>
+File: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-236-1.pdf Graphic file (typ
+e pdf)
+<use TUTU_GRAPHES_files/figure-latex/unnamed-chunk-236-1.pdf>
+Package pdftex.def Info: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-236-1.pd
+f  used on input line 3044.
+(pdftex.def)             Requested size: 444.78203pt x 304.9379pt.
+[76 <./TUTU_GRAPHES_files/figure-latex/unnamed-chunk-230-1.pdf>]
+<TUTU_GRAPHES_files/figure-latex/unnamed-chunk-237-1.pdf, id=1450, 179.67125pt 
+x 179.67125pt>
+File: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-237-1.pdf Graphic file (typ
+e pdf)
+<use TUTU_GRAPHES_files/figure-latex/unnamed-chunk-237-1.pdf>
+Package pdftex.def Info: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-237-1.pd
+f  used on input line 3053.
+(pdftex.def)             Requested size: 179.6845pt x 179.6845pt.
+<TUTU_GRAPHES_files/figure-latex/unnamed-chunk-238-1.pdf, id=1451, 179.67125pt 
+x 179.67125pt>
+File: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-238-1.pdf Graphic file (typ
+e pdf)
+<use TUTU_GRAPHES_files/figure-latex/unnamed-chunk-238-1.pdf>
+Package pdftex.def Info: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-238-1.pd
+f  used on input line 3062.
+(pdftex.def)             Requested size: 179.6845pt x 179.6845pt.
+[77 <./TUTU_GRAPHES_files/figure-latex/unnamed-chunk-236-1.pdf> <./TUTU_GRAPHES
+_files/figure-latex/unnamed-chunk-237-1.pdf>]
+<TUTU_GRAPHES_files/figure-latex/unnamed-chunk-241-1.pdf, id=1470, 459.7175pt x
  313.17pt>
-File: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-242-1.pdf Graphic file (typ
+File: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-241-1.pdf Graphic file (typ
 e pdf)
-<use TUTU_GRAPHES_files/figure-latex/unnamed-chunk-242-1.pdf>
-Package pdftex.def Info: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-242-1.pd
-f  used on input line 2395.
+<use TUTU_GRAPHES_files/figure-latex/unnamed-chunk-241-1.pdf>
+Package pdftex.def Info: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-241-1.pd
+f  used on input line 3110.
 (pdftex.def)             Requested size: 459.7304pt x 313.17877pt.
-[62]
+[78 <./TUTU_GRAPHES_files/figure-latex/unnamed-chunk-238-1.pdf>] [79 <./TUTU_GR
+APHES_files/figure-latex/unnamed-chunk-241-1.pdf>]
+<TUTU_GRAPHES_files/figure-latex/unnamed-chunk-245-1.pdf, id=1498, 453.695pt x 
+313.17pt>
+File: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-245-1.pdf Graphic file (typ
+e pdf)
+<use TUTU_GRAPHES_files/figure-latex/unnamed-chunk-245-1.pdf>
+Package pdftex.def Info: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-245-1.pd
+f  used on input line 3163.
+(pdftex.def)             Requested size: 453.6939pt x 313.16922pt.
+<TUTU_GRAPHES_files/figure-latex/unnamed-chunk-247-1.pdf, id=1499, 453.695pt x 
+313.17pt>
+File: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-247-1.pdf Graphic file (typ
+e pdf)
+<use TUTU_GRAPHES_files/figure-latex/unnamed-chunk-247-1.pdf>
+Package pdftex.def Info: TUTU_GRAPHES_files/figure-latex/unnamed-chunk-247-1.pd
+f  used on input line 3182.
+(pdftex.def)             Requested size: 453.6939pt x 313.16922pt.
+[80 <./TUTU_GRAPHES_files/figure-latex/unnamed-chunk-245-1.pdf>]
 No file TUTU_GRAPHES.bbl.
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 2417.
-[63 <./TUTU_GRAPHES_files/figure-latex/unnamed-chunk-242-1.pdf>]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 2417.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 3190.
+[81 <./TUTU_GRAPHES_files/figure-latex/unnamed-chunk-247-1.pdf>]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 3190.
 (./TUTU_GRAPHES.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 2417.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 2417.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 3190.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 3190.
  ) 
 Here is how much of TeX's memory you used:
- 16387 strings out of 492639
- 257042 string characters out of 6129301
- 368909 words of memory out of 5000000
- 19734 multiletter control sequences out of 15000+600000
+ 16581 strings out of 492639
+ 264826 string characters out of 6129301
+ 370541 words of memory out of 5000000
+ 19905 multiletter control sequences out of 15000+600000
  69631 words of font info for 101 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 35i,6n,38p,811b,592s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 35i,6n,38p,811b,627s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/lm/lm-ts1.enc}{/usr/local
 /texlive/2018/texmf-dist/fonts/enc/dvips/lm/lm-mathex.enc}{/usr/local/texlive/2
 018/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}{/usr/local/texlive/2018/texmf-dist
@@ -1669,10 +1916,10 @@ exmf-dist/fonts/type1/public/lm/lmsy10.pfb></usr/local/texlive/2018/texmf-dist/
 fonts/type1/public/lm/lmtk10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type
 1/public/lm/lmtt10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/l
 m/lmtti10.pfb>
-Output written on TUTU_GRAPHES.pdf (63 pages, 1498006 bytes).
+Output written on TUTU_GRAPHES.pdf (81 pages, 1953497 bytes).
 PDF statistics:
- 1396 PDF objects out of 1440 (max. 8388607)
- 1010 compressed objects within 11 object streams
- 212 named destinations out of 1000 (max. 500000)
- 12854 words of extra memory for PDF output out of 14400 (max. 10000000)
+ 1680 PDF objects out of 1728 (max. 8388607)
+ 1200 compressed objects within 12 object streams
+ 230 named destinations out of 1000 (max. 500000)
+ 12979 words of extra memory for PDF output out of 14400 (max. 10000000)
 
