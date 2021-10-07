@@ -24,7 +24,7 @@
 <meta name="author" content="Laurent Rouvière" />
 
 
-<meta name="date" content="2021-01-08" />
+<meta name="date" content="2021-10-07" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,6 +33,7 @@
   
 <link rel="prev" href="model-const-graphes.html"/>
 <link rel="next" href="clust-spec.html"/>
+<script src="libs/header-attrs-2.7/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -50,28 +51,25 @@
 
 
 
-<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
-<link href="libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0/anchor-sections.js"></script>
-<script src="libs/htmlwidgets-1.5.2/htmlwidgets.js"></script>
+<script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
 <link href="libs/vis-4.20.1/vis.css" rel="stylesheet" />
 <script src="libs/vis-4.20.1/vis.min.js"></script>
 <script src="libs/visNetwork-binding-2.0.9/visNetwork.js"></script>
 
 
 <style type="text/css">
-code.sourceCode > span { display: inline-block; line-height: 1.25; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-code.sourceCode > span:empty { height: 1.2em; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-code.sourceCode { white-space: pre-wrap; }
-code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -91,7 +89,7 @@ pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-le
 div.sourceCode
   {   }
 @media screen {
-code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -141,31 +139,38 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Présentation</a></li>
-<li class="chapter" data-level="1" data-path="manip-graphes.html"><a href="manip-graphes.html"><i class="fa fa-check"></i><b>1</b> Manipulation de graphes avec <code>igraph</code></a><ul>
-<li class="chapter" data-level="1.1" data-path="manip-graphes.html"><a href="manip-graphes.html#construction-de-graphes-avec-igraph"><i class="fa fa-check"></i><b>1.1</b> Construction de graphes avec igraph</a><ul>
+<li class="chapter" data-level="1" data-path="manip-graphes.html"><a href="manip-graphes.html"><i class="fa fa-check"></i><b>1</b> Manipulation de graphes avec <code>igraph</code></a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="manip-graphes.html"><a href="manip-graphes.html#construction-de-graphes-avec-igraph"><i class="fa fa-check"></i><b>1.1</b> Construction de graphes avec igraph</a>
+<ul>
 <li class="chapter" data-level="1.1.1" data-path="manip-graphes.html"><a href="manip-graphes.html#quelques-fonctions-r-pour-construire-des-graphes"><i class="fa fa-check"></i><b>1.1.1</b> Quelques fonctions R pour construire des graphes</a></li>
 <li class="chapter" data-level="1.1.2" data-path="manip-graphes.html"><a href="manip-graphes.html#construction-à-partir-dun-fichier-externe"><i class="fa fa-check"></i><b>1.1.2</b> Construction à partir d’un fichier externe</a></li>
 <li class="chapter" data-level="1.1.3" data-path="manip-graphes.html"><a href="manip-graphes.html#matrice-dadjacence"><i class="fa fa-check"></i><b>1.1.3</b> Matrice d’adjacence</a></li>
 </ul></li>
-<li class="chapter" data-level="1.2" data-path="manip-graphes.html"><a href="manip-graphes.html#visualisation-dun-graphe"><i class="fa fa-check"></i><b>1.2</b> Visualisation d’un graphe</a><ul>
+<li class="chapter" data-level="1.2" data-path="manip-graphes.html"><a href="manip-graphes.html#visualisation-dun-graphe"><i class="fa fa-check"></i><b>1.2</b> Visualisation d’un graphe</a>
+<ul>
 <li class="chapter" data-level="1.2.1" data-path="manip-graphes.html"><a href="manip-graphes.html#network-layouts-algorithmes-usuels-de-visualisation"><i class="fa fa-check"></i><b>1.2.1</b> Network layouts : algorithmes usuels de visualisation</a></li>
 <li class="chapter" data-level="1.2.2" data-path="manip-graphes.html"><a href="manip-graphes.html#personnalisation-du-graphe"><i class="fa fa-check"></i><b>1.2.2</b> Personnalisation du graphe</a></li>
 </ul></li>
 <li class="chapter" data-level="1.3" data-path="manip-graphes.html"><a href="manip-graphes.html#statistiques-descriptives-sur-les-graphes"><i class="fa fa-check"></i><b>1.3</b> Statistiques descriptives sur les graphes</a></li>
-<li class="chapter" data-level="1.4" data-path="manip-graphes.html"><a href="manip-graphes.html#autres-packages-pour-visualiser-les-graphes"><i class="fa fa-check"></i><b>1.4</b> Autres packages pour visualiser les graphes</a><ul>
+<li class="chapter" data-level="1.4" data-path="manip-graphes.html"><a href="manip-graphes.html#autres-packages-pour-visualiser-les-graphes"><i class="fa fa-check"></i><b>1.4</b> Autres packages pour visualiser les graphes</a>
+<ul>
 <li class="chapter" data-level="1.4.1" data-path="manip-graphes.html"><a href="manip-graphes.html#graphes-dynamiques-avec-visnetwork"><i class="fa fa-check"></i><b>1.4.1</b> Graphes dynamiques avec visNetwork</a></li>
 <li class="chapter" data-level="1.4.2" data-path="manip-graphes.html"><a href="manip-graphes.html#graphes-ggplot-avec-ggnet"><i class="fa fa-check"></i><b>1.4.2</b> Graphes <strong>ggplot</strong> avec <strong>ggnet</strong></a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="model-const-graphes.html"><a href="model-const-graphes.html"><i class="fa fa-check"></i><b>2</b> Modèles et construction de graphes</a><ul>
-<li class="chapter" data-level="2.1" data-path="model-const-graphes.html"><a href="model-const-graphes.html#modèles-de-graphe"><i class="fa fa-check"></i><b>2.1</b> Modèles de graphe</a><ul>
+<li class="chapter" data-level="2" data-path="model-const-graphes.html"><a href="model-const-graphes.html"><i class="fa fa-check"></i><b>2</b> Modèles et construction de graphes</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="model-const-graphes.html"><a href="model-const-graphes.html#modèles-de-graphe"><i class="fa fa-check"></i><b>2.1</b> Modèles de graphe</a>
+<ul>
 <li class="chapter" data-level="2.1.1" data-path="model-const-graphes.html"><a href="model-const-graphes.html#graphe-derdos-renyi"><i class="fa fa-check"></i><b>2.1.1</b> Graphe d’Erdos-Renyi</a></li>
 <li class="chapter" data-level="2.1.2" data-path="model-const-graphes.html"><a href="model-const-graphes.html#modèles-à-blocs-stochastiques"><i class="fa fa-check"></i><b>2.1.2</b> Modèles à blocs stochastiques</a></li>
 </ul></li>
 <li class="chapter" data-level="2.2" data-path="model-const-graphes.html"><a href="model-const-graphes.html#construire-un-graphe-à-partir-de-données-classiques"><i class="fa fa-check"></i><b>2.2</b> Construire un graphe à partir de données “classiques”</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="commu-modul.html"><a href="commu-modul.html"><i class="fa fa-check"></i><b>3</b> Détection de communautés : approche modularité</a></li>
-<li class="chapter" data-level="4" data-path="clust-spec.html"><a href="clust-spec.html"><i class="fa fa-check"></i><b>4</b> Clustering spectral</a><ul>
+<li class="chapter" data-level="4" data-path="clust-spec.html"><a href="clust-spec.html"><i class="fa fa-check"></i><b>4</b> Clustering spectral</a>
+<ul>
 <li class="chapter" data-level="4.1" data-path="clust-spec.html"><a href="clust-spec.html#clustering-spectral-sur-1-graphe-à-3-composantes-connexes"><i class="fa fa-check"></i><b>4.1</b> Clustering spectral sur 1 graphe à 3 composantes connexes</a></li>
 <li class="chapter" data-level="4.2" data-path="clust-spec.html"><a href="clust-spec.html#programmer-le-clustering-spectral-pour-un-graphe"><i class="fa fa-check"></i><b>4.2</b> Programmer le clustering spectral pour un graphe</a></li>
 <li class="chapter" data-level="4.3" data-path="clust-spec.html"><a href="clust-spec.html#exemple-sur-des-graphes-réels"><i class="fa fa-check"></i><b>4.3</b> Exemple sur des graphes “réels”</a></li>
@@ -191,21 +196,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="commu-modul" class="section level1">
+<div id="commu-modul" class="section level1" number="3">
 <h1><span class="header-section-number">Chapitre 3</span> Détection de communautés : approche modularité</h1>
-<p>Une problématique souvent liée aux graphes est la <strong>détection de communautés</strong>. Elle consiste à trouver des groupes de nœuds très liés entre eux. Cette thématique est proche du clustering. Nous présentons dans cette partie les approches liés à la <strong>modularité</strong>. Cette dernière est un critère qui permet de mesurer la performance d’une partition de nœuds dans un graphe, plus la modularité est grande, meilleure est la partition.</p>
+<p>Une problématique souvent liée aux graphes est la <strong>détection de communautés</strong>. Elle consiste à trouver des groupes de nœuds très liés entre eux. Cette thématique est proche du clustering. Nous présentons dans cette partie les approches liées à la <strong>modularité</strong>. Cette dernière est un critère qui permet de mesurer la performance d’une partition de nœuds dans un graphe, plus la modularité est grande, meilleure est la partition.</p>
 
 <div class="exercise">
 <span id="exr:exo-intro-modularite" class="exercise"><strong>Exercice 3.1  (Calculs de modularité)  </strong></span>
 </div>
-
 <p>On considère le graphe suivant</p>
-<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="commu-modul.html#cb46-1"></a>G &lt;-<span class="st"> </span><span class="kw">make_graph</span>(<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">1</span>,<span class="dv">4</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">4</span>,<span class="dv">6</span>),<span class="dt">directed =</span> <span class="ot">FALSE</span>)</span>
-<span id="cb46-2"><a href="commu-modul.html#cb46-2"></a><span class="kw">plot</span>(G)</span></code></pre></div>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="commu-modul.html#cb43-1" aria-hidden="true" tabindex="-1"></a>G <span class="ot">&lt;-</span> <span class="fu">make_graph</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">1</span>,<span class="dv">4</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">4</span>,<span class="dv">6</span>),<span class="at">directed =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb43-2"><a href="commu-modul.html#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(G)</span></code></pre></div>
 <p><img src="TUTU_GRAPHES_files/figure-html/unnamed-chunk-140-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>et les deux partitions des nœuds suivantes.</p>
-<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="commu-modul.html#cb47-1"></a>cl1 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">2</span>)</span>
-<span id="cb47-2"><a href="commu-modul.html#cb47-2"></a>cl2 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="commu-modul.html#cb44-1" aria-hidden="true" tabindex="-1"></a>cl1 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">2</span>)</span>
+<span id="cb44-2"><a href="commu-modul.html#cb44-2" aria-hidden="true" tabindex="-1"></a>cl2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">1</span>)</span></code></pre></div>
 <ol style="list-style-type: decimal">
 <li><p>Calculer la <strong>modularité</strong> pour ces deux partitions en utilisant la définition (la formule).</p></li>
 <li><p>Retrouver ces deux valeurs avec la fonction <strong>modularity</strong>.</p></li>
@@ -215,19 +219,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="exercise">
 <span id="exr:exo-edgebet-louvain" class="exercise"><strong>Exercice 3.2  (Edge betweeness et méthode de Louvain)  </strong></span>
 </div>
-
 <p>On considère le graphe suivant :</p>
-<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="commu-modul.html#cb48-1"></a>G1 &lt;-<span class="st"> </span><span class="kw">make_full_graph</span>(<span class="dv">3</span>)</span>
-<span id="cb48-2"><a href="commu-modul.html#cb48-2"></a>G2 &lt;-<span class="st"> </span><span class="kw">make_full_graph</span>(<span class="dv">3</span>)</span>
-<span id="cb48-3"><a href="commu-modul.html#cb48-3"></a>G3 &lt;-<span class="st"> </span><span class="kw">make_full_graph</span>(<span class="dv">2</span>)</span>
-<span id="cb48-4"><a href="commu-modul.html#cb48-4"></a>G4 &lt;-<span class="st"> </span><span class="kw">make_full_graph</span>(<span class="dv">3</span>)</span>
-<span id="cb48-5"><a href="commu-modul.html#cb48-5"></a>G5 &lt;-<span class="st"> </span><span class="kw">make_full_graph</span>(<span class="dv">3</span>)</span>
-<span id="cb48-6"><a href="commu-modul.html#cb48-6"></a>G &lt;-<span class="st"> </span>G1<span class="op">+</span>G2<span class="op">+</span>G3<span class="op">+</span>G4<span class="op">+</span>G5</span>
-<span id="cb48-7"><a href="commu-modul.html#cb48-7"></a>G &lt;-<span class="st"> </span><span class="kw">add.edges</span>(G, <span class="kw">c</span>(<span class="dv">6</span>,<span class="dv">7</span>))</span>
-<span id="cb48-8"><a href="commu-modul.html#cb48-8"></a>G &lt;-<span class="st"> </span><span class="kw">add.edges</span>(G, <span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">7</span>))</span>
-<span id="cb48-9"><a href="commu-modul.html#cb48-9"></a>G &lt;-<span class="st"> </span><span class="kw">add.edges</span>(G, <span class="kw">c</span>(<span class="dv">8</span>,<span class="dv">9</span>))</span>
-<span id="cb48-10"><a href="commu-modul.html#cb48-10"></a>G &lt;-<span class="st"> </span><span class="kw">add.edges</span>(G, <span class="kw">c</span>(<span class="dv">8</span>,<span class="dv">12</span>))</span>
-<span id="cb48-11"><a href="commu-modul.html#cb48-11"></a><span class="kw">plot</span>(G)</span></code></pre></div>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="commu-modul.html#cb45-1" aria-hidden="true" tabindex="-1"></a>G1 <span class="ot">&lt;-</span> <span class="fu">make_full_graph</span>(<span class="dv">3</span>)</span>
+<span id="cb45-2"><a href="commu-modul.html#cb45-2" aria-hidden="true" tabindex="-1"></a>G2 <span class="ot">&lt;-</span> <span class="fu">make_full_graph</span>(<span class="dv">3</span>)</span>
+<span id="cb45-3"><a href="commu-modul.html#cb45-3" aria-hidden="true" tabindex="-1"></a>G3 <span class="ot">&lt;-</span> <span class="fu">make_full_graph</span>(<span class="dv">2</span>)</span>
+<span id="cb45-4"><a href="commu-modul.html#cb45-4" aria-hidden="true" tabindex="-1"></a>G4 <span class="ot">&lt;-</span> <span class="fu">make_full_graph</span>(<span class="dv">3</span>)</span>
+<span id="cb45-5"><a href="commu-modul.html#cb45-5" aria-hidden="true" tabindex="-1"></a>G5 <span class="ot">&lt;-</span> <span class="fu">make_full_graph</span>(<span class="dv">3</span>)</span>
+<span id="cb45-6"><a href="commu-modul.html#cb45-6" aria-hidden="true" tabindex="-1"></a>G <span class="ot">&lt;-</span> G1<span class="sc">+</span>G2<span class="sc">+</span>G3<span class="sc">+</span>G4<span class="sc">+</span>G5</span>
+<span id="cb45-7"><a href="commu-modul.html#cb45-7" aria-hidden="true" tabindex="-1"></a>G <span class="ot">&lt;-</span> <span class="fu">add.edges</span>(G, <span class="fu">c</span>(<span class="dv">6</span>,<span class="dv">7</span>))</span>
+<span id="cb45-8"><a href="commu-modul.html#cb45-8" aria-hidden="true" tabindex="-1"></a>G <span class="ot">&lt;-</span> <span class="fu">add.edges</span>(G, <span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">7</span>))</span>
+<span id="cb45-9"><a href="commu-modul.html#cb45-9" aria-hidden="true" tabindex="-1"></a>G <span class="ot">&lt;-</span> <span class="fu">add.edges</span>(G, <span class="fu">c</span>(<span class="dv">8</span>,<span class="dv">9</span>))</span>
+<span id="cb45-10"><a href="commu-modul.html#cb45-10" aria-hidden="true" tabindex="-1"></a>G <span class="ot">&lt;-</span> <span class="fu">add.edges</span>(G, <span class="fu">c</span>(<span class="dv">8</span>,<span class="dv">12</span>))</span>
+<span id="cb45-11"><a href="commu-modul.html#cb45-11" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(G)</span></code></pre></div>
 <p><img src="TUTU_GRAPHES_files/figure-html/unnamed-chunk-152-1.png" width="672" style="display: block; margin: auto;" /></p>
 <ol style="list-style-type: decimal">
 <li><p>Calculer l’<strong>edge betweeness</strong> de chaque arête et identifier l’arête qui possède la plus forte valeur.</p></li>
@@ -242,10 +245,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="exercise">
 <span id="exr:exo-commu-karamis" class="exercise"><strong>Exercice 3.3  (Communautés pour karaté et friends)  </strong></span>
 </div>
-
 <p>Utiliser les techniques basées sur la modularité pour faire de classes sur les données <strong>karate</strong> et <strong>friends</strong>.</p>
-<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="commu-modul.html#cb49-1"></a><span class="kw">library</span>(igraphdata)</span>
-<span id="cb49-2"><a href="commu-modul.html#cb49-2"></a><span class="kw">data</span>(karate)</span></code></pre></div>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="commu-modul.html#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(igraphdata)</span>
+<span id="cb46-2"><a href="commu-modul.html#cb46-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(karate)</span></code></pre></div>
 
 </div>
             </section>
