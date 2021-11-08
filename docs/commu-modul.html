@@ -24,7 +24,7 @@
 <meta name="author" content="Laurent Rouvière" />
 
 
-<meta name="date" content="2021-11-07" />
+<meta name="date" content="2021-11-08" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -202,11 +202,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="commu-modul" class="section level1" number="3">
 <h1><span class="header-section-number">Chapitre 3</span> Détection de communautés : approche modularité</h1>
 <p>Une problématique souvent liée aux graphes est la <strong>détection de communautés</strong>. Elle consiste à trouver des groupes de nœuds très liés entre eux. Cette thématique est proche du clustering. Nous présentons dans cette partie les approches liées à la <strong>modularité</strong>. Cette dernière est un critère qui permet de mesurer la performance d’une partition de nœuds dans un graphe, plus la modularité est grande, meilleure est la partition.</p>
-ffalse{-91-67-97-108-99-117-108-115-32-100-101-32-109-111-100-117-108-97-114-105-116-233-93-}
 <div class="exercise">
-<span id="exr:exo-intro-modularite" class="exercise"><strong>Exercice 3.1  \iffalse (Calculs de modularité)  </strong></span>
-</div>
-<p>On considère le graphe suivant</p>
+<p><span id="exr:exo-intro-modularite" class="exercise"><strong>Exercice 3.1  (Calculs de modularité) </strong></span>On considère le graphe suivant</p>
 <div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="commu-modul.html#cb43-1" aria-hidden="true" tabindex="-1"></a>G <span class="ot">&lt;-</span> <span class="fu">make_graph</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">1</span>,<span class="dv">4</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">4</span>,<span class="dv">6</span>),<span class="at">directed =</span> <span class="cn">FALSE</span>)</span>
 <span id="cb43-2"><a href="commu-modul.html#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(G)</span></code></pre></div>
 <p><img src="TUTU_GRAPHES_files/figure-html/unnamed-chunk-140-1.png" width="672" style="display: block; margin: auto;" /></p>
@@ -218,11 +215,9 @@ ffalse{-91-67-97-108-99-117-108-115-32-100-101-32-109-111-100-117-108-97-114-105
 <li><p>Retrouver ces deux valeurs avec la fonction <strong>modularity</strong>.</p></li>
 <li><p>Construire un graphe et proposer une partition avec une modularité élevée et une autre avec une modularité faible.</p></li>
 </ol>
-ffalse{-91-69-100-103-101-32-98-101-116-119-101-101-110-101-115-115-32-101-116-32-109-233-116-104-111-100-101-32-100-101-32-76-111-117-118-97-105-110-93-}
-<div class="exercise">
-<span id="exr:exo-edgebet-louvain" class="exercise"><strong>Exercice 3.2  \iffalse (Edge betweeness et méthode de Louvain)  </strong></span>
 </div>
-<p>On considère le graphe suivant :</p>
+<div class="exercise">
+<p><span id="exr:exo-edgebet-louvain" class="exercise"><strong>Exercice 3.2  (Edge betweeness et méthode de Louvain) </strong></span>On considère le graphe suivant :</p>
 <div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="commu-modul.html#cb45-1" aria-hidden="true" tabindex="-1"></a>G1 <span class="ot">&lt;-</span> <span class="fu">make_full_graph</span>(<span class="dv">3</span>)</span>
 <span id="cb45-2"><a href="commu-modul.html#cb45-2" aria-hidden="true" tabindex="-1"></a>G2 <span class="ot">&lt;-</span> <span class="fu">make_full_graph</span>(<span class="dv">3</span>)</span>
 <span id="cb45-3"><a href="commu-modul.html#cb45-3" aria-hidden="true" tabindex="-1"></a>G3 <span class="ot">&lt;-</span> <span class="fu">make_full_graph</span>(<span class="dv">2</span>)</span>
@@ -244,13 +239,12 @@ ffalse{-91-69-100-103-101-32-98-101-116-119-101-101-110-101-115-115-32-101-116-3
 <li><p>Comparer les modularités obtenues.</p></li>
 <li><p>Comparer avec <strong>cluster_optimal</strong>.</p></li>
 </ol>
-ffalse{-91-67-111-109-109-117-110-97-117-116-233-115-32-112-111-117-114-32-107-97-114-97-116-233-32-101-116-32-102-114-105-101-110-100-115-93-}
-<div class="exercise">
-<span id="exr:exo-commu-karamis" class="exercise"><strong>Exercice 3.3  \iffalse (Communautés pour karaté et friends)  </strong></span>
 </div>
-<p>Utiliser les techniques basées sur la modularité pour faire de classes sur les données <strong>karate</strong> et <strong>friends</strong>.</p>
+<div class="exercise">
+<p><span id="exr:exo-commu-karamis" class="exercise"><strong>Exercice 3.3  (Communautés pour karaté et friends) </strong></span>Utiliser les techniques basées sur la modularité pour faire de classes sur les données <strong>karate</strong> et <strong>friends</strong>.</p>
 <div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="commu-modul.html#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(igraphdata)</span>
 <span id="cb46-2"><a href="commu-modul.html#cb46-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(karate)</span></code></pre></div>
+</div>
 
 </div>
             </section>

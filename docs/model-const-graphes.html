@@ -24,7 +24,7 @@
 <meta name="author" content="Laurent Rouvière" />
 
 
-<meta name="date" content="2021-11-07" />
+<meta name="date" content="2021-11-08" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -223,22 +223,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb38-9"><a href="model-const-graphes.html#cb38-9" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(G2)</span></code></pre></div>
 <p><img src="TUTU_GRAPHES_files/figure-html/unnamed-chunk-90-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>On rappelle que dans un graphe d’Erdos-Renyi la distribution du degrés du nœud <span class="math inline">\(i\)</span> est binomiale : <span class="math inline">\(\mathcal B(n-1,p)\)</span>.</p>
-ffalse{-91-68-105-115-116-114-105-98-117-116-105-111-110-32-100-101-115-32-100-101-103-114-233-115-93-}
 <div class="exercise">
-<span id="exr:exo-comp-erdos" class="exercise"><strong>Exercice 2.1  \iffalse (Distribution des degrés)  </strong></span>
+<p><span id="exr:exo-comp-erdos" class="exercise"><strong>Exercice 2.1  (Distribution des degrés) </strong></span>A l’aide d’un diagramme en barre, comparer les distributions empiriques des degrés des noeuds (on pourra utiliser <strong>degree.distribution</strong>) à leur distribution théorique binomiale (<strong>dbinom</strong>) pour les deux graphes précédents.</p>
 </div>
-<p>A l’aide d’un diagramme en barre, comparer les distributions empiriques des degrés des noeuds (on pourra utiliser <strong>degree.distribution</strong>) à leur distribution théorique binomiale (<strong>dbinom</strong>) pour les deux graphes précédents.</p>
-ffalse{-91-76-101-115-32-109-105-115-233-114-97-98-108-101-115-32-115-111-110-116-45-105-108-115-32-100-101-115-32-69-114-100-111-115-45-82-101-110-121-105-93-}
 <div class="exercise">
-<span id="exr:exo-mis-vs-erdos" class="exercise"><strong>Exercice 2.2  \iffalse (Les misérables sont-ils des Erdos-Renyi)  </strong></span>
-</div>
-<p>On considère le graphe sur <strong>les misérables</strong> où une interaction entre deux personnages est définie par la co-occurrence des ces deux personnages dans un même chapitre.</p>
+<p><span id="exr:exo-mis-vs-erdos" class="exercise"><strong>Exercice 2.2  (Les misérables sont-ils des Erdos-Renyi) </strong></span>On considère le graphe sur <strong>les misérables</strong> où une interaction entre deux personnages est définie par la co-occurrence des ces deux personnages dans un même chapitre.</p>
 <div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="model-const-graphes.html#cb39-1" aria-hidden="true" tabindex="-1"></a>miserab <span class="ot">&lt;-</span> <span class="fu">read.graph</span>(<span class="st">&#39;data/lesmis.gml&#39;</span>,<span class="at">format=</span><span class="st">&quot;gml&quot;</span>)</span></code></pre></div>
 <ol style="list-style-type: decimal">
 <li><p>Visualiser la distribution des degrés de ce graphe.</p></li>
 <li><p>On souhaite comparer cette distribution à celle d’un graphe d’Erdos-Renyi. Proposer un moyen d’estimer les paramètres (<span class="math inline">\(n\)</span> et <span class="math inline">\(p\)</span>).</p></li>
 <li><p>Comparer la distribution empirique du graphe à celle théorique.</p></li>
 </ol>
+</div>
 </div>
 <div id="modèles-à-blocs-stochastiques" class="section level3" number="2.1.2">
 <h3><span class="header-section-number">2.1.2</span> Modèles à blocs stochastiques</h3>
@@ -255,11 +251,8 @@ ffalse{-91-76-101-115-32-109-105-115-233-114-97-98-108-101-115-32-115-111-110-11
 <span id="cb40-10"><a href="model-const-graphes.html#cb40-10" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(G)</span></code></pre></div>
 <p><img src="TUTU_GRAPHES_files/figure-html/unnamed-chunk-98-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>On visualise qu’il s’agit bien d’un graphe avec trois <strong>communautés</strong> ou <strong>groupes</strong>, ce qui est dû aux fortes probabilités sur la diagonale de la matrice de connectivité et aux faibles valeurs de connectivité en dehors la diagonale.</p>
-ffalse{-91-67-108-117-115-116-101-114-105-110-103-32-97-118-101-99-32-117-110-32-109-111-100-232-108-101-32-42-42-83-66-77-42-42-93-}
 <div class="exercise">
-<span id="exr:exo-clust-SBM" class="exercise"><strong>Exercice 2.3  \iffalse (Clustering avec un modèle <strong>SBM</strong>)  </strong></span>
-</div>
-<p>On considère le graphe <span class="math inline">\(G\)</span> construit précédemment.</p>
+<p><span id="exr:exo-clust-SBM" class="exercise"><strong>Exercice 2.3  (Clustering avec un modèle **SBM**) </strong></span>On considère le graphe <span class="math inline">\(G\)</span> construit précédemment.</p>
 <ol style="list-style-type: decimal">
 <li><p>Calculer la matrice d’adjacence du graphe. On pourra utiliser <strong>as_adj</strong>.</p></li>
 <li><p>Les commandes suivantes permettent d’estimer les paramètres d’un graphe <strong>SBM</strong></p>
@@ -271,11 +264,10 @@ ffalse{-91-67-108-117-115-116-101-114-105-110-103-32-97-118-101-99-32-117-110-32
 <li><p>On trouve dans <strong>mysbm$memberships[[3]]$Z</strong> les estimations des probabilités a posteriori d’être dans chaque cluster. Déduire de cette matrice un groupe pour chaque observation.</p></li>
 <li><p>Visualiser les clusters sur le graphe.</p></li>
 </ol>
-ffalse{-91-83-66-77-32-112-111-117-114-32-108-101-32-107-97-114-97-116-233-93-}
-<div class="exercise">
-<span id="exr:exo-karate-sbm" class="exercise"><strong>Exercice 2.4  \iffalse (SBM pour le karaté)  </strong></span>
 </div>
-<p>A l’aide d’un modèle SBM, identifier des clusters ou communautés sur le graphe <strong>karate</strong>.</p>
+<div class="exercise">
+<p><span id="exr:exo-karate-sbm" class="exercise"><strong>Exercice 2.4  (SBM pour le karaté) </strong></span>A l’aide d’un modèle SBM, identifier des clusters ou communautés sur le graphe <strong>karate</strong>.</p>
+</div>
 </div>
 </div>
 <div id="construire-un-graphe-à-partir-de-données-classiques" class="section level2" number="2.2">
@@ -285,11 +277,8 @@ ffalse{-91-83-66-77-32-112-111-117-114-32-108-101-32-107-97-114-97-116-233-93-}
 <li><span class="math inline">\(\varepsilon\)</span>-neighborhood graph : on met une arête entre <span class="math inline">\(i\)</span> et <span class="math inline">\(j\)</span> si la distance entre <span class="math inline">\(i\)</span> et <span class="math inline">\(j\)</span> est plus petite qu’un seuil <span class="math inline">\(\varepsilon\)</span> ;</li>
 <li>plus proches voisins : on met une arête entre <span class="math inline">\(i\)</span> et <span class="math inline">\(j\)</span> si <span class="math inline">\(i\)</span> est parmi les plus proches voisins de <span class="math inline">\(j\)</span>.</li>
 </ul>
-ffalse{-91-80-108-117-115-32-112-114-111-99-104-101-115-32-118-111-105-115-105-110-115-32-112-111-117-114-32-108-101-115-32-105-114-105-115-93-}
 <div class="exercise">
-<span id="exr:exo-graphppv-iris" class="exercise"><strong>Exercice 2.5  \iffalse (Plus proches voisins pour les iris)  </strong></span>
-</div>
-<p>On reprend le jeu de données <strong>iris</strong> vu en cours, dont on extrait un sous échantillon.</p>
+<p><span id="exr:exo-graphppv-iris" class="exercise"><strong>Exercice 2.5  (Plus proches voisins pour les iris) </strong></span>On reprend le jeu de données <strong>iris</strong> vu en cours, dont on extrait un sous échantillon.</p>
 <div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="model-const-graphes.html#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(iris)</span>
 <span id="cb42-2"><a href="model-const-graphes.html#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">12345</span>)</span>
 <span id="cb42-3"><a href="model-const-graphes.html#cb42-3" aria-hidden="true" tabindex="-1"></a>donnees <span class="ot">&lt;-</span> iris[<span class="fu">sample</span>(<span class="fu">nrow</span>(iris),<span class="dv">30</span>),]</span>
@@ -321,6 +310,7 @@ ffalse{-91-80-108-117-115-32-112-114-111-99-104-101-115-32-118-111-105-115-105-1
 <li><p>Comparer les nombres d’arêtes de chaque graphe.</p></li>
 <li><p>On considère maintenant le graphe de ppv (non mutuels) à 10 ppv. Ajuster un modèle SBM à 3 groupes sur ce graphe. Comparer les groupes obtenus aux espèces d’iris.</p></li>
 </ol>
+</div>
 
 </div>
 </div>

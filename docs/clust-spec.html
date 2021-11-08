@@ -24,7 +24,7 @@
 <meta name="author" content="Laurent Rouvière" />
 
 
-<meta name="date" content="2021-11-07" />
+<meta name="date" content="2021-11-08" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -242,11 +242,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 On vérifie le nombre de composantes connexes</p>
 <div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="clust-spec.html#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">components</span>(G)<span class="sc">$</span>no</span>
 <span id="cb48-2"><a href="clust-spec.html#cb48-2" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="dv">3</span></span></code></pre></div>
-ffalse{-91-76-97-112-108-97-99-105-101-110-32-110-111-110-32-110-111-114-109-97-108-105-115-233-93-}
 <div class="exercise">
-<span id="exr:exo-laplacien-non-norm" class="exercise"><strong>Exercice 4.1  \iffalse (Laplacien non normalisé)  </strong></span>
-</div>
 <ol style="list-style-type: decimal">
+<li></li>
 <li><p>Calculer la matrice d’adjacence de <strong>G</strong> et en déduire le Laplacien non normalisé.</p></li>
 <li><p>Retrouver ce Laplacien avec la fonction <strong>laplacian_matrix</strong>.</p></li>
 <li><p>Calculer les valeurs propres et représenter les sur un graphe. Que remarquez-vous ?</p></li>
@@ -256,20 +254,18 @@ ffalse{-91-76-97-112-108-97-99-105-101-110-32-110-111-110-32-110-111-114-109-97-
 </ol>
 ffalse{-91-76-97-112-108-97-99-105-101-110-32-110-111-114-109-97-108-105-115-233-93-}
 <div class="exercise">
-<span id="exr:exo-laplacien-norm" class="exercise"><strong>Exercice 4.2  \iffalse (Laplacien normalisé)  </strong></span>
+<span id="exr:exo-laplacien-norm" class="exercise"><strong>Exercice 4.1  \iffalse (Laplacien normalisé)  </strong></span>
 </div>
 <p>Refaire le même travail en utilisant le laplacien normalisé. On n’oubliera pas d’ajouter l’étape de normalisation en utilisant par exemple la fonction suivante :</p>
 <div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="clust-spec.html#cb49-1" aria-hidden="true" tabindex="-1"></a>normalize <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
 <span id="cb49-2"><a href="clust-spec.html#cb49-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(x<span class="sc">/</span><span class="fu">sqrt</span>(<span class="fu">sum</span>(x<span class="sc">^</span><span class="dv">2</span>))) </span>
 <span id="cb49-3"><a href="clust-spec.html#cb49-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 </div>
+</div>
 <div id="programmer-le-clustering-spectral-pour-un-graphe" class="section level2" number="4.2">
 <h2><span class="header-section-number">4.2</span> Programmer le clustering spectral pour un graphe</h2>
-ffalse{-91-67-111-110-115-116-114-117-99-116-105-111-110-32-100-101-32-108-39-97-108-103-111-114-105-116-104-109-101-93-}
 <div class="exercise">
-<span id="exr:exo-prog-clust-spec" class="exercise"><strong>Exercice 4.3  \iffalse (Construction de l’algorithme)  </strong></span>
-</div>
-<p>Créer une fonction <strong>R</strong> qui admet en entrée :</p>
+<p><span id="exr:exo-prog-clust-spec" class="exercise"><strong>Exercice 4.2  (Construction de l'algorithme) </strong></span>Créer une fonction <strong>R</strong> qui admet en entrée :</p>
 <ul>
 <li>un graphe</li>
 <li>une valeur de <span class="math inline">\(K\)</span> (un entier positif)</li>
@@ -285,11 +281,9 @@ ffalse{-91-67-111-110-115-116-114-117-99-116-105-111-110-32-100-101-32-108-39-97
 <span id="cb51-2"><a href="clust-spec.html#cb51-2" aria-hidden="true" tabindex="-1"></a>res_spectral <span class="ot">&lt;-</span> <span class="fu">kmeans</span>(res3<span class="sc">$</span>X, <span class="at">centers =</span> <span class="dv">3</span>, <span class="at">nstart =</span> <span class="dv">100</span>)</span>
 <span id="cb51-3"><a href="clust-spec.html#cb51-3" aria-hidden="true" tabindex="-1"></a>res_spectral<span class="sc">$</span>cluster</span>
 <span id="cb51-4"><a href="clust-spec.html#cb51-4" aria-hidden="true" tabindex="-1"></a> [<span class="dv">1</span>] <span class="dv">1</span> <span class="dv">1</span> <span class="dv">1</span> <span class="dv">1</span> <span class="dv">1</span> <span class="dv">3</span> <span class="dv">3</span> <span class="dv">3</span> <span class="dv">2</span> <span class="dv">2</span></span></code></pre></div>
-ffalse{-91-71-114-97-112-104-101-32-97-118-101-99-32-100-101-117-120-32-99-111-109-109-117-110-97-117-116-233-115-32-102-97-105-98-108-101-109-101-110-116-32-99-111-110-110-101-99-116-233-101-115-32-101-110-116-114-101-32-101-108-108-101-115-93-}
-<div class="exercise">
-<span id="exr:exo-spec-deux-commu" class="exercise"><strong>Exercice 4.4  \iffalse (Graphe avec deux communautés faiblement connectées entre elles)  </strong></span>
 </div>
-<p>On considère le graphe suivant obtenu selon un modèle <strong>SBM</strong> :</p>
+<div class="exercise">
+<p><span id="exr:exo-spec-deux-commu" class="exercise"><strong>Exercice 4.3  (Graphe avec deux communautés faiblement connectées entre elles) </strong></span>On considère le graphe suivant obtenu selon un modèle <strong>SBM</strong> :</p>
 <div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="clust-spec.html#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1234</span>)</span>
 <span id="cb52-2"><a href="clust-spec.html#cb52-2" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">25</span><span class="co"># nombre de noeuds</span></span>
 <span id="cb52-3"><a href="clust-spec.html#cb52-3" aria-hidden="true" tabindex="-1"></a>Q <span class="ot">&lt;-</span> <span class="dv">2</span> <span class="co"># nombre de cluster clusters</span></span>
@@ -302,13 +296,12 @@ ffalse{-91-71-114-97-112-104-101-32-97-118-101-99-32-100-101-117-120-32-99-111-1
 <p><img src="TUTU_GRAPHES_files/figure-html/unnamed-chunk-217-1.png" width="672" style="display: block; margin: auto;" />
 Effectuer le clustering spectral sur ce graphe, on essaiera notamment de choisir le nombre de groupes.</p>
 </div>
+</div>
 <div id="exemple-sur-des-graphes-réels" class="section level2" number="4.3">
 <h2><span class="header-section-number">4.3</span> Exemple sur des graphes “réels”</h2>
-ffalse{-91-67-108-117-115-116-101-114-105-110-103-32-115-112-101-99-116-114-97-108-32-115-117-114-32-100-101-117-120-32-103-114-97-112-104-101-115-93-}
 <div class="exercise">
-<span id="exr:exo-spec-friends" class="exercise"><strong>Exercice 4.5  \iffalse (Clustering spectral sur deux graphes)  </strong></span>
-</div>
 <ol style="list-style-type: decimal">
+<li></li>
 <li><p>On considère le graphe <strong>friends</strong> disponible <a href="http://www.sociopatterns.org/datasets/high-school-contact-and-friendship-networks/">ici</a></p>
 <div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="clust-spec.html#cb53-1" aria-hidden="true" tabindex="-1"></a>friends <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="at">file=</span><span class="st">&quot;data/Friendship-network_data_2013.csv&quot;</span>)</span>
 <span id="cb53-2"><a href="clust-spec.html#cb53-2" aria-hidden="true" tabindex="-1"></a>G.friends <span class="ot">&lt;-</span> <span class="fu">graph_from_data_frame</span>(friends,<span class="at">directed=</span>F)  <span class="co"># non dirige</span></span>
@@ -320,14 +313,12 @@ Appliquer le clustering spectral à ce graphe. On pourra comparer la classificat
 <span id="cb54-2"><a href="clust-spec.html#cb54-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(karate)</span></code></pre></div></li>
 </ol>
 </div>
+</div>
 <div id="clustering-spectral-cas-général" class="section level2" number="4.4">
 <h2><span class="header-section-number">4.4</span> Clustering spectral : cas général</h2>
 <p>Nous avons étudié jusqu’ici l’algorithme du clustering spectral pour trouver des clusters de nœuds (ou communautés) dans les graphes. On remarque néanmoins que l’algorithme ne repose pas sur le graphe en lui même, mais uniquement sur une matrice d’adjacence (ou similarité) issue de ce graphe. Il est par conséquent possible d’utiliser cet algorithme pour des données standards (tableaux <code>individus-variables</code>), à partir du moment où on peut calculer une matrice de similarité à partir de ces données. Il est également possible d’utiliser des <strong>noyaux</strong> pour définir cette similarité. La fonction <strong>specc</strong> de <code>kernlab</code> permet de faire un tel clustering.</p>
-ffalse{-91-67-108-117-115-116-101-114-105-110-103-32-115-112-101-99-116-114-97-108-32-112-111-117-114-32-100-101-115-32-112-115-105-114-97-108-101-115-93-}
 <div class="exercise">
-<span id="exr:exo-spec-spirales" class="exercise"><strong>Exercice 4.6  \iffalse (Clustering spectral pour des psirales)  </strong></span>
-</div>
-<p>On considère les données spirales</p>
+<p><span id="exr:exo-spec-spirales" class="exercise"><strong>Exercice 4.4  (Clustering spectral pour des psirales) </strong></span>On considère les données spirales</p>
 <div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="clust-spec.html#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">111</span>)</span>
 <span id="cb55-2"><a href="clust-spec.html#cb55-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mlbench)</span>
 <span id="cb55-3"><a href="clust-spec.html#cb55-3" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">100</span></span>
@@ -356,6 +347,7 @@ ffalse{-91-67-108-117-115-116-101-114-105-110-103-32-115-112-101-99-116-114-97-1
 <li>CAH avec single linkage</li>
 <li>CAH avec lien de Ward</li>
 </ul>
+</div>
 
 <!---
 

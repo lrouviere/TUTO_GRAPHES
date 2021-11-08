@@ -24,7 +24,7 @@
 <meta name="author" content="Laurent Rouvière" />
 
 
-<meta name="date" content="2021-11-07" />
+<meta name="date" content="2021-11-08" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -242,20 +242,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 Il est également facile d’ajouter des arêtes avec <strong>add_edges</strong> :</p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="manip-graphes.html#cb9-1" aria-hidden="true" tabindex="-1"></a>(<span class="fu">make_full_graph</span>(<span class="dv">4</span>)<span class="sc">+</span><span class="fu">make_full_graph</span>(<span class="dv">3</span>)) <span class="sc">%&gt;%</span> <span class="fu">add_edges</span>(<span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">5</span>)) <span class="sc">%&gt;%</span> <span class="fu">plot</span>()</span></code></pre></div>
 <p><img src="TUTU_GRAPHES_files/figure-html/unnamed-chunk-13-1.png" width="672" style="display: block; margin: auto;" /></p>
-ffalse{-91-81-117-101-108-113-117-101-115-32-103-114-97-112-104-101-115-32-115-112-233-99-105-102-105-113-117-101-115-93-}
 <div class="exercise">
-<span id="exr:exo-cons-grap-R" class="exercise"><strong>Exercice 1.1  \iffalse (Quelques graphes spécifiques)  </strong></span>
+<p><span id="exr:exo-cons-grap-R" class="exercise"><strong>Exercice 1.1  (Quelques graphes spécifiques) </strong></span>Tester et expliquer les fonctions <strong>make_empty_graph, make_ring</strong> et <strong>make_star</strong>.</p>
 </div>
-<p>Tester et expliquer les fonctions <strong>make_empty_graph, make_ring</strong> et <strong>make_star</strong>.</p>
 </div>
 <div id="construction-à-partir-dun-fichier-externe" class="section level3" number="1.1.2">
 <h3><span class="header-section-number">1.1.2</span> Construction à partir d’un fichier externe</h3>
 <p>Le plus souvent, on aura à récupérer des données récoltées dans des fichiers <code>txt</code> ou <code>csv</code> pour construire le graphe.</p>
-ffalse{-91-73-109-112-111-114-116-97-116-105-111-110-93-}
 <div class="exercise">
-<span id="exr:exo-import-graph" class="exercise"><strong>Exercice 1.2  \iffalse (Importation)  </strong></span>
-</div>
-<p>On considère le jeu de données <strong>Friendship-network_data_2013.csv</strong> qui se trouve sur le site <a href="http://www.sociopatterns.org/datasets/high-school-contact-and-friendship-networks/">http://www.sociopatterns.org/datasets/high-school-contact-and-friendship-networks/</a>. Ces données concernent des relations entre étudiants.</p>
+<p><span id="exr:exo-import-graph" class="exercise"><strong>Exercice 1.2  (Importation) </strong></span>On considère le jeu de données <strong>Friendship-network_data_2013.csv</strong> qui se trouve sur le site <a href="http://www.sociopatterns.org/datasets/high-school-contact-and-friendship-networks/">http://www.sociopatterns.org/datasets/high-school-contact-and-friendship-networks/</a>. Ces données concernent des relations entre étudiants.</p>
 <ol style="list-style-type: decimal">
 <li><p>Importer les données à l’aide de <strong>read.table</strong>.</p></li>
 <li><p>Ce fichier contient 2 colonnes et chaque colonne contient une arête. Visualiser le graphe. On pourra utiliser <strong>graph_from_data_frame</strong>.</p></li>
@@ -270,6 +265,7 @@ ffalse{-91-73-109-112-111-114-116-97-116-105-111-110-93-}
 <div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="manip-graphes.html#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">read_graph</span>(file, <span class="at">format =</span> <span class="fu">c</span>(<span class="st">&quot;edgelist&quot;</span>, <span class="st">&quot;pajek&quot;</span>, <span class="st">&quot;ncol&quot;</span>, <span class="st">&quot;lgl&quot;</span>, <span class="st">&quot;graphml&quot;</span>, <span class="st">&quot;dimacs&quot;</span>, <span class="st">&quot;graphdb&quot;</span>, <span class="st">&quot;gml&quot;</span>, <span class="st">&quot;dl&quot;</span>), …)</span></code></pre></div>
 <p>On considère par exemple le fichier <strong>lesmis.gml</strong> disponible <a href="http://www-personal.umich.edu/~mejn/netdata/">ici</a>. Les nœuds correspondent aux personnages du roman et une arête est présente si deux personnages apparaissent dans le même chapitre. Le poids de l’arête est déterminé par le nombre de chapitres où les deux personnages sont présents. Importer le graphe à l’aide de <strong>read_graph</strong> et visualiser le.</p></li>
 </ol>
+</div>
 </div>
 <div id="matrice-dadjacence" class="section level3" number="1.1.3">
 <h3><span class="header-section-number">1.1.3</span> Matrice d’adjacence</h3>
@@ -362,21 +358,17 @@ ffalse{-91-73-109-112-111-114-116-97-116-105-111-110-93-}
 <p>et on peut visualiser le graphe (sans option dans <strong>plot.igraph</strong>) :</p>
 <div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="manip-graphes.html#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(G1)</span></code></pre></div>
 <p><img src="TUTU_GRAPHES_files/figure-html/unnamed-chunk-33-1.png" width="672" style="display: block; margin: auto;" /></p>
-ffalse{-91-71-233-114-101-114-32-108-101-115-32-99-111-117-108-101-117-114-115-32-97-118-101-99-32-105-103-114-97-112-104-93-}
 <div class="exercise">
-<span id="exr:exo-options-igraph" class="exercise"><strong>Exercice 1.3  \iffalse (Gérer les couleurs avec igraph)  </strong></span>
-</div>
 <ol style="list-style-type: decimal">
+<li></li>
 <li><p>Construire un graphe avec 3 composantes composantes connexes de taille 10, 14 et 8.</p></li>
 <li><p>Colorier les nœuds de chaque composante d’une couleur différente.</p></li>
 <li><p>Relier les composantes en ajoutant 2 arêtes (et pas plus).</p></li>
 <li><p>Utiliser une couleur et une taille différente pour les deux arêtes crées.</p></li>
 </ol>
-ffalse{-91-67-117-115-116-111-109-105-115-101-114-32-117-110-32-103-114-97-112-104-101-93-}
-<div class="exercise">
-<span id="exr:exo-graphmedia-custom-igraph" class="exercise"><strong>Exercice 1.4  \iffalse (Customiser un graphe)  </strong></span>
 </div>
-<p>On considère le graphe <strong>net</strong> sur les médias défini dans l’exercice <a href="manip-graphes.html#exr:exo-import-graph">1.2</a>. Représenter le graphe en ajoutant :</p>
+<div class="exercise">
+<p><span id="exr:exo-graphmedia-custom-igraph" class="exercise"><strong>Exercice 1.3  (Customiser un graphe) </strong></span>On considère le graphe <strong>net</strong> sur les médias défini dans l’exercice <a href="manip-graphes.html#exr:exo-import-graph">1.2</a>. Représenter le graphe en ajoutant :</p>
 <ul>
 <li>le nom des nœuds (<strong>media</strong>)</li>
 <li>une couleur différente en fonction du type de média</li>
@@ -386,14 +378,12 @@ ffalse{-91-67-117-115-116-111-109-105-115-101-114-32-117-110-32-103-114-97-112-1
 </ul>
 </div>
 </div>
+</div>
 <div id="statistiques-descriptives-sur-les-graphes" class="section level2" number="1.3">
 <h2><span class="header-section-number">1.3</span> Statistiques descriptives sur les graphes</h2>
 <p>Comme pour tout les types de données, il est souvent crucial de calculer des indicateurs descriptifs sur les graphes. Nous présentons les indicateurs standards tels que le diamètre, la densité, les degrés de centralité et d’intermédiarité…</p>
-ffalse{-91-81-117-101-108-113-117-101-115-32-100-101-115-99-114-105-112-116-101-117-114-115-93-}
 <div class="exercise">
-<span id="exr:exo-stat-desc-graphe" class="exercise"><strong>Exercice 1.5  \iffalse (Quelques descripteurs)  </strong></span>
-</div>
-<p>On considère toujours le graphe des exercices précédents sur les média (<code>net</code>).</p>
+<p><span id="exr:exo-stat-desc-graphe" class="exercise"><strong>Exercice 1.4  (Quelques descripteurs) </strong></span>On considère toujours le graphe des exercices précédents sur les média (<code>net</code>).</p>
 <ol style="list-style-type: decimal">
 <li><p>Calculer les nombre de nœuds, d’arêtes, le diamètre et la densité du graphe.</p></li>
 <li><p>Combien y a t-il de triangles dans le graphes ? On pourra calculer ce nombre de plusieurs façons.</p></li>
@@ -403,21 +393,18 @@ ffalse{-91-81-117-101-108-113-117-101-115-32-100-101-115-99-114-105-112-116-101-
 <li><p>Calculer les degrés des nœuds et représenter les avec un barplot. On pourra utiliser <strong>degree</strong> puis <strong>degree_distribution</strong>.</p></li>
 <li><p>Calculer les degrés de <strong>proximité</strong> et d’<strong>intermédiarité</strong> et ordonner les observations en fonction de ces degrés.</p></li>
 </ol>
-ffalse{-91-67-101-110-116-114-97-108-105-116-233-32-101-116-32-105-110-116-101-114-109-233-100-105-97-114-105-116-233-93-}
-<div class="exercise">
-<span id="exr:exo-centr-interm-graphe" class="exercise"><strong>Exercice 1.6  \iffalse (Centralité et intermédiarité)  </strong></span>
 </div>
-<p>On considère le graphe suivant.</p>
+<div class="exercise">
+<p><span id="exr:exo-centr-interm-graphe" class="exercise"><strong>Exercice 1.5  (Centralité et intermédiarité) </strong></span>On considère le graphe suivant.</p>
 <div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="manip-graphes.html#cb26-1" aria-hidden="true" tabindex="-1"></a>G <span class="ot">&lt;-</span> <span class="fu">make_star</span>(<span class="dv">5</span>,<span class="at">mode=</span><span class="st">&quot;undirected&quot;</span>)</span>
 <span id="cb26-2"><a href="manip-graphes.html#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(G)</span></code></pre></div>
 <p><img src="TUTU_GRAPHES_files/figure-html/unnamed-chunk-63-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>Calculer en utilisant la définition les degrés de centralité et d’intermédiarité des nœuds de <span class="math inline">\(G\)</span>. Retrouver ces valeurs à l’aide de fonctions <strong>R</strong>.</p>
-ffalse{-91-67-111-109-112-97-114-97-105-115-111-110-32-100-101-32-110-339-117-100-115-93-}
-<div class="exercise">
-<span id="exr:exo-comp-noeuds-karate" class="exercise"><strong>Exercice 1.7  \iffalse (Comparaison de nœuds)  </strong></span>
 </div>
-<p>On considère le graphe <strong>karate</strong> que l’on peut récupérer dans le package <strong>igraphdata</strong> :</p>
+<div class="exercise">
+<p><span id="exr:exo-comp-noeuds-karate" class="exercise"><strong>Exercice 1.6  (Comparaison de nœuds) </strong></span>On considère le graphe <strong>karate</strong> que l’on peut récupérer dans le package <strong>igraphdata</strong> :</p>
 <p>En étudiant les différents critères d’importance des nœuds, identifier les nœuds importants et interpréter.</p>
+</div>
 </div>
 <div id="autres-packages-pour-visualiser-les-graphes" class="section level2" number="1.4">
 <h2><span class="header-section-number">1.4</span> Autres packages pour visualiser les graphes</h2>
@@ -441,10 +428,7 @@ visNetwork(nodes, edges) %>% visOptions(highlightNearest = TRUE, nodesIdSelectio
 visNetwork(nodes, edges) %>% visOptions(selectedBy = "group")
 <div id="htmlwidget-cf82553809b695f76c98" style="width:672px;height:480px;" class="visNetwork html-widget"></div>
 <script type="application/json" data-for="htmlwidget-cf82553809b695f76c98">{"x":{"nodes":{"id":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15],"label":["Id 1","Id 2","Id 3","Id 4","Id 5","Id 6","Id 7","Id 8","Id 9","Id 10","Id 11","Id 12","Id 13","Id 14","Id 15"],"group":["B","B","A","C","A","A","B","B","C","B","B","B","C","B","B"]},"edges":{"from":[5,3,1,4,12,8,13,12,1,7,4,5,8,3,11],"to":[3,4,14,12,8,10,5,9,5,8,10,7,4,11,2]},"nodesToDataframe":true,"edgesToDataframe":true,"options":{"width":"100%","height":"100%","nodes":{"shape":"dot"},"manipulation":{"enabled":false}},"groups":["B","A","C"],"width":null,"height":null,"idselection":{"enabled":false,"style":"width: 150px; height: 26px","useLabels":true,"main":"Select by id"},"byselection":{"enabled":true,"style":"width: 150px; height: 26px","multiple":false,"hideColor":"rgba(200,200,200,0.5)","highlight":false,"variable":"group","main":"Select by group","values":["A","B","C"]},"main":null,"submain":null,"footer":null,"background":"rgba(0, 0, 0, 0)","highlight":{"enabled":false,"hoverNearest":false,"degree":1,"algorithm":"all","hideColor":"rgba(200,200,200,0.5)","labelOnly":true},"collapse":{"enabled":false,"fit":false,"resetHighlight":true,"clusterOptions":null,"keepCoord":true,"labelSuffix":"(cluster)"}},"evals":[],"jsHooks":[]}</script>
-ffalse{-91-73-110-116-101-114-97-99-116-105-111-110-115-32-101-110-116-114-101-32-109-101-100-105-97-93-}
-<div class="exercise">
-<span id="exr:graphe" class="exercise"><strong>Exercice 1.8  \iffalse (Interactions entre media)  </strong></span>
-</div>
+<p>:::{exercise #graphe, name=“Interactions entre media”}</p>
 <p>On considère à nouveau le graphe sur les médias</p>
 <div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="manip-graphes.html#cb28-1" aria-hidden="true" tabindex="-1"></a>nodes <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/Dataset1-Media-Example-NODES.csv&quot;</span>, <span class="at">header=</span>T, <span class="at">as.is=</span>T)</span>
 <span id="cb28-2"><a href="manip-graphes.html#cb28-2" aria-hidden="true" tabindex="-1"></a>links <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/Dataset1-Media-Example-EDGES.csv&quot;</span>, <span class="at">header=</span>T, <span class="at">as.is=</span>T)</span>
@@ -483,6 +467,7 @@ ffalse{-91-73-110-116-101-114-97-99-116-105-111-110-115-32-101-110-116-114-101-3
 <li><p>Utiliser une couleur différente pour chaque type de media.</p></li>
 <li><p>Faire des flèches d’épaisseur différente en fonction du poids (weight). On pourra également ajouter l’option <strong>visOptions(highlightNearest = TRUE)</strong>.</p></li>
 </ol>
+<p>:::</p>
 </div>
 <div id="graphes-ggplot-avec-ggnet" class="section level3" number="1.4.2">
 <h3><span class="header-section-number">1.4.2</span> Graphes <strong>ggplot</strong> avec <strong>ggnet</strong></h3>
