@@ -1,4 +1,4 @@
-book_filename: "TUTU_GRAPHES"
+book_filename: "TUTO_GRAPHES"
 delete_merged_file: true
 #output_dir: "docs" #sujet
 output_dir: "docs/correction" #corrigé

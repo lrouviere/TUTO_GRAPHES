@@ -24,7 +24,7 @@
 <meta name="author" content="Laurent Rouvière" />
 
 
-<meta name="date" content="2021-11-23" />
+<meta name="date" content="2022-03-18" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -221,7 +221,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb79-7"><a href="model-const-graphes.html#cb79-7" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>
 <span id="cb79-8"><a href="model-const-graphes.html#cb79-8" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(G1)</span>
 <span id="cb79-9"><a href="model-const-graphes.html#cb79-9" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(G2)</span></code></pre></div>
-<p><img src="TUTU_GRAPHES_files/figure-html/unnamed-chunk-93-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="TUTO_GRAPHES_files/figure-html/unnamed-chunk-93-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>On rappelle que dans un graphe d’Erdos-Renyi la distribution du degrés du nœud <span class="math inline">\(i\)</span> est binomiale : <span class="math inline">\(\mathcal B(n-1,p)\)</span>.</p>
 <div class="exercise">
 <p><span id="exr:exo-comp-erdos" class="exercise"><strong>Exercice 2.1  (Distribution des degrés) </strong></span>A l’aide d’un diagramme en barre, comparer les distributions empiriques des degrés des noeuds (on pourra utiliser <strong>degree.distribution</strong>) à leur distribution théorique binomiale (<strong>dbinom</strong>) pour les deux graphes précédents.</p>
@@ -238,7 +238,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb80-11"><a href="model-const-graphes.html#cb80-11" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(deg)<span class="sc">+</span><span class="fu">aes</span>(<span class="at">x=</span>degre,<span class="at">y=</span>valeur,<span class="at">fill=</span>Distribution)<span class="sc">+</span></span>
 <span id="cb80-12"><a href="model-const-graphes.html#cb80-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat=</span><span class="st">&quot;identity&quot;</span>,<span class="at">position =</span> <span class="st">&quot;dodge&quot;</span>,<span class="at">width=</span><span class="fl">0.5</span>)<span class="sc">+</span><span class="fu">facet_wrap</span>(<span class="sc">~</span>graphe,<span class="at">scales=</span><span class="st">&quot;free&quot;</span>)<span class="sc">+</span></span>
 <span id="cb80-13"><a href="model-const-graphes.html#cb80-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span></code></pre></div>
-<p><img src="TUTU_GRAPHES_files/figure-html/unnamed-chunk-94-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="TUTO_GRAPHES_files/figure-html/unnamed-chunk-94-1.png" width="672" style="display: block; margin: auto;" /></p>
 </div>
 <div class="exercise">
 <p><span id="exr:exo-mis-vs-erdos" class="exercise"><strong>Exercice 2.2  (Les misérables sont-ils des Erdos-Renyi) </strong></span>On considère le graphe sur <strong>les misérables</strong> où une interaction entre deux personnages est définie par la co-occurrence des ces deux personnages dans un même chapitre.</p>
@@ -247,7 +247,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><p>Visualiser la distribution des degrés de ce graphe.</p>
 <div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb82-1"><a href="model-const-graphes.html#cb82-1" aria-hidden="true" tabindex="-1"></a>deg.mis <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">deg=</span><span class="dv">0</span><span class="sc">:</span><span class="fu">max</span>(<span class="fu">degree</span>(miserab)),<span class="at">dist=</span><span class="fu">degree.distribution</span>(miserab))</span>
 <span id="cb82-2"><a href="model-const-graphes.html#cb82-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(deg.mis)<span class="sc">+</span><span class="fu">aes</span>(<span class="at">x=</span>deg,<span class="at">y=</span>dist)<span class="sc">+</span><span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">&quot;identity&quot;</span>)<span class="sc">+</span><span class="fu">theme_classic</span>()</span></code></pre></div>
-<p><img src="TUTU_GRAPHES_files/figure-html/unnamed-chunk-96-1.png" width="672" style="display: block; margin: auto;" /></p></li>
+<p><img src="TUTO_GRAPHES_files/figure-html/unnamed-chunk-96-1.png" width="672" style="display: block; margin: auto;" /></p></li>
 <li><p>On souhaite comparer cette distribution à celle d’un graphe d’Erdos-Renyi. Proposer un moyen d’estimer les paramètres (<span class="math inline">\(n\)</span> et <span class="math inline">\(p\)</span>).</p>
 <div class="corR">
 <p>
@@ -263,7 +263,7 @@ Pour <span class="math inline"><span class="math inline">\(n\)</span></span>, il
 <div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="model-const-graphes.html#cb84-1" aria-hidden="true" tabindex="-1"></a>deg.mis1 <span class="ot">&lt;-</span> deg.mis <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">emp=</span>dist,<span class="at">theo=</span><span class="fu">dbinom</span>(<span class="dv">0</span><span class="sc">:</span><span class="fu">max</span>(deg),nhat<span class="dv">-1</span>,phat)) <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="sc">-</span>dist) <span class="sc">%&gt;%</span> <span class="fu">gather</span>(<span class="at">key=</span><span class="st">&quot;dist&quot;</span>,<span class="at">value=</span><span class="st">&quot;valeur&quot;</span>,<span class="sc">-</span>deg)</span>
 <span id="cb84-2"><a href="model-const-graphes.html#cb84-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(deg.mis1)<span class="sc">+</span><span class="fu">aes</span>(<span class="at">x=</span>deg,<span class="at">y=</span>valeur,<span class="at">fill=</span>dist)<span class="sc">+</span></span>
 <span id="cb84-3"><a href="model-const-graphes.html#cb84-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat=</span><span class="st">&quot;identity&quot;</span>,<span class="at">position =</span> <span class="st">&quot;dodge&quot;</span>,<span class="at">width=</span><span class="fl">0.5</span>)</span></code></pre></div>
-<p><img src="TUTU_GRAPHES_files/figure-html/unnamed-chunk-99-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="TUTO_GRAPHES_files/figure-html/unnamed-chunk-99-1.png" width="672" style="display: block; margin: auto;" /></p>
 <div class="corR">
 <p>
 On observe que les deux distributions n’ont rien avoir l’une avec l’autre. L’hypothèse que le graphe observé est une réalisation d’un G(n,p) semble peu réaliste.
@@ -285,7 +285,7 @@ On observe que les deux distributions n’ont rien avoir l’une avec l’autre.
 <span id="cb85-8"><a href="model-const-graphes.html#cb85-8" aria-hidden="true" tabindex="-1"></a>                                <span class="fl">0.04</span>, <span class="fl">0.05</span>, <span class="fl">0.95</span>),<span class="at">nrow=</span>Q) <span class="co"># matrice de connexion inter/intra groupes</span></span>
 <span id="cb85-9"><a href="model-const-graphes.html#cb85-9" aria-hidden="true" tabindex="-1"></a>G <span class="ot">&lt;-</span> <span class="fu">sample_sbm</span>(n, <span class="at">pref.matrix=</span>connectivite_matrix, <span class="at">block.sizes =</span> effectifs)</span>
 <span id="cb85-10"><a href="model-const-graphes.html#cb85-10" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(G)</span></code></pre></div>
-<p><img src="TUTU_GRAPHES_files/figure-html/unnamed-chunk-101-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="TUTO_GRAPHES_files/figure-html/unnamed-chunk-101-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>On visualise qu’il s’agit bien d’un graphe avec trois <strong>communautés</strong> ou <strong>groupes</strong>, ce qui est dû aux fortes probabilités sur la diagonale de la matrice de connectivité et aux faibles valeurs de connectivité en dehors la diagonale.</p>
 <div class="exercise">
 <p><span id="exr:exo-clust-SBM" class="exercise"><strong>Exercice 2.3  (Clustering avec un modèle **SBM**) </strong></span>On considère le graphe <span class="math inline">\(G\)</span> construit précédemment.</p>
@@ -296,7 +296,7 @@ On observe que les deux distributions n’ont rien avoir l’une avec l’autre.
 <div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="model-const-graphes.html#cb87-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;blockmodels&quot;</span>)</span>
 <span id="cb87-2"><a href="model-const-graphes.html#cb87-2" aria-hidden="true" tabindex="-1"></a>mysbm <span class="ot">&lt;-</span> <span class="fu">BM_bernoulli</span>(<span class="st">&#39;SBM_sym&#39;</span>,A,<span class="at">verbosity=</span><span class="dv">0</span>) <span class="co"># SBM_sym = non dirigé</span></span>
 <span id="cb87-3"><a href="model-const-graphes.html#cb87-3" aria-hidden="true" tabindex="-1"></a>mysbm<span class="sc">$</span><span class="fu">estimate</span>()</span></code></pre></div>
-<p><img src="TUTU_GRAPHES_files/figure-html/unnamed-chunk-103-1.png" width="672" style="display: block; margin: auto;" /><img src="TUTU_GRAPHES_files/figure-html/unnamed-chunk-103-2.png" width="672" style="display: block; margin: auto;" /><img src="TUTU_GRAPHES_files/figure-html/unnamed-chunk-103-3.png" width="672" style="display: block; margin: auto;" /><img src="TUTU_GRAPHES_files/figure-html/unnamed-chunk-103-4.png" width="672" style="display: block; margin: auto;" /><img src="TUTU_GRAPHES_files/figure-html/unnamed-chunk-103-5.png" width="672" style="display: block; margin: auto;" /><img src="TUTU_GRAPHES_files/figure-html/unnamed-chunk-103-6.png" width="672" style="display: block; margin: auto;" /><img src="TUTU_GRAPHES_files/figure-html/unnamed-chunk-103-7.png" width="672" style="display: block; margin: auto;" /><img src="TUTU_GRAPHES_files/figure-html/unnamed-chunk-103-8.png" width="672" style="display: block; margin: auto;" />
+<p><img src="TUTO_GRAPHES_files/figure-html/unnamed-chunk-103-1.png" width="672" style="display: block; margin: auto;" /><img src="TUTO_GRAPHES_files/figure-html/unnamed-chunk-103-2.png" width="672" style="display: block; margin: auto;" /><img src="TUTO_GRAPHES_files/figure-html/unnamed-chunk-103-3.png" width="672" style="display: block; margin: auto;" /><img src="TUTO_GRAPHES_files/figure-html/unnamed-chunk-103-4.png" width="672" style="display: block; margin: auto;" /><img src="TUTO_GRAPHES_files/figure-html/unnamed-chunk-103-5.png" width="672" style="display: block; margin: auto;" /><img src="TUTO_GRAPHES_files/figure-html/unnamed-chunk-103-6.png" width="672" style="display: block; margin: auto;" /><img src="TUTO_GRAPHES_files/figure-html/unnamed-chunk-103-7.png" width="672" style="display: block; margin: auto;" /><img src="TUTO_GRAPHES_files/figure-html/unnamed-chunk-103-8.png" width="672" style="display: block; margin: auto;" />
 Que pouvez-vous dire à propos du nombre de groupes ?</p>
 <div class="corR">
 <p>
@@ -325,7 +325,7 @@ Le dernier graphe propose la valeur de l’ICL en fonction du nombre de clusters
 <span id="cb90-4"><a href="model-const-graphes.html#cb90-4" aria-hidden="true" tabindex="-1"></a>[<span class="dv">29</span>] <span class="dv">1</span> <span class="dv">1</span> <span class="dv">1</span> <span class="dv">1</span> <span class="dv">3</span> <span class="dv">3</span> <span class="dv">3</span> <span class="dv">3</span> <span class="dv">3</span> <span class="dv">3</span> <span class="dv">3</span> <span class="dv">3</span></span></code></pre></div></li>
 <li><p>Visualiser les clusters sur le graphe.</p>
 <div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="model-const-graphes.html#cb91-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(G,<span class="at">vertex.color=</span>clust)</span></code></pre></div>
-<p><img src="TUTU_GRAPHES_files/figure-html/unnamed-chunk-109-1.png" width="672" style="display: block; margin: auto;" /></p></li>
+<p><img src="TUTO_GRAPHES_files/figure-html/unnamed-chunk-109-1.png" width="672" style="display: block; margin: auto;" /></p></li>
 </ol>
 </div>
 <div class="exercise">
@@ -335,23 +335,23 @@ Le dernier graphe propose la valeur de l’ICL en fonction du nombre de clusters
 <span id="cb92-3"><a href="model-const-graphes.html#cb92-3" aria-hidden="true" tabindex="-1"></a>A <span class="ot">&lt;-</span> <span class="fu">as_adj</span>(karate, <span class="at">sparse=</span>F)</span></code></pre></div>
 <div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="model-const-graphes.html#cb93-1" aria-hidden="true" tabindex="-1"></a>sbm.kar <span class="ot">&lt;-</span> <span class="fu">BM_bernoulli</span>(<span class="st">&#39;SBM_sym&#39;</span>,A,<span class="at">verbosity=</span><span class="dv">0</span>,<span class="at">explore_min=</span><span class="dv">8</span>) <span class="co"># SBM_sym = non dirigé</span></span>
 <span id="cb93-2"><a href="model-const-graphes.html#cb93-2" aria-hidden="true" tabindex="-1"></a>sbm.kar<span class="sc">$</span><span class="fu">estimate</span>()</span></code></pre></div>
-<p><img src="TUTU_GRAPHES_files/figure-html/unnamed-chunk-111-1.png" width="672" style="display: block; margin: auto;" /></p>
-<p><img src="TUTU_GRAPHES_files/figure-html/unnamed-chunk-111-2.png" width="672" style="display: block; margin: auto;" />
-<img src="TUTU_GRAPHES_files/figure-html/unnamed-chunk-111-3.png" width="672" style="display: block; margin: auto;" />
-<img src="TUTU_GRAPHES_files/figure-html/unnamed-chunk-111-4.png" width="672" style="display: block; margin: auto;" />
-<img src="TUTU_GRAPHES_files/figure-html/unnamed-chunk-111-5.png" width="672" style="display: block; margin: auto;" />
-<img src="TUTU_GRAPHES_files/figure-html/unnamed-chunk-111-6.png" width="672" style="display: block; margin: auto;" />
-<img src="TUTU_GRAPHES_files/figure-html/unnamed-chunk-111-7.png" width="672" style="display: block; margin: auto;" />
-<img src="TUTU_GRAPHES_files/figure-html/unnamed-chunk-111-8.png" width="672" style="display: block; margin: auto;" /></p>
-<p><img src="TUTU_GRAPHES_files/figure-html/unnamed-chunk-111-9.png" width="672" style="display: block; margin: auto;" /></p>
-<p><img src="TUTU_GRAPHES_files/figure-html/unnamed-chunk-111-10.png" width="672" style="display: block; margin: auto;" /></p>
-<p><img src="TUTU_GRAPHES_files/figure-html/unnamed-chunk-111-11.png" width="672" style="display: block; margin: auto;" /></p>
-<p><img src="TUTU_GRAPHES_files/figure-html/unnamed-chunk-111-12.png" width="672" style="display: block; margin: auto;" />
-<img src="TUTU_GRAPHES_files/figure-html/unnamed-chunk-111-13.png" width="672" style="display: block; margin: auto;" />
-<img src="TUTU_GRAPHES_files/figure-html/unnamed-chunk-111-14.png" width="672" style="display: block; margin: auto;" />
-<img src="TUTU_GRAPHES_files/figure-html/unnamed-chunk-111-15.png" width="672" style="display: block; margin: auto;" />
-<img src="TUTU_GRAPHES_files/figure-html/unnamed-chunk-111-16.png" width="672" style="display: block; margin: auto;" />
-<img src="TUTU_GRAPHES_files/figure-html/unnamed-chunk-111-17.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="TUTO_GRAPHES_files/figure-html/unnamed-chunk-111-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="TUTO_GRAPHES_files/figure-html/unnamed-chunk-111-2.png" width="672" style="display: block; margin: auto;" />
+<img src="TUTO_GRAPHES_files/figure-html/unnamed-chunk-111-3.png" width="672" style="display: block; margin: auto;" />
+<img src="TUTO_GRAPHES_files/figure-html/unnamed-chunk-111-4.png" width="672" style="display: block; margin: auto;" />
+<img src="TUTO_GRAPHES_files/figure-html/unnamed-chunk-111-5.png" width="672" style="display: block; margin: auto;" />
+<img src="TUTO_GRAPHES_files/figure-html/unnamed-chunk-111-6.png" width="672" style="display: block; margin: auto;" />
+<img src="TUTO_GRAPHES_files/figure-html/unnamed-chunk-111-7.png" width="672" style="display: block; margin: auto;" />
+<img src="TUTO_GRAPHES_files/figure-html/unnamed-chunk-111-8.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="TUTO_GRAPHES_files/figure-html/unnamed-chunk-111-9.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="TUTO_GRAPHES_files/figure-html/unnamed-chunk-111-10.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="TUTO_GRAPHES_files/figure-html/unnamed-chunk-111-11.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="TUTO_GRAPHES_files/figure-html/unnamed-chunk-111-12.png" width="672" style="display: block; margin: auto;" />
+<img src="TUTO_GRAPHES_files/figure-html/unnamed-chunk-111-13.png" width="672" style="display: block; margin: auto;" />
+<img src="TUTO_GRAPHES_files/figure-html/unnamed-chunk-111-14.png" width="672" style="display: block; margin: auto;" />
+<img src="TUTO_GRAPHES_files/figure-html/unnamed-chunk-111-15.png" width="672" style="display: block; margin: auto;" />
+<img src="TUTO_GRAPHES_files/figure-html/unnamed-chunk-111-16.png" width="672" style="display: block; margin: auto;" />
+<img src="TUTO_GRAPHES_files/figure-html/unnamed-chunk-111-17.png" width="672" style="display: block; margin: auto;" /></p>
 <div class="corR">
 <p>
 On choisit 2 groupes :
@@ -388,7 +388,7 @@ que l’on visualise enfin :
 </p>
 </div>
 <div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="model-const-graphes.html#cb97-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(karate,<span class="at">vertex.color=</span>clust.kar)</span></code></pre></div>
-<p><img src="TUTU_GRAPHES_files/figure-html/unnamed-chunk-119-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="TUTO_GRAPHES_files/figure-html/unnamed-chunk-119-1.png" width="672" style="display: block; margin: auto;" /></p>
 <div class="corR">
 <p>
 La classification n’a pas l’air d’être pertinente, on identifie un tout petit groupe de personnes très connectées. On peut essayer avec plus de groupes, par exemple 4 :
@@ -408,7 +408,7 @@ La classification n’a pas l’air d’être pertinente, on identifie un tout p
 <span id="cb99-3"><a href="model-const-graphes.html#cb99-3" aria-hidden="true" tabindex="-1"></a> [<span class="dv">1</span>] <span class="dv">3</span> <span class="dv">3</span> <span class="dv">3</span> <span class="dv">2</span> <span class="dv">2</span> <span class="dv">2</span> <span class="dv">2</span> <span class="dv">2</span> <span class="dv">4</span> <span class="dv">4</span> <span class="dv">2</span> <span class="dv">2</span> <span class="dv">2</span> <span class="dv">2</span> <span class="dv">4</span> <span class="dv">4</span> <span class="dv">2</span> <span class="dv">2</span> <span class="dv">4</span> <span class="dv">2</span> <span class="dv">4</span> <span class="dv">2</span> <span class="dv">4</span> <span class="dv">4</span> <span class="dv">4</span> <span class="dv">4</span> <span class="dv">4</span> <span class="dv">4</span></span>
 <span id="cb99-4"><a href="model-const-graphes.html#cb99-4" aria-hidden="true" tabindex="-1"></a>[<span class="dv">29</span>] <span class="dv">4</span> <span class="dv">4</span> <span class="dv">4</span> <span class="dv">4</span> <span class="dv">1</span> <span class="dv">1</span></span></code></pre></div>
 <div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="model-const-graphes.html#cb100-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(karate,<span class="at">vertex.color=</span>clust.kar)</span></code></pre></div>
-<p><img src="TUTU_GRAPHES_files/figure-html/unnamed-chunk-123-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="TUTO_GRAPHES_files/figure-html/unnamed-chunk-123-1.png" width="672" style="display: block; margin: auto;" /></p>
 <div class="corR">
 <p>
 Ça a l’air mieux !
@@ -448,7 +448,7 @@ La classification n’a pas l’air d’être pertinente, on identifie un tout p
 <li><p>Construire les distances euclidiennes entre individus en ne considèrant que les 4 variables quantitatives. On stockera ces distances dans une matrice et on visualisera cette matrice à l’aide d’un <strong>heatmap</strong>.</p>
 <div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb102-1"><a href="model-const-graphes.html#cb102-1" aria-hidden="true" tabindex="-1"></a>D <span class="ot">&lt;-</span> <span class="fu">as.matrix</span>(<span class="fu">dist</span>(donnees[,<span class="sc">-</span><span class="dv">5</span>]))</span>
 <span id="cb102-2"><a href="model-const-graphes.html#cb102-2" aria-hidden="true" tabindex="-1"></a><span class="fu">heatmap</span>(D)</span></code></pre></div>
-<p><img src="TUTU_GRAPHES_files/figure-html/unnamed-chunk-126-1.png" width="672" style="display: block; margin: auto;" /></p></li>
+<p><img src="TUTO_GRAPHES_files/figure-html/unnamed-chunk-126-1.png" width="672" style="display: block; margin: auto;" /></p></li>
 <li><p>A l’aide de la fonction <strong>nng</strong> du package <code>cccd</code>, construire :</p>
 <ul>
 <li>un graphe de plus proches voisins à 20 ppv</li>
@@ -536,7 +536,7 @@ On remarque que, à 3 exceptions près, les clusters correspondent aux espèces.
 </p>
 </div>
 <div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb110-1"><a href="model-const-graphes.html#cb110-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(G10,<span class="at">vertex.color=</span>clust.iris)</span></code></pre></div>
-<p><img src="TUTU_GRAPHES_files/figure-html/unnamed-chunk-140-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="TUTO_GRAPHES_files/figure-html/unnamed-chunk-140-1.png" width="672" style="display: block; margin: auto;" /></p>
 <div class="corR">
 <p>
 et les 3 nœuds “mal classés” :
@@ -546,7 +546,7 @@ et les 3 nœuds “mal classés” :
 <span id="cb111-2"><a href="model-const-graphes.html#cb111-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">clust1=</span><span class="fu">fct_recode</span>(<span class="fu">as.character</span>(clust),<span class="at">virginica=</span><span class="st">&quot;1&quot;</span>,<span class="at">versicolor=</span><span class="st">&quot;2&quot;</span>,</span>
 <span id="cb111-3"><a href="model-const-graphes.html#cb111-3" aria-hidden="true" tabindex="-1"></a>                           <span class="at">setosa=</span><span class="st">&quot;3&quot;</span>),<span class="at">err=</span>(clust1<span class="sc">!=</span>Species))</span>
 <span id="cb111-4"><a href="model-const-graphes.html#cb111-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(G10,<span class="at">vertex.color=</span>df<span class="sc">$</span>err)</span></code></pre></div>
-<p><img src="TUTU_GRAPHES_files/figure-html/unnamed-chunk-142-1.png" width="672" style="display: block; margin: auto;" /></p></li>
+<p><img src="TUTO_GRAPHES_files/figure-html/unnamed-chunk-142-1.png" width="672" style="display: block; margin: auto;" /></p></li>
 </ol>
 </div>
 
@@ -600,7 +600,7 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": ["TUTU_GRAPHES.pdf"],
+"download": ["TUTO_GRAPHES.pdf"],
 "search": {
 "engine": "fuse",
 "options": null

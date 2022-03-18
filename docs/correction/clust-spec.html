@@ -24,7 +24,7 @@
 <meta name="author" content="Laurent Rouvière" />
 
 
-<meta name="date" content="2021-11-23" />
+<meta name="date" content="2022-03-18" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -238,7 +238,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb141-12"><a href="clust-spec.html#cb141-12" aria-hidden="true" tabindex="-1"></a>G3 <span class="ot">&lt;-</span> <span class="fu">sample_gnp</span>(n3,p3)</span>
 <span id="cb141-13"><a href="clust-spec.html#cb141-13" aria-hidden="true" tabindex="-1"></a>G <span class="ot">&lt;-</span> G1 <span class="sc">+</span> G2 <span class="sc">+</span> G3 <span class="co"># il cree un graphe avec ces 3 sous-graphes</span></span>
 <span id="cb141-14"><a href="clust-spec.html#cb141-14" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(G)</span></code></pre></div>
-<p><img src="TUTU_GRAPHES_files/figure-html/unnamed-chunk-187-1.png" width="672" style="display: block; margin: auto;" />
+<p><img src="TUTO_GRAPHES_files/figure-html/unnamed-chunk-187-1.png" width="672" style="display: block; margin: auto;" />
 On vérifie le nombre de composantes connexes</p>
 <div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb142-1"><a href="clust-spec.html#cb142-1" aria-hidden="true" tabindex="-1"></a><span class="fu">components</span>(G)<span class="sc">$</span>no</span>
 <span id="cb142-2"><a href="clust-spec.html#cb142-2" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="dv">3</span></span></code></pre></div>
@@ -260,7 +260,7 @@ On vérifie le nombre de composantes connexes</p>
 <span id="cb145-5"><a href="clust-spec.html#cb145-5" aria-hidden="true" tabindex="-1"></a> [<span class="dv">9</span>] <span class="fl">1.776357e-15</span> <span class="fl">1.110223e-15</span></span>
 <span id="cb145-6"><a href="clust-spec.html#cb145-6" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">vp=</span><span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(spec<span class="sc">$</span>values),<span class="at">valeur=</span><span class="fu">rev</span>(spec<span class="sc">$</span>values))</span>
 <span id="cb145-7"><a href="clust-spec.html#cb145-7" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df)<span class="sc">+</span><span class="fu">aes</span>(<span class="at">x=</span>vp,<span class="at">y=</span>valeur)<span class="sc">+</span><span class="fu">geom_point</span>()</span></code></pre></div>
-<p><img src="TUTU_GRAPHES_files/figure-html/unnamed-chunk-191-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="TUTO_GRAPHES_files/figure-html/unnamed-chunk-191-1.png" width="672" style="display: block; margin: auto;" /></p>
 <div class="corR">
 <p>
 On observe bien le <strong>“trou spectral”</strong> (eigengap) entre la troisième et la quatrième valeur propre. Conformément à la théorie, l’ordre de multiplicité de la valeur propre 0 est égal au nombre de composantes connexes du graphe.
@@ -296,7 +296,7 @@ Le clustering de ces lignes est donc immédiat ici.
 <span id="cb147-3"><a href="clust-spec.html#cb147-3" aria-hidden="true" tabindex="-1"></a> [<span class="dv">1</span>] <span class="dv">1</span> <span class="dv">1</span> <span class="dv">1</span> <span class="dv">1</span> <span class="dv">1</span> <span class="dv">3</span> <span class="dv">3</span> <span class="dv">3</span> <span class="dv">2</span> <span class="dv">2</span></span></code></pre></div></li>
 <li><p>Visualiser les clusters.</p>
 <div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb148-1"><a href="clust-spec.html#cb148-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(G, <span class="at">vertex.color=</span>res<span class="sc">$</span>cluster)</span></code></pre></div>
-<p><img src="TUTU_GRAPHES_files/figure-html/unnamed-chunk-197-1.png" width="672" style="display: block; margin: auto;" /></p></li>
+<p><img src="TUTO_GRAPHES_files/figure-html/unnamed-chunk-197-1.png" width="672" style="display: block; margin: auto;" /></p></li>
 </ol>
 </div>
 <div class="exercise">
@@ -334,7 +334,7 @@ et on observe à nouveau un trou spectral entre les valeurs propres 3 et 4.
 </div>
 <div class="sourceCode" id="cb153"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb153-1"><a href="clust-spec.html#cb153-1" aria-hidden="true" tabindex="-1"></a>dfN <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">vp=</span><span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(specN<span class="sc">$</span>values),<span class="at">valeur=</span><span class="fu">rev</span>(specN<span class="sc">$</span>values))</span>
 <span id="cb153-2"><a href="clust-spec.html#cb153-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(dfN)<span class="sc">+</span><span class="fu">aes</span>(<span class="at">x=</span>vp,<span class="at">y=</span>valeur)<span class="sc">+</span><span class="fu">geom_point</span>()<span class="sc">+</span><span class="fu">theme_classic</span>()</span></code></pre></div>
-<p><img src="TUTU_GRAPHES_files/figure-html/unnamed-chunk-206-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="TUTO_GRAPHES_files/figure-html/unnamed-chunk-206-1.png" width="672" style="display: block; margin: auto;" /></p>
 <div class="corR">
 <p>
 On calcule les 3 vecteurs propres :
@@ -380,7 +380,7 @@ Il reste à faire le <span class="math inline"><span class="math inline">\(k\)</
 <span id="cb156-2"><a href="clust-spec.html#cb156-2" aria-hidden="true" tabindex="-1"></a>res<span class="sc">$</span>cluster</span>
 <span id="cb156-3"><a href="clust-spec.html#cb156-3" aria-hidden="true" tabindex="-1"></a> [<span class="dv">1</span>] <span class="dv">2</span> <span class="dv">2</span> <span class="dv">2</span> <span class="dv">2</span> <span class="dv">2</span> <span class="dv">1</span> <span class="dv">1</span> <span class="dv">1</span> <span class="dv">3</span> <span class="dv">3</span></span></code></pre></div>
 <div class="sourceCode" id="cb157"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb157-1"><a href="clust-spec.html#cb157-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(G, <span class="at">vertex.color=</span>res<span class="sc">$</span>cluster)</span></code></pre></div>
-<p><img src="TUTU_GRAPHES_files/figure-html/unnamed-chunk-213-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="TUTO_GRAPHES_files/figure-html/unnamed-chunk-213-1.png" width="672" style="display: block; margin: auto;" /></p>
 </div>
 </div>
 <div id="programmer-le-clustering-spectral-pour-un-graphe" class="section level2" number="4.2">
@@ -415,7 +415,7 @@ On teste la fonction :
 </div>
 <div class="sourceCode" id="cb159"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb159-1"><a href="clust-spec.html#cb159-1" aria-hidden="true" tabindex="-1"></a>res <span class="ot">&lt;-</span> <span class="fu">spec.clust.norm</span>(G,<span class="at">K=</span><span class="dv">8</span>)</span>
 <span id="cb159-2"><a href="clust-spec.html#cb159-2" aria-hidden="true" tabindex="-1"></a>res<span class="sc">$</span>graphe</span></code></pre></div>
-<p><img src="TUTU_GRAPHES_files/figure-html/unnamed-chunk-217-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="TUTO_GRAPHES_files/figure-html/unnamed-chunk-217-1.png" width="672" style="display: block; margin: auto;" /></p>
 <div class="sourceCode" id="cb160"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb160-1"><a href="clust-spec.html#cb160-1" aria-hidden="true" tabindex="-1"></a>res1 <span class="ot">&lt;-</span> <span class="fu">spec.clust.norm</span>(G,<span class="at">K=</span><span class="dv">3</span>)</span>
 <span id="cb160-2"><a href="clust-spec.html#cb160-2" aria-hidden="true" tabindex="-1"></a>res1<span class="sc">$</span>groupe</span>
 <span id="cb160-3"><a href="clust-spec.html#cb160-3" aria-hidden="true" tabindex="-1"></a> [<span class="dv">1</span>] <span class="dv">2</span> <span class="dv">2</span> <span class="dv">2</span> <span class="dv">2</span> <span class="dv">2</span> <span class="dv">3</span> <span class="dv">3</span> <span class="dv">3</span> <span class="dv">1</span> <span class="dv">1</span></span></code></pre></div>
@@ -441,7 +441,7 @@ On teste la fonction :
 <span id="cb163-7"><a href="clust-spec.html#cb163-7" aria-hidden="true" tabindex="-1"></a>                                <span class="fl">0.15</span>, <span class="fl">0.95</span>),<span class="at">nrow=</span>Q) <span class="co"># matrice de connexion</span></span>
 <span id="cb163-8"><a href="clust-spec.html#cb163-8" aria-hidden="true" tabindex="-1"></a>G <span class="ot">&lt;-</span> <span class="fu">sample_sbm</span>(n, <span class="at">pref.matrix=</span>connectivite_matrix, <span class="at">block.sizes =</span> effectifs)</span>
 <span id="cb163-9"><a href="clust-spec.html#cb163-9" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(G)</span></code></pre></div>
-<p><img src="TUTU_GRAPHES_files/figure-html/unnamed-chunk-220-1.png" width="672" style="display: block; margin: auto;" />
+<p><img src="TUTO_GRAPHES_files/figure-html/unnamed-chunk-220-1.png" width="672" style="display: block; margin: auto;" />
 Effectuer le clustering spectral sur ce graphe, on essaiera notamment de choisir le nombre de groupes.</p>
 <div class="corR">
 <p>
@@ -450,7 +450,7 @@ On commence avec un nombre de groupes “grand” pour visualiser le graphe des 
 </div>
 <div class="sourceCode" id="cb164"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb164-1"><a href="clust-spec.html#cb164-1" aria-hidden="true" tabindex="-1"></a>res <span class="ot">&lt;-</span> <span class="fu">spec.clust.norm</span>(G,<span class="at">K=</span><span class="dv">8</span>)</span>
 <span id="cb164-2"><a href="clust-spec.html#cb164-2" aria-hidden="true" tabindex="-1"></a>res<span class="sc">$</span>graphe</span></code></pre></div>
-<p><img src="TUTU_GRAPHES_files/figure-html/unnamed-chunk-222-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="TUTO_GRAPHES_files/figure-html/unnamed-chunk-222-1.png" width="672" style="display: block; margin: auto;" /></p>
 <div class="corR">
 <p>
 Il n’y a plus qu’une valeur propre nulle, c’est normal puisqu’on a une seule composante connexe. On remarque néanmoins un <strong>trou spectral</strong> après la seconde valeur propre, ce qui laisse supposer un graphe à 2 groupes. On refait donc le clustering spectral avec <span class="math inline"><span class="math inline">\(K=2\)</span></span>
@@ -464,7 +464,7 @@ On visualise les groupes :
 </p>
 </div>
 <div class="sourceCode" id="cb166"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb166-1"><a href="clust-spec.html#cb166-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(G,<span class="at">vertex.color=</span>groupe)</span></code></pre></div>
-<p><img src="TUTU_GRAPHES_files/figure-html/unnamed-chunk-226-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="TUTO_GRAPHES_files/figure-html/unnamed-chunk-226-1.png" width="672" style="display: block; margin: auto;" /></p>
 <div class="corR">
 <p>
 L’algorithme a bien identifié les deux groupes.
@@ -482,7 +482,7 @@ L’algorithme a bien identifié les deux groupes.
 <div class="sourceCode" id="cb167"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb167-1"><a href="clust-spec.html#cb167-1" aria-hidden="true" tabindex="-1"></a>friends <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="at">file=</span><span class="st">&quot;data/Friendship-network_data_2013.csv&quot;</span>)</span>
 <span id="cb167-2"><a href="clust-spec.html#cb167-2" aria-hidden="true" tabindex="-1"></a>G.friends <span class="ot">&lt;-</span> <span class="fu">graph_from_data_frame</span>(friends,<span class="at">directed=</span>F)  <span class="co"># non dirige</span></span>
 <span id="cb167-3"><a href="clust-spec.html#cb167-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(G.friends)</span></code></pre></div>
-<p><img src="TUTU_GRAPHES_files/figure-html/unnamed-chunk-228-1.png" width="672" style="display: block; margin: auto;" />
+<p><img src="TUTO_GRAPHES_files/figure-html/unnamed-chunk-228-1.png" width="672" style="display: block; margin: auto;" />
 Appliquer le clustering spectral à ce graphe. On pourra comparer la classification obtenue avec celle de la méthode de Louvain en utilisant la fonction <strong>compare</strong>.</p>
 <div class="corR">
 <p>
@@ -491,10 +491,10 @@ On applique l’algorithme avec 8 groupes
 </div>
 <div class="sourceCode" id="cb168"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb168-1"><a href="clust-spec.html#cb168-1" aria-hidden="true" tabindex="-1"></a>res1 <span class="ot">&lt;-</span> <span class="fu">spec.clust.norm</span>(G.friends,<span class="at">K=</span><span class="dv">8</span>)</span>
 <span id="cb168-2"><a href="clust-spec.html#cb168-2" aria-hidden="true" tabindex="-1"></a>res1<span class="sc">$</span>graphe</span></code></pre></div>
-<p><img src="TUTU_GRAPHES_files/figure-html/unnamed-chunk-230-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="TUTO_GRAPHES_files/figure-html/unnamed-chunk-230-1.png" width="672" style="display: block; margin: auto;" /></p>
 <div class="sourceCode" id="cb169"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb169-1"><a href="clust-spec.html#cb169-1" aria-hidden="true" tabindex="-1"></a>res2 <span class="ot">&lt;-</span> <span class="fu">spec.clust.norm</span>(G.friends,<span class="at">K=</span><span class="dv">9</span>)</span>
 <span id="cb169-2"><a href="clust-spec.html#cb169-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(G.friends,<span class="at">vertex.color=</span>res2<span class="sc">$</span>groupe)</span></code></pre></div>
-<p><img src="TUTU_GRAPHES_files/figure-html/unnamed-chunk-231-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="TUTO_GRAPHES_files/figure-html/unnamed-chunk-231-1.png" width="672" style="display: block; margin: auto;" /></p>
 <div class="corR">
 <p>
 On maximise maintenant la <strong>modularité</strong> avec la méthode de <strong>Louvain</strong>.
@@ -503,7 +503,7 @@ On maximise maintenant la <strong>modularité</strong> avec la méthode de <stro
 <div class="sourceCode" id="cb170"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb170-1"><a href="clust-spec.html#cb170-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1234</span>)</span>
 <span id="cb170-2"><a href="clust-spec.html#cb170-2" aria-hidden="true" tabindex="-1"></a>cl.mod <span class="ot">&lt;-</span> <span class="fu">cluster_louvain</span>(G.friends)</span>
 <span id="cb170-3"><a href="clust-spec.html#cb170-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(G.friends,<span class="at">vertex.color=</span>cl.mod<span class="sc">$</span>membership)</span></code></pre></div>
-<p><img src="TUTU_GRAPHES_files/figure-html/unnamed-chunk-233-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="TUTO_GRAPHES_files/figure-html/unnamed-chunk-233-1.png" width="672" style="display: block; margin: auto;" /></p>
 <div class="corR">
 <p>
 On obtient 13 communautés
@@ -523,13 +523,13 @@ On compare ces deux classifications avec <strong>l’indice de Rand ajusté</str
 <span id="cb173-2"><a href="clust-spec.html#cb173-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(karate)</span></code></pre></div>
 <div class="sourceCode" id="cb174"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb174-1"><a href="clust-spec.html#cb174-1" aria-hidden="true" tabindex="-1"></a>res1 <span class="ot">&lt;-</span> <span class="fu">spec.clust.norm</span>(karate,<span class="at">K=</span><span class="dv">8</span>)</span>
 <span id="cb174-2"><a href="clust-spec.html#cb174-2" aria-hidden="true" tabindex="-1"></a>res1<span class="sc">$</span>graphe</span></code></pre></div>
-<p><img src="TUTU_GRAPHES_files/figure-html/unnamed-chunk-239-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="TUTO_GRAPHES_files/figure-html/unnamed-chunk-239-1.png" width="672" style="display: block; margin: auto;" /></p>
 <div class="sourceCode" id="cb175"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb175-1"><a href="clust-spec.html#cb175-1" aria-hidden="true" tabindex="-1"></a>res2 <span class="ot">&lt;-</span> <span class="fu">spec.clust.norm</span>(karate,<span class="at">K=</span><span class="dv">2</span>)</span>
 <span id="cb175-2"><a href="clust-spec.html#cb175-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(karate,<span class="at">vertex.color=</span>res2<span class="sc">$</span>groupe)</span></code></pre></div>
-<p><img src="TUTU_GRAPHES_files/figure-html/unnamed-chunk-240-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="TUTO_GRAPHES_files/figure-html/unnamed-chunk-240-1.png" width="672" style="display: block; margin: auto;" /></p>
 <div class="sourceCode" id="cb176"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb176-1"><a href="clust-spec.html#cb176-1" aria-hidden="true" tabindex="-1"></a>cl.louv <span class="ot">&lt;-</span> <span class="fu">cluster_louvain</span>(karate)</span>
 <span id="cb176-2"><a href="clust-spec.html#cb176-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(karate,<span class="at">vertex.color=</span>cl.louv<span class="sc">$</span>membership)</span></code></pre></div>
-<p><img src="TUTU_GRAPHES_files/figure-html/unnamed-chunk-241-1.png" width="672" style="display: block; margin: auto;" /></p></li>
+<p><img src="TUTO_GRAPHES_files/figure-html/unnamed-chunk-241-1.png" width="672" style="display: block; margin: auto;" /></p></li>
 </ol>
 </div>
 </div>
@@ -556,7 +556,7 @@ On compare ces deux classifications avec <strong>l’indice de Rand ajusté</str
 <p>et on les visualise.</p>
 <div class="sourceCode" id="cb179"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb179-1"><a href="clust-spec.html#cb179-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(simu<span class="sc">$</span>x)</span>
 <span id="cb179-2"><a href="clust-spec.html#cb179-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df)<span class="sc">+</span><span class="fu">aes</span>(<span class="at">x=</span>X1,<span class="at">y=</span>X2)<span class="sc">+</span><span class="fu">geom_point</span>()</span></code></pre></div>
-<p><img src="TUTU_GRAPHES_files/figure-html/unnamed-chunk-244-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="TUTO_GRAPHES_files/figure-html/unnamed-chunk-244-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>Appliquer les algorithmes suivants pour tenter de visualiser les deux groupes :</p>
 <ul>
 <li>clustering spectral avec noyau linéaire</li>
@@ -591,7 +591,7 @@ Il reste à assembler les résultats et à les visualiser :
 <span id="cb181-5"><a href="clust-spec.html#cb181-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="sc">-</span><span class="fu">c</span>(X1,X2),<span class="at">names_to=</span><span class="st">&quot;Methode&quot;</span>,<span class="at">values_to=</span><span class="st">&quot;groupe&quot;</span>)</span>
 <span id="cb181-6"><a href="clust-spec.html#cb181-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb181-7"><a href="clust-spec.html#cb181-7" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df1)<span class="sc">+</span><span class="fu">aes</span>(<span class="at">x=</span>X1,<span class="at">y=</span>X2,<span class="at">color=</span>groupe)<span class="sc">+</span><span class="fu">geom_point</span>()<span class="sc">+</span><span class="fu">facet_wrap</span>(<span class="sc">~</span>Methode)</span></code></pre></div>
-<p><img src="TUTU_GRAPHES_files/figure-html/unnamed-chunk-248-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="TUTO_GRAPHES_files/figure-html/unnamed-chunk-248-1.png" width="672" style="display: block; margin: auto;" /></p>
 <div class="corR">
 <p>
 On remarque que seuls le <strong>single linkage</strong> et le <strong>clutering spectral</strong> à noyau radial parviennent à identifier les deux spirales. Les autres algorithmes sont mis en échec. Pour terminer, on précise qu’il est également possible d’utiliser l’astuce du noyau avec l’algorithme du <code>kmeans</code>, on peut par exemple utiliser la fonction <strong>kkmeans</strong> de <code>kernlab</code> :
@@ -600,7 +600,7 @@ On remarque que seuls le <strong>single linkage</strong> et le <strong>clutering
 <div class="sourceCode" id="cb182"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb182-1"><a href="clust-spec.html#cb182-1" aria-hidden="true" tabindex="-1"></a>km <span class="ot">&lt;-</span> <span class="fu">kkmeans</span>(data,<span class="at">center=</span><span class="dv">2</span>,<span class="at">kernel=</span><span class="st">&quot;rbfdot&quot;</span>,<span class="at">kpar=</span><span class="st">&quot;automatic&quot;</span>)</span>
 <span id="cb182-2"><a href="clust-spec.html#cb182-2" aria-hidden="true" tabindex="-1"></a>Using automatic sigma <span class="fu">estimation</span> (sigest) <span class="cf">for</span> RBF or laplace kernel </span>
 <span id="cb182-3"><a href="clust-spec.html#cb182-3" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">groupe=</span><span class="fu">as.factor</span>(km)) <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>()<span class="sc">+</span><span class="fu">aes</span>(<span class="at">x=</span>X1,<span class="at">y=</span>X2,<span class="at">color=</span>groupe)<span class="sc">+</span><span class="fu">geom_point</span>()</span></code></pre></div>
-<p><img src="TUTU_GRAPHES_files/figure-html/unnamed-chunk-250-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="TUTO_GRAPHES_files/figure-html/unnamed-chunk-250-1.png" width="672" style="display: block; margin: auto;" /></p>
 <div class="corR">
 <p>
 Ça n’apporte pas grand chose sur cet exemple.
@@ -664,7 +664,7 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": ["TUTU_GRAPHES.pdf"],
+"download": ["TUTO_GRAPHES.pdf"],
 "search": {
 "engine": "fuse",
 "options": null
