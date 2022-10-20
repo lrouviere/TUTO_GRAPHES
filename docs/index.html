@@ -6,11 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Graph Mining</title>
   <meta name="description" content="Graph Mining" />
-  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.29 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Graph Mining" />
   <meta property="og:type" content="book" />
-  
   
   
   
@@ -24,7 +23,7 @@
 <meta name="author" content="Laurent Rouvière" />
 
 
-<meta name="date" content="2021-11-08" />
+<meta name="date" content="2022-10-20" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,7 +32,6 @@
   
 
 <link rel="next" href="manip-graphes.html"/>
-<script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -51,8 +49,9 @@
 
 
 
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 <script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
 <link href="libs/vis-9.1.0/vis-network.min.css" rel="stylesheet" />
 <script src="libs/vis-9.1.0/vis-network.min.js"></script>
@@ -202,10 +201,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="header">
 <h1 class="title">Graph Mining</h1>
 <p class="author"><em>Laurent Rouvière</em></p>
-<p class="date"><em>2021-11-08</em></p>
+<p class="date"><em>2022-10-20</em></p>
 </div>
-<div id="Presentation" class="section level1 unnumbered">
-<h1>Présentation</h1>
+<div id="Presentation" class="section level1 unnumbered hasAnchor">
+<h1>Présentation<a href="index.html#Presentation" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>Ce tutoriel présente une introduction au <strong>graph mining</strong> avec <strong>R</strong>. On pourra trouver :</p>
 <ul>
 <li>les supports de cours associés à ce tutoriel ainsi que les données utilisées à l’adresse suivante <a href="https://lrouviere.github.io/INP-HB/" class="uri">https://lrouviere.github.io/INP-HB/</a> ;</li>
@@ -218,7 +217,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Manipulation de graphes avec <strong>igraph</strong> : visualisation statique et dynamique</li>
 <li><strong>Modèles</strong> basiques pour des graphes, notamment Erdos-Renyi et SBM</li>
 <li><strong>Détection de communautés</strong>, maximisation de la modularité</li>
-<li><strong>Clustering spectral</strong>, pour des graphes mais aussi des “données standards.”</li>
+<li><strong>Clustering spectral</strong>, pour des graphes mais aussi des “données standards”.</li>
 </ul>
 <!---
 - **Estimation du risque**, présentation du package **caret** ;
@@ -281,7 +280,7 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": ["TUTU_GRAPHES.pdf"],
+"download": ["TUTO_GRAPHES.pdf"],
 "search": {
 "engine": "fuse",
 "options": null
@@ -305,7 +304,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');
