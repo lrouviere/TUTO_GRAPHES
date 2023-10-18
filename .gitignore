@@ -7,3 +7,8 @@
 _bookdown_files/*
 purl/*
 *.R
+
+
+/*
+!/docs/
+/docs/correction/*

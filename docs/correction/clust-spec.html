@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapitre 4 Clustering spectral | Graph Mining</title>
   <meta name="description" content="Chapitre 4 Clustering spectral | Graph Mining" />
-  <meta name="generator" content="bookdown 0.29 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.35 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapitre 4 Clustering spectral | Graph Mining" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Laurent Rouvière" />
 
 
-<meta name="date" content="2022-11-22" />
+<meta name="date" content="2023-10-18" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -52,10 +52,10 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
-<script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
+<script src="libs/htmlwidgets-1.6.2/htmlwidgets.js"></script>
 <link href="libs/vis-9.1.0/vis-network.min.css" rel="stylesheet" />
 <script src="libs/vis-9.1.0/vis-network.min.js"></script>
-<script src="libs/visNetwork-binding-2.1.0/visNetwork.js"></script>
+<script src="libs/visNetwork-binding-2.1.2/visNetwork.js"></script>
 
 
 <style type="text/css">
@@ -96,7 +96,7 @@ code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
+code span.bu { color: #008000; } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -109,7 +109,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
+code span.im { color: #008000; font-weight: bold; } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -123,6 +123,10 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -223,42 +227,42 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="clustering-spectral-sur-1-graphe-à-3-composantes-connexes" class="section level2 hasAnchor" number="4.1">
 <h2><span class="header-section-number">4.1</span> Clustering spectral sur 1 graphe à 3 composantes connexes<a href="clust-spec.html#clustering-spectral-sur-1-graphe-à-3-composantes-connexes" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>On crée tout d’abord un graphe avec trois composantes connexes : on utilise la commande <strong>sample_gnp()</strong> qui permet de créer un graphe selon le modèle d’Erdos-Renyi.</p>
-<div class="sourceCode" id="cb143"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb143-1"><a href="clust-spec.html#cb143-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
-<span id="cb143-2"><a href="clust-spec.html#cb143-2" aria-hidden="true" tabindex="-1"></a>n1 <span class="ot">&lt;-</span> <span class="dv">5</span></span>
-<span id="cb143-3"><a href="clust-spec.html#cb143-3" aria-hidden="true" tabindex="-1"></a>n2 <span class="ot">&lt;-</span> <span class="dv">3</span></span>
-<span id="cb143-4"><a href="clust-spec.html#cb143-4" aria-hidden="true" tabindex="-1"></a>n3 <span class="ot">&lt;-</span> <span class="dv">2</span></span>
-<span id="cb143-5"><a href="clust-spec.html#cb143-5" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> n1<span class="sc">+</span>n2<span class="sc">+</span>n3</span>
-<span id="cb143-6"><a href="clust-spec.html#cb143-6" aria-hidden="true" tabindex="-1"></a><span class="co"># il faut prendre des grandes valeurs de p sinon on risque d&#39;avoir des sous-graphes non connexes </span></span>
-<span id="cb143-7"><a href="clust-spec.html#cb143-7" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> <span class="fl">0.85</span></span>
-<span id="cb143-8"><a href="clust-spec.html#cb143-8" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> <span class="fl">0.75</span></span>
-<span id="cb143-9"><a href="clust-spec.html#cb143-9" aria-hidden="true" tabindex="-1"></a>p3 <span class="ot">&lt;-</span> <span class="fl">0.7</span></span>
-<span id="cb143-10"><a href="clust-spec.html#cb143-10" aria-hidden="true" tabindex="-1"></a>G1 <span class="ot">&lt;-</span> <span class="fu">sample_gnp</span>(n1,p1)</span>
-<span id="cb143-11"><a href="clust-spec.html#cb143-11" aria-hidden="true" tabindex="-1"></a>G2 <span class="ot">&lt;-</span> <span class="fu">sample_gnp</span>(n2,p2)</span>
-<span id="cb143-12"><a href="clust-spec.html#cb143-12" aria-hidden="true" tabindex="-1"></a>G3 <span class="ot">&lt;-</span> <span class="fu">sample_gnp</span>(n3,p3)</span>
-<span id="cb143-13"><a href="clust-spec.html#cb143-13" aria-hidden="true" tabindex="-1"></a>G <span class="ot">&lt;-</span> G1 <span class="sc">+</span> G2 <span class="sc">+</span> G3 <span class="co"># il cree un graphe avec ces 3 sous-graphes</span></span>
-<span id="cb143-14"><a href="clust-spec.html#cb143-14" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(G)</span></code></pre></div>
+<div class="sourceCode" id="cb143"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb143-1"><a href="clust-spec.html#cb143-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
+<span id="cb143-2"><a href="clust-spec.html#cb143-2" tabindex="-1"></a>n1 <span class="ot">&lt;-</span> <span class="dv">5</span></span>
+<span id="cb143-3"><a href="clust-spec.html#cb143-3" tabindex="-1"></a>n2 <span class="ot">&lt;-</span> <span class="dv">3</span></span>
+<span id="cb143-4"><a href="clust-spec.html#cb143-4" tabindex="-1"></a>n3 <span class="ot">&lt;-</span> <span class="dv">2</span></span>
+<span id="cb143-5"><a href="clust-spec.html#cb143-5" tabindex="-1"></a>n <span class="ot">&lt;-</span> n1<span class="sc">+</span>n2<span class="sc">+</span>n3</span>
+<span id="cb143-6"><a href="clust-spec.html#cb143-6" tabindex="-1"></a><span class="co"># il faut prendre des grandes valeurs de p sinon on risque d&#39;avoir des sous-graphes non connexes </span></span>
+<span id="cb143-7"><a href="clust-spec.html#cb143-7" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> <span class="fl">0.85</span></span>
+<span id="cb143-8"><a href="clust-spec.html#cb143-8" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> <span class="fl">0.75</span></span>
+<span id="cb143-9"><a href="clust-spec.html#cb143-9" tabindex="-1"></a>p3 <span class="ot">&lt;-</span> <span class="fl">0.7</span></span>
+<span id="cb143-10"><a href="clust-spec.html#cb143-10" tabindex="-1"></a>G1 <span class="ot">&lt;-</span> <span class="fu">sample_gnp</span>(n1,p1)</span>
+<span id="cb143-11"><a href="clust-spec.html#cb143-11" tabindex="-1"></a>G2 <span class="ot">&lt;-</span> <span class="fu">sample_gnp</span>(n2,p2)</span>
+<span id="cb143-12"><a href="clust-spec.html#cb143-12" tabindex="-1"></a>G3 <span class="ot">&lt;-</span> <span class="fu">sample_gnp</span>(n3,p3)</span>
+<span id="cb143-13"><a href="clust-spec.html#cb143-13" tabindex="-1"></a>G <span class="ot">&lt;-</span> G1 <span class="sc">+</span> G2 <span class="sc">+</span> G3 <span class="co"># il cree un graphe avec ces 3 sous-graphes</span></span>
+<span id="cb143-14"><a href="clust-spec.html#cb143-14" tabindex="-1"></a><span class="fu">plot</span>(G)</span></code></pre></div>
 <p><img src="TUTO_GRAPHES_files/figure-html/unnamed-chunk-188-1.png" width="672" style="display: block; margin: auto;" />
 On vérifie le nombre de composantes connexes</p>
-<div class="sourceCode" id="cb144"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb144-1"><a href="clust-spec.html#cb144-1" aria-hidden="true" tabindex="-1"></a><span class="fu">components</span>(G)<span class="sc">$</span>no</span>
-<span id="cb144-2"><a href="clust-spec.html#cb144-2" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="dv">3</span></span></code></pre></div>
+<div class="sourceCode" id="cb144"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb144-1"><a href="clust-spec.html#cb144-1" tabindex="-1"></a><span class="fu">components</span>(G)<span class="sc">$</span>no</span>
+<span id="cb144-2"><a href="clust-spec.html#cb144-2" tabindex="-1"></a>[<span class="dv">1</span>] <span class="dv">3</span></span></code></pre></div>
 <div class="exercise">
 <p><span id="exr:exo-laplacien-non-norm" class="exercise"><strong>Exercice 4.1  (Laplacien non normalisé) </strong></span><br />
 </p>
 <ol style="list-style-type: decimal">
 <li><p>Calculer la matrice d’adjacence de <strong>G</strong> et en déduire le Laplacien non normalisé.</p>
-<div class="sourceCode" id="cb145"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb145-1"><a href="clust-spec.html#cb145-1" aria-hidden="true" tabindex="-1"></a>A <span class="ot">&lt;-</span> <span class="fu">as_adj</span>(G,<span class="at">sparse=</span>F)</span>
-<span id="cb145-2"><a href="clust-spec.html#cb145-2" aria-hidden="true" tabindex="-1"></a>D <span class="ot">&lt;-</span> <span class="fu">diag</span>(<span class="fu">rowSums</span>(A))</span>
-<span id="cb145-3"><a href="clust-spec.html#cb145-3" aria-hidden="true" tabindex="-1"></a>L <span class="ot">&lt;-</span> D <span class="sc">-</span> A</span></code></pre></div></li>
+<div class="sourceCode" id="cb145"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb145-1"><a href="clust-spec.html#cb145-1" tabindex="-1"></a>A <span class="ot">&lt;-</span> <span class="fu">as_adj</span>(G,<span class="at">sparse=</span>F)</span>
+<span id="cb145-2"><a href="clust-spec.html#cb145-2" tabindex="-1"></a>D <span class="ot">&lt;-</span> <span class="fu">diag</span>(<span class="fu">rowSums</span>(A))</span>
+<span id="cb145-3"><a href="clust-spec.html#cb145-3" tabindex="-1"></a>L <span class="ot">&lt;-</span> D <span class="sc">-</span> A</span></code></pre></div></li>
 <li><p>Retrouver ce Laplacien avec la fonction <strong>laplacian_matrix</strong>.</p>
-<div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb146-1"><a href="clust-spec.html#cb146-1" aria-hidden="true" tabindex="-1"></a>L <span class="ot">&lt;-</span> <span class="fu">laplacian_matrix</span>(G,<span class="at">sparse=</span>F)</span></code></pre></div></li>
+<div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb146-1"><a href="clust-spec.html#cb146-1" tabindex="-1"></a>L <span class="ot">&lt;-</span> <span class="fu">laplacian_matrix</span>(G,<span class="at">sparse=</span>F)</span></code></pre></div></li>
 <li><p>Calculer les valeurs propres et représenter les sur un graphe. Que remarquez-vous ?</p>
-<div class="sourceCode" id="cb147"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb147-1"><a href="clust-spec.html#cb147-1" aria-hidden="true" tabindex="-1"></a>spec <span class="ot">&lt;-</span> <span class="fu">eigen</span>(L) </span>
-<span id="cb147-2"><a href="clust-spec.html#cb147-2" aria-hidden="true" tabindex="-1"></a>spec<span class="sc">$</span>values</span>
-<span id="cb147-3"><a href="clust-spec.html#cb147-3" aria-hidden="true" tabindex="-1"></a> [<span class="dv">1</span>] <span class="fl">5.000000e+00</span> <span class="fl">5.000000e+00</span> <span class="fl">4.000000e+00</span> <span class="fl">3.000000e+00</span></span>
-<span id="cb147-4"><a href="clust-spec.html#cb147-4" aria-hidden="true" tabindex="-1"></a> [<span class="dv">5</span>] <span class="fl">2.000000e+00</span> <span class="fl">2.000000e+00</span> <span class="fl">1.000000e+00</span> <span class="fl">3.552714e-15</span></span>
-<span id="cb147-5"><a href="clust-spec.html#cb147-5" aria-hidden="true" tabindex="-1"></a> [<span class="dv">9</span>] <span class="fl">1.776357e-15</span> <span class="fl">1.110223e-15</span></span>
-<span id="cb147-6"><a href="clust-spec.html#cb147-6" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">vp=</span><span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(spec<span class="sc">$</span>values),<span class="at">valeur=</span><span class="fu">rev</span>(spec<span class="sc">$</span>values))</span>
-<span id="cb147-7"><a href="clust-spec.html#cb147-7" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df)<span class="sc">+</span><span class="fu">aes</span>(<span class="at">x=</span>vp,<span class="at">y=</span>valeur)<span class="sc">+</span><span class="fu">geom_point</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb147"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb147-1"><a href="clust-spec.html#cb147-1" tabindex="-1"></a>spec <span class="ot">&lt;-</span> <span class="fu">eigen</span>(L) </span>
+<span id="cb147-2"><a href="clust-spec.html#cb147-2" tabindex="-1"></a>spec<span class="sc">$</span>values</span>
+<span id="cb147-3"><a href="clust-spec.html#cb147-3" tabindex="-1"></a> [<span class="dv">1</span>] <span class="fl">5.000000e+00</span> <span class="fl">5.000000e+00</span> <span class="fl">4.000000e+00</span> <span class="fl">3.000000e+00</span></span>
+<span id="cb147-4"><a href="clust-spec.html#cb147-4" tabindex="-1"></a> [<span class="dv">5</span>] <span class="fl">2.000000e+00</span> <span class="fl">2.000000e+00</span> <span class="fl">1.000000e+00</span> <span class="fl">3.552714e-15</span></span>
+<span id="cb147-5"><a href="clust-spec.html#cb147-5" tabindex="-1"></a> [<span class="dv">9</span>] <span class="fl">1.776357e-15</span> <span class="fl">1.110223e-15</span></span>
+<span id="cb147-6"><a href="clust-spec.html#cb147-6" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">vp=</span><span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(spec<span class="sc">$</span>values),<span class="at">valeur=</span><span class="fu">rev</span>(spec<span class="sc">$</span>values))</span>
+<span id="cb147-7"><a href="clust-spec.html#cb147-7" tabindex="-1"></a><span class="fu">ggplot</span>(df)<span class="sc">+</span><span class="fu">aes</span>(<span class="at">x=</span>vp,<span class="at">y=</span>valeur)<span class="sc">+</span><span class="fu">geom_point</span>()</span></code></pre></div>
 <p><img src="TUTO_GRAPHES_files/figure-html/unnamed-chunk-192-1.png" width="672" style="display: block; margin: auto;" /></p>
 <div class="corR">
 <p>
@@ -269,19 +273,19 @@ composantes connexes du graphe.
 </p>
 </div></li>
 <li><p>Obtenir les trois vecteurs propres associés à la valeur propre nulle. Commenter.</p>
-<div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb148-1"><a href="clust-spec.html#cb148-1" aria-hidden="true" tabindex="-1"></a>U <span class="ot">&lt;-</span> spec<span class="sc">$</span>vectors[,n<span class="sc">:</span>(n<span class="dv">-2</span>)]</span>
-<span id="cb148-2"><a href="clust-spec.html#cb148-2" aria-hidden="true" tabindex="-1"></a>U</span>
-<span id="cb148-3"><a href="clust-spec.html#cb148-3" aria-hidden="true" tabindex="-1"></a>           [,<span class="dv">1</span>]       [,<span class="dv">2</span>]       [,<span class="dv">3</span>]</span>
-<span id="cb148-4"><a href="clust-spec.html#cb148-4" aria-hidden="true" tabindex="-1"></a> [<span class="dv">1</span>,] <span class="fl">0.0000000</span>  <span class="fl">0.0000000</span> <span class="sc">-</span><span class="fl">0.4472136</span></span>
-<span id="cb148-5"><a href="clust-spec.html#cb148-5" aria-hidden="true" tabindex="-1"></a> [<span class="dv">2</span>,] <span class="fl">0.0000000</span>  <span class="fl">0.0000000</span> <span class="sc">-</span><span class="fl">0.4472136</span></span>
-<span id="cb148-6"><a href="clust-spec.html#cb148-6" aria-hidden="true" tabindex="-1"></a> [<span class="dv">3</span>,] <span class="fl">0.0000000</span>  <span class="fl">0.0000000</span> <span class="sc">-</span><span class="fl">0.4472136</span></span>
-<span id="cb148-7"><a href="clust-spec.html#cb148-7" aria-hidden="true" tabindex="-1"></a> [<span class="dv">4</span>,] <span class="fl">0.0000000</span>  <span class="fl">0.0000000</span> <span class="sc">-</span><span class="fl">0.4472136</span></span>
-<span id="cb148-8"><a href="clust-spec.html#cb148-8" aria-hidden="true" tabindex="-1"></a> [<span class="dv">5</span>,] <span class="fl">0.0000000</span>  <span class="fl">0.0000000</span> <span class="sc">-</span><span class="fl">0.4472136</span></span>
-<span id="cb148-9"><a href="clust-spec.html#cb148-9" aria-hidden="true" tabindex="-1"></a> [<span class="dv">6</span>,] <span class="fl">0.0000000</span> <span class="sc">-</span><span class="fl">0.5773503</span>  <span class="fl">0.0000000</span></span>
-<span id="cb148-10"><a href="clust-spec.html#cb148-10" aria-hidden="true" tabindex="-1"></a> [<span class="dv">7</span>,] <span class="fl">0.0000000</span> <span class="sc">-</span><span class="fl">0.5773503</span>  <span class="fl">0.0000000</span></span>
-<span id="cb148-11"><a href="clust-spec.html#cb148-11" aria-hidden="true" tabindex="-1"></a> [<span class="dv">8</span>,] <span class="fl">0.0000000</span> <span class="sc">-</span><span class="fl">0.5773503</span>  <span class="fl">0.0000000</span></span>
-<span id="cb148-12"><a href="clust-spec.html#cb148-12" aria-hidden="true" tabindex="-1"></a> [<span class="dv">9</span>,] <span class="fl">0.7071068</span>  <span class="fl">0.0000000</span>  <span class="fl">0.0000000</span></span>
-<span id="cb148-13"><a href="clust-spec.html#cb148-13" aria-hidden="true" tabindex="-1"></a>[<span class="dv">10</span>,] <span class="fl">0.7071068</span>  <span class="fl">0.0000000</span>  <span class="fl">0.0000000</span></span></code></pre></div>
+<div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb148-1"><a href="clust-spec.html#cb148-1" tabindex="-1"></a>U <span class="ot">&lt;-</span> spec<span class="sc">$</span>vectors[,n<span class="sc">:</span>(n<span class="dv">-2</span>)]</span>
+<span id="cb148-2"><a href="clust-spec.html#cb148-2" tabindex="-1"></a>U</span>
+<span id="cb148-3"><a href="clust-spec.html#cb148-3" tabindex="-1"></a>           [,<span class="dv">1</span>]       [,<span class="dv">2</span>]       [,<span class="dv">3</span>]</span>
+<span id="cb148-4"><a href="clust-spec.html#cb148-4" tabindex="-1"></a> [<span class="dv">1</span>,] <span class="fl">0.0000000</span>  <span class="fl">0.0000000</span> <span class="sc">-</span><span class="fl">0.4472136</span></span>
+<span id="cb148-5"><a href="clust-spec.html#cb148-5" tabindex="-1"></a> [<span class="dv">2</span>,] <span class="fl">0.0000000</span>  <span class="fl">0.0000000</span> <span class="sc">-</span><span class="fl">0.4472136</span></span>
+<span id="cb148-6"><a href="clust-spec.html#cb148-6" tabindex="-1"></a> [<span class="dv">3</span>,] <span class="fl">0.0000000</span>  <span class="fl">0.0000000</span> <span class="sc">-</span><span class="fl">0.4472136</span></span>
+<span id="cb148-7"><a href="clust-spec.html#cb148-7" tabindex="-1"></a> [<span class="dv">4</span>,] <span class="fl">0.0000000</span>  <span class="fl">0.0000000</span> <span class="sc">-</span><span class="fl">0.4472136</span></span>
+<span id="cb148-8"><a href="clust-spec.html#cb148-8" tabindex="-1"></a> [<span class="dv">5</span>,] <span class="fl">0.0000000</span>  <span class="fl">0.0000000</span> <span class="sc">-</span><span class="fl">0.4472136</span></span>
+<span id="cb148-9"><a href="clust-spec.html#cb148-9" tabindex="-1"></a> [<span class="dv">6</span>,] <span class="fl">0.0000000</span> <span class="sc">-</span><span class="fl">0.5773503</span>  <span class="fl">0.0000000</span></span>
+<span id="cb148-10"><a href="clust-spec.html#cb148-10" tabindex="-1"></a> [<span class="dv">7</span>,] <span class="fl">0.0000000</span> <span class="sc">-</span><span class="fl">0.5773503</span>  <span class="fl">0.0000000</span></span>
+<span id="cb148-11"><a href="clust-spec.html#cb148-11" tabindex="-1"></a> [<span class="dv">8</span>,] <span class="fl">0.0000000</span> <span class="sc">-</span><span class="fl">0.5773503</span>  <span class="fl">0.0000000</span></span>
+<span id="cb148-12"><a href="clust-spec.html#cb148-12" tabindex="-1"></a> [<span class="dv">9</span>,] <span class="fl">0.7071068</span>  <span class="fl">0.0000000</span>  <span class="fl">0.0000000</span></span>
+<span id="cb148-13"><a href="clust-spec.html#cb148-13" tabindex="-1"></a>[<span class="dv">10</span>,] <span class="fl">0.7071068</span>  <span class="fl">0.0000000</span>  <span class="fl">0.0000000</span></span></code></pre></div>
 <div class="corR">
 <p>
 On voit que la matrice U des trois vecteurs propres (en colonne)
@@ -294,97 +298,97 @@ associés à 0 est une matrice qui n’a que trois lignes différentes.
 Le clustering de ces lignes est donc immédiat ici.
 </p>
 </div>
-<div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb149-1"><a href="clust-spec.html#cb149-1" aria-hidden="true" tabindex="-1"></a>res <span class="ot">&lt;-</span> <span class="fu">kmeans</span>(U,<span class="dv">3</span>,<span class="at">nstart=</span><span class="dv">100</span>)</span>
-<span id="cb149-2"><a href="clust-spec.html#cb149-2" aria-hidden="true" tabindex="-1"></a>res<span class="sc">$</span>cluster</span>
-<span id="cb149-3"><a href="clust-spec.html#cb149-3" aria-hidden="true" tabindex="-1"></a> [<span class="dv">1</span>] <span class="dv">1</span> <span class="dv">1</span> <span class="dv">1</span> <span class="dv">1</span> <span class="dv">1</span> <span class="dv">3</span> <span class="dv">3</span> <span class="dv">3</span> <span class="dv">2</span> <span class="dv">2</span></span></code></pre></div></li>
+<div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb149-1"><a href="clust-spec.html#cb149-1" tabindex="-1"></a>res <span class="ot">&lt;-</span> <span class="fu">kmeans</span>(U,<span class="dv">3</span>,<span class="at">nstart=</span><span class="dv">100</span>)</span>
+<span id="cb149-2"><a href="clust-spec.html#cb149-2" tabindex="-1"></a>res<span class="sc">$</span>cluster</span>
+<span id="cb149-3"><a href="clust-spec.html#cb149-3" tabindex="-1"></a> [<span class="dv">1</span>] <span class="dv">1</span> <span class="dv">1</span> <span class="dv">1</span> <span class="dv">1</span> <span class="dv">1</span> <span class="dv">3</span> <span class="dv">3</span> <span class="dv">3</span> <span class="dv">2</span> <span class="dv">2</span></span></code></pre></div></li>
 <li><p>Visualiser les clusters.</p>
-<div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb150-1"><a href="clust-spec.html#cb150-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(G, <span class="at">vertex.color=</span>res<span class="sc">$</span>cluster)</span></code></pre></div>
+<div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb150-1"><a href="clust-spec.html#cb150-1" tabindex="-1"></a><span class="fu">plot</span>(G, <span class="at">vertex.color=</span>res<span class="sc">$</span>cluster)</span></code></pre></div>
 <p><img src="TUTO_GRAPHES_files/figure-html/unnamed-chunk-198-1.png" width="672" style="display: block; margin: auto;" /></p></li>
 </ol>
 </div>
 <div class="exercise">
 <p><span id="exr:exo-laplacien-norm" class="exercise"><strong>Exercice 4.2  (Laplacien normalisé) </strong></span>Refaire le même travail en utilisant le laplacien normalisé. On n’oubliera pas d’ajouter l’étape de normalisation en utilisant par exemple la fonction suivante :</p>
-<div class="sourceCode" id="cb151"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb151-1"><a href="clust-spec.html#cb151-1" aria-hidden="true" tabindex="-1"></a>normalize <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
-<span id="cb151-2"><a href="clust-spec.html#cb151-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(x<span class="sc">/</span><span class="fu">sqrt</span>(<span class="fu">sum</span>(x<span class="sc">^</span><span class="dv">2</span>))) </span>
-<span id="cb151-3"><a href="clust-spec.html#cb151-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb151"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb151-1"><a href="clust-spec.html#cb151-1" tabindex="-1"></a>normalize <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
+<span id="cb151-2"><a href="clust-spec.html#cb151-2" tabindex="-1"></a>  <span class="fu">return</span>(x<span class="sc">/</span><span class="fu">sqrt</span>(<span class="fu">sum</span>(x<span class="sc">^</span><span class="dv">2</span>))) </span>
+<span id="cb151-3"><a href="clust-spec.html#cb151-3" tabindex="-1"></a>}</span></code></pre></div>
 <div class="corR">
 <p>
 On calcule tout d’abord le Laplacien normalisé
 </p>
 </div>
-<div class="sourceCode" id="cb152"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb152-1"><a href="clust-spec.html#cb152-1" aria-hidden="true" tabindex="-1"></a>D_moins1_2 <span class="ot">&lt;-</span> <span class="fu">diag</span>(<span class="dv">1</span><span class="sc">/</span><span class="fu">sqrt</span>(<span class="fu">diag</span>(D))) </span>
-<span id="cb152-2"><a href="clust-spec.html#cb152-2" aria-hidden="true" tabindex="-1"></a>LN <span class="ot">&lt;-</span> <span class="fu">diag</span>(n) <span class="sc">-</span> D_moins1_2 <span class="sc">%*%</span> A <span class="sc">%*%</span>D_moins1_2</span></code></pre></div>
+<div class="sourceCode" id="cb152"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb152-1"><a href="clust-spec.html#cb152-1" tabindex="-1"></a>D_moins1_2 <span class="ot">&lt;-</span> <span class="fu">diag</span>(<span class="dv">1</span><span class="sc">/</span><span class="fu">sqrt</span>(<span class="fu">diag</span>(D))) </span>
+<span id="cb152-2"><a href="clust-spec.html#cb152-2" tabindex="-1"></a>LN <span class="ot">&lt;-</span> <span class="fu">diag</span>(n) <span class="sc">-</span> D_moins1_2 <span class="sc">%*%</span> A <span class="sc">%*%</span>D_moins1_2</span></code></pre></div>
 <div class="corR">
 <p>
 ou avec
 </p>
 </div>
-<div class="sourceCode" id="cb153"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb153-1"><a href="clust-spec.html#cb153-1" aria-hidden="true" tabindex="-1"></a>LN <span class="ot">&lt;-</span> <span class="fu">laplacian_matrix</span>(G,<span class="at">norm=</span><span class="cn">TRUE</span>,<span class="at">sparse=</span>F)</span></code></pre></div>
+<div class="sourceCode" id="cb153"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb153-1"><a href="clust-spec.html#cb153-1" tabindex="-1"></a>LN <span class="ot">&lt;-</span> <span class="fu">laplacian_matrix</span>(G,<span class="at">norm=</span><span class="cn">TRUE</span>,<span class="at">sparse=</span>F)</span></code></pre></div>
 <div class="corR">
 <p>
 On calcule les valeurs propres et vecteurs propres
 </p>
 </div>
-<div class="sourceCode" id="cb154"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb154-1"><a href="clust-spec.html#cb154-1" aria-hidden="true" tabindex="-1"></a>specN <span class="ot">&lt;-</span> <span class="fu">eigen</span>(LN)</span>
-<span id="cb154-2"><a href="clust-spec.html#cb154-2" aria-hidden="true" tabindex="-1"></a>specN<span class="sc">$</span>values</span>
-<span id="cb154-3"><a href="clust-spec.html#cb154-3" aria-hidden="true" tabindex="-1"></a> [<span class="dv">1</span>] <span class="fl">2.000000e+00</span> <span class="fl">2.000000e+00</span> <span class="fl">1.564333e+00</span> <span class="fl">1.333333e+00</span></span>
-<span id="cb154-4"><a href="clust-spec.html#cb154-4" aria-hidden="true" tabindex="-1"></a> [<span class="dv">5</span>] <span class="fl">1.250000e+00</span> <span class="fl">1.000000e+00</span> <span class="fl">8.523332e-01</span> <span class="fl">1.332268e-15</span></span>
-<span id="cb154-5"><a href="clust-spec.html#cb154-5" aria-hidden="true" tabindex="-1"></a> [<span class="dv">9</span>] <span class="fl">1.110223e-15</span> <span class="fl">1.110223e-15</span></span></code></pre></div>
+<div class="sourceCode" id="cb154"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb154-1"><a href="clust-spec.html#cb154-1" tabindex="-1"></a>specN <span class="ot">&lt;-</span> <span class="fu">eigen</span>(LN)</span>
+<span id="cb154-2"><a href="clust-spec.html#cb154-2" tabindex="-1"></a>specN<span class="sc">$</span>values</span>
+<span id="cb154-3"><a href="clust-spec.html#cb154-3" tabindex="-1"></a> [<span class="dv">1</span>] <span class="fl">2.000000e+00</span> <span class="fl">2.000000e+00</span> <span class="fl">1.564333e+00</span> <span class="fl">1.333333e+00</span></span>
+<span id="cb154-4"><a href="clust-spec.html#cb154-4" tabindex="-1"></a> [<span class="dv">5</span>] <span class="fl">1.250000e+00</span> <span class="fl">1.000000e+00</span> <span class="fl">8.523332e-01</span> <span class="fl">1.110223e-15</span></span>
+<span id="cb154-5"><a href="clust-spec.html#cb154-5" tabindex="-1"></a> [<span class="dv">9</span>] <span class="fl">1.110223e-15</span> <span class="fl">8.881784e-16</span></span></code></pre></div>
 <div class="corR">
 <p>
 et on observe à nouveau un trou spectral entre les valeurs propres 3
 et 4.
 </p>
 </div>
-<div class="sourceCode" id="cb155"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb155-1"><a href="clust-spec.html#cb155-1" aria-hidden="true" tabindex="-1"></a>dfN <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">vp=</span><span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(specN<span class="sc">$</span>values),<span class="at">valeur=</span><span class="fu">rev</span>(specN<span class="sc">$</span>values))</span>
-<span id="cb155-2"><a href="clust-spec.html#cb155-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(dfN)<span class="sc">+</span><span class="fu">aes</span>(<span class="at">x=</span>vp,<span class="at">y=</span>valeur)<span class="sc">+</span><span class="fu">geom_point</span>()<span class="sc">+</span><span class="fu">theme_classic</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb155"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb155-1"><a href="clust-spec.html#cb155-1" tabindex="-1"></a>dfN <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">vp=</span><span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(specN<span class="sc">$</span>values),<span class="at">valeur=</span><span class="fu">rev</span>(specN<span class="sc">$</span>values))</span>
+<span id="cb155-2"><a href="clust-spec.html#cb155-2" tabindex="-1"></a><span class="fu">ggplot</span>(dfN)<span class="sc">+</span><span class="fu">aes</span>(<span class="at">x=</span>vp,<span class="at">y=</span>valeur)<span class="sc">+</span><span class="fu">geom_point</span>()<span class="sc">+</span><span class="fu">theme_classic</span>()</span></code></pre></div>
 <p><img src="TUTO_GRAPHES_files/figure-html/unnamed-chunk-207-1.png" width="672" style="display: block; margin: auto;" /></p>
 <div class="corR">
 <p>
 On calcule les 3 vecteurs propres :
 </p>
 </div>
-<div class="sourceCode" id="cb156"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb156-1"><a href="clust-spec.html#cb156-1" aria-hidden="true" tabindex="-1"></a>U <span class="ot">&lt;-</span> specN<span class="sc">$</span>vectors[,n<span class="sc">:</span>(n<span class="dv">-2</span>)]</span>
-<span id="cb156-2"><a href="clust-spec.html#cb156-2" aria-hidden="true" tabindex="-1"></a>U</span>
-<span id="cb156-3"><a href="clust-spec.html#cb156-3" aria-hidden="true" tabindex="-1"></a>           [,<span class="dv">1</span>]      [,<span class="dv">2</span>]       [,<span class="dv">3</span>]</span>
-<span id="cb156-4"><a href="clust-spec.html#cb156-4" aria-hidden="true" tabindex="-1"></a> [<span class="dv">1</span>,] <span class="fl">0.0000000</span> <span class="fl">0.0000000</span> <span class="sc">-</span><span class="fl">0.5000000</span></span>
-<span id="cb156-5"><a href="clust-spec.html#cb156-5" aria-hidden="true" tabindex="-1"></a> [<span class="dv">2</span>,] <span class="fl">0.0000000</span> <span class="fl">0.0000000</span> <span class="sc">-</span><span class="fl">0.4330127</span></span>
-<span id="cb156-6"><a href="clust-spec.html#cb156-6" aria-hidden="true" tabindex="-1"></a> [<span class="dv">3</span>,] <span class="fl">0.0000000</span> <span class="fl">0.0000000</span> <span class="sc">-</span><span class="fl">0.3535534</span></span>
-<span id="cb156-7"><a href="clust-spec.html#cb156-7" aria-hidden="true" tabindex="-1"></a> [<span class="dv">4</span>,] <span class="fl">0.0000000</span> <span class="fl">0.0000000</span> <span class="sc">-</span><span class="fl">0.5000000</span></span>
-<span id="cb156-8"><a href="clust-spec.html#cb156-8" aria-hidden="true" tabindex="-1"></a> [<span class="dv">5</span>,] <span class="fl">0.0000000</span> <span class="fl">0.0000000</span> <span class="sc">-</span><span class="fl">0.4330127</span></span>
-<span id="cb156-9"><a href="clust-spec.html#cb156-9" aria-hidden="true" tabindex="-1"></a> [<span class="dv">6</span>,] <span class="fl">0.7071068</span> <span class="fl">0.0000000</span>  <span class="fl">0.0000000</span></span>
-<span id="cb156-10"><a href="clust-spec.html#cb156-10" aria-hidden="true" tabindex="-1"></a> [<span class="dv">7</span>,] <span class="fl">0.5000000</span> <span class="fl">0.0000000</span>  <span class="fl">0.0000000</span></span>
-<span id="cb156-11"><a href="clust-spec.html#cb156-11" aria-hidden="true" tabindex="-1"></a> [<span class="dv">8</span>,] <span class="fl">0.5000000</span> <span class="fl">0.0000000</span>  <span class="fl">0.0000000</span></span>
-<span id="cb156-12"><a href="clust-spec.html#cb156-12" aria-hidden="true" tabindex="-1"></a> [<span class="dv">9</span>,] <span class="fl">0.0000000</span> <span class="fl">0.7071068</span>  <span class="fl">0.0000000</span></span>
-<span id="cb156-13"><a href="clust-spec.html#cb156-13" aria-hidden="true" tabindex="-1"></a>[<span class="dv">10</span>,] <span class="fl">0.0000000</span> <span class="fl">0.7071068</span>  <span class="fl">0.0000000</span></span></code></pre></div>
+<div class="sourceCode" id="cb156"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb156-1"><a href="clust-spec.html#cb156-1" tabindex="-1"></a>U <span class="ot">&lt;-</span> specN<span class="sc">$</span>vectors[,n<span class="sc">:</span>(n<span class="dv">-2</span>)]</span>
+<span id="cb156-2"><a href="clust-spec.html#cb156-2" tabindex="-1"></a>U</span>
+<span id="cb156-3"><a href="clust-spec.html#cb156-3" tabindex="-1"></a>            [,<span class="dv">1</span>]      [,<span class="dv">2</span>]      [,<span class="dv">3</span>]</span>
+<span id="cb156-4"><a href="clust-spec.html#cb156-4" tabindex="-1"></a> [<span class="dv">1</span>,] <span class="sc">-</span><span class="fl">0.5000000</span> <span class="fl">0.0000000</span> <span class="fl">0.0000000</span></span>
+<span id="cb156-5"><a href="clust-spec.html#cb156-5" tabindex="-1"></a> [<span class="dv">2</span>,] <span class="sc">-</span><span class="fl">0.4330127</span> <span class="fl">0.0000000</span> <span class="fl">0.0000000</span></span>
+<span id="cb156-6"><a href="clust-spec.html#cb156-6" tabindex="-1"></a> [<span class="dv">3</span>,] <span class="sc">-</span><span class="fl">0.3535534</span> <span class="fl">0.0000000</span> <span class="fl">0.0000000</span></span>
+<span id="cb156-7"><a href="clust-spec.html#cb156-7" tabindex="-1"></a> [<span class="dv">4</span>,] <span class="sc">-</span><span class="fl">0.5000000</span> <span class="fl">0.0000000</span> <span class="fl">0.0000000</span></span>
+<span id="cb156-8"><a href="clust-spec.html#cb156-8" tabindex="-1"></a> [<span class="dv">5</span>,] <span class="sc">-</span><span class="fl">0.4330127</span> <span class="fl">0.0000000</span> <span class="fl">0.0000000</span></span>
+<span id="cb156-9"><a href="clust-spec.html#cb156-9" tabindex="-1"></a> [<span class="dv">6</span>,]  <span class="fl">0.0000000</span> <span class="fl">0.7071068</span> <span class="fl">0.0000000</span></span>
+<span id="cb156-10"><a href="clust-spec.html#cb156-10" tabindex="-1"></a> [<span class="dv">7</span>,]  <span class="fl">0.0000000</span> <span class="fl">0.5000000</span> <span class="fl">0.0000000</span></span>
+<span id="cb156-11"><a href="clust-spec.html#cb156-11" tabindex="-1"></a> [<span class="dv">8</span>,]  <span class="fl">0.0000000</span> <span class="fl">0.5000000</span> <span class="fl">0.0000000</span></span>
+<span id="cb156-12"><a href="clust-spec.html#cb156-12" tabindex="-1"></a> [<span class="dv">9</span>,]  <span class="fl">0.0000000</span> <span class="fl">0.0000000</span> <span class="fl">0.7071068</span></span>
+<span id="cb156-13"><a href="clust-spec.html#cb156-13" tabindex="-1"></a>[<span class="dv">10</span>,]  <span class="fl">0.0000000</span> <span class="fl">0.0000000</span> <span class="fl">0.7071068</span></span></code></pre></div>
 <div class="corR">
 <p>
 que l’on normalise à l’aide de la fonction <strong>normalize</strong>
 :
 </p>
 </div>
-<div class="sourceCode" id="cb157"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb157-1"><a href="clust-spec.html#cb157-1" aria-hidden="true" tabindex="-1"></a>U.norm <span class="ot">&lt;-</span> <span class="fu">t</span>(<span class="fu">apply</span>(U,<span class="dv">1</span>,normalize)) </span>
-<span id="cb157-2"><a href="clust-spec.html#cb157-2" aria-hidden="true" tabindex="-1"></a>U.norm</span>
-<span id="cb157-3"><a href="clust-spec.html#cb157-3" aria-hidden="true" tabindex="-1"></a>      [,<span class="dv">1</span>] [,<span class="dv">2</span>] [,<span class="dv">3</span>]</span>
-<span id="cb157-4"><a href="clust-spec.html#cb157-4" aria-hidden="true" tabindex="-1"></a> [<span class="dv">1</span>,]    <span class="dv">0</span>    <span class="dv">0</span>   <span class="sc">-</span><span class="dv">1</span></span>
-<span id="cb157-5"><a href="clust-spec.html#cb157-5" aria-hidden="true" tabindex="-1"></a> [<span class="dv">2</span>,]    <span class="dv">0</span>    <span class="dv">0</span>   <span class="sc">-</span><span class="dv">1</span></span>
-<span id="cb157-6"><a href="clust-spec.html#cb157-6" aria-hidden="true" tabindex="-1"></a> [<span class="dv">3</span>,]    <span class="dv">0</span>    <span class="dv">0</span>   <span class="sc">-</span><span class="dv">1</span></span>
-<span id="cb157-7"><a href="clust-spec.html#cb157-7" aria-hidden="true" tabindex="-1"></a> [<span class="dv">4</span>,]    <span class="dv">0</span>    <span class="dv">0</span>   <span class="sc">-</span><span class="dv">1</span></span>
-<span id="cb157-8"><a href="clust-spec.html#cb157-8" aria-hidden="true" tabindex="-1"></a> [<span class="dv">5</span>,]    <span class="dv">0</span>    <span class="dv">0</span>   <span class="sc">-</span><span class="dv">1</span></span>
-<span id="cb157-9"><a href="clust-spec.html#cb157-9" aria-hidden="true" tabindex="-1"></a> [<span class="dv">6</span>,]    <span class="dv">1</span>    <span class="dv">0</span>    <span class="dv">0</span></span>
-<span id="cb157-10"><a href="clust-spec.html#cb157-10" aria-hidden="true" tabindex="-1"></a> [<span class="dv">7</span>,]    <span class="dv">1</span>    <span class="dv">0</span>    <span class="dv">0</span></span>
-<span id="cb157-11"><a href="clust-spec.html#cb157-11" aria-hidden="true" tabindex="-1"></a> [<span class="dv">8</span>,]    <span class="dv">1</span>    <span class="dv">0</span>    <span class="dv">0</span></span>
-<span id="cb157-12"><a href="clust-spec.html#cb157-12" aria-hidden="true" tabindex="-1"></a> [<span class="dv">9</span>,]    <span class="dv">0</span>    <span class="dv">1</span>    <span class="dv">0</span></span>
-<span id="cb157-13"><a href="clust-spec.html#cb157-13" aria-hidden="true" tabindex="-1"></a>[<span class="dv">10</span>,]    <span class="dv">0</span>    <span class="dv">1</span>    <span class="dv">0</span></span></code></pre></div>
+<div class="sourceCode" id="cb157"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb157-1"><a href="clust-spec.html#cb157-1" tabindex="-1"></a>U.norm <span class="ot">&lt;-</span> <span class="fu">t</span>(<span class="fu">apply</span>(U,<span class="dv">1</span>,normalize)) </span>
+<span id="cb157-2"><a href="clust-spec.html#cb157-2" tabindex="-1"></a>U.norm</span>
+<span id="cb157-3"><a href="clust-spec.html#cb157-3" tabindex="-1"></a>      [,<span class="dv">1</span>] [,<span class="dv">2</span>] [,<span class="dv">3</span>]</span>
+<span id="cb157-4"><a href="clust-spec.html#cb157-4" tabindex="-1"></a> [<span class="dv">1</span>,]   <span class="sc">-</span><span class="dv">1</span>    <span class="dv">0</span>    <span class="dv">0</span></span>
+<span id="cb157-5"><a href="clust-spec.html#cb157-5" tabindex="-1"></a> [<span class="dv">2</span>,]   <span class="sc">-</span><span class="dv">1</span>    <span class="dv">0</span>    <span class="dv">0</span></span>
+<span id="cb157-6"><a href="clust-spec.html#cb157-6" tabindex="-1"></a> [<span class="dv">3</span>,]   <span class="sc">-</span><span class="dv">1</span>    <span class="dv">0</span>    <span class="dv">0</span></span>
+<span id="cb157-7"><a href="clust-spec.html#cb157-7" tabindex="-1"></a> [<span class="dv">4</span>,]   <span class="sc">-</span><span class="dv">1</span>    <span class="dv">0</span>    <span class="dv">0</span></span>
+<span id="cb157-8"><a href="clust-spec.html#cb157-8" tabindex="-1"></a> [<span class="dv">5</span>,]   <span class="sc">-</span><span class="dv">1</span>    <span class="dv">0</span>    <span class="dv">0</span></span>
+<span id="cb157-9"><a href="clust-spec.html#cb157-9" tabindex="-1"></a> [<span class="dv">6</span>,]    <span class="dv">0</span>    <span class="dv">1</span>    <span class="dv">0</span></span>
+<span id="cb157-10"><a href="clust-spec.html#cb157-10" tabindex="-1"></a> [<span class="dv">7</span>,]    <span class="dv">0</span>    <span class="dv">1</span>    <span class="dv">0</span></span>
+<span id="cb157-11"><a href="clust-spec.html#cb157-11" tabindex="-1"></a> [<span class="dv">8</span>,]    <span class="dv">0</span>    <span class="dv">1</span>    <span class="dv">0</span></span>
+<span id="cb157-12"><a href="clust-spec.html#cb157-12" tabindex="-1"></a> [<span class="dv">9</span>,]    <span class="dv">0</span>    <span class="dv">0</span>    <span class="dv">1</span></span>
+<span id="cb157-13"><a href="clust-spec.html#cb157-13" tabindex="-1"></a>[<span class="dv">10</span>,]    <span class="dv">0</span>    <span class="dv">0</span>    <span class="dv">1</span></span></code></pre></div>
 <div class="corR">
 <p>
 Il reste à faire le <span class="math inline"><span class="math inline">\(k\)</span></span>-means.
 </p>
 </div>
-<div class="sourceCode" id="cb158"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb158-1"><a href="clust-spec.html#cb158-1" aria-hidden="true" tabindex="-1"></a>res <span class="ot">&lt;-</span> <span class="fu">kmeans</span>(U.norm,<span class="dv">3</span>,<span class="at">nstart=</span><span class="dv">100</span>)</span>
-<span id="cb158-2"><a href="clust-spec.html#cb158-2" aria-hidden="true" tabindex="-1"></a>res<span class="sc">$</span>cluster</span>
-<span id="cb158-3"><a href="clust-spec.html#cb158-3" aria-hidden="true" tabindex="-1"></a> [<span class="dv">1</span>] <span class="dv">2</span> <span class="dv">2</span> <span class="dv">2</span> <span class="dv">2</span> <span class="dv">2</span> <span class="dv">1</span> <span class="dv">1</span> <span class="dv">1</span> <span class="dv">3</span> <span class="dv">3</span></span></code></pre></div>
-<div class="sourceCode" id="cb159"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb159-1"><a href="clust-spec.html#cb159-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(G, <span class="at">vertex.color=</span>res<span class="sc">$</span>cluster)</span></code></pre></div>
+<div class="sourceCode" id="cb158"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb158-1"><a href="clust-spec.html#cb158-1" tabindex="-1"></a>res <span class="ot">&lt;-</span> <span class="fu">kmeans</span>(U.norm,<span class="dv">3</span>,<span class="at">nstart=</span><span class="dv">100</span>)</span>
+<span id="cb158-2"><a href="clust-spec.html#cb158-2" tabindex="-1"></a>res<span class="sc">$</span>cluster</span>
+<span id="cb158-3"><a href="clust-spec.html#cb158-3" tabindex="-1"></a> [<span class="dv">1</span>] <span class="dv">2</span> <span class="dv">2</span> <span class="dv">2</span> <span class="dv">2</span> <span class="dv">2</span> <span class="dv">1</span> <span class="dv">1</span> <span class="dv">1</span> <span class="dv">3</span> <span class="dv">3</span></span></code></pre></div>
+<div class="sourceCode" id="cb159"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb159-1"><a href="clust-spec.html#cb159-1" tabindex="-1"></a><span class="fu">plot</span>(G, <span class="at">vertex.color=</span>res<span class="sc">$</span>cluster)</span></code></pre></div>
 <p><img src="TUTO_GRAPHES_files/figure-html/unnamed-chunk-214-1.png" width="672" style="display: block; margin: auto;" /></p>
 </div>
 </div>
@@ -403,52 +407,52 @@ Il suffit de mettre en forme ce qui a été fait dans la partie
 précédente, par exemple :
 </p>
 </div>
-<div class="sourceCode" id="cb160"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb160-1"><a href="clust-spec.html#cb160-1" aria-hidden="true" tabindex="-1"></a>spec.clust.norm <span class="ot">&lt;-</span> <span class="cf">function</span>(G,K){</span>
-<span id="cb160-2"><a href="clust-spec.html#cb160-2" aria-hidden="true" tabindex="-1"></a>  n <span class="ot">&lt;-</span> <span class="fu">vcount</span>(G)</span>
-<span id="cb160-3"><a href="clust-spec.html#cb160-3" aria-hidden="true" tabindex="-1"></a>  LN <span class="ot">&lt;-</span> <span class="fu">laplacian_matrix</span>(G,<span class="at">norm=</span><span class="cn">TRUE</span>,<span class="at">sparse=</span>F)</span>
-<span id="cb160-4"><a href="clust-spec.html#cb160-4" aria-hidden="true" tabindex="-1"></a>  specN <span class="ot">&lt;-</span> <span class="fu">eigen</span>(LN)</span>
-<span id="cb160-5"><a href="clust-spec.html#cb160-5" aria-hidden="true" tabindex="-1"></a>  dfN <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">vp=</span><span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(specN<span class="sc">$</span>values),<span class="at">valeur=</span><span class="fu">rev</span>(specN<span class="sc">$</span>values))</span>
-<span id="cb160-6"><a href="clust-spec.html#cb160-6" aria-hidden="true" tabindex="-1"></a>  graph <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(dfN)<span class="sc">+</span><span class="fu">aes</span>(<span class="at">x=</span>vp,<span class="at">y=</span>valeur)<span class="sc">+</span><span class="fu">geom_point</span>()<span class="sc">+</span><span class="fu">theme_classic</span>()</span>
-<span id="cb160-7"><a href="clust-spec.html#cb160-7" aria-hidden="true" tabindex="-1"></a>  U <span class="ot">&lt;-</span> specN<span class="sc">$</span>vectors[,n<span class="sc">:</span>(n<span class="sc">-</span>K<span class="sc">+</span><span class="dv">1</span>)]</span>
-<span id="cb160-8"><a href="clust-spec.html#cb160-8" aria-hidden="true" tabindex="-1"></a>  U.norm <span class="ot">&lt;-</span> <span class="fu">t</span>(<span class="fu">apply</span>(U,<span class="dv">1</span>,normalize)) </span>
-<span id="cb160-9"><a href="clust-spec.html#cb160-9" aria-hidden="true" tabindex="-1"></a>  clustering <span class="ot">&lt;-</span> <span class="fu">kmeans</span>(U.norm,K,<span class="at">nstart=</span><span class="dv">100</span>)<span class="sc">$</span>cluster</span>
-<span id="cb160-10"><a href="clust-spec.html#cb160-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(<span class="fu">list</span>(<span class="at">groupe=</span>clustering,<span class="at">graphe=</span>graph,<span class="at">valeur=</span><span class="fu">rev</span>(specN<span class="sc">$</span>value)))</span>
-<span id="cb160-11"><a href="clust-spec.html#cb160-11" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb160"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb160-1"><a href="clust-spec.html#cb160-1" tabindex="-1"></a>spec.clust.norm <span class="ot">&lt;-</span> <span class="cf">function</span>(G,K){</span>
+<span id="cb160-2"><a href="clust-spec.html#cb160-2" tabindex="-1"></a>  n <span class="ot">&lt;-</span> <span class="fu">vcount</span>(G)</span>
+<span id="cb160-3"><a href="clust-spec.html#cb160-3" tabindex="-1"></a>  LN <span class="ot">&lt;-</span> <span class="fu">laplacian_matrix</span>(G,<span class="at">norm=</span><span class="cn">TRUE</span>,<span class="at">sparse=</span>F)</span>
+<span id="cb160-4"><a href="clust-spec.html#cb160-4" tabindex="-1"></a>  specN <span class="ot">&lt;-</span> <span class="fu">eigen</span>(LN)</span>
+<span id="cb160-5"><a href="clust-spec.html#cb160-5" tabindex="-1"></a>  dfN <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">vp=</span><span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(specN<span class="sc">$</span>values),<span class="at">valeur=</span><span class="fu">rev</span>(specN<span class="sc">$</span>values))</span>
+<span id="cb160-6"><a href="clust-spec.html#cb160-6" tabindex="-1"></a>  graph <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(dfN)<span class="sc">+</span><span class="fu">aes</span>(<span class="at">x=</span>vp,<span class="at">y=</span>valeur)<span class="sc">+</span><span class="fu">geom_point</span>()<span class="sc">+</span><span class="fu">theme_classic</span>()</span>
+<span id="cb160-7"><a href="clust-spec.html#cb160-7" tabindex="-1"></a>  U <span class="ot">&lt;-</span> specN<span class="sc">$</span>vectors[,n<span class="sc">:</span>(n<span class="sc">-</span>K<span class="sc">+</span><span class="dv">1</span>)]</span>
+<span id="cb160-8"><a href="clust-spec.html#cb160-8" tabindex="-1"></a>  U.norm <span class="ot">&lt;-</span> <span class="fu">t</span>(<span class="fu">apply</span>(U,<span class="dv">1</span>,normalize)) </span>
+<span id="cb160-9"><a href="clust-spec.html#cb160-9" tabindex="-1"></a>  clustering <span class="ot">&lt;-</span> <span class="fu">kmeans</span>(U.norm,K,<span class="at">nstart=</span><span class="dv">100</span>)<span class="sc">$</span>cluster</span>
+<span id="cb160-10"><a href="clust-spec.html#cb160-10" tabindex="-1"></a>  <span class="fu">return</span>(<span class="fu">list</span>(<span class="at">groupe=</span>clustering,<span class="at">graphe=</span>graph,<span class="at">valeur=</span><span class="fu">rev</span>(specN<span class="sc">$</span>value)))</span>
+<span id="cb160-11"><a href="clust-spec.html#cb160-11" tabindex="-1"></a>}</span></code></pre></div>
 <div class="corR">
 <p>
 On teste la fonction :
 </p>
 </div>
-<div class="sourceCode" id="cb161"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb161-1"><a href="clust-spec.html#cb161-1" aria-hidden="true" tabindex="-1"></a>res <span class="ot">&lt;-</span> <span class="fu">spec.clust.norm</span>(G,<span class="at">K=</span><span class="dv">8</span>)</span>
-<span id="cb161-2"><a href="clust-spec.html#cb161-2" aria-hidden="true" tabindex="-1"></a>res<span class="sc">$</span>graphe</span></code></pre></div>
+<div class="sourceCode" id="cb161"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb161-1"><a href="clust-spec.html#cb161-1" tabindex="-1"></a>res <span class="ot">&lt;-</span> <span class="fu">spec.clust.norm</span>(G,<span class="at">K=</span><span class="dv">8</span>)</span>
+<span id="cb161-2"><a href="clust-spec.html#cb161-2" tabindex="-1"></a>res<span class="sc">$</span>graphe</span></code></pre></div>
 <p><img src="TUTO_GRAPHES_files/figure-html/unnamed-chunk-218-1.png" width="672" style="display: block; margin: auto;" /></p>
-<div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb162-1"><a href="clust-spec.html#cb162-1" aria-hidden="true" tabindex="-1"></a>res1 <span class="ot">&lt;-</span> <span class="fu">spec.clust.norm</span>(G,<span class="at">K=</span><span class="dv">3</span>)</span>
-<span id="cb162-2"><a href="clust-spec.html#cb162-2" aria-hidden="true" tabindex="-1"></a>res1<span class="sc">$</span>groupe</span>
-<span id="cb162-3"><a href="clust-spec.html#cb162-3" aria-hidden="true" tabindex="-1"></a> [<span class="dv">1</span>] <span class="dv">2</span> <span class="dv">2</span> <span class="dv">2</span> <span class="dv">2</span> <span class="dv">2</span> <span class="dv">3</span> <span class="dv">3</span> <span class="dv">3</span> <span class="dv">1</span> <span class="dv">1</span></span></code></pre></div>
+<div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb162-1"><a href="clust-spec.html#cb162-1" tabindex="-1"></a>res1 <span class="ot">&lt;-</span> <span class="fu">spec.clust.norm</span>(G,<span class="at">K=</span><span class="dv">3</span>)</span>
+<span id="cb162-2"><a href="clust-spec.html#cb162-2" tabindex="-1"></a>res1<span class="sc">$</span>groupe</span>
+<span id="cb162-3"><a href="clust-spec.html#cb162-3" tabindex="-1"></a> [<span class="dv">1</span>] <span class="dv">2</span> <span class="dv">2</span> <span class="dv">2</span> <span class="dv">2</span> <span class="dv">2</span> <span class="dv">3</span> <span class="dv">3</span> <span class="dv">3</span> <span class="dv">1</span> <span class="dv">1</span></span></code></pre></div>
 <p>Igraph possède une fonction permettant de faire directement le spectral clustering : <strong>embed_laplacian_matrix</strong>. Mais en argument, il faut lui donner le nombre <span class="math inline">\(K\)</span> de clusters souhaité. En pratique, on ne connait pas <span class="math inline">\(K\)</span>, et une façon de le trouver est de regarder le trou spectral dans le graphe des valeurs propres.</p>
 <p>La fonction <strong>embed_laplacian_matrix</strong> s’utilise ainsi :</p>
-<div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb163-1"><a href="clust-spec.html#cb163-1" aria-hidden="true" tabindex="-1"></a><span class="co">#res2 &lt;- embed_laplacian_matrix(G,8,which=&quot;sa&quot;,scaled=&quot;FALSE&quot;,degmode = &quot;all&quot;)</span></span>
-<span id="cb163-2"><a href="clust-spec.html#cb163-2" aria-hidden="true" tabindex="-1"></a>res2 <span class="ot">&lt;-</span> <span class="fu">embed_laplacian_matrix</span>(G,<span class="dv">8</span>,<span class="at">which=</span><span class="st">&quot;sa&quot;</span>,<span class="at">scaled=</span><span class="st">&quot;FALSE&quot;</span>)</span>
-<span id="cb163-3"><a href="clust-spec.html#cb163-3" aria-hidden="true" tabindex="-1"></a>res2<span class="sc">$</span>D</span>
-<span id="cb163-4"><a href="clust-spec.html#cb163-4" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="dv">0</span> <span class="dv">0</span> <span class="dv">0</span> <span class="dv">1</span> <span class="dv">2</span> <span class="dv">2</span> <span class="dv">3</span> <span class="dv">4</span></span></code></pre></div>
+<div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb163-1"><a href="clust-spec.html#cb163-1" tabindex="-1"></a><span class="co">#res2 &lt;- embed_laplacian_matrix(G,8,which=&quot;sa&quot;,scaled=&quot;FALSE&quot;,degmode = &quot;all&quot;)</span></span>
+<span id="cb163-2"><a href="clust-spec.html#cb163-2" tabindex="-1"></a>res2 <span class="ot">&lt;-</span> <span class="fu">embed_laplacian_matrix</span>(G,<span class="dv">8</span>,<span class="at">which=</span><span class="st">&quot;sa&quot;</span>,<span class="at">scaled=</span><span class="st">&quot;FALSE&quot;</span>)</span>
+<span id="cb163-3"><a href="clust-spec.html#cb163-3" tabindex="-1"></a>res2<span class="sc">$</span>D</span>
+<span id="cb163-4"><a href="clust-spec.html#cb163-4" tabindex="-1"></a>[<span class="dv">1</span>] <span class="dv">0</span> <span class="dv">0</span> <span class="dv">0</span> <span class="dv">1</span> <span class="dv">2</span> <span class="dv">2</span> <span class="dv">3</span> <span class="dv">4</span></span></code></pre></div>
 <p>On peut faire du clustering spectral à 3 groupes avec :</p>
-<div class="sourceCode" id="cb164"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb164-1"><a href="clust-spec.html#cb164-1" aria-hidden="true" tabindex="-1"></a><span class="co">#res3 &lt;- embed_laplacian_matrix(G,3,which=&quot;sa&quot;,scaled=&quot;FALSE&quot;,degmode = &quot;all&quot;)</span></span>
-<span id="cb164-2"><a href="clust-spec.html#cb164-2" aria-hidden="true" tabindex="-1"></a>res3 <span class="ot">&lt;-</span> <span class="fu">embed_laplacian_matrix</span>(G,<span class="dv">3</span>,<span class="at">which=</span><span class="st">&quot;sa&quot;</span>,<span class="at">scaled=</span><span class="st">&quot;FALSE&quot;</span>)</span>
-<span id="cb164-3"><a href="clust-spec.html#cb164-3" aria-hidden="true" tabindex="-1"></a>res_spectral <span class="ot">&lt;-</span> <span class="fu">kmeans</span>(res3<span class="sc">$</span>X, <span class="at">centers =</span> <span class="dv">3</span>, <span class="at">nstart =</span> <span class="dv">100</span>)</span>
-<span id="cb164-4"><a href="clust-spec.html#cb164-4" aria-hidden="true" tabindex="-1"></a>res_spectral<span class="sc">$</span>cluster</span>
-<span id="cb164-5"><a href="clust-spec.html#cb164-5" aria-hidden="true" tabindex="-1"></a> [<span class="dv">1</span>] <span class="dv">2</span> <span class="dv">2</span> <span class="dv">2</span> <span class="dv">2</span> <span class="dv">2</span> <span class="dv">3</span> <span class="dv">3</span> <span class="dv">3</span> <span class="dv">1</span> <span class="dv">1</span></span></code></pre></div>
+<div class="sourceCode" id="cb164"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb164-1"><a href="clust-spec.html#cb164-1" tabindex="-1"></a><span class="co">#res3 &lt;- embed_laplacian_matrix(G,3,which=&quot;sa&quot;,scaled=&quot;FALSE&quot;,degmode = &quot;all&quot;)</span></span>
+<span id="cb164-2"><a href="clust-spec.html#cb164-2" tabindex="-1"></a>res3 <span class="ot">&lt;-</span> <span class="fu">embed_laplacian_matrix</span>(G,<span class="dv">3</span>,<span class="at">which=</span><span class="st">&quot;sa&quot;</span>,<span class="at">scaled=</span><span class="st">&quot;FALSE&quot;</span>)</span>
+<span id="cb164-3"><a href="clust-spec.html#cb164-3" tabindex="-1"></a>res_spectral <span class="ot">&lt;-</span> <span class="fu">kmeans</span>(res3<span class="sc">$</span>X, <span class="at">centers =</span> <span class="dv">3</span>, <span class="at">nstart =</span> <span class="dv">100</span>)</span>
+<span id="cb164-4"><a href="clust-spec.html#cb164-4" tabindex="-1"></a>res_spectral<span class="sc">$</span>cluster</span>
+<span id="cb164-5"><a href="clust-spec.html#cb164-5" tabindex="-1"></a> [<span class="dv">1</span>] <span class="dv">1</span> <span class="dv">1</span> <span class="dv">1</span> <span class="dv">1</span> <span class="dv">1</span> <span class="dv">2</span> <span class="dv">2</span> <span class="dv">2</span> <span class="dv">3</span> <span class="dv">3</span></span></code></pre></div>
 </div>
 <div class="exercise">
 <p><span id="exr:exo-spec-deux-commu" class="exercise"><strong>Exercice 4.4  (Graphe avec deux communautés faiblement connectées entre elles) </strong></span>On considère le graphe suivant obtenu selon un modèle <strong>SBM</strong> :</p>
-<div class="sourceCode" id="cb165"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb165-1"><a href="clust-spec.html#cb165-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1234</span>)</span>
-<span id="cb165-2"><a href="clust-spec.html#cb165-2" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">25</span><span class="co"># nombre de noeuds</span></span>
-<span id="cb165-3"><a href="clust-spec.html#cb165-3" aria-hidden="true" tabindex="-1"></a>Q <span class="ot">&lt;-</span> <span class="dv">2</span> <span class="co"># nombre de cluster clusters</span></span>
-<span id="cb165-4"><a href="clust-spec.html#cb165-4" aria-hidden="true" tabindex="-1"></a>pi <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.4</span>, <span class="fl">0.6</span>) <span class="co"># taille des groupes  </span></span>
-<span id="cb165-5"><a href="clust-spec.html#cb165-5" aria-hidden="true" tabindex="-1"></a>effectifs <span class="ot">&lt;-</span> n<span class="sc">*</span>pi</span>
-<span id="cb165-6"><a href="clust-spec.html#cb165-6" aria-hidden="true" tabindex="-1"></a>connectivite_matrix <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="fl">0.9</span>, <span class="fl">0.15</span>,</span>
-<span id="cb165-7"><a href="clust-spec.html#cb165-7" aria-hidden="true" tabindex="-1"></a>                                <span class="fl">0.15</span>, <span class="fl">0.95</span>),<span class="at">nrow=</span>Q) <span class="co"># matrice de connexion</span></span>
-<span id="cb165-8"><a href="clust-spec.html#cb165-8" aria-hidden="true" tabindex="-1"></a>G <span class="ot">&lt;-</span> <span class="fu">sample_sbm</span>(n, <span class="at">pref.matrix=</span>connectivite_matrix, <span class="at">block.sizes =</span> effectifs)</span>
-<span id="cb165-9"><a href="clust-spec.html#cb165-9" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(G)</span></code></pre></div>
+<div class="sourceCode" id="cb165"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb165-1"><a href="clust-spec.html#cb165-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1234</span>)</span>
+<span id="cb165-2"><a href="clust-spec.html#cb165-2" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">25</span><span class="co"># nombre de noeuds</span></span>
+<span id="cb165-3"><a href="clust-spec.html#cb165-3" tabindex="-1"></a>Q <span class="ot">&lt;-</span> <span class="dv">2</span> <span class="co"># nombre de cluster clusters</span></span>
+<span id="cb165-4"><a href="clust-spec.html#cb165-4" tabindex="-1"></a>pi <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.4</span>, <span class="fl">0.6</span>) <span class="co"># taille des groupes  </span></span>
+<span id="cb165-5"><a href="clust-spec.html#cb165-5" tabindex="-1"></a>effectifs <span class="ot">&lt;-</span> n<span class="sc">*</span>pi</span>
+<span id="cb165-6"><a href="clust-spec.html#cb165-6" tabindex="-1"></a>connectivite_matrix <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="fl">0.9</span>, <span class="fl">0.15</span>,</span>
+<span id="cb165-7"><a href="clust-spec.html#cb165-7" tabindex="-1"></a>                                <span class="fl">0.15</span>, <span class="fl">0.95</span>),<span class="at">nrow=</span>Q) <span class="co"># matrice de connexion</span></span>
+<span id="cb165-8"><a href="clust-spec.html#cb165-8" tabindex="-1"></a>G <span class="ot">&lt;-</span> <span class="fu">sample_sbm</span>(n, <span class="at">pref.matrix=</span>connectivite_matrix, <span class="at">block.sizes =</span> effectifs)</span>
+<span id="cb165-9"><a href="clust-spec.html#cb165-9" tabindex="-1"></a><span class="fu">plot</span>(G)</span></code></pre></div>
 <p><img src="TUTO_GRAPHES_files/figure-html/unnamed-chunk-221-1.png" width="672" style="display: block; margin: auto;" />
 Effectuer le clustering spectral sur ce graphe, on essaiera notamment de choisir le nombre de groupes.</p>
 <div class="corR">
@@ -457,8 +461,8 @@ On commence avec un nombre de groupes “grand” pour visualiser le
 graphe des valeurs propres :
 </p>
 </div>
-<div class="sourceCode" id="cb166"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb166-1"><a href="clust-spec.html#cb166-1" aria-hidden="true" tabindex="-1"></a>res <span class="ot">&lt;-</span> <span class="fu">spec.clust.norm</span>(G,<span class="at">K=</span><span class="dv">8</span>)</span>
-<span id="cb166-2"><a href="clust-spec.html#cb166-2" aria-hidden="true" tabindex="-1"></a>res<span class="sc">$</span>graphe</span></code></pre></div>
+<div class="sourceCode" id="cb166"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb166-1"><a href="clust-spec.html#cb166-1" tabindex="-1"></a>res <span class="ot">&lt;-</span> <span class="fu">spec.clust.norm</span>(G,<span class="at">K=</span><span class="dv">8</span>)</span>
+<span id="cb166-2"><a href="clust-spec.html#cb166-2" tabindex="-1"></a>res<span class="sc">$</span>graphe</span></code></pre></div>
 <p><img src="TUTO_GRAPHES_files/figure-html/unnamed-chunk-223-1.png" width="672" style="display: block; margin: auto;" /></p>
 <div class="corR">
 <p>
@@ -468,14 +472,14 @@ spectral</strong> après la seconde valeur propre, ce qui laisse supposer
 un graphe à 2 groupes. On refait donc le clustering spectral avec <span class="math inline"><span class="math inline">\(K=2\)</span></span>
 </p>
 </div>
-<div class="sourceCode" id="cb167"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb167-1"><a href="clust-spec.html#cb167-1" aria-hidden="true" tabindex="-1"></a>res <span class="ot">&lt;-</span> <span class="fu">spec.clust.norm</span>(G,<span class="at">K=</span><span class="dv">2</span>)</span>
-<span id="cb167-2"><a href="clust-spec.html#cb167-2" aria-hidden="true" tabindex="-1"></a>groupe <span class="ot">&lt;-</span> res<span class="sc">$</span>groupe</span></code></pre></div>
+<div class="sourceCode" id="cb167"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb167-1"><a href="clust-spec.html#cb167-1" tabindex="-1"></a>res <span class="ot">&lt;-</span> <span class="fu">spec.clust.norm</span>(G,<span class="at">K=</span><span class="dv">2</span>)</span>
+<span id="cb167-2"><a href="clust-spec.html#cb167-2" tabindex="-1"></a>groupe <span class="ot">&lt;-</span> res<span class="sc">$</span>groupe</span></code></pre></div>
 <div class="corR">
 <p>
 On visualise les groupes :
 </p>
 </div>
-<div class="sourceCode" id="cb168"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb168-1"><a href="clust-spec.html#cb168-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(G,<span class="at">vertex.color=</span>groupe)</span></code></pre></div>
+<div class="sourceCode" id="cb168"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb168-1"><a href="clust-spec.html#cb168-1" tabindex="-1"></a><span class="fu">plot</span>(G,<span class="at">vertex.color=</span>groupe)</span></code></pre></div>
 <p><img src="TUTO_GRAPHES_files/figure-html/unnamed-chunk-227-1.png" width="672" style="display: block; margin: auto;" /></p>
 <div class="corR">
 <p>
@@ -491,9 +495,9 @@ L’algorithme a bien identifié les deux groupes.
 </p>
 <ol style="list-style-type: decimal">
 <li><p>On considère le graphe <strong>friends</strong> disponible <a href="http://www.sociopatterns.org/datasets/high-school-contact-and-friendship-networks/">ici</a></p>
-<div class="sourceCode" id="cb169"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb169-1"><a href="clust-spec.html#cb169-1" aria-hidden="true" tabindex="-1"></a>friends <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="at">file=</span><span class="st">&quot;data/Friendship-network_data_2013.csv&quot;</span>)</span>
-<span id="cb169-2"><a href="clust-spec.html#cb169-2" aria-hidden="true" tabindex="-1"></a>G.friends <span class="ot">&lt;-</span> <span class="fu">graph_from_data_frame</span>(friends,<span class="at">directed=</span>F)  <span class="co"># non dirige</span></span>
-<span id="cb169-3"><a href="clust-spec.html#cb169-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(G.friends)</span></code></pre></div>
+<div class="sourceCode" id="cb169"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb169-1"><a href="clust-spec.html#cb169-1" tabindex="-1"></a>friends <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="at">file=</span><span class="st">&quot;data/Friendship-network_data_2013.csv&quot;</span>)</span>
+<span id="cb169-2"><a href="clust-spec.html#cb169-2" tabindex="-1"></a>G.friends <span class="ot">&lt;-</span> <span class="fu">graph_from_data_frame</span>(friends,<span class="at">directed=</span>F)  <span class="co"># non dirige</span></span>
+<span id="cb169-3"><a href="clust-spec.html#cb169-3" tabindex="-1"></a><span class="fu">plot</span>(G.friends)</span></code></pre></div>
 <p><img src="TUTO_GRAPHES_files/figure-html/unnamed-chunk-229-1.png" width="672" style="display: block; margin: auto;" />
 Appliquer le clustering spectral à ce graphe. On pourra comparer la classification obtenue avec celle de la méthode de Louvain en utilisant la fonction <strong>compare</strong>.</p>
 <div class="corR">
@@ -501,11 +505,11 @@ Appliquer le clustering spectral à ce graphe. On pourra comparer la classificat
 On applique l’algorithme avec 8 groupes
 </p>
 </div>
-<div class="sourceCode" id="cb170"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb170-1"><a href="clust-spec.html#cb170-1" aria-hidden="true" tabindex="-1"></a>res1 <span class="ot">&lt;-</span> <span class="fu">spec.clust.norm</span>(G.friends,<span class="at">K=</span><span class="dv">8</span>)</span>
-<span id="cb170-2"><a href="clust-spec.html#cb170-2" aria-hidden="true" tabindex="-1"></a>res1<span class="sc">$</span>graphe</span></code></pre></div>
+<div class="sourceCode" id="cb170"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb170-1"><a href="clust-spec.html#cb170-1" tabindex="-1"></a>res1 <span class="ot">&lt;-</span> <span class="fu">spec.clust.norm</span>(G.friends,<span class="at">K=</span><span class="dv">8</span>)</span>
+<span id="cb170-2"><a href="clust-spec.html#cb170-2" tabindex="-1"></a>res1<span class="sc">$</span>graphe</span></code></pre></div>
 <p><img src="TUTO_GRAPHES_files/figure-html/unnamed-chunk-231-1.png" width="672" style="display: block; margin: auto;" /></p>
-<div class="sourceCode" id="cb171"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb171-1"><a href="clust-spec.html#cb171-1" aria-hidden="true" tabindex="-1"></a>res2 <span class="ot">&lt;-</span> <span class="fu">spec.clust.norm</span>(G.friends,<span class="at">K=</span><span class="dv">9</span>)</span>
-<span id="cb171-2"><a href="clust-spec.html#cb171-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(G.friends,<span class="at">vertex.color=</span>res2<span class="sc">$</span>groupe)</span></code></pre></div>
+<div class="sourceCode" id="cb171"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb171-1"><a href="clust-spec.html#cb171-1" tabindex="-1"></a>res2 <span class="ot">&lt;-</span> <span class="fu">spec.clust.norm</span>(G.friends,<span class="at">K=</span><span class="dv">9</span>)</span>
+<span id="cb171-2"><a href="clust-spec.html#cb171-2" tabindex="-1"></a><span class="fu">plot</span>(G.friends,<span class="at">vertex.color=</span>res2<span class="sc">$</span>groupe)</span></code></pre></div>
 <p><img src="TUTO_GRAPHES_files/figure-html/unnamed-chunk-232-1.png" width="672" style="display: block; margin: auto;" /></p>
 <div class="corR">
 <p>
@@ -513,17 +517,17 @@ On maximise maintenant la <strong>modularité</strong> avec la méthode
 de <strong>Louvain</strong>.
 </p>
 </div>
-<div class="sourceCode" id="cb172"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb172-1"><a href="clust-spec.html#cb172-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1234</span>)</span>
-<span id="cb172-2"><a href="clust-spec.html#cb172-2" aria-hidden="true" tabindex="-1"></a>cl.mod <span class="ot">&lt;-</span> <span class="fu">cluster_louvain</span>(G.friends)</span>
-<span id="cb172-3"><a href="clust-spec.html#cb172-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(G.friends,<span class="at">vertex.color=</span>cl.mod<span class="sc">$</span>membership)</span></code></pre></div>
+<div class="sourceCode" id="cb172"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb172-1"><a href="clust-spec.html#cb172-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1234</span>)</span>
+<span id="cb172-2"><a href="clust-spec.html#cb172-2" tabindex="-1"></a>cl.mod <span class="ot">&lt;-</span> <span class="fu">cluster_louvain</span>(G.friends)</span>
+<span id="cb172-3"><a href="clust-spec.html#cb172-3" tabindex="-1"></a><span class="fu">plot</span>(G.friends,<span class="at">vertex.color=</span>cl.mod<span class="sc">$</span>membership)</span></code></pre></div>
 <p><img src="TUTO_GRAPHES_files/figure-html/unnamed-chunk-234-1.png" width="672" style="display: block; margin: auto;" /></p>
 <div class="corR">
 <p>
 On obtient 13 communautés
 </p>
 </div>
-<div class="sourceCode" id="cb173"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb173-1"><a href="clust-spec.html#cb173-1" aria-hidden="true" tabindex="-1"></a><span class="fu">max</span>(cl.mod<span class="sc">$</span>membership)</span>
-<span id="cb173-2"><a href="clust-spec.html#cb173-2" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="dv">13</span></span></code></pre></div>
+<div class="sourceCode" id="cb173"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb173-1"><a href="clust-spec.html#cb173-1" tabindex="-1"></a><span class="fu">max</span>(cl.mod<span class="sc">$</span>membership)</span>
+<span id="cb173-2"><a href="clust-spec.html#cb173-2" tabindex="-1"></a>[<span class="dv">1</span>] <span class="dv">13</span></span></code></pre></div>
 <div class="corR">
 <p>
 On compare ces deux classifications avec <strong>l’indice de Rand
@@ -531,19 +535,19 @@ ajusté</strong>, voir par exemple <a
  href="https://en.wikipedia.org/wiki/Rand_index#Adjusted_Rand_index">ici</a>
 </p>
 </div>
-<div class="sourceCode" id="cb174"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb174-1"><a href="clust-spec.html#cb174-1" aria-hidden="true" tabindex="-1"></a><span class="fu">compare</span>(res2<span class="sc">$</span>groupe,cl.mod<span class="sc">$</span>membership,<span class="at">method=</span><span class="st">&quot;adjusted.rand&quot;</span>)</span>
-<span id="cb174-2"><a href="clust-spec.html#cb174-2" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="fl">0.7369632</span></span></code></pre></div></li>
+<div class="sourceCode" id="cb174"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb174-1"><a href="clust-spec.html#cb174-1" tabindex="-1"></a><span class="fu">compare</span>(res2<span class="sc">$</span>groupe,cl.mod<span class="sc">$</span>membership,<span class="at">method=</span><span class="st">&quot;adjusted.rand&quot;</span>)</span>
+<span id="cb174-2"><a href="clust-spec.html#cb174-2" tabindex="-1"></a>[<span class="dv">1</span>] <span class="fl">0.7369632</span></span></code></pre></div></li>
 <li><p>Faire de même avec le graphe <strong>karate</strong>.</p>
-<div class="sourceCode" id="cb175"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb175-1"><a href="clust-spec.html#cb175-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(igraphdata)</span>
-<span id="cb175-2"><a href="clust-spec.html#cb175-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(karate)</span></code></pre></div>
-<div class="sourceCode" id="cb176"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb176-1"><a href="clust-spec.html#cb176-1" aria-hidden="true" tabindex="-1"></a>res1 <span class="ot">&lt;-</span> <span class="fu">spec.clust.norm</span>(karate,<span class="at">K=</span><span class="dv">8</span>)</span>
-<span id="cb176-2"><a href="clust-spec.html#cb176-2" aria-hidden="true" tabindex="-1"></a>res1<span class="sc">$</span>graphe</span></code></pre></div>
+<div class="sourceCode" id="cb175"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb175-1"><a href="clust-spec.html#cb175-1" tabindex="-1"></a><span class="fu">library</span>(igraphdata)</span>
+<span id="cb175-2"><a href="clust-spec.html#cb175-2" tabindex="-1"></a><span class="fu">data</span>(karate)</span></code></pre></div>
+<div class="sourceCode" id="cb176"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb176-1"><a href="clust-spec.html#cb176-1" tabindex="-1"></a>res1 <span class="ot">&lt;-</span> <span class="fu">spec.clust.norm</span>(karate,<span class="at">K=</span><span class="dv">8</span>)</span>
+<span id="cb176-2"><a href="clust-spec.html#cb176-2" tabindex="-1"></a>res1<span class="sc">$</span>graphe</span></code></pre></div>
 <p><img src="TUTO_GRAPHES_files/figure-html/unnamed-chunk-240-1.png" width="672" style="display: block; margin: auto;" /></p>
-<div class="sourceCode" id="cb177"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb177-1"><a href="clust-spec.html#cb177-1" aria-hidden="true" tabindex="-1"></a>res2 <span class="ot">&lt;-</span> <span class="fu">spec.clust.norm</span>(karate,<span class="at">K=</span><span class="dv">2</span>)</span>
-<span id="cb177-2"><a href="clust-spec.html#cb177-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(karate,<span class="at">vertex.color=</span>res2<span class="sc">$</span>groupe)</span></code></pre></div>
+<div class="sourceCode" id="cb177"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb177-1"><a href="clust-spec.html#cb177-1" tabindex="-1"></a>res2 <span class="ot">&lt;-</span> <span class="fu">spec.clust.norm</span>(karate,<span class="at">K=</span><span class="dv">2</span>)</span>
+<span id="cb177-2"><a href="clust-spec.html#cb177-2" tabindex="-1"></a><span class="fu">plot</span>(karate,<span class="at">vertex.color=</span>res2<span class="sc">$</span>groupe)</span></code></pre></div>
 <p><img src="TUTO_GRAPHES_files/figure-html/unnamed-chunk-241-1.png" width="672" style="display: block; margin: auto;" /></p>
-<div class="sourceCode" id="cb178"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb178-1"><a href="clust-spec.html#cb178-1" aria-hidden="true" tabindex="-1"></a>cl.louv <span class="ot">&lt;-</span> <span class="fu">cluster_louvain</span>(karate)</span>
-<span id="cb178-2"><a href="clust-spec.html#cb178-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(karate,<span class="at">vertex.color=</span>cl.louv<span class="sc">$</span>membership)</span></code></pre></div>
+<div class="sourceCode" id="cb178"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb178-1"><a href="clust-spec.html#cb178-1" tabindex="-1"></a>cl.louv <span class="ot">&lt;-</span> <span class="fu">cluster_louvain</span>(karate)</span>
+<span id="cb178-2"><a href="clust-spec.html#cb178-2" tabindex="-1"></a><span class="fu">plot</span>(karate,<span class="at">vertex.color=</span>cl.louv<span class="sc">$</span>membership)</span></code></pre></div>
 <p><img src="TUTO_GRAPHES_files/figure-html/unnamed-chunk-242-1.png" width="672" style="display: block; margin: auto;" /></p></li>
 </ol>
 </div>
@@ -553,24 +557,24 @@ ajusté</strong>, voir par exemple <a
 <p>Nous avons étudié jusqu’ici l’algorithme du clustering spectral pour trouver des clusters de nœuds (ou communautés) dans les graphes. On remarque néanmoins que l’algorithme ne repose pas sur le graphe en lui même, mais uniquement sur une matrice d’adjacence (ou similarité) issue de ce graphe. Il est par conséquent possible d’utiliser cet algorithme pour des données standards (tableaux <code>individus-variables</code>), à partir du moment où on peut calculer une matrice de similarité à partir de ces données. Il est également possible d’utiliser des <strong>noyaux</strong> pour définir cette similarité. La fonction <strong>specc</strong> de <code>kernlab</code> permet de faire un tel clustering.</p>
 <div class="exercise">
 <p><span id="exr:exo-spec-spirales" class="exercise"><strong>Exercice 4.6  (Clustering spectral pour des spirales) </strong></span>On considère les données spirales</p>
-<div class="sourceCode" id="cb179"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb179-1"><a href="clust-spec.html#cb179-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">111</span>)</span>
-<span id="cb179-2"><a href="clust-spec.html#cb179-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mlbench)</span>
-<span id="cb179-3"><a href="clust-spec.html#cb179-3" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">100</span></span>
-<span id="cb179-4"><a href="clust-spec.html#cb179-4" aria-hidden="true" tabindex="-1"></a>simu <span class="ot">&lt;-</span> <span class="fu">mlbench.spirals</span>(<span class="dv">100</span>,<span class="dv">1</span>,<span class="fl">0.025</span>)  </span>
-<span id="cb179-5"><a href="clust-spec.html#cb179-5" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(simu)</span>
-<span id="cb179-6"><a href="clust-spec.html#cb179-6" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="st">&quot;x&quot;</span>       <span class="st">&quot;classes&quot;</span></span></code></pre></div>
-<div class="sourceCode" id="cb180"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb180-1"><a href="clust-spec.html#cb180-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> simu<span class="sc">$</span>x</span>
-<span id="cb180-2"><a href="clust-spec.html#cb180-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(data)</span>
-<span id="cb180-3"><a href="clust-spec.html#cb180-3" aria-hidden="true" tabindex="-1"></a>           [,<span class="dv">1</span>]        [,<span class="dv">2</span>]</span>
-<span id="cb180-4"><a href="clust-spec.html#cb180-4" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>,]  <span class="fl">0.5609898</span> <span class="sc">-</span><span class="fl">0.21756239</span></span>
-<span id="cb180-5"><a href="clust-spec.html#cb180-5" aria-hidden="true" tabindex="-1"></a>[<span class="dv">2</span>,]  <span class="fl">0.2793522</span>  <span class="fl">0.01718273</span></span>
-<span id="cb180-6"><a href="clust-spec.html#cb180-6" aria-hidden="true" tabindex="-1"></a>[<span class="dv">3</span>,]  <span class="fl">0.3725821</span>  <span class="fl">0.03849122</span></span>
-<span id="cb180-7"><a href="clust-spec.html#cb180-7" aria-hidden="true" tabindex="-1"></a>[<span class="dv">4</span>,]  <span class="fl">0.3457879</span>  <span class="fl">0.08963081</span></span>
-<span id="cb180-8"><a href="clust-spec.html#cb180-8" aria-hidden="true" tabindex="-1"></a>[<span class="dv">5</span>,]  <span class="fl">0.1577921</span>  <span class="fl">0.81528541</span></span>
-<span id="cb180-9"><a href="clust-spec.html#cb180-9" aria-hidden="true" tabindex="-1"></a>[<span class="dv">6</span>,] <span class="sc">-</span><span class="fl">0.1603697</span>  <span class="fl">0.84547763</span></span></code></pre></div>
+<div class="sourceCode" id="cb179"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb179-1"><a href="clust-spec.html#cb179-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">111</span>)</span>
+<span id="cb179-2"><a href="clust-spec.html#cb179-2" tabindex="-1"></a><span class="fu">library</span>(mlbench)</span>
+<span id="cb179-3"><a href="clust-spec.html#cb179-3" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">100</span></span>
+<span id="cb179-4"><a href="clust-spec.html#cb179-4" tabindex="-1"></a>simu <span class="ot">&lt;-</span> <span class="fu">mlbench.spirals</span>(<span class="dv">100</span>,<span class="dv">1</span>,<span class="fl">0.025</span>)  </span>
+<span id="cb179-5"><a href="clust-spec.html#cb179-5" tabindex="-1"></a><span class="fu">names</span>(simu)</span>
+<span id="cb179-6"><a href="clust-spec.html#cb179-6" tabindex="-1"></a>[<span class="dv">1</span>] <span class="st">&quot;x&quot;</span>       <span class="st">&quot;classes&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb180"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb180-1"><a href="clust-spec.html#cb180-1" tabindex="-1"></a>data <span class="ot">&lt;-</span> simu<span class="sc">$</span>x</span>
+<span id="cb180-2"><a href="clust-spec.html#cb180-2" tabindex="-1"></a><span class="fu">head</span>(data)</span>
+<span id="cb180-3"><a href="clust-spec.html#cb180-3" tabindex="-1"></a>           [,<span class="dv">1</span>]        [,<span class="dv">2</span>]</span>
+<span id="cb180-4"><a href="clust-spec.html#cb180-4" tabindex="-1"></a>[<span class="dv">1</span>,]  <span class="fl">0.5609898</span> <span class="sc">-</span><span class="fl">0.21756239</span></span>
+<span id="cb180-5"><a href="clust-spec.html#cb180-5" tabindex="-1"></a>[<span class="dv">2</span>,]  <span class="fl">0.2793522</span>  <span class="fl">0.01718273</span></span>
+<span id="cb180-6"><a href="clust-spec.html#cb180-6" tabindex="-1"></a>[<span class="dv">3</span>,]  <span class="fl">0.3725821</span>  <span class="fl">0.03849122</span></span>
+<span id="cb180-7"><a href="clust-spec.html#cb180-7" tabindex="-1"></a>[<span class="dv">4</span>,]  <span class="fl">0.3457879</span>  <span class="fl">0.08963081</span></span>
+<span id="cb180-8"><a href="clust-spec.html#cb180-8" tabindex="-1"></a>[<span class="dv">5</span>,]  <span class="fl">0.1577921</span>  <span class="fl">0.81528541</span></span>
+<span id="cb180-9"><a href="clust-spec.html#cb180-9" tabindex="-1"></a>[<span class="dv">6</span>,] <span class="sc">-</span><span class="fl">0.1603697</span>  <span class="fl">0.84547763</span></span></code></pre></div>
 <p>et on les visualise.</p>
-<div class="sourceCode" id="cb181"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb181-1"><a href="clust-spec.html#cb181-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(simu<span class="sc">$</span>x)</span>
-<span id="cb181-2"><a href="clust-spec.html#cb181-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df)<span class="sc">+</span><span class="fu">aes</span>(<span class="at">x=</span>X1,<span class="at">y=</span>X2)<span class="sc">+</span><span class="fu">geom_point</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb181"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb181-1"><a href="clust-spec.html#cb181-1" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(simu<span class="sc">$</span>x)</span>
+<span id="cb181-2"><a href="clust-spec.html#cb181-2" tabindex="-1"></a><span class="fu">ggplot</span>(df)<span class="sc">+</span><span class="fu">aes</span>(<span class="at">x=</span>X1,<span class="at">y=</span>X2)<span class="sc">+</span><span class="fu">geom_point</span>()</span></code></pre></div>
 <p><img src="TUTO_GRAPHES_files/figure-html/unnamed-chunk-245-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>Appliquer les algorithmes suivants pour tenter de visualiser les deux groupes :</p>
 <ul>
@@ -586,26 +590,26 @@ ajusté</strong>, voir par exemple <a
 On effectue les classification avec 2 groupes :
 </p>
 </div>
-<div class="sourceCode" id="cb182"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb182-1"><a href="clust-spec.html#cb182-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1234</span>)</span>
-<span id="cb182-2"><a href="clust-spec.html#cb182-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kernlab)</span>
-<span id="cb182-3"><a href="clust-spec.html#cb182-3" aria-hidden="true" tabindex="-1"></a>spec.lin <span class="ot">&lt;-</span> <span class="fu">specc</span>(data,<span class="at">centers=</span><span class="dv">2</span>,<span class="at">kernel=</span><span class="st">&quot;polydot&quot;</span>,<span class="at">kpar=</span><span class="fu">list</span>(<span class="at">degree=</span><span class="dv">1</span>))</span>
-<span id="cb182-4"><a href="clust-spec.html#cb182-4" aria-hidden="true" tabindex="-1"></a>spec.poly <span class="ot">&lt;-</span> <span class="fu">specc</span>(data,<span class="at">centers=</span><span class="dv">2</span>,<span class="at">kernel=</span><span class="st">&quot;polydot&quot;</span>,<span class="at">kpar=</span><span class="fu">list</span>(<span class="at">degree=</span><span class="dv">2</span>))</span>
-<span id="cb182-5"><a href="clust-spec.html#cb182-5" aria-hidden="true" tabindex="-1"></a>spec.rad <span class="ot">&lt;-</span> <span class="fu">specc</span>(data,<span class="at">centers=</span><span class="dv">2</span>,<span class="at">kernel=</span><span class="st">&quot;rbfdot&quot;</span>)</span>
-<span id="cb182-6"><a href="clust-spec.html#cb182-6" aria-hidden="true" tabindex="-1"></a>k_means <span class="ot">&lt;-</span> <span class="fu">kmeans</span>(data,<span class="at">centers=</span><span class="dv">2</span>)</span>
-<span id="cb182-7"><a href="clust-spec.html#cb182-7" aria-hidden="true" tabindex="-1"></a>cah.ward <span class="ot">&lt;-</span> <span class="fu">hclust</span>(<span class="fu">dist</span>(data),<span class="at">method=</span><span class="st">&quot;ward.D&quot;</span>) <span class="sc">|&gt;</span> <span class="fu">cutree</span>(<span class="dv">2</span>) <span class="sc">|&gt;</span> <span class="fu">as.factor</span>()</span>
-<span id="cb182-8"><a href="clust-spec.html#cb182-8" aria-hidden="true" tabindex="-1"></a>cah.SL <span class="ot">&lt;-</span> <span class="fu">hclust</span>(<span class="fu">dist</span>(data),<span class="at">method=</span><span class="st">&quot;single&quot;</span>) <span class="sc">|&gt;</span> <span class="fu">cutree</span>(<span class="dv">2</span>) <span class="sc">|&gt;</span> <span class="fu">as.factor</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb182"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb182-1"><a href="clust-spec.html#cb182-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1234</span>)</span>
+<span id="cb182-2"><a href="clust-spec.html#cb182-2" tabindex="-1"></a><span class="fu">library</span>(kernlab)</span>
+<span id="cb182-3"><a href="clust-spec.html#cb182-3" tabindex="-1"></a>spec.lin <span class="ot">&lt;-</span> <span class="fu">specc</span>(data,<span class="at">centers=</span><span class="dv">2</span>,<span class="at">kernel=</span><span class="st">&quot;polydot&quot;</span>,<span class="at">kpar=</span><span class="fu">list</span>(<span class="at">degree=</span><span class="dv">1</span>))</span>
+<span id="cb182-4"><a href="clust-spec.html#cb182-4" tabindex="-1"></a>spec.poly <span class="ot">&lt;-</span> <span class="fu">specc</span>(data,<span class="at">centers=</span><span class="dv">2</span>,<span class="at">kernel=</span><span class="st">&quot;polydot&quot;</span>,<span class="at">kpar=</span><span class="fu">list</span>(<span class="at">degree=</span><span class="dv">2</span>))</span>
+<span id="cb182-5"><a href="clust-spec.html#cb182-5" tabindex="-1"></a>spec.rad <span class="ot">&lt;-</span> <span class="fu">specc</span>(data,<span class="at">centers=</span><span class="dv">2</span>,<span class="at">kernel=</span><span class="st">&quot;rbfdot&quot;</span>)</span>
+<span id="cb182-6"><a href="clust-spec.html#cb182-6" tabindex="-1"></a>k_means <span class="ot">&lt;-</span> <span class="fu">kmeans</span>(data,<span class="at">centers=</span><span class="dv">2</span>)</span>
+<span id="cb182-7"><a href="clust-spec.html#cb182-7" tabindex="-1"></a>cah.ward <span class="ot">&lt;-</span> <span class="fu">hclust</span>(<span class="fu">dist</span>(data),<span class="at">method=</span><span class="st">&quot;ward.D&quot;</span>) <span class="sc">|&gt;</span> <span class="fu">cutree</span>(<span class="dv">2</span>) <span class="sc">|&gt;</span> <span class="fu">as.factor</span>()</span>
+<span id="cb182-8"><a href="clust-spec.html#cb182-8" tabindex="-1"></a>cah.SL <span class="ot">&lt;-</span> <span class="fu">hclust</span>(<span class="fu">dist</span>(data),<span class="at">method=</span><span class="st">&quot;single&quot;</span>) <span class="sc">|&gt;</span> <span class="fu">cutree</span>(<span class="dv">2</span>) <span class="sc">|&gt;</span> <span class="fu">as.factor</span>()</span></code></pre></div>
 <div class="corR">
 <p>
 Il reste à assembler les résultats et à les visualiser :
 </p>
 </div>
-<div class="sourceCode" id="cb183"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb183-1"><a href="clust-spec.html#cb183-1" aria-hidden="true" tabindex="-1"></a>df1 <span class="ot">&lt;-</span> df <span class="sc">|&gt;</span> </span>
-<span id="cb183-2"><a href="clust-spec.html#cb183-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">spec.lin=</span><span class="fu">as.factor</span>(spec.lin),<span class="at">spec.poly=</span><span class="fu">as.factor</span>(spec.poly),</span>
-<span id="cb183-3"><a href="clust-spec.html#cb183-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">spec.rad=</span><span class="fu">as.factor</span>(spec.rad),<span class="at">k_means=</span><span class="fu">as.factor</span>(k_means<span class="sc">$</span>cluster),</span>
-<span id="cb183-4"><a href="clust-spec.html#cb183-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">Ward=</span>cah.ward,<span class="at">SL=</span>cah.SL) <span class="sc">|&gt;</span></span>
-<span id="cb183-5"><a href="clust-spec.html#cb183-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="sc">-</span><span class="fu">c</span>(X1,X2),<span class="at">names_to=</span><span class="st">&quot;Methode&quot;</span>,<span class="at">values_to=</span><span class="st">&quot;groupe&quot;</span>)</span>
-<span id="cb183-6"><a href="clust-spec.html#cb183-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb183-7"><a href="clust-spec.html#cb183-7" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df1)<span class="sc">+</span><span class="fu">aes</span>(<span class="at">x=</span>X1,<span class="at">y=</span>X2,<span class="at">color=</span>groupe)<span class="sc">+</span><span class="fu">geom_point</span>()<span class="sc">+</span><span class="fu">facet_wrap</span>(<span class="sc">~</span>Methode)</span></code></pre></div>
+<div class="sourceCode" id="cb183"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb183-1"><a href="clust-spec.html#cb183-1" tabindex="-1"></a>df1 <span class="ot">&lt;-</span> df <span class="sc">|&gt;</span> </span>
+<span id="cb183-2"><a href="clust-spec.html#cb183-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">spec.lin=</span><span class="fu">as.factor</span>(spec.lin),<span class="at">spec.poly=</span><span class="fu">as.factor</span>(spec.poly),</span>
+<span id="cb183-3"><a href="clust-spec.html#cb183-3" tabindex="-1"></a>         <span class="at">spec.rad=</span><span class="fu">as.factor</span>(spec.rad),<span class="at">k_means=</span><span class="fu">as.factor</span>(k_means<span class="sc">$</span>cluster),</span>
+<span id="cb183-4"><a href="clust-spec.html#cb183-4" tabindex="-1"></a>         <span class="at">Ward=</span>cah.ward,<span class="at">SL=</span>cah.SL) <span class="sc">|&gt;</span></span>
+<span id="cb183-5"><a href="clust-spec.html#cb183-5" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="sc">-</span><span class="fu">c</span>(X1,X2),<span class="at">names_to=</span><span class="st">&quot;Methode&quot;</span>,<span class="at">values_to=</span><span class="st">&quot;groupe&quot;</span>)</span>
+<span id="cb183-6"><a href="clust-spec.html#cb183-6" tabindex="-1"></a></span>
+<span id="cb183-7"><a href="clust-spec.html#cb183-7" tabindex="-1"></a><span class="fu">ggplot</span>(df1)<span class="sc">+</span><span class="fu">aes</span>(<span class="at">x=</span>X1,<span class="at">y=</span>X2,<span class="at">color=</span>groupe)<span class="sc">+</span><span class="fu">geom_point</span>()<span class="sc">+</span><span class="fu">facet_wrap</span>(<span class="sc">~</span>Methode)</span></code></pre></div>
 <p><img src="TUTO_GRAPHES_files/figure-html/unnamed-chunk-249-1.png" width="672" style="display: block; margin: auto;" /></p>
 <div class="corR">
 <p>
@@ -618,9 +622,9 @@ exemple utiliser la fonction <strong>kkmeans</strong> de
 <code>kernlab</code> :
 </p>
 </div>
-<div class="sourceCode" id="cb184"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb184-1"><a href="clust-spec.html#cb184-1" aria-hidden="true" tabindex="-1"></a>km <span class="ot">&lt;-</span> <span class="fu">kkmeans</span>(data,<span class="at">center=</span><span class="dv">2</span>,<span class="at">kernel=</span><span class="st">&quot;rbfdot&quot;</span>,<span class="at">kpar=</span><span class="st">&quot;automatic&quot;</span>)</span>
-<span id="cb184-2"><a href="clust-spec.html#cb184-2" aria-hidden="true" tabindex="-1"></a>Using automatic sigma <span class="fu">estimation</span> (sigest) <span class="cf">for</span> RBF or laplace kernel </span>
-<span id="cb184-3"><a href="clust-spec.html#cb184-3" aria-hidden="true" tabindex="-1"></a>df <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">groupe=</span><span class="fu">as.factor</span>(km)) <span class="sc">|&gt;</span> <span class="fu">ggplot</span>()<span class="sc">+</span><span class="fu">aes</span>(<span class="at">x=</span>X1,<span class="at">y=</span>X2,<span class="at">color=</span>groupe)<span class="sc">+</span><span class="fu">geom_point</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb184"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb184-1"><a href="clust-spec.html#cb184-1" tabindex="-1"></a>km <span class="ot">&lt;-</span> <span class="fu">kkmeans</span>(data,<span class="at">center=</span><span class="dv">2</span>,<span class="at">kernel=</span><span class="st">&quot;rbfdot&quot;</span>,<span class="at">kpar=</span><span class="st">&quot;automatic&quot;</span>)</span>
+<span id="cb184-2"><a href="clust-spec.html#cb184-2" tabindex="-1"></a>Using automatic sigma <span class="fu">estimation</span> (sigest) <span class="cf">for</span> RBF or laplace kernel </span>
+<span id="cb184-3"><a href="clust-spec.html#cb184-3" tabindex="-1"></a>df <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">groupe=</span><span class="fu">as.factor</span>(km)) <span class="sc">|&gt;</span> <span class="fu">ggplot</span>()<span class="sc">+</span><span class="fu">aes</span>(<span class="at">x=</span>X1,<span class="at">y=</span>X2,<span class="at">color=</span>groupe)<span class="sc">+</span><span class="fu">geom_point</span>()</span></code></pre></div>
 <p><img src="TUTO_GRAPHES_files/figure-html/unnamed-chunk-251-1.png" width="672" style="display: block; margin: auto;" /></p>
 <div class="corR">
 <p>

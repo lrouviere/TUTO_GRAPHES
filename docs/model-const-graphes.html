@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapitre 2 Modèles et construction de graphes | Graph Mining</title>
   <meta name="description" content="Chapitre 2 Modèles et construction de graphes | Graph Mining" />
-  <meta name="generator" content="bookdown 0.29 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.35 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapitre 2 Modèles et construction de graphes | Graph Mining" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Laurent Rouvière" />
 
 
-<meta name="date" content="2022-10-23" />
+<meta name="date" content="2023-10-18" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -52,10 +52,10 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
-<script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
+<script src="libs/htmlwidgets-1.6.2/htmlwidgets.js"></script>
 <link href="libs/vis-9.1.0/vis-network.min.css" rel="stylesheet" />
 <script src="libs/vis-9.1.0/vis-network.min.js"></script>
-<script src="libs/visNetwork-binding-2.1.0/visNetwork.js"></script>
+<script src="libs/visNetwork-binding-2.1.2/visNetwork.js"></script>
 
 
 <style type="text/css">
@@ -96,7 +96,7 @@ code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
+code span.bu { color: #008000; } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -109,7 +109,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
+code span.im { color: #008000; font-weight: bold; } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -123,6 +123,10 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -211,23 +215,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><span class="math inline">\(p\)</span> la probabilité de connexion entre deux nœuds.</li>
 </ul>
 <p>On simule 2 graphes différents : un avec peu de connexions, et un autre très connecté.</p>
-<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="model-const-graphes.html#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
-<span id="cb41-2"><a href="model-const-graphes.html#cb41-2" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">40</span></span>
-<span id="cb41-3"><a href="model-const-graphes.html#cb41-3" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> <span class="fl">0.1</span></span>
-<span id="cb41-4"><a href="model-const-graphes.html#cb41-4" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> <span class="fl">0.7</span></span>
-<span id="cb41-5"><a href="model-const-graphes.html#cb41-5" aria-hidden="true" tabindex="-1"></a>G1 <span class="ot">&lt;-</span> <span class="fu">sample_gnp</span>(n,p1)</span>
-<span id="cb41-6"><a href="model-const-graphes.html#cb41-6" aria-hidden="true" tabindex="-1"></a>G2 <span class="ot">&lt;-</span> <span class="fu">sample_gnp</span>(n,p2)</span>
-<span id="cb41-7"><a href="model-const-graphes.html#cb41-7" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>
-<span id="cb41-8"><a href="model-const-graphes.html#cb41-8" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(G1)</span>
-<span id="cb41-9"><a href="model-const-graphes.html#cb41-9" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(G2)</span></code></pre></div>
-<p><img src="TUTO_GRAPHES_files/figure-html/unnamed-chunk-93-1.png" width="672" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="model-const-graphes.html#cb41-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
+<span id="cb41-2"><a href="model-const-graphes.html#cb41-2" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">40</span></span>
+<span id="cb41-3"><a href="model-const-graphes.html#cb41-3" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> <span class="fl">0.1</span></span>
+<span id="cb41-4"><a href="model-const-graphes.html#cb41-4" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> <span class="fl">0.7</span></span>
+<span id="cb41-5"><a href="model-const-graphes.html#cb41-5" tabindex="-1"></a>G1 <span class="ot">&lt;-</span> <span class="fu">sample_gnp</span>(n,p1)</span>
+<span id="cb41-6"><a href="model-const-graphes.html#cb41-6" tabindex="-1"></a>G2 <span class="ot">&lt;-</span> <span class="fu">sample_gnp</span>(n,p2)</span>
+<span id="cb41-7"><a href="model-const-graphes.html#cb41-7" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>
+<span id="cb41-8"><a href="model-const-graphes.html#cb41-8" tabindex="-1"></a><span class="fu">plot</span>(G1)</span>
+<span id="cb41-9"><a href="model-const-graphes.html#cb41-9" tabindex="-1"></a><span class="fu">plot</span>(G2)</span></code></pre></div>
+<p><img src="TUTO_GRAPHES_files/figure-html/unnamed-chunk-94-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>On rappelle que dans un graphe d’Erdos-Renyi la distribution du degrés du nœud <span class="math inline">\(i\)</span> est binomiale : <span class="math inline">\(\mathcal B(n-1,p)\)</span>.</p>
 <div class="exercise">
-<p><span id="exr:exo-comp-erdos" class="exercise"><strong>Exercice 2.1  (Distribution des degrés) </strong></span>A l’aide d’un diagramme en barre, comparer les distributions empiriques des degrés des noeuds (on pourra utiliser <strong>degree.distribution</strong>) à leur distribution théorique binomiale (<strong>dbinom</strong>) pour les deux graphes précédents.</p>
+<p><span id="exr:exo-comp-erdos" class="exercise"><strong>Exercice 2.1  (Distribution des degrés) </strong></span>A l’aide d’un diagramme en barre, comparer les distributions empiriques des degrés des nœuds (on pourra utiliser <strong>degree.distribution</strong>) à leur distribution théorique binomiale (<strong>dbinom</strong>) pour les deux graphes précédents.</p>
 </div>
 <div class="exercise">
-<p><span id="exr:exo-mis-vs-erdos" class="exercise"><strong>Exercice 2.2  (Les misérables sont-ils des Erdos-Renyi) </strong></span>On considère le graphe sur <strong>les misérables</strong> où une interaction entre deux personnages est définie par la co-occurrence des ces deux personnages dans un même chapitre.</p>
-<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="model-const-graphes.html#cb42-1" aria-hidden="true" tabindex="-1"></a>miserab <span class="ot">&lt;-</span> <span class="fu">read.graph</span>(<span class="st">&#39;data/lesmis.gml&#39;</span>,<span class="at">format=</span><span class="st">&quot;gml&quot;</span>)</span></code></pre></div>
+<p><span id="exr:exo-mis-vs-erdos" class="exercise"><strong>Exercice 2.2  (Les misérables sont-ils des Erdos-Renyi ?) </strong></span>On considère le graphe sur <strong>les misérables</strong> où une interaction entre deux personnages est définie par la co-occurrence des ces deux personnages dans un même chapitre.</p>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="model-const-graphes.html#cb42-1" tabindex="-1"></a>miserab <span class="ot">&lt;-</span> <span class="fu">read.graph</span>(<span class="st">&#39;data/lesmis.gml&#39;</span>,<span class="at">format=</span><span class="st">&quot;gml&quot;</span>)</span></code></pre></div>
 <ol style="list-style-type: decimal">
 <li><p>Visualiser la distribution des degrés de ce graphe.</p></li>
 <li><p>On souhaite comparer cette distribution à celle d’un graphe d’Erdos-Renyi. Proposer un moyen d’estimer les paramètres (<span class="math inline">\(n\)</span> et <span class="math inline">\(p\)</span>).</p></li>
@@ -238,26 +242,27 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="modèles-à-blocs-stochastiques" class="section level3 hasAnchor" number="2.1.2">
 <h3><span class="header-section-number">2.1.2</span> Modèles à blocs stochastiques<a href="model-const-graphes.html#modèles-à-blocs-stochastiques" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>La fonction <strong>sample_sbm</strong> du package <code>igraph</code> permet de simuler un graphe <strong>SBM</strong>.</p>
-<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="model-const-graphes.html#cb43-1" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">40</span> <span class="co"># nombre de noeuds</span></span>
-<span id="cb43-2"><a href="model-const-graphes.html#cb43-2" aria-hidden="true" tabindex="-1"></a>Q <span class="ot">&lt;-</span> <span class="dv">3</span> <span class="co"># nombre de clusters</span></span>
-<span id="cb43-3"><a href="model-const-graphes.html#cb43-3" aria-hidden="true" tabindex="-1"></a>pi <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.5</span>, <span class="fl">0.3</span>, <span class="fl">0.2</span>) <span class="co"># appartenance aux groupes  </span></span>
-<span id="cb43-4"><a href="model-const-graphes.html#cb43-4" aria-hidden="true" tabindex="-1"></a>effectifs <span class="ot">&lt;-</span> n<span class="sc">*</span>pi</span>
-<span id="cb43-5"><a href="model-const-graphes.html#cb43-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-6"><a href="model-const-graphes.html#cb43-6" aria-hidden="true" tabindex="-1"></a>connectivite_matrix <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="fl">0.9</span>, <span class="fl">0.1</span>, <span class="fl">0.04</span>,</span>
-<span id="cb43-7"><a href="model-const-graphes.html#cb43-7" aria-hidden="true" tabindex="-1"></a>                                <span class="fl">0.1</span>,<span class="fl">0.7</span>, <span class="fl">0.05</span>,</span>
-<span id="cb43-8"><a href="model-const-graphes.html#cb43-8" aria-hidden="true" tabindex="-1"></a>                                <span class="fl">0.04</span>, <span class="fl">0.05</span>, <span class="fl">0.95</span>),<span class="at">nrow=</span>Q) <span class="co"># matrice de connexion inter/intra groupes</span></span>
-<span id="cb43-9"><a href="model-const-graphes.html#cb43-9" aria-hidden="true" tabindex="-1"></a>G <span class="ot">&lt;-</span> <span class="fu">sample_sbm</span>(n, <span class="at">pref.matrix=</span>connectivite_matrix, <span class="at">block.sizes =</span> effectifs)</span>
-<span id="cb43-10"><a href="model-const-graphes.html#cb43-10" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(G)</span></code></pre></div>
-<p><img src="TUTO_GRAPHES_files/figure-html/unnamed-chunk-101-1.png" width="672" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="model-const-graphes.html#cb43-1" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">40</span> <span class="co"># nombre de noeuds</span></span>
+<span id="cb43-2"><a href="model-const-graphes.html#cb43-2" tabindex="-1"></a>Q <span class="ot">&lt;-</span> <span class="dv">3</span> <span class="co"># nombre de clusters</span></span>
+<span id="cb43-3"><a href="model-const-graphes.html#cb43-3" tabindex="-1"></a>pi <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.5</span>, <span class="fl">0.3</span>, <span class="fl">0.2</span>) <span class="co"># appartenance aux groupes  </span></span>
+<span id="cb43-4"><a href="model-const-graphes.html#cb43-4" tabindex="-1"></a>effectifs <span class="ot">&lt;-</span> n<span class="sc">*</span>pi</span>
+<span id="cb43-5"><a href="model-const-graphes.html#cb43-5" tabindex="-1"></a></span>
+<span id="cb43-6"><a href="model-const-graphes.html#cb43-6" tabindex="-1"></a>connectivite_matrix <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="fl">0.9</span>, <span class="fl">0.1</span>, <span class="fl">0.04</span>,</span>
+<span id="cb43-7"><a href="model-const-graphes.html#cb43-7" tabindex="-1"></a>                                <span class="fl">0.1</span>,<span class="fl">0.7</span>, <span class="fl">0.05</span>,</span>
+<span id="cb43-8"><a href="model-const-graphes.html#cb43-8" tabindex="-1"></a>                                <span class="fl">0.04</span>, <span class="fl">0.05</span>, <span class="fl">0.95</span>),<span class="at">nrow=</span>Q) <span class="co"># matrice de connexion inter/intra groupes</span></span>
+<span id="cb43-9"><a href="model-const-graphes.html#cb43-9" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1235</span>)</span>
+<span id="cb43-10"><a href="model-const-graphes.html#cb43-10" tabindex="-1"></a>G <span class="ot">&lt;-</span> <span class="fu">sample_sbm</span>(n, <span class="at">pref.matrix=</span>connectivite_matrix, <span class="at">block.sizes =</span> effectifs)</span>
+<span id="cb43-11"><a href="model-const-graphes.html#cb43-11" tabindex="-1"></a><span class="fu">plot</span>(G)</span></code></pre></div>
+<p><img src="TUTO_GRAPHES_files/figure-html/unnamed-chunk-102-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>On visualise qu’il s’agit bien d’un graphe avec trois <strong>communautés</strong> ou <strong>groupes</strong>, ce qui est dû aux fortes probabilités sur la diagonale de la matrice de connectivité et aux faibles valeurs de connectivité en dehors la diagonale.</p>
 <div class="exercise">
-<p><span id="exr:exo-clust-SBM" class="exercise"><strong>Exercice 2.3  (Clustering avec un modèle **SBM**) </strong></span>On considère le graphe <span class="math inline">\(G\)</span> construit précédemment.</p>
+<p><span id="exr:exo-clust-SBM" class="exercise"><strong>Exercice 2.3  (Clustering avec un modèle SBM ) </strong></span>On considère le graphe <span class="math inline">\(G\)</span> construit précédemment.</p>
 <ol style="list-style-type: decimal">
 <li><p>Calculer la matrice d’adjacence du graphe. On pourra utiliser <strong>as_adj</strong>.</p></li>
 <li><p>Les commandes suivantes permettent d’estimer les paramètres d’un graphe <strong>SBM</strong></p>
-<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="model-const-graphes.html#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;blockmodels&quot;</span>)</span>
-<span id="cb44-2"><a href="model-const-graphes.html#cb44-2" aria-hidden="true" tabindex="-1"></a>mysbm <span class="ot">&lt;-</span> <span class="fu">BM_bernoulli</span>(<span class="st">&#39;SBM_sym&#39;</span>,A,<span class="at">verbosity=</span><span class="dv">0</span>) <span class="co"># SBM_sym = non dirigé</span></span>
-<span id="cb44-3"><a href="model-const-graphes.html#cb44-3" aria-hidden="true" tabindex="-1"></a>mysbm<span class="sc">$</span><span class="fu">estimate</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="model-const-graphes.html#cb44-1" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;blockmodels&quot;</span>)</span>
+<span id="cb44-2"><a href="model-const-graphes.html#cb44-2" tabindex="-1"></a>mysbm <span class="ot">&lt;-</span> <span class="fu">BM_bernoulli</span>(<span class="st">&#39;SBM_sym&#39;</span>,A,<span class="at">verbosity=</span><span class="dv">0</span>) <span class="co"># SBM_sym = non dirigé</span></span>
+<span id="cb44-3"><a href="model-const-graphes.html#cb44-3" tabindex="-1"></a>mysbm<span class="sc">$</span><span class="fu">estimate</span>()</span></code></pre></div>
 <p>Que pouvez-vous dire à propos du nombre de groupes ?</p></li>
 <li><p>À l’aide des sorties présentes dans <strong>mysbm$model_parameters</strong>, récupérer l’estimation de la matrice de connectivité. Comparer aux vraies valeurs.</p></li>
 <li><p>On trouve dans <strong>mysbm$memberships[[3]]$Z</strong> les estimations des probabilités a posteriori d’être dans chaque cluster. Déduire de cette matrice un groupe pour chaque observation.</p></li>
@@ -278,24 +283,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 <div class="exercise">
 <p><span id="exr:exo-graphppv-iris" class="exercise"><strong>Exercice 2.5  (Plus proches voisins pour les iris) </strong></span>On reprend le jeu de données <strong>iris</strong> vu en cours, dont on extrait un sous échantillon.</p>
-<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="model-const-graphes.html#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(iris)</span>
-<span id="cb45-2"><a href="model-const-graphes.html#cb45-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">12345</span>)</span>
-<span id="cb45-3"><a href="model-const-graphes.html#cb45-3" aria-hidden="true" tabindex="-1"></a>donnees <span class="ot">&lt;-</span> iris[<span class="fu">sample</span>(<span class="fu">nrow</span>(iris),<span class="dv">30</span>),]</span>
-<span id="cb45-4"><a href="model-const-graphes.html#cb45-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(donnees)</span>
-<span id="cb45-5"><a href="model-const-graphes.html#cb45-5" aria-hidden="true" tabindex="-1"></a>    Sepal.Length Sepal.Width Petal.Length Petal.Width</span>
-<span id="cb45-6"><a href="model-const-graphes.html#cb45-6" aria-hidden="true" tabindex="-1"></a><span class="dv">142</span>          <span class="fl">6.9</span>         <span class="fl">3.1</span>          <span class="fl">5.1</span>         <span class="fl">2.3</span></span>
-<span id="cb45-7"><a href="model-const-graphes.html#cb45-7" aria-hidden="true" tabindex="-1"></a><span class="dv">51</span>           <span class="fl">7.0</span>         <span class="fl">3.2</span>          <span class="fl">4.7</span>         <span class="fl">1.4</span></span>
-<span id="cb45-8"><a href="model-const-graphes.html#cb45-8" aria-hidden="true" tabindex="-1"></a><span class="dv">58</span>           <span class="fl">4.9</span>         <span class="fl">2.4</span>          <span class="fl">3.3</span>         <span class="fl">1.0</span></span>
-<span id="cb45-9"><a href="model-const-graphes.html#cb45-9" aria-hidden="true" tabindex="-1"></a><span class="dv">93</span>           <span class="fl">5.8</span>         <span class="fl">2.6</span>          <span class="fl">4.0</span>         <span class="fl">1.2</span></span>
-<span id="cb45-10"><a href="model-const-graphes.html#cb45-10" aria-hidden="true" tabindex="-1"></a><span class="dv">75</span>           <span class="fl">6.4</span>         <span class="fl">2.9</span>          <span class="fl">4.3</span>         <span class="fl">1.3</span></span>
-<span id="cb45-11"><a href="model-const-graphes.html#cb45-11" aria-hidden="true" tabindex="-1"></a><span class="dv">96</span>           <span class="fl">5.7</span>         <span class="fl">3.0</span>          <span class="fl">4.2</span>         <span class="fl">1.2</span></span>
-<span id="cb45-12"><a href="model-const-graphes.html#cb45-12" aria-hidden="true" tabindex="-1"></a>       Species</span>
-<span id="cb45-13"><a href="model-const-graphes.html#cb45-13" aria-hidden="true" tabindex="-1"></a><span class="dv">142</span>  virginica</span>
-<span id="cb45-14"><a href="model-const-graphes.html#cb45-14" aria-hidden="true" tabindex="-1"></a><span class="dv">51</span>  versicolor</span>
-<span id="cb45-15"><a href="model-const-graphes.html#cb45-15" aria-hidden="true" tabindex="-1"></a><span class="dv">58</span>  versicolor</span>
-<span id="cb45-16"><a href="model-const-graphes.html#cb45-16" aria-hidden="true" tabindex="-1"></a><span class="dv">93</span>  versicolor</span>
-<span id="cb45-17"><a href="model-const-graphes.html#cb45-17" aria-hidden="true" tabindex="-1"></a><span class="dv">75</span>  versicolor</span>
-<span id="cb45-18"><a href="model-const-graphes.html#cb45-18" aria-hidden="true" tabindex="-1"></a><span class="dv">96</span>  versicolor</span></code></pre></div>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="model-const-graphes.html#cb45-1" tabindex="-1"></a><span class="fu">data</span>(iris)</span>
+<span id="cb45-2"><a href="model-const-graphes.html#cb45-2" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">12345</span>)</span>
+<span id="cb45-3"><a href="model-const-graphes.html#cb45-3" tabindex="-1"></a>donnees <span class="ot">&lt;-</span> iris[<span class="fu">sample</span>(<span class="fu">nrow</span>(iris),<span class="dv">30</span>),]</span>
+<span id="cb45-4"><a href="model-const-graphes.html#cb45-4" tabindex="-1"></a><span class="fu">head</span>(donnees)</span>
+<span id="cb45-5"><a href="model-const-graphes.html#cb45-5" tabindex="-1"></a>    Sepal.Length Sepal.Width Petal.Length Petal.Width</span>
+<span id="cb45-6"><a href="model-const-graphes.html#cb45-6" tabindex="-1"></a><span class="dv">142</span>          <span class="fl">6.9</span>         <span class="fl">3.1</span>          <span class="fl">5.1</span>         <span class="fl">2.3</span></span>
+<span id="cb45-7"><a href="model-const-graphes.html#cb45-7" tabindex="-1"></a><span class="dv">51</span>           <span class="fl">7.0</span>         <span class="fl">3.2</span>          <span class="fl">4.7</span>         <span class="fl">1.4</span></span>
+<span id="cb45-8"><a href="model-const-graphes.html#cb45-8" tabindex="-1"></a><span class="dv">58</span>           <span class="fl">4.9</span>         <span class="fl">2.4</span>          <span class="fl">3.3</span>         <span class="fl">1.0</span></span>
+<span id="cb45-9"><a href="model-const-graphes.html#cb45-9" tabindex="-1"></a><span class="dv">93</span>           <span class="fl">5.8</span>         <span class="fl">2.6</span>          <span class="fl">4.0</span>         <span class="fl">1.2</span></span>
+<span id="cb45-10"><a href="model-const-graphes.html#cb45-10" tabindex="-1"></a><span class="dv">75</span>           <span class="fl">6.4</span>         <span class="fl">2.9</span>          <span class="fl">4.3</span>         <span class="fl">1.3</span></span>
+<span id="cb45-11"><a href="model-const-graphes.html#cb45-11" tabindex="-1"></a><span class="dv">96</span>           <span class="fl">5.7</span>         <span class="fl">3.0</span>          <span class="fl">4.2</span>         <span class="fl">1.2</span></span>
+<span id="cb45-12"><a href="model-const-graphes.html#cb45-12" tabindex="-1"></a>       Species</span>
+<span id="cb45-13"><a href="model-const-graphes.html#cb45-13" tabindex="-1"></a><span class="dv">142</span>  virginica</span>
+<span id="cb45-14"><a href="model-const-graphes.html#cb45-14" tabindex="-1"></a><span class="dv">51</span>  versicolor</span>
+<span id="cb45-15"><a href="model-const-graphes.html#cb45-15" tabindex="-1"></a><span class="dv">58</span>  versicolor</span>
+<span id="cb45-16"><a href="model-const-graphes.html#cb45-16" tabindex="-1"></a><span class="dv">93</span>  versicolor</span>
+<span id="cb45-17"><a href="model-const-graphes.html#cb45-17" tabindex="-1"></a><span class="dv">75</span>  versicolor</span>
+<span id="cb45-18"><a href="model-const-graphes.html#cb45-18" tabindex="-1"></a><span class="dv">96</span>  versicolor</span></code></pre></div>
 <ol style="list-style-type: decimal">
 <li><p>Construire les distances euclidiennes entre individus en ne considèrant que les 4 variables quantitatives. On stockera ces distances dans une matrice et on visualisera cette matrice à l’aide d’un <strong>heatmap</strong>.</p></li>
 <li><p>A l’aide de la fonction <strong>nng</strong> du package <code>cccd</code>, construire :</p>

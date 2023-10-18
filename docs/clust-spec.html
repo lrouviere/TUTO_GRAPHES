@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapitre 4 Clustering spectral | Graph Mining</title>
   <meta name="description" content="Chapitre 4 Clustering spectral | Graph Mining" />
-  <meta name="generator" content="bookdown 0.29 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.35 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapitre 4 Clustering spectral | Graph Mining" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Laurent Rouvière" />
 
 
-<meta name="date" content="2022-10-23" />
+<meta name="date" content="2023-10-18" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -52,10 +52,10 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
-<script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
+<script src="libs/htmlwidgets-1.6.2/htmlwidgets.js"></script>
 <link href="libs/vis-9.1.0/vis-network.min.css" rel="stylesheet" />
 <script src="libs/vis-9.1.0/vis-network.min.js"></script>
-<script src="libs/visNetwork-binding-2.1.0/visNetwork.js"></script>
+<script src="libs/visNetwork-binding-2.1.2/visNetwork.js"></script>
 
 
 <style type="text/css">
@@ -96,7 +96,7 @@ code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
+code span.bu { color: #008000; } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -109,7 +109,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
+code span.im { color: #008000; font-weight: bold; } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -123,6 +123,10 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -223,24 +227,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="clustering-spectral-sur-1-graphe-à-3-composantes-connexes" class="section level2 hasAnchor" number="4.1">
 <h2><span class="header-section-number">4.1</span> Clustering spectral sur 1 graphe à 3 composantes connexes<a href="clust-spec.html#clustering-spectral-sur-1-graphe-à-3-composantes-connexes" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>On crée tout d’abord un graphe avec trois composantes connexes : on utilise la commande <strong>sample_gnp()</strong> qui permet de créer un graphe selon le modèle d’Erdos-Renyi.</p>
-<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="clust-spec.html#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
-<span id="cb50-2"><a href="clust-spec.html#cb50-2" aria-hidden="true" tabindex="-1"></a>n1 <span class="ot">&lt;-</span> <span class="dv">5</span></span>
-<span id="cb50-3"><a href="clust-spec.html#cb50-3" aria-hidden="true" tabindex="-1"></a>n2 <span class="ot">&lt;-</span> <span class="dv">3</span></span>
-<span id="cb50-4"><a href="clust-spec.html#cb50-4" aria-hidden="true" tabindex="-1"></a>n3 <span class="ot">&lt;-</span> <span class="dv">2</span></span>
-<span id="cb50-5"><a href="clust-spec.html#cb50-5" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> n1<span class="sc">+</span>n2<span class="sc">+</span>n3</span>
-<span id="cb50-6"><a href="clust-spec.html#cb50-6" aria-hidden="true" tabindex="-1"></a><span class="co"># il faut prendre des grandes valeurs de p sinon on risque d&#39;avoir des sous-graphes non connexes </span></span>
-<span id="cb50-7"><a href="clust-spec.html#cb50-7" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> <span class="fl">0.85</span></span>
-<span id="cb50-8"><a href="clust-spec.html#cb50-8" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> <span class="fl">0.75</span></span>
-<span id="cb50-9"><a href="clust-spec.html#cb50-9" aria-hidden="true" tabindex="-1"></a>p3 <span class="ot">&lt;-</span> <span class="fl">0.7</span></span>
-<span id="cb50-10"><a href="clust-spec.html#cb50-10" aria-hidden="true" tabindex="-1"></a>G1 <span class="ot">&lt;-</span> <span class="fu">sample_gnp</span>(n1,p1)</span>
-<span id="cb50-11"><a href="clust-spec.html#cb50-11" aria-hidden="true" tabindex="-1"></a>G2 <span class="ot">&lt;-</span> <span class="fu">sample_gnp</span>(n2,p2)</span>
-<span id="cb50-12"><a href="clust-spec.html#cb50-12" aria-hidden="true" tabindex="-1"></a>G3 <span class="ot">&lt;-</span> <span class="fu">sample_gnp</span>(n3,p3)</span>
-<span id="cb50-13"><a href="clust-spec.html#cb50-13" aria-hidden="true" tabindex="-1"></a>G <span class="ot">&lt;-</span> G1 <span class="sc">+</span> G2 <span class="sc">+</span> G3 <span class="co"># il cree un graphe avec ces 3 sous-graphes</span></span>
-<span id="cb50-14"><a href="clust-spec.html#cb50-14" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(G)</span></code></pre></div>
-<p><img src="TUTO_GRAPHES_files/figure-html/unnamed-chunk-187-1.png" width="672" style="display: block; margin: auto;" />
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="clust-spec.html#cb50-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
+<span id="cb50-2"><a href="clust-spec.html#cb50-2" tabindex="-1"></a>n1 <span class="ot">&lt;-</span> <span class="dv">5</span></span>
+<span id="cb50-3"><a href="clust-spec.html#cb50-3" tabindex="-1"></a>n2 <span class="ot">&lt;-</span> <span class="dv">3</span></span>
+<span id="cb50-4"><a href="clust-spec.html#cb50-4" tabindex="-1"></a>n3 <span class="ot">&lt;-</span> <span class="dv">2</span></span>
+<span id="cb50-5"><a href="clust-spec.html#cb50-5" tabindex="-1"></a>n <span class="ot">&lt;-</span> n1<span class="sc">+</span>n2<span class="sc">+</span>n3</span>
+<span id="cb50-6"><a href="clust-spec.html#cb50-6" tabindex="-1"></a><span class="co"># il faut prendre des grandes valeurs de p sinon on risque d&#39;avoir des sous-graphes non connexes </span></span>
+<span id="cb50-7"><a href="clust-spec.html#cb50-7" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> <span class="fl">0.85</span></span>
+<span id="cb50-8"><a href="clust-spec.html#cb50-8" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> <span class="fl">0.75</span></span>
+<span id="cb50-9"><a href="clust-spec.html#cb50-9" tabindex="-1"></a>p3 <span class="ot">&lt;-</span> <span class="fl">0.7</span></span>
+<span id="cb50-10"><a href="clust-spec.html#cb50-10" tabindex="-1"></a>G1 <span class="ot">&lt;-</span> <span class="fu">sample_gnp</span>(n1,p1)</span>
+<span id="cb50-11"><a href="clust-spec.html#cb50-11" tabindex="-1"></a>G2 <span class="ot">&lt;-</span> <span class="fu">sample_gnp</span>(n2,p2)</span>
+<span id="cb50-12"><a href="clust-spec.html#cb50-12" tabindex="-1"></a>G3 <span class="ot">&lt;-</span> <span class="fu">sample_gnp</span>(n3,p3)</span>
+<span id="cb50-13"><a href="clust-spec.html#cb50-13" tabindex="-1"></a>G <span class="ot">&lt;-</span> G1 <span class="sc">+</span> G2 <span class="sc">+</span> G3 <span class="co"># il cree un graphe avec ces 3 sous-graphes</span></span>
+<span id="cb50-14"><a href="clust-spec.html#cb50-14" tabindex="-1"></a><span class="fu">plot</span>(G)</span></code></pre></div>
+<p><img src="TUTO_GRAPHES_files/figure-html/unnamed-chunk-188-1.png" width="672" style="display: block; margin: auto;" />
 On vérifie le nombre de composantes connexes</p>
-<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="clust-spec.html#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="fu">components</span>(G)<span class="sc">$</span>no</span>
-<span id="cb51-2"><a href="clust-spec.html#cb51-2" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="dv">3</span></span></code></pre></div>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="clust-spec.html#cb51-1" tabindex="-1"></a><span class="fu">components</span>(G)<span class="sc">$</span>no</span>
+<span id="cb51-2"><a href="clust-spec.html#cb51-2" tabindex="-1"></a>[<span class="dv">1</span>] <span class="dv">3</span></span></code></pre></div>
 <div class="exercise">
 <p><span id="exr:exo-laplacien-non-norm" class="exercise"><strong>Exercice 4.1  (Laplacien non normalisé) </strong></span><br />
 </p>
@@ -255,9 +259,9 @@ On vérifie le nombre de composantes connexes</p>
 </div>
 <div class="exercise">
 <p><span id="exr:exo-laplacien-norm" class="exercise"><strong>Exercice 4.2  (Laplacien normalisé) </strong></span>Refaire le même travail en utilisant le laplacien normalisé. On n’oubliera pas d’ajouter l’étape de normalisation en utilisant par exemple la fonction suivante :</p>
-<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="clust-spec.html#cb52-1" aria-hidden="true" tabindex="-1"></a>normalize <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
-<span id="cb52-2"><a href="clust-spec.html#cb52-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(x<span class="sc">/</span><span class="fu">sqrt</span>(<span class="fu">sum</span>(x<span class="sc">^</span><span class="dv">2</span>))) </span>
-<span id="cb52-3"><a href="clust-spec.html#cb52-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="clust-spec.html#cb52-1" tabindex="-1"></a>normalize <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
+<span id="cb52-2"><a href="clust-spec.html#cb52-2" tabindex="-1"></a>  <span class="fu">return</span>(x<span class="sc">/</span><span class="fu">sqrt</span>(<span class="fu">sum</span>(x<span class="sc">^</span><span class="dv">2</span>))) </span>
+<span id="cb52-3"><a href="clust-spec.html#cb52-3" tabindex="-1"></a>}</span></code></pre></div>
 </div>
 </div>
 <div id="programmer-le-clustering-spectral-pour-un-graphe" class="section level2 hasAnchor" number="4.2">
@@ -271,29 +275,29 @@ On vérifie le nombre de composantes connexes</p>
 <p>et qui renvoie les groupes pour le clustering spectral à <span class="math inline">\(K\)</span> groupes ainsi que le graphe des valeurs propres (en <strong>ggplot</strong> si possible).</p>
 <p>Igraph possède une fonction permettant de faire directement le spectral clustering : <strong>embed_laplacian_matrix</strong>. Mais en argument, il faut lui donner le nombre <span class="math inline">\(K\)</span> de clusters souhaité. En pratique, on ne connait pas <span class="math inline">\(K\)</span>, et une façon de le trouver est de regarder le trou spectral dans le graphe des valeurs propres.</p>
 <p>La fonction <strong>embed_laplacian_matrix</strong> s’utilise ainsi :</p>
-<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="clust-spec.html#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="co">#res2 &lt;- embed_laplacian_matrix(G,8,which=&quot;sa&quot;,scaled=&quot;FALSE&quot;,degmode = &quot;all&quot;)</span></span>
-<span id="cb53-2"><a href="clust-spec.html#cb53-2" aria-hidden="true" tabindex="-1"></a>res2 <span class="ot">&lt;-</span> <span class="fu">embed_laplacian_matrix</span>(G,<span class="dv">8</span>,<span class="at">which=</span><span class="st">&quot;sa&quot;</span>,<span class="at">scaled=</span><span class="st">&quot;FALSE&quot;</span>)</span>
-<span id="cb53-3"><a href="clust-spec.html#cb53-3" aria-hidden="true" tabindex="-1"></a>res2<span class="sc">$</span>D</span>
-<span id="cb53-4"><a href="clust-spec.html#cb53-4" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="dv">0</span> <span class="dv">0</span> <span class="dv">0</span> <span class="dv">1</span> <span class="dv">2</span> <span class="dv">2</span> <span class="dv">3</span> <span class="dv">4</span></span></code></pre></div>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="clust-spec.html#cb53-1" tabindex="-1"></a><span class="co">#res2 &lt;- embed_laplacian_matrix(G,8,which=&quot;sa&quot;,scaled=&quot;FALSE&quot;,degmode = &quot;all&quot;)</span></span>
+<span id="cb53-2"><a href="clust-spec.html#cb53-2" tabindex="-1"></a>res2 <span class="ot">&lt;-</span> <span class="fu">embed_laplacian_matrix</span>(G,<span class="dv">8</span>,<span class="at">which=</span><span class="st">&quot;sa&quot;</span>,<span class="at">scaled=</span><span class="st">&quot;FALSE&quot;</span>)</span>
+<span id="cb53-3"><a href="clust-spec.html#cb53-3" tabindex="-1"></a>res2<span class="sc">$</span>D</span>
+<span id="cb53-4"><a href="clust-spec.html#cb53-4" tabindex="-1"></a>[<span class="dv">1</span>] <span class="dv">0</span> <span class="dv">0</span> <span class="dv">0</span> <span class="dv">1</span> <span class="dv">2</span> <span class="dv">2</span> <span class="dv">3</span> <span class="dv">4</span></span></code></pre></div>
 <p>On peut faire du clustering spectral à 3 groupes avec :</p>
-<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="clust-spec.html#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="co">#res3 &lt;- embed_laplacian_matrix(G,3,which=&quot;sa&quot;,scaled=&quot;FALSE&quot;,degmode = &quot;all&quot;)</span></span>
-<span id="cb54-2"><a href="clust-spec.html#cb54-2" aria-hidden="true" tabindex="-1"></a>res3 <span class="ot">&lt;-</span> <span class="fu">embed_laplacian_matrix</span>(G,<span class="dv">3</span>,<span class="at">which=</span><span class="st">&quot;sa&quot;</span>,<span class="at">scaled=</span><span class="st">&quot;FALSE&quot;</span>)</span>
-<span id="cb54-3"><a href="clust-spec.html#cb54-3" aria-hidden="true" tabindex="-1"></a>res_spectral <span class="ot">&lt;-</span> <span class="fu">kmeans</span>(res3<span class="sc">$</span>X, <span class="at">centers =</span> <span class="dv">3</span>, <span class="at">nstart =</span> <span class="dv">100</span>)</span>
-<span id="cb54-4"><a href="clust-spec.html#cb54-4" aria-hidden="true" tabindex="-1"></a>res_spectral<span class="sc">$</span>cluster</span>
-<span id="cb54-5"><a href="clust-spec.html#cb54-5" aria-hidden="true" tabindex="-1"></a> [<span class="dv">1</span>] <span class="dv">1</span> <span class="dv">1</span> <span class="dv">1</span> <span class="dv">1</span> <span class="dv">1</span> <span class="dv">3</span> <span class="dv">3</span> <span class="dv">3</span> <span class="dv">2</span> <span class="dv">2</span></span></code></pre></div>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="clust-spec.html#cb54-1" tabindex="-1"></a><span class="co">#res3 &lt;- embed_laplacian_matrix(G,3,which=&quot;sa&quot;,scaled=&quot;FALSE&quot;,degmode = &quot;all&quot;)</span></span>
+<span id="cb54-2"><a href="clust-spec.html#cb54-2" tabindex="-1"></a>res3 <span class="ot">&lt;-</span> <span class="fu">embed_laplacian_matrix</span>(G,<span class="dv">3</span>,<span class="at">which=</span><span class="st">&quot;sa&quot;</span>,<span class="at">scaled=</span><span class="st">&quot;FALSE&quot;</span>)</span>
+<span id="cb54-3"><a href="clust-spec.html#cb54-3" tabindex="-1"></a>res_spectral <span class="ot">&lt;-</span> <span class="fu">kmeans</span>(res3<span class="sc">$</span>X, <span class="at">centers =</span> <span class="dv">3</span>, <span class="at">nstart =</span> <span class="dv">100</span>)</span>
+<span id="cb54-4"><a href="clust-spec.html#cb54-4" tabindex="-1"></a>res_spectral<span class="sc">$</span>cluster</span>
+<span id="cb54-5"><a href="clust-spec.html#cb54-5" tabindex="-1"></a> [<span class="dv">1</span>] <span class="dv">3</span> <span class="dv">3</span> <span class="dv">3</span> <span class="dv">3</span> <span class="dv">3</span> <span class="dv">2</span> <span class="dv">1</span> <span class="dv">2</span> <span class="dv">3</span> <span class="dv">3</span></span></code></pre></div>
 </div>
 <div class="exercise">
 <p><span id="exr:exo-spec-deux-commu" class="exercise"><strong>Exercice 4.4  (Graphe avec deux communautés faiblement connectées entre elles) </strong></span>On considère le graphe suivant obtenu selon un modèle <strong>SBM</strong> :</p>
-<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="clust-spec.html#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1234</span>)</span>
-<span id="cb55-2"><a href="clust-spec.html#cb55-2" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">25</span><span class="co"># nombre de noeuds</span></span>
-<span id="cb55-3"><a href="clust-spec.html#cb55-3" aria-hidden="true" tabindex="-1"></a>Q <span class="ot">&lt;-</span> <span class="dv">2</span> <span class="co"># nombre de cluster clusters</span></span>
-<span id="cb55-4"><a href="clust-spec.html#cb55-4" aria-hidden="true" tabindex="-1"></a>pi <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.4</span>, <span class="fl">0.6</span>) <span class="co"># taille des groupes  </span></span>
-<span id="cb55-5"><a href="clust-spec.html#cb55-5" aria-hidden="true" tabindex="-1"></a>effectifs <span class="ot">&lt;-</span> n<span class="sc">*</span>pi</span>
-<span id="cb55-6"><a href="clust-spec.html#cb55-6" aria-hidden="true" tabindex="-1"></a>connectivite_matrix <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="fl">0.9</span>, <span class="fl">0.15</span>,</span>
-<span id="cb55-7"><a href="clust-spec.html#cb55-7" aria-hidden="true" tabindex="-1"></a>                                <span class="fl">0.15</span>, <span class="fl">0.95</span>),<span class="at">nrow=</span>Q) <span class="co"># matrice de connexion</span></span>
-<span id="cb55-8"><a href="clust-spec.html#cb55-8" aria-hidden="true" tabindex="-1"></a>G <span class="ot">&lt;-</span> <span class="fu">sample_sbm</span>(n, <span class="at">pref.matrix=</span>connectivite_matrix, <span class="at">block.sizes =</span> effectifs)</span>
-<span id="cb55-9"><a href="clust-spec.html#cb55-9" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(G)</span></code></pre></div>
-<p><img src="TUTO_GRAPHES_files/figure-html/unnamed-chunk-220-1.png" width="672" style="display: block; margin: auto;" />
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="clust-spec.html#cb55-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1234</span>)</span>
+<span id="cb55-2"><a href="clust-spec.html#cb55-2" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">25</span><span class="co"># nombre de noeuds</span></span>
+<span id="cb55-3"><a href="clust-spec.html#cb55-3" tabindex="-1"></a>Q <span class="ot">&lt;-</span> <span class="dv">2</span> <span class="co"># nombre de cluster clusters</span></span>
+<span id="cb55-4"><a href="clust-spec.html#cb55-4" tabindex="-1"></a>pi <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.4</span>, <span class="fl">0.6</span>) <span class="co"># taille des groupes  </span></span>
+<span id="cb55-5"><a href="clust-spec.html#cb55-5" tabindex="-1"></a>effectifs <span class="ot">&lt;-</span> n<span class="sc">*</span>pi</span>
+<span id="cb55-6"><a href="clust-spec.html#cb55-6" tabindex="-1"></a>connectivite_matrix <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="fl">0.9</span>, <span class="fl">0.15</span>,</span>
+<span id="cb55-7"><a href="clust-spec.html#cb55-7" tabindex="-1"></a>                                <span class="fl">0.15</span>, <span class="fl">0.95</span>),<span class="at">nrow=</span>Q) <span class="co"># matrice de connexion</span></span>
+<span id="cb55-8"><a href="clust-spec.html#cb55-8" tabindex="-1"></a>G <span class="ot">&lt;-</span> <span class="fu">sample_sbm</span>(n, <span class="at">pref.matrix=</span>connectivite_matrix, <span class="at">block.sizes =</span> effectifs)</span>
+<span id="cb55-9"><a href="clust-spec.html#cb55-9" tabindex="-1"></a><span class="fu">plot</span>(G)</span></code></pre></div>
+<p><img src="TUTO_GRAPHES_files/figure-html/unnamed-chunk-221-1.png" width="672" style="display: block; margin: auto;" />
 Effectuer le clustering spectral sur ce graphe, on essaiera notamment de choisir le nombre de groupes.</p>
 </div>
 </div>
@@ -304,14 +308,14 @@ Effectuer le clustering spectral sur ce graphe, on essaiera notamment de choisir
 </p>
 <ol style="list-style-type: decimal">
 <li><p>On considère le graphe <strong>friends</strong> disponible <a href="http://www.sociopatterns.org/datasets/high-school-contact-and-friendship-networks/">ici</a></p>
-<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="clust-spec.html#cb56-1" aria-hidden="true" tabindex="-1"></a>friends <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="at">file=</span><span class="st">&quot;data/Friendship-network_data_2013.csv&quot;</span>)</span>
-<span id="cb56-2"><a href="clust-spec.html#cb56-2" aria-hidden="true" tabindex="-1"></a>G.friends <span class="ot">&lt;-</span> <span class="fu">graph_from_data_frame</span>(friends,<span class="at">directed=</span>F)  <span class="co"># non dirige</span></span>
-<span id="cb56-3"><a href="clust-spec.html#cb56-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(G.friends)</span></code></pre></div>
-<p><img src="TUTO_GRAPHES_files/figure-html/unnamed-chunk-228-1.png" width="672" style="display: block; margin: auto;" />
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="clust-spec.html#cb56-1" tabindex="-1"></a>friends <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="at">file=</span><span class="st">&quot;data/Friendship-network_data_2013.csv&quot;</span>)</span>
+<span id="cb56-2"><a href="clust-spec.html#cb56-2" tabindex="-1"></a>G.friends <span class="ot">&lt;-</span> <span class="fu">graph_from_data_frame</span>(friends,<span class="at">directed=</span>F)  <span class="co"># non dirige</span></span>
+<span id="cb56-3"><a href="clust-spec.html#cb56-3" tabindex="-1"></a><span class="fu">plot</span>(G.friends)</span></code></pre></div>
+<p><img src="TUTO_GRAPHES_files/figure-html/unnamed-chunk-229-1.png" width="672" style="display: block; margin: auto;" />
 Appliquer le clustering spectral à ce graphe. On pourra comparer la classification obtenue avec celle de la méthode de Louvain en utilisant la fonction <strong>compare</strong>.</p></li>
 <li><p>Faire de même avec le graphe <strong>karate</strong>.</p>
-<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="clust-spec.html#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(igraphdata)</span>
-<span id="cb57-2"><a href="clust-spec.html#cb57-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(karate)</span></code></pre></div></li>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="clust-spec.html#cb57-1" tabindex="-1"></a><span class="fu">library</span>(igraphdata)</span>
+<span id="cb57-2"><a href="clust-spec.html#cb57-2" tabindex="-1"></a><span class="fu">data</span>(karate)</span></code></pre></div></li>
 </ol>
 </div>
 </div>
@@ -319,26 +323,26 @@ Appliquer le clustering spectral à ce graphe. On pourra comparer la classificat
 <h2><span class="header-section-number">4.4</span> Clustering spectral : cas général<a href="clust-spec.html#clustering-spectral-cas-général" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Nous avons étudié jusqu’ici l’algorithme du clustering spectral pour trouver des clusters de nœuds (ou communautés) dans les graphes. On remarque néanmoins que l’algorithme ne repose pas sur le graphe en lui même, mais uniquement sur une matrice d’adjacence (ou similarité) issue de ce graphe. Il est par conséquent possible d’utiliser cet algorithme pour des données standards (tableaux <code>individus-variables</code>), à partir du moment où on peut calculer une matrice de similarité à partir de ces données. Il est également possible d’utiliser des <strong>noyaux</strong> pour définir cette similarité. La fonction <strong>specc</strong> de <code>kernlab</code> permet de faire un tel clustering.</p>
 <div class="exercise">
-<p><span id="exr:exo-spec-spirales" class="exercise"><strong>Exercice 4.6  (Clustering spectral pour des psirales) </strong></span>On considère les données spirales</p>
-<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="clust-spec.html#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">111</span>)</span>
-<span id="cb58-2"><a href="clust-spec.html#cb58-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mlbench)</span>
-<span id="cb58-3"><a href="clust-spec.html#cb58-3" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">100</span></span>
-<span id="cb58-4"><a href="clust-spec.html#cb58-4" aria-hidden="true" tabindex="-1"></a>simu <span class="ot">&lt;-</span> <span class="fu">mlbench.spirals</span>(<span class="dv">100</span>,<span class="dv">1</span>,<span class="fl">0.025</span>)  </span>
-<span id="cb58-5"><a href="clust-spec.html#cb58-5" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(simu)</span>
-<span id="cb58-6"><a href="clust-spec.html#cb58-6" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="st">&quot;x&quot;</span>       <span class="st">&quot;classes&quot;</span></span></code></pre></div>
-<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="clust-spec.html#cb59-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> simu<span class="sc">$</span>x</span>
-<span id="cb59-2"><a href="clust-spec.html#cb59-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(data)</span>
-<span id="cb59-3"><a href="clust-spec.html#cb59-3" aria-hidden="true" tabindex="-1"></a>           [,<span class="dv">1</span>]        [,<span class="dv">2</span>]</span>
-<span id="cb59-4"><a href="clust-spec.html#cb59-4" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>,]  <span class="fl">0.5609898</span> <span class="sc">-</span><span class="fl">0.21756239</span></span>
-<span id="cb59-5"><a href="clust-spec.html#cb59-5" aria-hidden="true" tabindex="-1"></a>[<span class="dv">2</span>,]  <span class="fl">0.2793522</span>  <span class="fl">0.01718273</span></span>
-<span id="cb59-6"><a href="clust-spec.html#cb59-6" aria-hidden="true" tabindex="-1"></a>[<span class="dv">3</span>,]  <span class="fl">0.3725821</span>  <span class="fl">0.03849122</span></span>
-<span id="cb59-7"><a href="clust-spec.html#cb59-7" aria-hidden="true" tabindex="-1"></a>[<span class="dv">4</span>,]  <span class="fl">0.3457879</span>  <span class="fl">0.08963081</span></span>
-<span id="cb59-8"><a href="clust-spec.html#cb59-8" aria-hidden="true" tabindex="-1"></a>[<span class="dv">5</span>,]  <span class="fl">0.1577921</span>  <span class="fl">0.81528541</span></span>
-<span id="cb59-9"><a href="clust-spec.html#cb59-9" aria-hidden="true" tabindex="-1"></a>[<span class="dv">6</span>,] <span class="sc">-</span><span class="fl">0.1603697</span>  <span class="fl">0.84547763</span></span></code></pre></div>
+<p><span id="exr:exo-spec-spirales" class="exercise"><strong>Exercice 4.6  (Clustering spectral pour des spirales) </strong></span>On considère les données spirales</p>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="clust-spec.html#cb58-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">111</span>)</span>
+<span id="cb58-2"><a href="clust-spec.html#cb58-2" tabindex="-1"></a><span class="fu">library</span>(mlbench)</span>
+<span id="cb58-3"><a href="clust-spec.html#cb58-3" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">100</span></span>
+<span id="cb58-4"><a href="clust-spec.html#cb58-4" tabindex="-1"></a>simu <span class="ot">&lt;-</span> <span class="fu">mlbench.spirals</span>(<span class="dv">100</span>,<span class="dv">1</span>,<span class="fl">0.025</span>)  </span>
+<span id="cb58-5"><a href="clust-spec.html#cb58-5" tabindex="-1"></a><span class="fu">names</span>(simu)</span>
+<span id="cb58-6"><a href="clust-spec.html#cb58-6" tabindex="-1"></a>[<span class="dv">1</span>] <span class="st">&quot;x&quot;</span>       <span class="st">&quot;classes&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="clust-spec.html#cb59-1" tabindex="-1"></a>data <span class="ot">&lt;-</span> simu<span class="sc">$</span>x</span>
+<span id="cb59-2"><a href="clust-spec.html#cb59-2" tabindex="-1"></a><span class="fu">head</span>(data)</span>
+<span id="cb59-3"><a href="clust-spec.html#cb59-3" tabindex="-1"></a>           [,<span class="dv">1</span>]        [,<span class="dv">2</span>]</span>
+<span id="cb59-4"><a href="clust-spec.html#cb59-4" tabindex="-1"></a>[<span class="dv">1</span>,]  <span class="fl">0.5609898</span> <span class="sc">-</span><span class="fl">0.21756239</span></span>
+<span id="cb59-5"><a href="clust-spec.html#cb59-5" tabindex="-1"></a>[<span class="dv">2</span>,]  <span class="fl">0.2793522</span>  <span class="fl">0.01718273</span></span>
+<span id="cb59-6"><a href="clust-spec.html#cb59-6" tabindex="-1"></a>[<span class="dv">3</span>,]  <span class="fl">0.3725821</span>  <span class="fl">0.03849122</span></span>
+<span id="cb59-7"><a href="clust-spec.html#cb59-7" tabindex="-1"></a>[<span class="dv">4</span>,]  <span class="fl">0.3457879</span>  <span class="fl">0.08963081</span></span>
+<span id="cb59-8"><a href="clust-spec.html#cb59-8" tabindex="-1"></a>[<span class="dv">5</span>,]  <span class="fl">0.1577921</span>  <span class="fl">0.81528541</span></span>
+<span id="cb59-9"><a href="clust-spec.html#cb59-9" tabindex="-1"></a>[<span class="dv">6</span>,] <span class="sc">-</span><span class="fl">0.1603697</span>  <span class="fl">0.84547763</span></span></code></pre></div>
 <p>et on les visualise.</p>
-<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="clust-spec.html#cb60-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(simu<span class="sc">$</span>x)</span>
-<span id="cb60-2"><a href="clust-spec.html#cb60-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df)<span class="sc">+</span><span class="fu">aes</span>(<span class="at">x=</span>X1,<span class="at">y=</span>X2)<span class="sc">+</span><span class="fu">geom_point</span>()</span></code></pre></div>
-<p><img src="TUTO_GRAPHES_files/figure-html/unnamed-chunk-244-1.png" width="672" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="clust-spec.html#cb60-1" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(simu<span class="sc">$</span>x)</span>
+<span id="cb60-2"><a href="clust-spec.html#cb60-2" tabindex="-1"></a><span class="fu">ggplot</span>(df)<span class="sc">+</span><span class="fu">aes</span>(<span class="at">x=</span>X1,<span class="at">y=</span>X2)<span class="sc">+</span><span class="fu">geom_point</span>()</span></code></pre></div>
+<p><img src="TUTO_GRAPHES_files/figure-html/unnamed-chunk-245-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>Appliquer les algorithmes suivants pour tenter de visualiser les deux groupes :</p>
 <ul>
 <li>clustering spectral avec noyau linéaire</li>
