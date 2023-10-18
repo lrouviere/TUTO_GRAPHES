@@ -1,1 +1,1 @@
-Ce tutoriel présente quelques exercices sur le cours "Graph Mining" que l'on pourra trouver à l'url <https://lrouviere.github.io/INP-HB/>. 
+Ce tutoriel présente quelques exercices sur le cours "Graph Mining" que l'on pourra trouver à l'url <https://lrouviere.github.io/page_perso/graphes.html/>. 
